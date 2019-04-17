@@ -16,5 +16,4 @@ There is no denying that the only constant with cloud services is change, the na
 
 ![Anna](/images/uploads/2019/03/anna_d.jpg){:style="float: left;margin-right: 10px;margin-top: 10px;" height="150px" width="150px"} Anna Donnelly is a Services Product Manager at Insight and a Certified Change Practitioner helping organizations manage change and drive user adoption.
 
-
 This Episode is brought to you by KEMP TECHNOLOGIES. Choose KEMP to optimize your multi-cloud application deployments and simplify multi-cloud application management. A single pane-of-glass for application delivery, KEMP provides a 360 degree view of your entire application environment, and even third-party ADCs. Download KEMP360 [for free today at kemptechnologies.com](https://kempte.ch/2MYXjew)
