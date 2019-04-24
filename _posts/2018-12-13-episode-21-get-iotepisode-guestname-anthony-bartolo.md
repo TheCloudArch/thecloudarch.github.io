@@ -1,6 +1,6 @@
 ---
 author: chris
-title: Episode 21 - Get-IoTEpisode -GuestName "Anthony Bartolo"
+title: Episode 21: Get-IoTEpisode -GuestName "Anthony Bartolo"
 slug: episode-21-get-iotepisode-guestname-anthony-bartolo
 id: 233
 date: '2018-12-13 19:11:40'
@@ -11,9 +11,9 @@ categories:
 
 The Internet of things (IoT) seems to be everywhere these days. Anything from connected light bulbs and door bells to sensors that monitor and report the drying and curing of concrete in real time, there seems to be an IoT solution for every problem but IoT is so much more than just a sensor connected to a Raspberry PI. Microsoft's Anthony Bartolo sat down with us at Ignite to explain what IoT is, why IT Pros should pay attention and how to get started. Here are some of the links mentioned in the episode:
 
-*   https://aka.ms/mousetrap
-*   https://microsoft.com/learn
-*   https://aka.ms/iotschool
+*   [https://aka.ms/mousetrap](https://aka.ms/mousetrap)
+*   [https://microsoft.com/learn](https://microsoft.com/learn)
+*   [https://aka.ms/iotschool](https://aka.ms/iotschool)
 
 ![Anthony](/images/uploads/2018/12/anthonyb.jpg){:style="float: left;margin-right: 10px;margin-top: 10px;" height="150px" width="150px"} Anthony Bartolo is a Senior Cloud Advocate at Microsoft helping the IT Professional community harness the Azure platform and sharing feedback with the engineering teams within Microsoft surrounding current challenges and requested service enhancements. You can follow Anthony on Twitter [@WirelessLife](https://twitter.com/WirelessLife) or see what his team is up to by following the hashtag [#AZOps](https://twitter.com/hashtag/AZOps). You can also [find them on TechCommunity](http://itopstalk.com)
 

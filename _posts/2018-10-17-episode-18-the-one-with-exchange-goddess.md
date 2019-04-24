@@ -1,6 +1,6 @@
 ---
 author: chris
-title: Episode 18 - The One with Exchange Goddess
+title: Episode 18: The One with Exchange Goddess
 slug: episode-18-the-one-with-exchange-goddess
 id: 219
 date: '2018-10-17 19:07:46'

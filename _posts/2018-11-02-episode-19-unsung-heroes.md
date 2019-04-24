@@ -1,6 +1,6 @@
 ---
 author: chris
-title: Episode 19 - Unsung Heroes
+title: Episode 19: Unsung Heroes
 slug: episode-19-unsung-heroes
 id: 223
 date: '2018-11-02 14:54:15'

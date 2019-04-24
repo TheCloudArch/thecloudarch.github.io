@@ -1,38 +1,21 @@
 ---
 author: Warren
-title: "Episode 9 - This is not your Grandfathers Sharepoint!\_ - The Ladies Behind SharePoint and the OneDrive Client"
+title: Episode 9: "This is not your Grandfathers Sharepoint!""
 slug: episode-9-whats-new-in-sharepoint-and-onedrive
 id: 152
 date: '2017-12-13 05:40:23'
 layout: post
 categories:
-  - Uncategorized
+  - Interviews
 ---
 
 This is not your Grandfathers Sharepoint! In this Episode, Nic and Chris talk to two very important ladies in the OneDrive and SharePoint space. What is OneDrive.exe and why is it changing our world for the better? They also discuss how companies can move to SharePoint and OneDrive easily and not to be afraid of the big bad SharePoint
 
-<header class="m-heading-3 no-padding">
+![Patricia](/images/uploads/2017/12/biggest.png){:style="float: left;margin-right: 10px;margin-top: 10px;" height="150px" width="150px"} Patricia Hendricks is a Program Manager on the OneDrive SharePoint team. She brings with her 7 years of experience in desktop sync.
 
-### Patricia Hendricks
+![Navjot](/images/uploads/2017/12/215876.jpeg){:style="float: left;margin-right: 10px;margin-top: 10px;" height="150px" width="150px"} Navjot Virk is Group Program Manager in SharePoint and OneDrive team responsible for the backend Service, Security and Compliance features, and the SharePoint Server. Navjot has been with Microsoft for over 15 years with extensive experience building large scale consumer and enterprise services,
 
-###  ![](http://thearchitects.cloud/wp-content/uploads/2017/12/biggest.png)
+<p><iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/372945749&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe></p>
 
-</header>
-
-<div class="speaker-detail__speaker__info__position">Program Manager, [Microsoft](https://myignite.microsoft.com/speakers?f=%5B%7B%22name%22%3A%22Microsoft%22%2C%22facetName%22%3A%22company%22%7D%5D)</div>
-
-Patricia is a Program Manager on the OneDrive SharePoint team. She brings with her 7 years of experience in desktop sync.
-
-[Ignite Speaker Profile](https://myignite.microsoft.com/speaker/194190) [Twitter](https://twitter.com/@phndrx)
-
-<header class="m-heading-3 no-padding">
-
-### Navjot Virk
-
-![](http://thearchitects.cloud/wp-content/uploads/2017/12/215876.jpeg)</header>
-
-<div class="speaker-detail__speaker__info__position">Group Program Manager, [Microsoft](https://myignite.microsoft.com/speakers?f=%5B%7B%22name%22%3A%22Microsoft%22%2C%22facetName%22%3A%22company%22%7D%5D)</div>
-
-Navjot is Group Program Manager in SharePoint and OneDrive team responsible for the backend Service, Security and Compliance features, and the SharePoint Server. Navjot has been with Microsoft for over 15 years with extensive experience building large scale consumer and enterprise services,
-
-[Ignite Speaker Profile](https://myignite.microsoft.com/speaker/215876) [Twitter](https://twitter.com/@navjotvirk)   [embed]https://soundcloud.com/thecloudarchitects/episode-9-this-is-not-your-grandfathers-sharepoint[/embed] This Episode is brought to you by KEMP TECHNOLOGIES. We chose Kemp as a sponsor due to their amazing Cloud product line. Have a look at this amazing video on how Kemp 360 is helping companies achieve zero downtime and full scalability in their infrastructure. https://youtu.be/dVvHokor9wc
+This Episode is brought to you by KEMP TECHNOLOGIES. We chose Kemp as a sponsor due to their amazing Cloud product line. Check out this video on how Kemp 360 is helping companies achieve zero downtime and full scalability in their infrastructure.
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/dVvHokor9wc" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>

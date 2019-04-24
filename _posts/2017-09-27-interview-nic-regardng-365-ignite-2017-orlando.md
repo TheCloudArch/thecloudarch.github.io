@@ -6,7 +6,8 @@ id: 84
 date: '2017-09-27 16:23:59'
 layout: post
 categories:
-  - Uncategorized
+  - REgarding365
 ---
 
-Hey Everyone, Nicolas Blank as cornered by the Regarding365 team and interviewed on all things Cloud. Have a look :) Keep an eye out for The Cloud Architects soon contributing to the Regarding 365 channels https://youtu.be/lfmWXZfFyZY
+Hey Everyone, Nicolas Blank as cornered by the REgarding365 team and interviewed on all things Cloud.
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/lfmWXZfFyZY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
