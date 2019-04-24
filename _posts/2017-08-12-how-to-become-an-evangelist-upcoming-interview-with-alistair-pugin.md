@@ -1,6 +1,6 @@
 ---
 author: Nicolas
-title: How to become an Evangelist - Upcoming interview with Alistair Pugin
+title: 'How to become an Evangelist - Upcoming interview with Alistair Pugin'
 slug: how-to-become-an-evangelist-upcoming-interview-with-alistair-pugin
 id: 54
 date: '2017-08-12 12:17:34'

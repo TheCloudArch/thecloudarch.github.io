@@ -1,6 +1,6 @@
 ---
 author: chris
-title: Episode 22: Governance with Antonio Maio
+title: 'Episode 22: Governance with Antonio Maio'
 slug: episode-22-governance-with-antonio-maio
 id: 239
 date: '2019-02-06 20:15:08'

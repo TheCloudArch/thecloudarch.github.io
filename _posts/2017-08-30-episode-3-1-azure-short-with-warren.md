@@ -1,6 +1,6 @@
 ---
 author: Warren
-title: Episode 3.1: Azure Short with Warren
+title: 'Episode 3.1: Azure Short with Warren'
 slug: episode-3-1-azure-short-with-warren
 id: 64
 date: '2017-08-30 14:01:09'

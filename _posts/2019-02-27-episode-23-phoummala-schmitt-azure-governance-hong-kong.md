@@ -1,6 +1,6 @@
 ---
 author: Warren
-title: Episode 23: Phoummala Schmitt - Azure Governance - Hong Kong
+title: 'Episode 23: Phoummala Schmitt - Azure Governance - Hong Kong'
 slug: episode-23-phoummala-schmitt-azure-governance-hong-kong
 id: 246
 date: '2019-02-27 17:12:10'

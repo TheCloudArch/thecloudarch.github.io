@@ -1,6 +1,6 @@
 ---
 author: Warren
-title: Episode 4 - Interview and Introduction to Chris Goosen
+title: 'Episode 4: Interview and Introduction to Chris Goosen'
 slug: episode-4-interview-and-introduction-to-chris-goosen
 id: 70
 date: '2017-09-24 17:05:07'

@@ -1,6 +1,6 @@
 ---
 author: Warren
-title: Episode 13: All about Mary-Jo Foley
+title: 'Episode 13: All about Mary-Jo Foley'
 slug: episode-13-all-about-mary-jo-foley
 id: 187
 date: '2018-03-15 04:53:06'

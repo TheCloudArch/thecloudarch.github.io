@@ -1,6 +1,6 @@
 ---
 author: chris
-title: Episode 7: “The cloud can make a real fool of you”
+title: 'Episode 7: “The cloud can make a real fool of you”'
 slug: episode-7-the-cloud-can-make-a-real-fool-of-you
 id: 144
 date: '2017-11-16 05:32:27'

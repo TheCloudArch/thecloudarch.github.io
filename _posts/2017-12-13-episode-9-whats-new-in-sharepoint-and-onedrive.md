@@ -1,6 +1,6 @@
 ---
 author: Warren
-title: Episode 9: "This is not your Grandfathers Sharepoint!""
+title: 'Episode 9: "This is not your Grandfathers Sharepoint!"'
 slug: episode-9-whats-new-in-sharepoint-and-onedrive
 id: 152
 date: '2017-12-13 05:40:23'

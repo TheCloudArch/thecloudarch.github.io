@@ -1,6 +1,6 @@
 ---
 author: chris
-title: Episode 17: The Community Khaleesi
+title: 'Episode 17: The Community Khaleesi'
 slug: episode-17-the-community-khaleesi
 id: 213
 date: '2018-10-04 16:05:51'

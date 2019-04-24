@@ -1,6 +1,6 @@
 ---
 author: Warren
-title: Episode 2: Microsoft Azure Stack with Bhargav Shukla
+title: 'Episode 2: Microsoft Azure Stack with Bhargav Shukla'
 slug: episode-2-microsoft-azure-stack-with-bhargav-shukla
 id: 51
 date: '2017-08-09 15:07:34'

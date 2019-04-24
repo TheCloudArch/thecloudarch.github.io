@@ -1,9 +1,8 @@
 ---
 author: Warren
-title: Episode 20: The Incredible Tech that glues Office 365 Together and gives us
+title: 'Episode 20: The Incredible Tech that glues Office 365 Together and gives us'
   Identity - Azure Active Directory and B2B
-slug: >-
-  episode-20-the-incredible-tech-that-glues-office-365-together-and-gives-us-identity-azure-active-directory-and-b2b
+slug: episode-20-the-incredible-tech-that-glues-office-365-together-and-gives-us-identity-azure-active-directory-and-b2b
 id: 228
 date: '2018-11-30 09:49:08'
 layout: post

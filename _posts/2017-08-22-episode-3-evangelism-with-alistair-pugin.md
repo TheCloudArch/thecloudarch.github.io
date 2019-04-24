@@ -1,6 +1,6 @@
 ---
 author: Warren
-title: Episode 3: Evangelism with Alistair Pugin
+title: 'Episode 3: Evangelism with Alistair Pugin'
 slug: episode-3-evangelism-with-alistair-pugin
 id: 61
 date: '2017-08-22 09:15:56'

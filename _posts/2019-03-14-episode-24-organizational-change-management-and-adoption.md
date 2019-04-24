@@ -1,6 +1,6 @@
 ---
 author: chris
-title: Episode 24: Organizational Change Management and Adoption
+title: 'Episode 24: Organizational Change Management and Adoption'
 slug: episode-24-organizational-change-management-and-adoption
 id: 250
 date: '2019-03-14 19:28:24'

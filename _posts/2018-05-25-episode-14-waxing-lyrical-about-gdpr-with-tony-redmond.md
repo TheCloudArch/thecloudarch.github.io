@@ -1,6 +1,6 @@
 ---
 author: chris
-title: Episode 14: Waxing lyrical about GDPR with Tony Redmond
+title: 'Episode 14: Waxing lyrical about GDPR with Tony Redmond'
 slug: episode-14-waxing-lyrical-about-gdpr-with-tony-redmond
 id: 202
 date: '2018-05-25 19:17:31'
