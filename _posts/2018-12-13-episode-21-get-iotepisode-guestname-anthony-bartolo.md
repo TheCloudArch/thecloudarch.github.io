@@ -1,6 +1,6 @@
 ---
 author: chris
-title: Episode 21 - Get-IoTEpisode -GuestName \"Anthony Bartolo\"
+title: Episode 21 - Get-IoTEpisode -GuestName "Anthony Bartolo"
 slug: episode-21-get-iotepisode-guestname-anthony-bartolo
 id: 233
 date: '2018-12-13 19:11:40'
