@@ -11,7 +11,7 @@ categories:
 
 The Microsoft Tech Community was launched in 2016 and is an evolution of the Office 365 Network, extended to support the Azure; Windows Server, and SQL Server communities. Microsoft Tech Community brings together multiple communities in one central location to support discussions and best practice sharing across a variety of Microsoft products and services. We had a lot of fun catching up with Anna Chu at Microsoft Ignite last week to talk about her role at Microsoft, the value of community and what it takes to put on an event like Ignite.
 
-[![](/images/uploads/2018/10/DoPFrXGVYAAJo7Z.jpg){:height="1024px" width="769px"}](/images/uploads/2018/10/DoPFrXGVYAAJo7Z.jpg)
+[![](/images/uploads/2018/10/DoPFrXGVYAAJo7Z.jpg){:height="676px" width="508px"}](/images/uploads/2018/10/DoPFrXGVYAAJo7Z.jpg)
 
 ![Anna](/images/uploads/2018/10/anna_chu.jpg){:style="float: left;margin-right: 10px;margin-top: 10px;" height="150px" width="150px"} Anna Chu is a Senior Product Marketing Manager at Microsoft responsible for working across the Microsoft Tech Community and MVP communities to engage with the IT Pro audience. This involves driving partnerships between engineering and marketing that influence product roadmaps and leading community strategy to enable best practice sharing between customers - in turn facilitating a natural feedback loop between the people who build Microsoft Office products and services and the people who implement them. You can follow Anna on Twitter [@_achu](https://twitter.com/_achu)
 
