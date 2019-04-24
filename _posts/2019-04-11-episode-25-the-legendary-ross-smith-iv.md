@@ -2,8 +2,10 @@
 author: chris
 title: Episode 25: The Legendary Ross Smith IV
 slug: episode-25-the-legendary-ross-smith-iv
+id: 251
 date: '2019-04-11 10:00:00'
 layout: post
+comments: false
 categories:
   - Interviews
 ---
