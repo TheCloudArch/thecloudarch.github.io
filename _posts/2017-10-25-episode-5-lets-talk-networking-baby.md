@@ -21,7 +21,7 @@ If there is anything we've learned about Office 365 in the last few years, it's
 
 ![Paul](/images/uploads/2017/10/pandrew.png){:style="float: left;margin-right: 10px;margin-top: 10px;" height="150px" width="150px"} Paul Andrew is a Senior Program Manager at Microsoft working on Office 365 cloud networking, network connectivity and performance. He works on the Office 365 IP's and URLs surface area, ExpressRoute for Office 365, and Office 365 connectivity with network device partners. Paul has worked as a program manager and product manager at Microsoft for over 12 years and as a developer prior to that. Paul holds an MBA from the University of Washington and a Bachelor of Technology from Massey University in New Zealand.  
 
-![Paul](/images/uploads/2017/10/pcollinge-e1508942730552.jpg){:style="float: left;margin-right: 10px;margin-top: 10px;" height="150px" width="150px"} Paul Collinge is a Senior Program Manager in the Office 365 Product Team, specializing in network connectivity and performance.
+![Paul](/images/uploads/2017/10/pcollinge.jpg){:style="float: left;margin-right: 10px;margin-top: 10px;" height="150px" width="150px"} Paul Collinge is a Senior Program Manager in the Office 365 Product Team, specializing in network connectivity and performance.
 
 <p><iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/352197950&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe></p>     
 
