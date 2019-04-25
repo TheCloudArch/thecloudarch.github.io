@@ -1,6 +1,6 @@
 ---
 author: chris
-title: 'Episode 11: "I'm not scared of what AI will do, but what humans will do with AI"'
+title: `Episode 11: "I'm not scared of what AI will do, but what humans will do with AI"`
 slug: episode-11-im-not-scared-of-what-ai-will-do-but-what-humans-will-do-with-ai
 date: '2018-02-09 22:23:44'
 layout: post
