@@ -1,6 +1,6 @@
 ---
 author: Warren
-title: 'Episode 13.1: Microsoft Cares about Developers, Here's Why! Tech Summit 2018 Cape Town'
+title: "Episode 13.1: Microsoft Cares about Developers, Here's Why! Tech Summit 2018 Cape Town"
 slug: episode-13-1-microsoft-cares-about-developers-heres-why-tech-summit-2018-cape-town
 date: '2018-03-26 08:27:40'
 layout: post

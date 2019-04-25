@@ -1,6 +1,6 @@
 ---
 author: chris
-title: 'Episode 5: Let's talk about networking, baby!'
+title: "Episode 5: Let's talk about networking, baby!"
 slug: episode-5-lets-talk-networking-baby
 id: 108
 date: '2017-10-25 16:47:25'

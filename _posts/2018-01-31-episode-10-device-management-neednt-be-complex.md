@@ -1,6 +1,6 @@
 ---
 author: chris
-title: 'Episode 10: Device Management needn't be complex'
+title: "Episode 10: Device Management needn't be complex"
 slug: episode-10-device-management-neednt-be-complex
 date: '2018-01-31 23:34:00'
 layout: post
