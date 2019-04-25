@@ -2,7 +2,6 @@
 author: chris
 title: 'Episode 8: SharePoint isn't so scary..'
 slug: episode-8-sharepoint-isnt-so-scary
-id: 149
 date: '2017-11-22 18:47:06'
 layout: post
 categories:
