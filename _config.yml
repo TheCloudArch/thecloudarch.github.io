@@ -3,7 +3,7 @@ title: The Cloud Architects
 description: 'A podcast about cloud, technology and the people using it'
 url: 'https://thecloudarch.github.io'
 baseurl: ''
-# google_analytics: 'UA-XXXXXX-X'
+google_analytics: 'UA-144586523-1'
 # disqus_shortname: 'your-disqus-name'
 
 author:
