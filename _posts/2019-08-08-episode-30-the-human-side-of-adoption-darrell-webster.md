@@ -15,6 +15,7 @@ Nic catches up with Darrell Webster (aka Darrell as a Service) to talk about clo
 
 ![Darrell as as Service](/images/uploads/2019/08/daas.jpg){:style="float: left;margin-right: 10px;margin-top: 10px;" height="150px" width="150px"} Darrell is a senior adoption and change management consultant for Adopt and Embrace. He relishes the opportunity to help individuals, teams and organisations to unlock the value in Microsoft 365.  He is active in the Microsoft Technical Community and firmly believes that 'the Community' is the expert.
 
+
 Darrell also helps to co-ordinate an online publication and Live show called REgarding 365, where thought leaders share their stories, opinions and guidance regarding Microsoft 365. His community efforts have been recognised with the Microsoft MVP award since 2013. Follow Darrell on
 * LinkedIn: [Darrell Webster](https://www.linkedin.com/in/darrellwebster/)
 * Twitter: [@DarrellaaS](https://twitter.com/DarrellaaS)
