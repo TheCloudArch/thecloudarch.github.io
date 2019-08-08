@@ -14,7 +14,12 @@ Nic catches up with Darrell Webster (aka Darrell as a Service) to talk about clo
 
 ![Darrell as as Service](/images/uploads/2019/08/daas.jpg){:style="float: left;margin-right: 10px;margin-top: 10px;" height="150px" width="150px"} Darrell is an Office 365 productivity and collaboration specialist for Adopt and Embrace. He relishes the opportunity to help individuals, teams and organisations to unlock the value in Office 365.  He is active in the Microsoft Technical Community and firmly believes that the Community IS the expert.
 
-Darrell also helps to co-ordinate an online publication and Live show called RE:Office 365, where thought leaders share their stories, opinions and guidance regarding Office 365. His community efforts have been recognised with the Microsoft MVP award since 2013. Follow Darrell on Twitter [@DarrellaaS](https://twitter.com/DarrellaaS)
+Darrell also helps to co-ordinate an online publication and Live show called RE:Office 365, where thought leaders share their stories, opinions and guidance regarding Office 365. His community efforts have been recognised with the Microsoft MVP award since 2013. Follow Darrell on
+* LinkedIn: ![Darrell Webster](https://www.linkedin.com/in/darrellwebster/)
+* Twitter: [@DarrellaaS](https://twitter.com/DarrellaaS)
+* Blog: webster.net.nz and contributing to regarding365.com
+
+
 
 <p><iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/662937404&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe></p>
 
