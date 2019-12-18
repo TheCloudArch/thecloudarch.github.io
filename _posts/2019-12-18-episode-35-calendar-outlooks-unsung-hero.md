@@ -1,6 +1,6 @@
 ---
 author: chris
-title: 'Episode 35: Calendar - Outlook's unsung hero'
+title: "Episode 35: Calendar - Outlook's unsung hero!"
 slug: episode-35-calendar-outlooks-unsung-hero
 date: '2019-12-18 09:16:00'
 layout: post
