@@ -1,6 +1,6 @@
 ---
 author: chris
-title: 'Episode 40: "There's one docs place and one training place.."'
+title: 'Episode 40: "There is one docs place and one training place.."'
 slug: episode-40-theres-one-docs-place-and-one-training-place
 date: '2020-02-17 10:41:00'
 layout: post
