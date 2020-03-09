@@ -1,0 +1,438 @@
+---
+layout: page
+robots: noindex
+---
+
+Chris Goosen  0:19
+Welcome to the cloud architects podcast, a podcast about cloud technology and the people using it.
+
+Nicolas Blank  0:26
+The cloud architects podcast is sponsored by Kemp technologies. Choose Kemp to optimize your multi cloud application deployments and simplify multi cloud application management. A single pane of glass for application delivery Kemp provides a 360 degree view of your entire application environment, and even third party ADCs. Download Kemp 360 for free today at kemptechnologies.com.
+
+Warren du Toit  0:53
+Hello, everyone, and welcome to another episode of the cloud architects. We have to really cool guests with us today from ignite
+
+Rick Claus  1:03
+cloud architects.
+
+Warren du Toit  1:04
+Yeah, yeah, cloud architects. Patch and switch, welcome to the show.
+
+Joey Snow  1:10
+Thanks for having us
+
+Warren du Toit  1:11
+ The Living Legends.
+
+Joey Snow  1:13
+Sure.
+
+Nicolas Blank  1:15
+Or legendary at least if you prefer
+
+Joey Snow  1:19
+dairy probably
+
+Nicolas Blank  1:20
+dairy, dairy. Is this an allergy show?
+
+Joey Snow  1:24
+allergy free zone?
+
+Warren du Toit  1:25
+allergy free lactose free.
+
+Nicolas Blank  1:29
+Safe Zone and too I had
+
+Rick Claus  1:30
+my almond milk latte earlier today. I'm all set.
+
+Joey Snow  1:33
+Oh, nice. Nice.
+
+Warren du Toit  1:35
+That's fantastic. And how's your week been?
+
+Joey Snow  1:38
+It's been busy but it's been fantastic. getting a chance to see everyone see the community the MVPs the our customers I still have meetings left to do Really? Wow. I've dinner tonight with corporate partners that I managed so yeah, it's it's it's been busy.
+
+Rick Claus  1:55
+It's been kind of crazy having a maintain your day job plus also all the key aspects Oh, yeah, the event itself, like joy. I also have some, some meetings besides it recording podcast with folks like you, with the customers and also an evening meeting as well too. So,
+
+Nicolas Blank  2:11
+but we aren't under oppression that you just your full time job is to be on camera.
+
+Rick Claus  2:16
+You'd be surprised.
+
+Joey Snow  2:18
+nobody really wants to see that actually a couple times here. Alright, that's enough.
+
+Warren du Toit  2:23
+So then what technically is your job titles? But what is it? What do they call you?
+
+Rick Claus  2:27
+ So I'm actually called a cloud advocate lead. So I built a team of seven people that are smarter than me, that go off and create amazing contents that is in demand by our customers and by our partners, and by the community online that cover a variety of topics. And my particular team is focused on the operations side of Azure, for the IT pro audience and for the architects audience, for architecture, primarily VMs but then also talking a bit about Kubernetes and containers and future looking and then also a bit in the identity space. Security space as well. But then we also handle the modernization of on premises as well. A lot of our customers, the majority of the customers that are out there are still very much having an on premises focus. And we're trying to get them modernize, they can start to take advantage of some of the goodness that is inside of the Azure world.
+
+Joey Snow  3:18
+I'm a Senior Program Manager in the identity team. So I work in the Azure Active Directory team. And what I do is I have inside of the engineering team, we have a customer and partner experience team, which is designed basically to help us get feedback back to our engineering team faster, and help our customers get deployed and to be successful. customers and partners as well. So I manage a group of partners that help our customers get our product deployed, get managed services built around them, help get them secure. All around identity in Azure Active Directory.
+
+Nicolas Blank  3:49
+We love your world. We ready. We had. Yeah, we had Elisabeth Olsen on early on the show. Yeah, and second year in a row
+
+Joey Snow  3:57
+and one of those absolutely nothing. I can add to this podcast.
+
+Nicolas Blank  4:02
+Except that Rick promise does that by you exceptionally good looks you'd balance everything out.
+
+Rick Claus  4:07
+Absolutely. Yeah. At least his face for radio.
+
+Joey Snow  4:09
+Yeah, I do I completely have a face for radio
+
+100%
+
+Warren du Toit  4:14
+Yeah, your team. Your team is the cloud. The cloud advocate teams are incredible.
+
+Nicolas Blank  4:18
+Yeah, we spent some time with him on the road and they're amazing.
+
+Warren du Toit  4:21
+Yeah, thank you. Yeah. Last year and in in Hong Kong. We got to mess around with
+
+it was good fun.
+
+Unknown Speaker  4:32
+Yeah. Yeah, yeah.
+
+Rick Claus  4:36
+Yeah. So biggest fun this so this year we've expanded kicking off starting tomorrow, which is Saturday when we're recording this. I'm flying to Paris and we're kicking off at night the tour 30 plus stops around the world this time double the number stops almost. And my team will be at least one or two of my team will be at every single city stuff to be a luxury of coverage. So we have a consistently high level of content and also high level of engagement. So, if you look up, Microsoft Ignite the tour, you'll see the cities they're free event you can go off and subscribe to go off to and show up in your local city. It's mostly international tour. There's only I think three or four cities in the US. Primarily international for China. Yes, there's definitely more in China, Tokyo, Japan. And I'll be in Beijing in December. I want to never been to Beijing before. Yeah, I'll be fine.
+
+Nicolas Blank  5:24
+Yeah, I'm on my way to Shanghai right after this is the first time ever to Shanghai as well. Awesome. Really, really? Looking forward to that?
+
+Rick Claus  5:30
+Yeah. Yeah, very cool stuff.
+
+Nicolas Blank  5:32
+So let's talk about a topic just for a little bit. Oh, we know
+
+Rick Claus  5:35
+we have topics.
+
+Joey Snow  5:38
+I thought I was just just here to chit chat,
+
+Warren du Toit  5:41
+because it's ties in nicely to the announcements that last week. So if we have to look, one of the big announcements inside of Agile was Arc. Yep. And that's multi cloud on prem. The whole thing. What do you guys thoughts on that?
+
+Nicolas Blank  5:56
+Let's just define Arc quickly for people who don't know what that is. And go and go.
+
+Rick Claus  6:05
+See it. This is kind of a test to see how the message was received by someone other than Microsoft for that it was given. So I am curious.
+
+Warren du Toit  6:14
+So it. So arc is the ability to manage devices and servers and vdis and containers and Kubernetes data. So workloads that aren't necessarily inside of Azure. So they can be in AWS, they can be on premises, and they can also help you move and manage those workloads as well. And the biggest thing about Arc is that it's free. When you think about what Amazon is charging Amazon, which I think they're charging somewhere in the region of like $8,000 a month per Kubernetes cluster, whatever the case may be, is, where's free,
+
+Nicolas Blank  6:56
+Joey I know that I just saw a bit of a little bit
+
+Rick Claus  7:01
+It worked.
+
+The messaging works.
+
+So it's, it's a, it's an architecture that allows you to,
+
+if you think about it in the in the Agile world internally in engineering, and I think we talked about this publicly to I should probably figure that out for I say it. We talked about resource providers, right. So the different resource providers to be able to spot up resources inside of Azure as an example. we're extending that to also not have resource providers that can work in different locations. Because in case you didn't know, other clouds are pretty protective about their stuff. And they don't expose any API's that expose anything the outside world, they want you to use their management of monitoring tools, yeah, or for you to buy a third party service to go in and to do those different management and stuff. So we're basically now able to go in and to start to bubble up stuff. You know, the first level of things that gonna be going on are going to require some level of them and have an install. Yeah, there's other areas. So you have to put some stuff on the Kubernetes hosts to be able to go off the nodes and the Management nodes, you have to be able to go in and put in a hybrid resource provider for on premises machines, but then they appear as resources inside of Azure. And then once they're inside of Azure as a resource, then all the goodness that is inside of Azure can take place. And you can have log analytics take place, you can have security recommendations take place, you can have monitoring alerts and performance alerts take place record and
+
+Warren du Toit  8:21
+upgrade Kubernetes even straight from the panel.
+
+Rick Claus  8:23
+Yep. So so the the capabilities are being laid out, and they'll be continuing to evolve as they go. But it was a pretty substantial viewpoint that we gave this earlier in the week with the initial keynote. I think it was Gabe Gable gave one minority source a Monroe or Malloy. It's been Ryan, I think it is. I should know this because I said hello on the first day he joined Microsoft. Back in the day from Colorado, he did a phenomenal demo about how arc is gonna be going off and working.
+
+Joey Snow  8:54
+I think one of my favorite components of arc and again, it's not a single thing, right? Yeah. It's a set of it's a set of tech Everything you have that allow things is the ability to do Policy and Governance. So basically, it allows you to leverage some of the configuration security configuration and governance of the server is very, I mean, everybody probably knows Group Policy. There are people in this world that have on their resume. I'm a group policy expert. And they know how to do that. You can think of some of the components of arc and managing and these policies is kind of like a group policy. This is the next 20 years. Yeah, so for the past 20 years, we've been doing group policy on premises, right? So you can think of this and, and, and mostly on the server side, as that's, that's how you're going to manage those configurations. And you can take some of the the practices that we already have, when you spin up Azure VMs and some of those things and and apply those same policies in a very consistent manner to resources regardless of where those resources live. Yeah, and is really just kind of this next step. As we move toward we talked multi cloud and multi cloud can exist on premises as well.
+
+Nicolas Blank  10:10
+What about my on premises VMware estate?
+
+Rick Claus  10:16
+Initially, we're looking at doing it from a VM inside of the host configuration, right? We're not looking at the individual lower level fabrics at this point in time. It's a natural extension. Again, I don't want to say any for looking statements, they don't have the details to be able to pry out of me, which is good. But if I look at it, I just see a VM as a VM as a VM. I don't care where it is. redeliver don't at this time, have any kind of inter lower level knowledge of what's happening down below. Until you start going into things like our migration tools. Our migration tools do have the ability to go in to take a look at the underlaying v cloud platform,
+
+Warren du Toit  10:51
+which has also been completely redone, updated data and yeah, this
+
+Rick Claus  10:54
+week, don't ask me questions that one there as I haven't read that one yet.
+
+There's a Book of news in case you're wondering
+
+Nicolas Blank  11:01
+about that. Yeah.
+
+Rick Claus  11:03
+The Book of news is available for download from the news.microsoft.com website that lists off. And you were saying the Table of Contents how many page Long's remember,
+
+Joey Snow  11:10
+I think I want to say it was 14 or 15 pages, just the Table of Contents? Yes,
+
+Rick Claus  11:15
+it was insane. And then it has the details of all the different functions and features that we announced this or rather, the solutions that we've announced, we no longer do the functions and features thing anymore.
+
+Nicolas Blank  11:24
+But How exciting is that I have a virtual machine, which could be on just about anything could be VMware, it could be on open stack, it could be on whatever. And I can see it in portal and I can report an instrument on it.
+
+Rick Claus  11:38
+To me, that's going to be invaluable. I mean, the customers that I've seen, I talked with as well, as I mentioned, a lot of people than in the space that I work in with modernization are very much in a now I'm starting to look at the cloud. I mean, in your consultancies, working much more cloud forward, you're dealing with a lot of customers that are very much cutting edge and wanting to be there. Now we're starting to see that happen. first level of the curve has gone and coming and they're there and they buy into it. Now we've got this big massive wave coming behind them that are now starting to be able to come forward and want to want to know what to do. So yeah, the the ability to include them and have them visible inside the inside the portal, as you mentioned, the able to put policy against them and our back against them and stuff like that. The ability to install the hybrid agent on the different machines, it's going to be very powerful. And as you mentioned, the very beginning of all this, it's not just VMs yet VMs is obviously where 80% of our customers are going to be right now for what they're comfortable with working with net new development or or modernization of existing workloads that are being reimagined off of VMs into something more compact, are going to be looking at containers to reduce is the current winner in that space. And then also potentially re architect and looking at even avoiding Kubernetes and going straight to a microservices architecture and said all that's coming down the road, but more and more people are looking at how can I get immediate value now? using something like arc Using the hybrid RP and other things like that, to put all the stuff inside of one, one spot, it sounds marketing, but, you know, one pane of glass, the ideas all in one spot.
+
+Nicolas Blank  13:09
+It's like the show's done, we can leave. Okay,
+
+Joey Snow  13:12
+great talking, ever done.
+
+Warren du Toit  13:14
+Now we can go back to what we were originally talking about.
+
+Joey Snow  13:19
+But But listen, you know, when we talk about the cloud, it was interesting I had a conversation with Aaron chapel. And and it's, it's kind of the the it comes in waves, right? And you look it's like, okay, we're going to do this thing on prem, then you move to the cloud, and then you're expanding out beyond clouds. And then there may come a time where you eventually have to come back down again. Yes, right. But you need to still be able to treat those those resources if that as if they are a true cloud, scalable resources and all the things that they were working on and Azure and the announcements that they made around that the arc stuff this, this ignite, that's exactly what they're doing. So it's it's not so much wear anymore. And it's just using that methodology.
+
+Rick Claus  14:02
+Yeah, I think there was a tweet that Jeff Woolsey put out, which was hilarious. This week. He's like, our hybrid strategy is a true and full planned out. Complete strategy, multi cloud on premises exclusively cloud exclusively on premises. Then also multi cloud as well
+
+Warren du Toit  14:23
+as the intelligent edge net
+
+Rick Claus  14:24
+and intelligent edge as well. Yeah. And he's like, it's not a checkbox. It's right. It's not like oh, other cloud vendor. Yeah, we do hybrid check. Yes, they can get past the RFC or something like that. We actually have a full documented way of how we can go off and do this sort of stuff.
+
+Joey Snow  14:39
+It's important to know that the reality is, is hybrids going to exist for a very long time. Oh, yeah. And it's something that we take very seriously inside of inside of active directory, Azure Active Directory, and making sure that we have the the ability to provide the security, to provide the governance and to provide the compliance is absolutely key, no matter where you are. So we spent a lot of time here at Ignite, complementing a lot of that hybrid messaging that was occurring, not just on the platform side, but also on the identity side, right? We start looking at how can you secure and manage those identities that
+
+Warren du Toit  15:17
+you see that's, that's why security has moved. So, again, so like one of my sessions now that I'm doing in a, in a couple minutes is on
+
+is firewalls inside of Azure, right network virtual appliances, and how people still need them because of certain things. But Id, the firewalls not the protection mechanism anymore, not the person, right? So identity, yes. So so the identity is the way you secure your resources. It's not the fact that your SQL Servers out on the internet now it's got nothing to do with that anymore. So we're moving in that way. I didn't The most important thing they
+
+Joey Snow  16:01
+the way I talk about this is that before we kind of had all of these things together inside we had, we have the user of the identity you had the platform of the devices, the server, the application, you have the data. And and and really Group Policy and some of the things that we had inside of remedy did a little of this and a little about the kind of cross all of them with Azure Active Directory, we had to split that out. And we have Look, it's an if that's what it is. It's purely an identity provider. And it's the one that we want everybody to use. And it does one thing, which is identity and imagine that it protects it. You want to connect your apps to the identity have that single identity that is protected because it is that Alex Simon's likes to call it the control plane, we've done a lot of controlling talking around the outside of here, it but that's it, it's that single place. It's that one place and you know that that identity is is trusted and and then more importantly, That the session that the identity has actually initiated is also trusted, insecure. Yeah. So you know, it's first make sure you turn on MFA because password suck. And until we can get rid of that and we're in we really are in the process of doing it. I think we've crossed the chasm now, in terms of over a million identities are managed passwordless so far.
+
+Nicolas Blank  17:23
+And we some of those we've been running passwordless for months. Yep,
+
+Joey Snow  17:26
+absolutely. So a lot of investments a lot of talk around password list that is real. these are these are things you can do today. And and eventually it's our it's our goal in our mission to get rid of passwords all together, and then in the future, change the way identity is. So yeah, it's it's super cool and exciting. That I think my favorite part about this is that just like the the arc things, this all can be done now and it can all be done across no matter where you are. Yeah. And if you're if you're on prem, you're in Azure. You're in other clouds.
+
+Warren du Toit  18:01
+And it's, it's not hard either. No, it No it's, you know, to me like to turn MFA on or to take your password away is really not hard you like take out a box and it's gone.
+
+Nicolas Blank  18:10
+or to even bring your own identity and federate through Google, but still manage your object and Azure AD b2b again. So there's so much goodness in there and then policy and control them. And I still only have one direction. I think that's wonderful.
+
+Joey Snow  18:25
+Yeah, we're leveraging conditional access and the things that we can do through conditional access policies is really kind of the game changer. Yeah. I kind of look at turning on MFA is it's kind of three major things when you turn on MFA for everything for everyone, which is really a bad experience. As somebody who was on the early side, when we did it at Microsoft, it's like oh my gosh, yeah. And and and I've actually had customers that that have gone through this route and I was just I was I was just over in Ireland. I was speaking with a customer and and they're really struggling because they did this the first time and it was not a good experiences. Their CIO is really hesitant to go do it again. But now we actually through conditional access, and that's, that's stage two, right? Yeah. Being able to do conditional access and make those, you know, rules around when do you based on your location, your risk those those types of things. And then that third step is taking it out of the hands of it to making, making the termination of if the user is risky, or the session is risky. And that's all that's all around identity protection. And that's by leveraging the trillions and trillions and trillions of signals that we get every single day. We a lot of people donorship we authenticate 45 billion authentications in a month.
+
+Warren du Toit  19:43
+Tenant to tenant migration, right? Yep. Tenant to tenant migration is hard.
+
+Joey Snow  19:49
+Yes. Yes.
+
+Warren du Toit  19:53
+And I blame you
+
+Joey Snow  19:57
+know, we know and this is this is this is very work this is work that we're doing. Yeah,
+
+it's work that we continue to do I and I don't want to make any like like I'm gonna stay away from for for statements but this is the type of feedback but it's also the feedback the information that we need.
+
+Warren du Toit  20:13
+Yeah no show and it's why the inevitably accompanies going to be bought or sold. Always always
+
+Joey Snow  20:19
+gonna have look m&a and some of our biggest. But there's also it's also opportunity. Yeah, right. We look at it as something that we have to address, because that's what our customers are doing this. And I want to be clear, we don't do anything inside of Azure Active Directory unless there's a customer need to do it. Yeah. We no longer sit in a room on whiteboards and come up with shiny disco ball things thinking, well, if we could only get our customers to adopt this, yeah, it doesn't even get to the next stage until there's a customer story. Every time we build a new feature inside of the service It is tempted inside of a private preview first before it goes out into a broader public preview. All the feedback comes in all the changes and modifications. And there are times that something will sit in that public preview for a considerable amount of time, because maybe we didn't get it exactly right in the first time. Us, it's up to us to make that modification based on what our customers needs not not how we look at that. And then, you know, we'll obviously put it into GA. And that is something that's why I am in the space. That's why I'm in the team. We are that customer obsessed. I've 80 engineers here that have been just absolutely inundated in the booth, in addition to doing sessions on the developer side is is there's a lot of stuff happening there in terms of, as Rick mentioned, with application modernization and monetization platform to modernize the identity piece as well. Yeah. And you have to move start moving things up. And so it's just really important for folks to understand it. There's a lot of hard things. We're also trying to make life easier because identity is at its core can be a very challenging thing to do. Oh, yes. It used to be, you know, five years and, and and the slide deck that you paid a million dollars for that had 15 Chevron's at the top and you can't do a single thing until you tick off all those 15 pieces. Now you can't do that anymore with you've got to protect that thing. First turn on him. If you do nothing else, turn on MFA. Yeah, via conditional access and get that identity protected. And then we can start moving down the path of doing things like provisioning and de provisioning and which we can already do. You can actually we have inbound provisioning through workday. We're working on other platforms as well and integration there to do inbound provisioning. You can do outbound provisioning with a whole ton of applications of 1.3. We might be at 1.4 million applications that have integration with Azure Active Directory today.
+
+Nicolas Blank  22:56
+How many again so that number
+
+Joey Snow  22:57
+is we're probably close to 1.4. I don't We were 1.3. That number is two months old.
+
+Nicolas Blank  23:03
+Those are discrete applications.
+
+Joey Snow  23:04
+Those are applications that currently have integration with Azure Active Directory. Yep. Yep. But that, but that does not show
+
+Warren du Toit  23:12
+PowerShell  is one of them. And so all the other applications that use PowerShell in the back to make those commands counts as one.
+
+Nicolas Blank  23:21
+Rick what did you do last summer.
+
+Joey Snow  23:24
+And then and then the other thing too
+
+Rick Claus  23:25
+Painted my house, worked on my Jeep.
+
+Joey Snow  23:29
+We made a lot of announcements here at Ignite, and recently around partnerships that we have with things like five Yes, where now we can expose applications behind those five appliances. But here's the cool thing. You can set the policy on the individual application. You're not just doing it Oh, everything that hits the applied. So that changes how you can modernize your applications as well. Right? Yeah, we do. So So we've been spending a lot of time on that because we as you mentioned It's not the thing anymore, not the firewall, we have to start going, how do we get these apps? And 1.3 1.4 million apps is awesome. But we have to make sure that we hit the ones everybody is using. And that's exactly what we've done. Yeah. So the top application providers that that, that need authentication, we have those partnerships with them, and they can do the things that we want them to do. And it's all standards based. So we're not going out and creating some new wild wacky way to connect things. Yeah, right. We provision through scam. Right? We do we do password list through Fido2. To we contribute to the standards, I did an interview with Pamela Dingle, whose entire job she's a director in product marketing. She works for Alex Simon's in our org, and all she does is standards. And it's it's incredible. The amount of effort and time and contributions that we're making to these standards to ensure that we can do this, not just now and doing it the right way, but doing it
+
+Warren du Toit  24:56
+the right way. We were talking to Julia (Foran) the other day.
+
+I've got this thing about ICS standards. Yeah, a calendar invite follows those standards, because they're all different man.
+
+Joey Snow  25:14
+If you want to have if you want to have real fun with standards Go Go read the CSP standard. Really? Yeah. What's hardcore? Oh, it's a hot mess.
+
+Nicolas Blank  25:23
+it's a hot mess
+
+Joey Snow  25:25
+it's a hot mess. It's all we're doing things that was never meant is it?
+
+Warren du Toit  25:28
+Is it is that comma?
+
+Rick Claus  25:29
+Is the quote of the show right there. It's a hot mess.
+
+Joey Snow  25:34
+That's what Pamela told me anyway. Yeah, it's it. Look at DNS it's always DNS. Yeah we always blame DNS.
+
+Nicolas Blank  25:44
+or networking
+
+Rick Claus  25:44
+I have a question for you. Actually. Yeah. If you don't mind me, please. I mean, the show timeline. No, I like well, it's my turn to talk about the, the the, the question the the one of the topics we're talking about today is obviously going to be multi cloud management, sort of Do you have customers asking for this? Is it only that first level of introductory people that are going that path? Or is everyone asking for this? Because Is it a checkbox exercise? So or is it a real actual ask? That's happened.
+
+Warren du Toit  26:13
+So to be honest with you, I think is a real risk. Because you'll see that a particular client will never put together just an Azure framework for their company. They want it to be a cloud framework. So they want to make sure that these policies cover everything moving forward, because it's a big change for them. So they've now gone and set down policies who can do this, you can do that that can be spun up that can't wait, it can be accessed the portal from and that all gets documented. But there's no point in doing it just for Azure. You'll see some of the banks in South Africa, for instance, have done AWS first course right and now they're putting that AWS document to blueprints and obviously with something like lights coming out as well, which, you know, manages those blueprints across all those all those different tenants. Yes, I would say having a single place to manage all those things is very important, because some of them already have them. I mean, you'll see Cape Town, for instance, has a very large, AWS huge, huge country.
+
+Nicolas Blank  27:26
+In particular sectors like like retail. Yeah, retail loves Amazon,
+
+Warren du Toit  27:30
+because for some reason you got these diehard Linux dudes who haven't seen the light, and they're like, if you're a Linux person, then you have to go AWS and be faithful, which is like, the wrong way around. I mean, we know this. I mean, I'm a Linux boy. And, you know, Microsoft is number one open source contributor on the planet, but no, no, you're betraying the you betraying the shell betraying the Shell, it's a hot mess.
+
+Joey Snow  28:04
+Gonna be trading between betraying the shell and hot mess are now the themes of this particular episode of the podcast.
+
+Warren du Toit  28:11
+So to answer your question is I think it's I think it's,
+
+Nicolas Blank  28:14
+I'll give you my spin on this as well and then I'll, I'll maybe ask you to comment on it. So my biggest ask for customers going multicloud is that they're trying to avoid vendor lock in. So I'll put a little bit here put a little bit day while use the commercial angle is, as you know, well that I'm going to tell Microsoft there, I'm going to do a percentage of my workload on another cloud, no matter how well or how badly it does it because I'm trying to avoid commercial lock and I want to commercial angle. The biggest pain for me on that is management overhead. And having a there's there's no single pane on anything. There's multiple places of ordered. There's multiple management and infrastructures, having to spend a lot of money with third parties to get those logs into central location which tends to be on premises, right? And not scale.
+
+Rick Claus  29:05
+Yep. So I agree with that. At the same time. What I find is interesting is some customers that are jumping into this conversation without thoroughly thinking it out is I forget who mentioned it was on online, they were talking about how, if you look at doing adopting a multi cloud environments, you're not going to get the full depth and breadth of the power of that particular platform vendor. Yeah, because you have to leave only so much so deep. And that applies to all three of the clouds. Yeah, that's out there. That's what I find the the concept of arc very interesting, because it doesn't matter to us where those resources happen to be will give you the insights. So we're kind of like your, I'm not going to call it a seven device, but we're kind of like that inside of the Azure space. Because we bring stuff back into duty now analytics on it, but you can leave your Kubernetes running over an AWS if you want to. You can have your your elastic compute or go off and do Nvidia AI type stuff in Google if you want to do but you can also do it here too. And that's true for as I mentioned that all three vendors, obviously, we will make it the best experience possible inside of our own clouds for all the different services that you have. Same thing with AWS, same thing with Google. It's just the strategy at all three players are doing, we're the first one to go out and actually try to say, Okay, well, the reality is customers are looking for this, we're asking for this. So let's go off and give you an awesome experience here inside of Azure, but then also give you the insights from other places.
+
+Joey Snow  30:33
+But it's the same thing from a security perspective. And I hear this all the time when I talk about Azure Active Directory, which then tends to lead down the discussion of things like ATP and some of the other the other security technologies that we have, because we're kind of all together because that's how we're sold right as part of BMS, right. But yes, there are multi vendors out there that the one advantage that I see inside ourselves is the sheer volume of of information and signals that we have, where we're getting them from our ability to take action on those signals. And then even more importantly, how inside all of our products, we all can share that signals data, right? And we
+
+Warren du Toit  31:16
+can all take the same time as the new Microsoft, right? So if you have to look from sort of when such a took over, and that everything started getting open sourced, and there was more collaboration, and they weren't these big walls anymore. You can see that Microsoft now is probably the number one integrator of other products into their product, if you look at it holistically, there are API's to do so many things there are I mean, if you look at the graph framework, yeah, you can literally do whatever you want, and get any data out of it. And then you can present it in a in any way you want it to be and you can do it securely. And there's like none of that you have to stick with us anymore. What just choose it mix and match one
+
+Joey Snow  32:08
+of the biggest workloads that we authenticate to is Google. Yeah.
+
+I mean, that's we share that we share that all the time. I'd say it was probably in Alex's presentation earlier this week. Yeah. And so yeah, 100% I understand.
+
+Nicolas Blank  32:27
+what's the circumstance? They?
+
+Joey Snow  32:29
+Well, they're authenticating to Google applications.
+
+Nicolas Blank  32:32
+Yeah, I was gonna say is it inbound from Google? Or is it oubound to Google?
+
+Joey Snow  32:35
+So it's, it's an Azure Active Directory identity is being used to access a Google Google Docs or whatever happens to be because remember, and and, and identity is that's a little bit tricky in terms of you really don't want to have identities living in multiple places you don't because that means there's more crappy passwords locating and that's another thing that somebody has to manage. His identity is the one thing that You have to, you have to make sure that you've got it and it's secured. And it's, it's protected. And you can manage it and you can cover and against it was only one of them. Yeah. Well, that ideally, yes,
+
+Warren du Toit  33:10
+I do is anything I can take away from ignite is how I can fix that problem that I'm having.
+
+Joey Snow  33:15
+But listen, we were very clear about our intention moving forward. We want to take identity out of the hands of companies and businesses and everybody else and bring it back to the individual. That's, that's our future vision, right where the person can control that identity and then give the ability for me to us that it's explained then take it back. But that's, that's, that's where we have to go. That's where we have to go. And And particularly, just look, how many of us really don't think our data is out there. Huh? Come on. You were talking on the way to the airport here. They were PII on your phone than there is on throughout your house. In any documentation? Yeah, we carry these things around with us. Right We connect 10 secure Wi Fi is and all the other bad behavior that we have
+
+Rick Claus  34:07
+Bluetooth beacons. And as you're walking through a mall, yeah, I don't know where you are in the mall and what you're doing just by having a Bluetooth stack on.
+
+Joey Snow  34:13
+So I understand the concern around vendor lock in. But at the same time, there are benefits to leveraging services from a vendor that can have that communication and share that data across and making that data exposed to you so that you can take action or even better. Let the AI do it. Yeah. I don't want to have to manage session risk. That's ridiculous to me. I don't know what the best rule is for when when a session is risky. Or when it user
+
+Rick Claus  34:42
+What do you mean, I can't log in here in Orlando and in Seattle,
+
+Joey Snow  34:45
+within an hour each other time possible travel scenario, or, hey, maybe I didn't know that my username and password ended up in some breach and I've not changed it and I'm a global admin. Yeah, you think you might want to know about that and even better Just next time go who's the right one? No, that's me because I've got a second factor off. Yes. And now, Joey, let's reset your password. Or in this case, you know, just MFA me because I'm pastoralists. Yeah, yeah.
+
+Nicolas Blank  35:12
+Oh, I'm just in time you so you don't need to be a high risk person with global admin that gets targeted.
+
+Joey Snow  35:19
+Well, and that's that's really the key piece is that you shouldn't be running global admin anyone? Yep. You should only elevate when necessary and and even even more importantly, we shouldn't be requiring you to be global admin to do a lot of the things that you have, which is why we're doing a lot of investment, a lot of work where I was about to ask, because you know,
+
+Nicolas Blank  35:38
+there's a bunch of stuff in teams that you can't do with Justin time. Other products. Yep, not quite there yet. But all of the second teams is a very complicated beats fine, but then the guidance that you see is I need this Roland teams and I need that rollin teams and unless you and even if you just in time them and this you then decided to Temporarily grant someone Global Admins stuff still doesn't work. Right. So our back is not as transparent as ubiquitous as we wanted yet. But what I'm hearing from you is like,
+
+Joey Snow  36:11
+Yeah, well, we've been doing that we made significant investments in that. We've made investments in that, that we've talked about here with with some new reader roles that we've that we've announced here. So we have to continue. The best way that I can explain this is that we don't ship product anymore. I we don't ship a new version of active directory where we haven't done that in in years and years and years. Yeah, we are a service. We enhance the service consistently. We have to go faster. We have to do it faster, because we have to get to our customers need it. Yeah. And that's a difficult thing for IT professionals to kind of get their heads around because either we're not fast enough or we're too bloody fast. But that's where that that push and pull. We made changes because we understood that we had to provide this path Way to do hybrid identity?
+
+Warren du Toit  37:02
+And where do you draw the line of stability as well? Right? Well, and how
+
+Joey Snow  37:05
+do we make it easier for people to actually go password lists? And those are things that we heard from our customers. They're like, Look, this is soo bone who I worked for, says, when we did password list Initially, it was like a moonshot. And our customers are like, Yo, what are you guys doing? We're not like this. Yeah, we're like this, we need you to help us get there in this manner. And we listened and we made those adjustments. So I hundred percent hear you around that in our back and those kinds of things. Just as a few years ago, you had to be global admin to do everything. And that's not good behavior. We have to change that behavior internally to and we work on that. It's not just, hey, our customers are our Microsoft to Microsoft is our customer to and we have to make
+
+Rick Claus  37:49
+that the best part is, as you mentioned, we don't ship product anymore. Its services. I can't even not not from the men's side of the design side as you brought up there. But even just From a user side, opening up one of my apps be outlook Word, PowerPoint, Excel flow tooling or Microsoft Teams like that. I always get a little surprised in the morning and says, Oh, you've been updated the latest version. Okay, great. What changed? What can I find? as an end user? That's a geek and a tech person. I love to go off and find all the new stuff that's possibly there. People go off and find it. Yeah. Yeah. Although all about stage not those are all the different people. Yeah. And so you want to have that all over the place. But yeah, no, teams of all. software products evolve, the stuff inside of Azure evolves, there's no longer gas' anymore. makes it hard for us to be able to talk about announcements because you know, well that's been out for a while but it just went ga but really, everyone's been using it for the last six months. So really is a big hype anymore. Not so much so, so it's it's kind of fun to see where that where that's going to continue to evolve and how it changes us as technologists.
+
+Nicolas Blank  38:58
+We are coming up to the The top of the hour so,
+
+Rick Claus  39:02
+and you've got a session to deliver somewhere
+
+Joey Snow  39:06
+in 20 minutes.
+
+Nicolas Blank  39:09
+So let us ask you, how would the like that? How would the two of you like to be found on socials or dude? No, no, let's not assume everybody knows who everybody is. So, let us show you how they would like to be found. And then also ask you one of the ones you would like to plug.
+
+Joey Snow  39:32
+Yeah, sure. Y'all go ahead
+
+Rick Claus  39:34
+and start so well. From a social and fun and community perspective. You can find us both online together because no one knows who is who and what is what and switch and patch and patch and switch at sign patches, which is where we normally happen to be on the social community and the fun side.
+
+Joey Snow  39:50
+We do a podcast every other Friday on Twitch, it's twitch.tv/patchandswitch. And then from a personal perspective, you can find me on Twitter I'm at @Joeysnow
+
+Rick Claus  39:58
+snow and I'm at sign RicksterCDN and I managed a team of folks that follow the hashtag, #AZops for our bat signal in case you have a question about operations stuff inside of Azure or on premises, or with identity or with teams or with other things like that. Shoot us a message with the hashtag and one of us will be able to get you. We almost follow the sun around the Earth right now.
+
+Joey Snow  40:20
+And turn on MFA.
+
+Rick Claus  40:24
+It's a great demo to turn that on. By the way, you know what it is?, Check.
+
+Nicolas Blank  40:32
+Guys, thank you so much.
+
+Rick Claus  40:37
+An awesome show. Thank you very much, see you around
+
+Warren du Toit  40:40
+Everyone. Before you go, we just wanted to say thank you for listening. We really enjoy putting this podcast together for you every two weeks, please visit us at the architects cloud. Alternatively, drop us a tweet. We'd love to hear what you have to say @TheCloudArch.
