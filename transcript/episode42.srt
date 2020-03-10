@@ -1,0 +1,3696 @@
+1
+00:00:19,080 --> 00:00:21,720
+Chris Goosen: Welcome to the
+cloud architects podcast, a
+
+2
+00:00:21,720 --> 00:00:25,590
+podcast about cloud technology
+and the people using it.
+
+3
+00:00:26,850 --> 00:00:28,980
+Nicolas Blank: The cloud
+architects podcast is sponsored
+
+4
+00:00:28,980 --> 00:00:32,910
+by Kemp technologies. Choose
+Kemp to optimize your multi
+
+5
+00:00:32,910 --> 00:00:35,970
+cloud application deployments
+and simplify multi cloud
+
+6
+00:00:35,970 --> 00:00:39,780
+application management. A single
+pane of glass for application
+
+7
+00:00:39,780 --> 00:00:44,340
+delivery Kemp provides a 360
+degree view of your entire
+
+8
+00:00:44,340 --> 00:00:48,720
+application environment, and
+even third party ADCs. Download
+
+9
+00:00:48,720 --> 00:00:52,650
+Kemp 360 for free today at
+kemptechnologies.com.
+
+10
+00:00:53,170 --> 00:00:56,590
+Warren du Toit: Hello, everyone,
+and welcome to another episode
+
+11
+00:00:56,590 --> 00:01:01,120
+of the cloud architects. We have
+to really cool guests with us
+
+12
+00:01:01,120 --> 00:01:02,650
+today from ignite
+
+13
+00:01:03,240 --> 00:01:04,320
+Rick Claus: cloud architects.
+
+14
+00:01:04,000 --> 00:01:07,330
+Warren du Toit: Yeah, yeah,
+cloud architects. Patch and
+
+15
+00:01:07,330 --> 00:01:08,650
+switch, welcome to the show.
+
+16
+00:01:10,790 --> 00:01:11,450
+Joey Snow: Thanks for having us
+
+17
+00:01:11,630 --> 00:01:12,800
+Warren du Toit: The Living
+Legends.
+
+18
+00:01:13,770 --> 00:01:14,520
+Joey Snow: Sure.
+
+19
+00:01:15,720 --> 00:01:17,730
+Nicolas Blank: Or legendary at
+least if you prefer
+
+20
+00:01:19,140 --> 00:01:20,160
+Joey Snow: dairy probably
+
+21
+00:01:20,190 --> 00:01:23,010
+Nicolas Blank: dairy, dairy. Is
+this an allergy show?
+
+22
+00:01:24,390 --> 00:01:25,290
+Joey Snow: allergy free zone?
+
+23
+00:01:25,500 --> 00:01:27,150
+Warren du Toit: allergy free
+lactose free.
+
+24
+00:01:29,040 --> 00:01:30,930
+Nicolas Blank: Safe Zone and too
+I had
+
+25
+00:01:30,870 --> 00:01:33,270
+Rick Claus: my almond milk latte
+earlier today. I'm all set.
+
+26
+00:01:33,270 --> 00:01:34,740
+Joey Snow: Oh, nice. Nice.
+
+27
+00:01:35,280 --> 00:01:37,350
+Warren du Toit: That's
+fantastic. And how's your week
+
+28
+00:01:37,350 --> 00:01:37,530
+been?
+
+29
+00:01:38,670 --> 00:01:41,700
+Joey Snow: It's been busy but
+it's been fantastic. getting a
+
+30
+00:01:41,700 --> 00:01:46,230
+chance to see everyone see the
+community the MVPs the our
+
+31
+00:01:46,290 --> 00:01:50,520
+customers I still have meetings
+left to do Really? Wow. I've
+
+32
+00:01:50,520 --> 00:01:54,120
+dinner tonight with corporate
+partners that I managed so yeah,
+
+33
+00:01:54,150 --> 00:01:55,530
+it's it's it's been busy.
+
+34
+00:01:55,740 --> 00:01:58,110
+Rick Claus: It's been kind of
+crazy having a maintain your day
+
+35
+00:01:58,110 --> 00:02:01,440
+job plus also all the key
+aspects Oh, yeah, the event
+
+36
+00:02:01,440 --> 00:02:05,190
+itself, like joy. I also have
+some, some meetings besides it
+
+37
+00:02:05,190 --> 00:02:08,790
+recording podcast with folks
+like you, with the customers and
+
+38
+00:02:08,790 --> 00:02:11,100
+also an evening meeting as well
+too. So,
+
+39
+00:02:11,190 --> 00:02:13,170
+Nicolas Blank: but we aren't
+under oppression that you just
+
+40
+00:02:13,260 --> 00:02:14,910
+your full time job is to be on
+camera.
+
+41
+00:02:16,550 --> 00:02:17,540
+Rick Claus: You'd be surprised.
+
+42
+00:02:18,110 --> 00:02:21,740
+Joey Snow: nobody really wants
+to see that actually a couple
+
+43
+00:02:21,740 --> 00:02:23,210
+times here. Alright, that's
+enough.
+
+44
+00:02:23,540 --> 00:02:25,820
+Warren du Toit: So then what
+technically is your job titles?
+
+45
+00:02:25,970 --> 00:02:27,470
+But what is it? What do they
+call you?
+
+46
+00:02:27,480 --> 00:02:30,510
+Rick Claus: So I'm actually
+called a cloud advocate lead. So
+
+47
+00:02:30,510 --> 00:02:35,880
+I built a team of seven people
+that are smarter than me, that
+
+48
+00:02:35,880 --> 00:02:40,260
+go off and create amazing
+contents that is in demand by
+
+49
+00:02:40,260 --> 00:02:43,290
+our customers and by our
+partners, and by the community
+
+50
+00:02:43,290 --> 00:02:46,680
+online that cover a variety of
+topics. And my particular team
+
+51
+00:02:46,680 --> 00:02:50,790
+is focused on the operations
+side of Azure, for the IT pro
+
+52
+00:02:50,790 --> 00:02:53,640
+audience and for the architects
+audience, for architecture,
+
+53
+00:02:53,640 --> 00:02:56,130
+primarily VMs but then also
+talking a bit about Kubernetes
+
+54
+00:02:56,130 --> 00:02:59,280
+and containers and future
+looking and then also a bit in
+
+55
+00:02:59,280 --> 00:03:02,910
+the identity space. Security
+space as well. But then we also
+
+56
+00:03:02,910 --> 00:03:06,180
+handle the modernization of on
+premises as well. A lot of our
+
+57
+00:03:06,180 --> 00:03:08,760
+customers, the majority of the
+customers that are out there are
+
+58
+00:03:08,760 --> 00:03:12,330
+still very much having an on
+premises focus. And we're trying
+
+59
+00:03:12,330 --> 00:03:14,460
+to get them modernize, they can
+start to take advantage of some
+
+60
+00:03:14,460 --> 00:03:17,280
+of the goodness that is inside
+of the Azure world.
+
+61
+00:03:18,020 --> 00:03:20,420
+Joey Snow: I'm a Senior Program
+Manager in the identity team. So
+
+62
+00:03:20,420 --> 00:03:23,150
+I work in the Azure Active
+Directory team. And what I do is
+
+63
+00:03:23,150 --> 00:03:26,810
+I have inside of the engineering
+team, we have a customer and
+
+64
+00:03:26,810 --> 00:03:29,810
+partner experience team, which
+is designed basically to help us
+
+65
+00:03:30,440 --> 00:03:34,220
+get feedback back to our
+engineering team faster, and
+
+66
+00:03:34,220 --> 00:03:37,670
+help our customers get deployed
+and to be successful. customers
+
+67
+00:03:37,670 --> 00:03:40,490
+and partners as well. So I
+manage a group of partners that
+
+68
+00:03:40,730 --> 00:03:44,360
+help our customers get our
+product deployed, get managed
+
+69
+00:03:44,360 --> 00:03:47,900
+services built around them, help
+get them secure. All around
+
+70
+00:03:47,900 --> 00:03:49,310
+identity in Azure Active
+Directory.
+
+71
+00:03:49,360 --> 00:03:53,620
+Nicolas Blank: We love your
+world. We ready. We had. Yeah,
+
+72
+00:03:53,830 --> 00:03:57,070
+we had Elisabeth Olsen on early
+on the show. Yeah, and second
+
+73
+00:03:57,070 --> 00:03:57,640
+year in a row
+
+74
+00:03:57,990 --> 00:04:00,600
+Joey Snow: and one of those
+absolutely nothing. I can add to
+
+75
+00:04:00,600 --> 00:04:01,170
+this podcast.
+
+76
+00:04:02,909 --> 00:04:05,159
+Nicolas Blank: Except that Rick
+promise does that by you
+
+77
+00:04:05,159 --> 00:04:07,199
+exceptionally good looks you'd
+balance everything out.
+
+78
+00:04:07,320 --> 00:04:09,720
+Rick Claus: Absolutely. Yeah. At
+least his face for radio.
+
+79
+00:04:09,930 --> 00:04:11,640
+Joey Snow: Yeah, I do I
+completely have a face for radio
+
+80
+00:04:13,080 --> 00:04:13,770
+100%
+
+81
+00:04:14,099 --> 00:04:16,529
+Warren du Toit: Yeah, your team.
+Your team is the cloud. The
+
+82
+00:04:16,529 --> 00:04:18,839
+cloud advocate teams are
+incredible.
+
+83
+00:04:18,930 --> 00:04:20,580
+Nicolas Blank: Yeah, we spent
+some time with him on the road
+
+84
+00:04:20,580 --> 00:04:21,510
+and they're amazing.
+
+85
+00:04:21,600 --> 00:04:24,510
+Warren du Toit: Yeah, thank you.
+Yeah. Last year and in in Hong
+
+86
+00:04:24,510 --> 00:04:27,480
+Kong. We got to mess around with
+
+87
+00:04:29,250 --> 00:04:29,910
+it was good fun.
+
+88
+00:04:32,340 --> 00:04:36,150
+Unknown: Yeah. Yeah, yeah.
+
+89
+00:04:36,180 --> 00:04:38,460
+Rick Claus: Yeah. So biggest fun
+this so this year we've expanded
+
+90
+00:04:38,820 --> 00:04:42,000
+kicking off starting tomorrow,
+which is Saturday when we're
+
+91
+00:04:42,000 --> 00:04:45,270
+recording this. I'm flying to
+Paris and we're kicking off at
+
+92
+00:04:45,270 --> 00:04:48,570
+night the tour 30 plus stops
+around the world this time
+
+93
+00:04:48,600 --> 00:04:52,140
+double the number stops almost.
+And my team will be at least one
+
+94
+00:04:52,140 --> 00:04:54,840
+or two of my team will be at
+every single city stuff to be a
+
+95
+00:04:54,840 --> 00:04:58,440
+luxury of coverage. So we have a
+consistently high level of
+
+96
+00:04:58,440 --> 00:05:02,310
+content and also high level of
+engagement. So, if you look up,
+
+97
+00:05:02,460 --> 00:05:05,010
+Microsoft Ignite the tour,
+you'll see the cities they're
+
+98
+00:05:05,010 --> 00:05:08,130
+free event you can go off and
+subscribe to go off to and show
+
+99
+00:05:08,130 --> 00:05:10,470
+up in your local city. It's
+mostly international tour.
+
+100
+00:05:10,500 --> 00:05:13,530
+There's only I think three or
+four cities in the US. Primarily
+
+101
+00:05:13,530 --> 00:05:16,710
+international for China. Yes,
+there's definitely more in
+
+102
+00:05:16,710 --> 00:05:22,140
+China, Tokyo, Japan. And I'll be
+in Beijing in December. I want
+
+103
+00:05:22,140 --> 00:05:24,330
+to never been to Beijing before.
+Yeah, I'll be fine.
+
+104
+00:05:24,450 --> 00:05:26,550
+Nicolas Blank: Yeah, I'm on my
+way to Shanghai right after this
+
+105
+00:05:26,550 --> 00:05:28,830
+is the first time ever to
+Shanghai as well. Awesome.
+
+106
+00:05:28,830 --> 00:05:30,690
+Really, really? Looking forward
+to that?
+
+107
+00:05:30,750 --> 00:05:32,430
+Rick Claus: Yeah. Yeah, very
+cool stuff.
+
+108
+00:05:32,820 --> 00:05:34,650
+Nicolas Blank: So let's talk
+about a topic just for a little
+
+109
+00:05:34,650 --> 00:05:35,460
+bit. Oh, we know
+
+110
+00:05:35,460 --> 00:05:36,630
+Rick Claus: we have topics.
+
+111
+00:05:38,790 --> 00:05:41,370
+Joey Snow: I thought I was just
+just here to chit chat,
+
+112
+00:05:41,780 --> 00:05:43,730
+Warren du Toit: because it's
+ties in nicely to the
+
+113
+00:05:43,730 --> 00:05:47,390
+announcements that last week. So
+if we have to look, one of the
+
+114
+00:05:47,390 --> 00:05:51,740
+big announcements inside of
+Agile was Arc. Yep. And that's
+
+115
+00:05:51,770 --> 00:05:55,820
+multi cloud on prem. The whole
+thing. What do you guys thoughts
+
+116
+00:05:55,820 --> 00:05:55,970
+on that?
+
+117
+00:05:56,080 --> 00:05:59,200
+Nicolas Blank: Let's just define
+Arc quickly for people who don't
+
+118
+00:05:59,200 --> 00:06:02,410
+know what that is. And go and
+go.
+
+119
+00:06:05,130 --> 00:06:08,760
+Rick Claus: See it. This is kind
+of a test to see how the message
+
+120
+00:06:08,760 --> 00:06:12,630
+was received by someone other
+than Microsoft for that it was
+
+121
+00:06:12,630 --> 00:06:13,560
+given. So I am curious.
+
+122
+00:06:14,110 --> 00:06:20,710
+Warren du Toit: So it. So arc is
+the ability to manage devices
+
+123
+00:06:20,740 --> 00:06:26,830
+and servers and vdis and
+containers and Kubernetes data.
+
+124
+00:06:26,830 --> 00:06:31,900
+So workloads that aren't
+necessarily inside of Azure. So
+
+125
+00:06:31,900 --> 00:06:36,640
+they can be in AWS, they can be
+on premises, and they can also
+
+126
+00:06:36,640 --> 00:06:40,750
+help you move and manage those
+workloads as well. And the
+
+127
+00:06:40,750 --> 00:06:45,280
+biggest thing about Arc is that
+it's free. When you think about
+
+128
+00:06:45,310 --> 00:06:49,090
+what Amazon is charging Amazon,
+which I think they're charging
+
+129
+00:06:49,090 --> 00:06:52,810
+somewhere in the region of like
+$8,000 a month per Kubernetes
+
+130
+00:06:52,810 --> 00:06:55,720
+cluster, whatever the case may
+be, is, where's free,
+
+131
+00:06:56,080 --> 00:06:58,240
+Nicolas Blank: Joey I know that
+I just saw a bit of a little bit
+
+132
+00:07:01,330 --> 00:07:01,780
+Rick Claus: It worked.
+
+133
+00:07:03,150 --> 00:07:04,170
+The messaging works.
+
+134
+00:07:05,160 --> 00:07:08,130
+So it's, it's a, it's an
+architecture that allows you to,
+
+135
+00:07:09,480 --> 00:07:12,060
+if you think about it in the in
+the Agile world internally in
+
+136
+00:07:12,060 --> 00:07:14,370
+engineering, and I think we
+talked about this publicly to I
+
+137
+00:07:14,370 --> 00:07:17,640
+should probably figure that out
+for I say it. We talked about
+
+138
+00:07:17,640 --> 00:07:20,340
+resource providers, right. So
+the different resource providers
+
+139
+00:07:20,340 --> 00:07:23,130
+to be able to spot up resources
+inside of Azure as an example.
+
+140
+00:07:23,580 --> 00:07:25,920
+we're extending that to also not
+have resource providers that can
+
+141
+00:07:25,920 --> 00:07:29,070
+work in different locations.
+Because in case you didn't know,
+
+142
+00:07:30,720 --> 00:07:33,330
+other clouds are pretty
+protective about their stuff.
+
+143
+00:07:33,330 --> 00:07:37,110
+And they don't expose any API's
+that expose anything the outside
+
+144
+00:07:37,110 --> 00:07:40,050
+world, they want you to use
+their management of monitoring
+
+145
+00:07:40,050 --> 00:07:43,290
+tools, yeah, or for you to buy a
+third party service to go in and
+
+146
+00:07:43,290 --> 00:07:45,870
+to do those different management
+and stuff. So we're basically
+
+147
+00:07:45,870 --> 00:07:50,160
+now able to go in and to start
+to bubble up stuff. You know,
+
+148
+00:07:50,460 --> 00:07:52,500
+the first level of things that
+gonna be going on are going to
+
+149
+00:07:52,500 --> 00:07:55,020
+require some level of them and
+have an install. Yeah, there's
+
+150
+00:07:55,020 --> 00:07:57,870
+other areas. So you have to put
+some stuff on the Kubernetes
+
+151
+00:07:57,870 --> 00:08:00,780
+hosts to be able to go off the
+nodes and the Management nodes,
+
+152
+00:08:00,930 --> 00:08:04,260
+you have to be able to go in and
+put in a hybrid resource
+
+153
+00:08:04,260 --> 00:08:07,530
+provider for on premises
+machines, but then they appear
+
+154
+00:08:07,530 --> 00:08:10,440
+as resources inside of Azure.
+And then once they're inside of
+
+155
+00:08:10,440 --> 00:08:12,930
+Azure as a resource, then all
+the goodness that is inside of
+
+156
+00:08:12,930 --> 00:08:15,600
+Azure can take place. And you
+can have log analytics take
+
+157
+00:08:15,600 --> 00:08:18,750
+place, you can have security
+recommendations take place, you
+
+158
+00:08:18,750 --> 00:08:20,940
+can have monitoring alerts and
+performance alerts take place
+
+159
+00:08:20,940 --> 00:08:21,300
+record and
+
+160
+00:08:21,330 --> 00:08:23,220
+Warren du Toit: upgrade
+Kubernetes even straight from
+
+161
+00:08:23,220 --> 00:08:23,640
+the panel.
+
+162
+00:08:23,660 --> 00:08:28,400
+Rick Claus: Yep. So so the the
+capabilities are being laid out,
+
+163
+00:08:28,610 --> 00:08:32,150
+and they'll be continuing to
+evolve as they go. But it was a
+
+164
+00:08:32,150 --> 00:08:36,350
+pretty substantial viewpoint
+that we gave this earlier in the
+
+165
+00:08:36,350 --> 00:08:40,820
+week with the initial keynote. I
+think it was Gabe Gable gave one
+
+166
+00:08:41,240 --> 00:08:43,640
+minority source a Monroe or
+Malloy. It's been Ryan, I think
+
+167
+00:08:43,640 --> 00:08:46,280
+it is. I should know this
+because I said hello on the
+
+168
+00:08:46,280 --> 00:08:49,970
+first day he joined Microsoft.
+Back in the day from Colorado,
+
+169
+00:08:50,330 --> 00:08:53,840
+he did a phenomenal demo about
+how arc is gonna be going off
+
+170
+00:08:53,840 --> 00:08:54,200
+and working.
+
+171
+00:08:54,600 --> 00:08:56,700
+Joey Snow: I think one of my
+favorite components of arc and
+
+172
+00:08:56,700 --> 00:08:59,520
+again, it's not a single thing,
+right? Yeah. It's a set of it's
+
+173
+00:08:59,520 --> 00:09:02,700
+a set of tech Everything you
+have that allow things is the
+
+174
+00:09:02,700 --> 00:09:05,340
+ability to do Policy and
+Governance. So basically, it
+
+175
+00:09:05,340 --> 00:09:09,630
+allows you to leverage some of
+the configuration security
+
+176
+00:09:09,630 --> 00:09:13,440
+configuration and governance of
+the server is very, I mean,
+
+177
+00:09:13,470 --> 00:09:17,700
+everybody probably knows Group
+Policy. There are people in this
+
+178
+00:09:17,700 --> 00:09:23,520
+world that have on their resume.
+I'm a group policy expert. And
+
+179
+00:09:23,520 --> 00:09:26,160
+they know how to do that. You
+can think of some of the
+
+180
+00:09:26,160 --> 00:09:30,000
+components of arc and managing
+and these policies is kind of
+
+181
+00:09:30,060 --> 00:09:33,090
+like a group policy. This is the
+next 20 years. Yeah, so for the
+
+182
+00:09:33,090 --> 00:09:36,990
+past 20 years, we've been doing
+group policy on premises, right?
+
+183
+00:09:36,990 --> 00:09:40,800
+So you can think of this and,
+and, and mostly on the server
+
+184
+00:09:40,800 --> 00:09:44,010
+side, as that's, that's how
+you're going to manage those
+
+185
+00:09:44,010 --> 00:09:47,160
+configurations. And you can take
+some of the the practices that
+
+186
+00:09:47,160 --> 00:09:50,970
+we already have, when you spin
+up Azure VMs and some of those
+
+187
+00:09:50,970 --> 00:09:55,050
+things and and apply those same
+policies in a very consistent
+
+188
+00:09:55,050 --> 00:09:58,860
+manner to resources regardless
+of where those resources live.
+
+189
+00:09:58,890 --> 00:10:04,500
+Yeah, and is really just kind of
+this next step. As we move
+
+190
+00:10:04,500 --> 00:10:09,510
+toward we talked multi cloud and
+multi cloud can exist on
+
+191
+00:10:09,510 --> 00:10:10,380
+premises as well.
+
+192
+00:10:10,510 --> 00:10:13,570
+Nicolas Blank: What about my on
+premises VMware estate?
+
+193
+00:10:16,110 --> 00:10:18,990
+Rick Claus: Initially, we're
+looking at doing it from a VM
+
+194
+00:10:18,990 --> 00:10:21,300
+inside of the host
+configuration, right? We're not
+
+195
+00:10:21,300 --> 00:10:23,490
+looking at the individual lower
+level fabrics at this point in
+
+196
+00:10:23,490 --> 00:10:26,220
+time. It's a natural extension.
+Again, I don't want to say any
+
+197
+00:10:26,220 --> 00:10:28,230
+for looking statements, they
+don't have the details to be
+
+198
+00:10:28,230 --> 00:10:32,370
+able to pry out of me, which is
+good. But if I look at it, I
+
+199
+00:10:32,370 --> 00:10:34,920
+just see a VM as a VM as a VM. I
+don't care where it is.
+
+200
+00:10:37,410 --> 00:10:40,320
+redeliver don't at this time,
+have any kind of inter lower
+
+201
+00:10:40,320 --> 00:10:44,160
+level knowledge of what's
+happening down below. Until you
+
+202
+00:10:44,160 --> 00:10:47,520
+start going into things like our
+migration tools. Our migration
+
+203
+00:10:47,520 --> 00:10:49,680
+tools do have the ability to go
+in to take a look at the
+
+204
+00:10:49,680 --> 00:10:51,060
+underlaying v cloud platform,
+
+205
+00:10:51,059 --> 00:10:54,149
+Warren du Toit: which has also
+been completely redone, updated
+
+206
+00:10:54,149 --> 00:10:54,929
+data and yeah, this
+
+207
+00:10:54,929 --> 00:10:56,969
+Rick Claus: week, don't ask me
+questions that one there as I
+
+208
+00:10:56,969 --> 00:10:57,869
+haven't read that one yet.
+
+209
+00:10:59,730 --> 00:11:01,560
+There's a Book of news in case
+you're wondering
+
+210
+00:11:02,340 --> 00:11:03,180
+Nicolas Blank: about that. Yeah.
+
+211
+00:11:03,380 --> 00:11:05,390
+Rick Claus: The Book of news is
+available for download from the
+
+212
+00:11:05,390 --> 00:11:08,630
+news.microsoft.com website that
+lists off. And you were saying
+
+213
+00:11:08,690 --> 00:11:10,640
+the Table of Contents how many
+page Long's remember,
+
+214
+00:11:10,679 --> 00:11:14,159
+Joey Snow: I think I want to say
+it was 14 or 15 pages, just the
+
+215
+00:11:14,159 --> 00:11:15,359
+Table of Contents? Yes,
+
+216
+00:11:15,410 --> 00:11:18,410
+Rick Claus: it was insane. And
+then it has the details of all
+
+217
+00:11:18,410 --> 00:11:21,140
+the different functions and
+features that we announced this
+
+218
+00:11:21,170 --> 00:11:23,870
+or rather, the solutions that
+we've announced, we no longer do
+
+219
+00:11:23,870 --> 00:11:24,980
+the functions and features thing
+anymore.
+
+220
+00:11:25,560 --> 00:11:27,960
+Nicolas Blank: But How exciting
+is that I have a virtual
+
+221
+00:11:27,960 --> 00:11:30,420
+machine, which could be on just
+about anything could be VMware,
+
+222
+00:11:30,420 --> 00:11:34,170
+it could be on open stack, it
+could be on whatever. And I can
+
+223
+00:11:34,170 --> 00:11:37,920
+see it in portal and I can
+report an instrument on it.
+
+224
+00:11:38,410 --> 00:11:41,230
+Rick Claus: To me, that's going
+to be invaluable. I mean, the
+
+225
+00:11:41,230 --> 00:11:43,330
+customers that I've seen, I
+talked with as well, as I
+
+226
+00:11:43,330 --> 00:11:46,360
+mentioned, a lot of people than
+in the space that I work in with
+
+227
+00:11:46,360 --> 00:11:50,830
+modernization are very much in a
+now I'm starting to look at the
+
+228
+00:11:50,830 --> 00:11:54,220
+cloud. I mean, in your
+consultancies, working much more
+
+229
+00:11:54,220 --> 00:11:56,380
+cloud forward, you're dealing
+with a lot of customers that are
+
+230
+00:11:56,380 --> 00:11:58,990
+very much cutting edge and
+wanting to be there. Now we're
+
+231
+00:11:58,990 --> 00:12:01,900
+starting to see that happen.
+first level of the curve has
+
+232
+00:12:01,900 --> 00:12:04,840
+gone and coming and they're
+there and they buy into it. Now
+
+233
+00:12:04,840 --> 00:12:07,960
+we've got this big massive wave
+coming behind them that are now
+
+234
+00:12:07,990 --> 00:12:10,270
+starting to be able to come
+forward and want to want to know
+
+235
+00:12:10,270 --> 00:12:13,000
+what to do. So yeah, the the
+ability to include them and have
+
+236
+00:12:13,000 --> 00:12:15,460
+them visible inside the inside
+the portal, as you mentioned,
+
+237
+00:12:15,460 --> 00:12:17,950
+the able to put policy against
+them and our back against them
+
+238
+00:12:17,950 --> 00:12:21,520
+and stuff like that. The ability
+to install the hybrid agent on
+
+239
+00:12:21,520 --> 00:12:24,490
+the different machines, it's
+going to be very powerful. And
+
+240
+00:12:24,490 --> 00:12:26,620
+as you mentioned, the very
+beginning of all this, it's not
+
+241
+00:12:26,620 --> 00:12:30,940
+just VMs yet VMs is obviously
+where 80% of our customers are
+
+242
+00:12:30,940 --> 00:12:32,950
+going to be right now for what
+they're comfortable with working
+
+243
+00:12:32,950 --> 00:12:36,550
+with net new development or or
+modernization of existing
+
+244
+00:12:36,550 --> 00:12:39,280
+workloads that are being
+reimagined off of VMs into
+
+245
+00:12:39,280 --> 00:12:42,400
+something more compact, are
+going to be looking at
+
+246
+00:12:42,400 --> 00:12:44,920
+containers to reduce is the
+current winner in that space.
+
+247
+00:12:45,280 --> 00:12:47,980
+And then also potentially re
+architect and looking at even
+
+248
+00:12:47,980 --> 00:12:50,620
+avoiding Kubernetes and going
+straight to a microservices
+
+249
+00:12:50,620 --> 00:12:54,400
+architecture and said all that's
+coming down the road, but more
+
+250
+00:12:54,400 --> 00:12:57,700
+and more people are looking at
+how can I get immediate value
+
+251
+00:12:57,700 --> 00:13:01,600
+now? using something like arc
+Using the hybrid RP and other
+
+252
+00:13:01,600 --> 00:13:04,420
+things like that, to put all the
+stuff inside of one, one spot,
+
+253
+00:13:04,450 --> 00:13:08,230
+it sounds marketing, but, you
+know, one pane of glass, the
+
+254
+00:13:08,230 --> 00:13:09,280
+ideas all in one spot.
+
+255
+00:13:09,659 --> 00:13:11,639
+Nicolas Blank: It's like the
+show's done, we can leave. Okay,
+
+256
+00:13:12,630 --> 00:13:14,460
+Joey Snow: great talking, ever
+done.
+
+257
+00:13:14,880 --> 00:13:16,680
+Warren du Toit: Now we can go
+back to what we were originally
+
+258
+00:13:16,680 --> 00:13:17,130
+talking about.
+
+259
+00:13:19,080 --> 00:13:21,150
+Joey Snow: But But listen, you
+know, when we talk about the
+
+260
+00:13:21,150 --> 00:13:23,610
+cloud, it was interesting I had
+a conversation with Aaron
+
+261
+00:13:23,610 --> 00:13:28,140
+chapel. And and it's, it's kind
+of the the it comes in waves,
+
+262
+00:13:28,140 --> 00:13:31,350
+right? And you look it's like,
+okay, we're going to do this
+
+263
+00:13:31,350 --> 00:13:33,870
+thing on prem, then you move to
+the cloud, and then you're
+
+264
+00:13:33,930 --> 00:13:36,690
+expanding out beyond clouds. And
+then there may come a time where
+
+265
+00:13:36,690 --> 00:13:39,960
+you eventually have to come back
+down again. Yes, right. But you
+
+266
+00:13:39,960 --> 00:13:43,080
+need to still be able to treat
+those those resources if that as
+
+267
+00:13:43,080 --> 00:13:46,110
+if they are a true cloud,
+scalable resources and all the
+
+268
+00:13:46,110 --> 00:13:49,830
+things that they were working on
+and Azure and the announcements
+
+269
+00:13:49,830 --> 00:13:54,660
+that they made around that the
+arc stuff this, this ignite,
+
+270
+00:13:55,020 --> 00:13:59,130
+that's exactly what they're
+doing. So it's it's not so much
+
+271
+00:13:59,130 --> 00:14:02,790
+wear anymore. And it's just
+using that methodology.
+
+272
+00:14:02,970 --> 00:14:07,050
+Rick Claus: Yeah, I think there
+was a tweet that Jeff Woolsey
+
+273
+00:14:07,050 --> 00:14:11,160
+put out, which was hilarious.
+This week. He's like, our hybrid
+
+274
+00:14:11,160 --> 00:14:17,430
+strategy is a true and full
+planned out. Complete strategy,
+
+275
+00:14:17,460 --> 00:14:20,970
+multi cloud on premises
+exclusively cloud exclusively on
+
+276
+00:14:20,970 --> 00:14:23,370
+premises. Then also multi cloud
+as well
+
+277
+00:14:23,570 --> 00:14:24,770
+Warren du Toit: as the
+intelligent edge net
+
+278
+00:14:24,770 --> 00:14:26,930
+Rick Claus: and intelligent edge
+as well. Yeah. And he's like,
+
+279
+00:14:27,080 --> 00:14:31,010
+it's not a checkbox. It's right.
+It's not like oh, other cloud
+
+280
+00:14:31,010 --> 00:14:33,950
+vendor. Yeah, we do hybrid
+check. Yes, they can get past
+
+281
+00:14:33,950 --> 00:14:36,980
+the RFC or something like that.
+We actually have a full
+
+282
+00:14:36,980 --> 00:14:39,200
+documented way of how we can go
+off and do this sort of stuff.
+
+283
+00:14:39,299 --> 00:14:41,549
+Joey Snow: It's important to
+know that the reality is, is
+
+284
+00:14:41,549 --> 00:14:44,939
+hybrids going to exist for a
+very long time. Oh, yeah. And
+
+285
+00:14:44,939 --> 00:14:47,669
+it's something that we take very
+seriously inside of inside of
+
+286
+00:14:47,669 --> 00:14:50,819
+active directory, Azure Active
+Directory, and making sure that
+
+287
+00:14:50,819 --> 00:14:55,559
+we have the the ability to
+provide the security, to provide
+
+288
+00:14:55,559 --> 00:14:58,529
+the governance and to provide
+the compliance is absolutely
+
+289
+00:14:58,529 --> 00:15:04,259
+key, no matter where you are. So
+we spent a lot of time here at
+
+290
+00:15:04,259 --> 00:15:08,279
+Ignite, complementing a lot of
+that hybrid messaging that was
+
+291
+00:15:08,279 --> 00:15:11,339
+occurring, not just on the
+platform side, but also on the
+
+292
+00:15:11,339 --> 00:15:15,149
+identity side, right? We start
+looking at how can you secure
+
+293
+00:15:15,479 --> 00:15:17,429
+and manage those identities that
+
+294
+00:15:17,519 --> 00:15:20,159
+Warren du Toit: you see that's,
+that's why security has moved.
+
+295
+00:15:20,459 --> 00:15:24,659
+So, again, so like one of my
+sessions now that I'm doing in
+
+296
+00:15:24,659 --> 00:15:26,579
+a, in a couple minutes is on
+
+297
+00:15:32,279 --> 00:15:34,799
+is firewalls inside of Azure,
+right network virtual
+
+298
+00:15:34,799 --> 00:15:38,309
+appliances, and how people still
+need them because of certain
+
+299
+00:15:38,339 --> 00:15:44,369
+things. But Id, the firewalls
+not the protection mechanism
+
+300
+00:15:44,369 --> 00:15:49,199
+anymore, not the person, right?
+So identity, yes. So so the
+
+301
+00:15:49,199 --> 00:15:52,889
+identity is the way you secure
+your resources. It's not the
+
+302
+00:15:52,889 --> 00:15:55,919
+fact that your SQL Servers out
+on the internet now it's got
+
+303
+00:15:55,919 --> 00:15:59,489
+nothing to do with that anymore.
+So we're moving in that way. I
+
+304
+00:15:59,489 --> 00:16:01,739
+didn't The most important thing
+they
+
+305
+00:16:01,780 --> 00:16:05,050
+Joey Snow: the way I talk about
+this is that before we kind of
+
+306
+00:16:05,050 --> 00:16:08,470
+had all of these things together
+inside we had, we have the user
+
+307
+00:16:08,470 --> 00:16:12,400
+of the identity you had the
+platform of the devices, the
+
+308
+00:16:12,400 --> 00:16:15,850
+server, the application, you
+have the data. And and and
+
+309
+00:16:15,880 --> 00:16:18,460
+really Group Policy and some of
+the things that we had inside of
+
+310
+00:16:18,790 --> 00:16:22,240
+remedy did a little of this and
+a little about the kind of cross
+
+311
+00:16:22,240 --> 00:16:25,090
+all of them with Azure Active
+Directory, we had to split that
+
+312
+00:16:25,090 --> 00:16:27,430
+out. And we have Look, it's an
+if that's what it is. It's
+
+313
+00:16:27,430 --> 00:16:30,910
+purely an identity provider. And
+it's the one that we want
+
+314
+00:16:30,910 --> 00:16:35,980
+everybody to use. And it does
+one thing, which is identity and
+
+315
+00:16:35,980 --> 00:16:41,110
+imagine that it protects it. You
+want to connect your apps to the
+
+316
+00:16:41,110 --> 00:16:43,900
+identity have that single
+identity that is protected
+
+317
+00:16:43,900 --> 00:16:47,110
+because it is that Alex Simon's
+likes to call it the control
+
+318
+00:16:47,110 --> 00:16:49,090
+plane, we've done a lot of
+controlling talking around the
+
+319
+00:16:49,090 --> 00:16:52,990
+outside of here, it but that's
+it, it's that single place. It's
+
+320
+00:16:53,290 --> 00:16:58,510
+that one place and you know that
+that identity is is trusted and
+
+321
+00:16:58,870 --> 00:17:02,050
+and then more importantly, That
+the session that the identity
+
+322
+00:17:02,380 --> 00:17:06,340
+has actually initiated is also
+trusted, insecure. Yeah. So you
+
+323
+00:17:06,340 --> 00:17:09,460
+know, it's first make sure you
+turn on MFA because password
+
+324
+00:17:09,460 --> 00:17:13,780
+suck. And until we can get rid
+of that and we're in we really
+
+325
+00:17:13,780 --> 00:17:16,420
+are in the process of doing it.
+I think we've crossed the chasm
+
+326
+00:17:16,420 --> 00:17:22,630
+now, in terms of over a million
+identities are managed
+
+327
+00:17:22,630 --> 00:17:23,620
+passwordless so far.
+
+328
+00:17:23,660 --> 00:17:25,460
+Nicolas Blank: And we some of
+those we've been running
+
+329
+00:17:25,490 --> 00:17:26,210
+passwordless for months. Yep,
+
+330
+00:17:26,540 --> 00:17:29,120
+Joey Snow: absolutely. So a lot
+of investments a lot of talk
+
+331
+00:17:29,120 --> 00:17:32,060
+around password list that is
+real. these are these are things
+
+332
+00:17:32,060 --> 00:17:35,990
+you can do today. And and
+eventually it's our it's our
+
+333
+00:17:35,990 --> 00:17:39,650
+goal in our mission to get rid
+of passwords all together, and
+
+334
+00:17:39,650 --> 00:17:45,110
+then in the future, change the
+way identity is. So yeah, it's
+
+335
+00:17:45,110 --> 00:17:48,440
+it's super cool and exciting.
+That I think my favorite part
+
+336
+00:17:48,440 --> 00:17:52,310
+about this is that just like the
+the arc things, this all can be
+
+337
+00:17:52,310 --> 00:17:55,880
+done now and it can all be done
+across no matter where you are.
+
+338
+00:17:55,910 --> 00:18:00,620
+Yeah. And if you're if you're on
+prem, you're in Azure. You're in
+
+339
+00:18:00,620 --> 00:18:01,520
+other clouds.
+
+340
+00:18:01,580 --> 00:18:04,730
+Warren du Toit: And it's, it's
+not hard either. No, it No it's,
+
+341
+00:18:04,790 --> 00:18:07,820
+you know, to me like to turn MFA
+on or to take your password away
+
+342
+00:18:07,820 --> 00:18:10,580
+is really not hard you like take
+out a box and it's gone.
+
+343
+00:18:10,830 --> 00:18:13,260
+Nicolas Blank: or to even bring
+your own identity and federate
+
+344
+00:18:13,260 --> 00:18:17,610
+through Google, but still manage
+your object and Azure AD b2b
+
+345
+00:18:17,640 --> 00:18:21,060
+again. So there's so much
+goodness in there and then
+
+346
+00:18:21,090 --> 00:18:24,210
+policy and control them. And I
+still only have one direction. I
+
+347
+00:18:24,210 --> 00:18:25,020
+think that's wonderful.
+
+348
+00:18:25,050 --> 00:18:27,750
+Joey Snow: Yeah, we're
+leveraging conditional access
+
+349
+00:18:27,750 --> 00:18:29,370
+and the things that we can do
+through conditional access
+
+350
+00:18:29,370 --> 00:18:33,900
+policies is really kind of the
+game changer. Yeah. I kind of
+
+351
+00:18:33,900 --> 00:18:36,780
+look at turning on MFA is it's
+kind of three major things when
+
+352
+00:18:36,780 --> 00:18:39,480
+you turn on MFA for everything
+for everyone, which is really a
+
+353
+00:18:39,480 --> 00:18:43,890
+bad experience. As somebody who
+was on the early side, when we
+
+354
+00:18:43,890 --> 00:18:48,030
+did it at Microsoft, it's like
+oh my gosh, yeah. And and and
+
+355
+00:18:48,030 --> 00:18:51,390
+I've actually had customers that
+that have gone through this
+
+356
+00:18:51,390 --> 00:18:54,270
+route and I was just I was I was
+just over in Ireland. I was
+
+357
+00:18:54,270 --> 00:18:56,580
+speaking with a customer and and
+they're really struggling
+
+358
+00:18:56,580 --> 00:18:59,370
+because they did this the first
+time and it was not a good
+
+359
+00:18:59,370 --> 00:19:04,680
+experiences. Their CIO is really
+hesitant to go do it again. But
+
+360
+00:19:04,680 --> 00:19:07,380
+now we actually through
+conditional access, and that's,
+
+361
+00:19:07,380 --> 00:19:10,230
+that's stage two, right? Yeah.
+Being able to do conditional
+
+362
+00:19:10,230 --> 00:19:15,870
+access and make those, you know,
+rules around when do you based
+
+363
+00:19:15,870 --> 00:19:18,120
+on your location, your risk
+those those types of things. And
+
+364
+00:19:18,120 --> 00:19:21,540
+then that third step is taking
+it out of the hands of it to
+
+365
+00:19:21,990 --> 00:19:25,530
+making, making the termination
+of if the user is risky, or the
+
+366
+00:19:25,530 --> 00:19:29,070
+session is risky. And that's all
+that's all around identity
+
+367
+00:19:29,070 --> 00:19:31,650
+protection. And that's by
+leveraging the trillions and
+
+368
+00:19:31,650 --> 00:19:34,350
+trillions and trillions of
+signals that we get every single
+
+369
+00:19:34,350 --> 00:19:37,830
+day. We a lot of people
+donorship we authenticate 45
+
+370
+00:19:37,860 --> 00:19:40,470
+billion authentications in a
+month.
+
+371
+00:19:43,210 --> 00:19:47,440
+Warren du Toit: Tenant to tenant
+migration, right? Yep. Tenant to
+
+372
+00:19:47,440 --> 00:19:49,210
+tenant migration is hard.
+
+373
+00:19:49,920 --> 00:19:52,110
+Joey Snow: Yes. Yes.
+
+374
+00:19:53,280 --> 00:19:54,120
+Warren du Toit: And I blame you
+
+375
+00:19:57,750 --> 00:20:00,000
+Joey Snow: know, we know and
+this is this is this is very
+
+376
+00:20:00,000 --> 00:20:01,800
+work this is work that we're
+doing. Yeah,
+
+377
+00:20:02,520 --> 00:20:06,270
+it's work that we continue to do
+I and I don't want to make any
+
+378
+00:20:06,270 --> 00:20:09,780
+like like I'm gonna stay away
+from for for statements but this
+
+379
+00:20:09,780 --> 00:20:12,000
+is the type of feedback but it's
+also the feedback the
+
+380
+00:20:12,300 --> 00:20:13,800
+information that we need.
+
+381
+00:20:13,830 --> 00:20:16,830
+Warren du Toit: Yeah no show and
+it's why the inevitably
+
+382
+00:20:16,830 --> 00:20:19,560
+accompanies going to be bought
+or sold. Always always
+
+383
+00:20:19,540 --> 00:20:22,480
+Joey Snow: gonna have look m&a
+and some of our biggest. But
+
+384
+00:20:22,870 --> 00:20:26,290
+there's also it's also
+opportunity. Yeah, right. We
+
+385
+00:20:26,320 --> 00:20:31,180
+look at it as something that we
+have to address, because that's
+
+386
+00:20:31,180 --> 00:20:37,480
+what our customers are doing
+this. And I want to be clear, we
+
+387
+00:20:37,540 --> 00:20:40,360
+don't do anything inside of
+Azure Active Directory unless
+
+388
+00:20:40,360 --> 00:20:44,110
+there's a customer need to do
+it. Yeah. We no longer sit in a
+
+389
+00:20:44,110 --> 00:20:47,710
+room on whiteboards and come up
+with shiny disco ball things
+
+390
+00:20:47,710 --> 00:20:50,920
+thinking, well, if we could only
+get our customers to adopt this,
+
+391
+00:20:51,070 --> 00:20:54,790
+yeah, it doesn't even get to the
+next stage until there's a
+
+392
+00:20:54,790 --> 00:20:59,440
+customer story. Every time we
+build a new feature inside of
+
+393
+00:20:59,440 --> 00:21:03,070
+the service It is tempted inside
+of a private preview first
+
+394
+00:21:03,070 --> 00:21:05,770
+before it goes out into a
+broader public preview. All the
+
+395
+00:21:05,770 --> 00:21:08,260
+feedback comes in all the
+changes and modifications. And
+
+396
+00:21:08,260 --> 00:21:11,620
+there are times that something
+will sit in that public preview
+
+397
+00:21:11,620 --> 00:21:14,800
+for a considerable amount of
+time, because maybe we didn't
+
+398
+00:21:14,800 --> 00:21:19,330
+get it exactly right in the
+first time. Us, it's up to us to
+
+399
+00:21:19,330 --> 00:21:22,660
+make that modification based on
+what our customers needs not not
+
+400
+00:21:22,660 --> 00:21:25,870
+how we look at that. And then,
+you know, we'll obviously put it
+
+401
+00:21:25,870 --> 00:21:29,560
+into GA. And that is something
+that's why I am in the space.
+
+402
+00:21:29,590 --> 00:21:33,640
+That's why I'm in the team. We
+are that customer obsessed. I've
+
+403
+00:21:33,670 --> 00:21:37,930
+80 engineers here that have been
+just absolutely inundated in the
+
+404
+00:21:37,930 --> 00:21:42,070
+booth, in addition to doing
+sessions on the developer side
+
+405
+00:21:42,100 --> 00:21:46,150
+is is there's a lot of stuff
+happening there in terms of, as
+
+406
+00:21:46,240 --> 00:21:49,030
+Rick mentioned, with application
+modernization and monetization
+
+407
+00:21:49,120 --> 00:21:52,090
+platform to modernize the
+identity piece as well. Yeah.
+
+408
+00:21:52,090 --> 00:21:57,970
+And you have to move start
+moving things up. And so it's
+
+409
+00:21:57,970 --> 00:22:00,700
+just really important for folks
+to understand it. There's a lot
+
+410
+00:22:00,700 --> 00:22:04,840
+of hard things. We're also
+trying to make life easier
+
+411
+00:22:04,840 --> 00:22:08,440
+because identity is at its core
+can be a very challenging thing
+
+412
+00:22:08,440 --> 00:22:12,910
+to do. Oh, yes. It used to be,
+you know, five years and, and
+
+413
+00:22:12,910 --> 00:22:15,310
+and the slide deck that you paid
+a million dollars for that had
+
+414
+00:22:15,340 --> 00:22:17,950
+15 Chevron's at the top and you
+can't do a single thing until
+
+415
+00:22:17,950 --> 00:22:21,670
+you tick off all those 15
+pieces. Now you can't do that
+
+416
+00:22:21,670 --> 00:22:24,790
+anymore with you've got to
+protect that thing. First turn
+
+417
+00:22:24,790 --> 00:22:29,140
+on him. If you do nothing else,
+turn on MFA. Yeah, via
+
+418
+00:22:29,140 --> 00:22:31,420
+conditional access and get that
+identity protected. And then we
+
+419
+00:22:31,420 --> 00:22:33,820
+can start moving down the path
+of doing things like
+
+420
+00:22:33,820 --> 00:22:37,930
+provisioning and de provisioning
+and which we can already do. You
+
+421
+00:22:37,930 --> 00:22:41,020
+can actually we have inbound
+provisioning through workday.
+
+422
+00:22:41,710 --> 00:22:44,740
+We're working on other platforms
+as well and integration there to
+
+423
+00:22:44,740 --> 00:22:47,260
+do inbound provisioning. You can
+do outbound provisioning with a
+
+424
+00:22:47,260 --> 00:22:53,350
+whole ton of applications of
+1.3. We might be at 1.4 million
+
+425
+00:22:53,350 --> 00:22:55,240
+applications that have
+integration with Azure Active
+
+426
+00:22:55,240 --> 00:22:55,930
+Directory today.
+
+427
+00:22:56,590 --> 00:22:57,940
+Nicolas Blank: How many again so
+that number
+
+428
+00:22:57,000 --> 00:23:00,420
+Joey Snow: is we're probably
+close to 1.4. I don't We were
+
+429
+00:23:00,420 --> 00:23:02,490
+1.3. That number is two months
+old.
+
+430
+00:23:03,180 --> 00:23:04,920
+Nicolas Blank: Those are
+discrete applications.
+
+431
+00:23:04,950 --> 00:23:07,050
+Joey Snow: Those are
+applications that currently have
+
+432
+00:23:07,050 --> 00:23:10,590
+integration with Azure Active
+Directory. Yep. Yep. But that,
+
+433
+00:23:10,590 --> 00:23:11,550
+but that does not show
+
+434
+00:23:12,350 --> 00:23:15,800
+Warren du Toit: PowerShell  is
+one of them. And so all the
+
+435
+00:23:15,830 --> 00:23:18,590
+other applications that use
+PowerShell in the back to make
+
+436
+00:23:18,590 --> 00:23:19,790
+those commands counts as one.
+
+437
+00:23:21,440 --> 00:23:23,120
+Nicolas Blank: Rick what did you
+do last summer.
+
+438
+00:23:24,290 --> 00:23:25,850
+Joey Snow: And then and then the
+other thing too
+
+439
+00:23:25,880 --> 00:23:28,670
+Rick Claus: Painted my house,
+worked on my Jeep.
+
+440
+00:23:29,320 --> 00:23:32,470
+Joey Snow: We made a lot of
+announcements here at Ignite,
+
+441
+00:23:32,470 --> 00:23:35,920
+and recently around partnerships
+that we have with things like
+
+442
+00:23:35,950 --> 00:23:40,900
+five Yes, where now we can
+expose applications behind those
+
+443
+00:23:40,930 --> 00:23:43,840
+five appliances. But here's the
+cool thing. You can set the
+
+444
+00:23:43,840 --> 00:23:46,540
+policy on the individual
+application. You're not just
+
+445
+00:23:46,540 --> 00:23:50,560
+doing it Oh, everything that
+hits the applied. So that
+
+446
+00:23:50,560 --> 00:23:53,770
+changes how you can modernize
+your applications as well.
+
+447
+00:23:53,770 --> 00:23:58,120
+Right? Yeah, we do. So So we've
+been spending a lot of time on
+
+448
+00:23:58,120 --> 00:24:02,290
+that because we as you mentioned
+It's not the thing anymore, not
+
+449
+00:24:02,290 --> 00:24:05,590
+the firewall, we have to start
+going, how do we get these apps?
+
+450
+00:24:06,070 --> 00:24:10,750
+And 1.3 1.4 million apps is
+awesome. But we have to make
+
+451
+00:24:10,750 --> 00:24:12,910
+sure that we hit the ones
+everybody is using. And that's
+
+452
+00:24:12,910 --> 00:24:16,090
+exactly what we've done. Yeah.
+So the top application providers
+
+453
+00:24:16,090 --> 00:24:19,600
+that that, that need
+authentication, we have those
+
+454
+00:24:19,630 --> 00:24:21,970
+partnerships with them, and they
+can do the things that we want
+
+455
+00:24:21,970 --> 00:24:25,180
+them to do. And it's all
+standards based. So we're not
+
+456
+00:24:25,180 --> 00:24:28,330
+going out and creating some new
+wild wacky way to connect
+
+457
+00:24:28,330 --> 00:24:31,510
+things. Yeah, right. We
+provision through scam. Right?
+
+458
+00:24:31,510 --> 00:24:34,510
+We do we do password list
+through Fido2. To we contribute
+
+459
+00:24:34,510 --> 00:24:36,940
+to the standards, I did an
+interview with Pamela Dingle,
+
+460
+00:24:37,090 --> 00:24:39,310
+whose entire job she's a
+director in product marketing.
+
+461
+00:24:39,310 --> 00:24:42,880
+She works for Alex Simon's in
+our org, and all she does is
+
+462
+00:24:42,880 --> 00:24:49,180
+standards. And it's it's
+incredible. The amount of effort
+
+463
+00:24:49,210 --> 00:24:52,600
+and time and contributions that
+we're making to these standards
+
+464
+00:24:52,600 --> 00:24:55,480
+to ensure that we can do this,
+not just now and doing it the
+
+465
+00:24:55,480 --> 00:24:56,200
+right way, but doing it
+
+466
+00:24:56,660 --> 00:24:58,550
+Warren du Toit: the right way.
+We were talking to Julia (Foran)
+
+467
+00:24:58,550 --> 00:24:59,090
+the other day.
+
+468
+00:25:01,580 --> 00:25:06,500
+I've got this thing about ICS
+standards. Yeah, a calendar
+
+469
+00:25:06,500 --> 00:25:12,470
+invite follows those standards,
+because they're all different
+
+470
+00:25:12,470 --> 00:25:12,890
+man.
+
+471
+00:25:14,910 --> 00:25:16,470
+Joey Snow: If you want to have
+if you want to have real fun
+
+472
+00:25:16,470 --> 00:25:19,980
+with standards Go Go read the
+CSP standard. Really? Yeah.
+
+473
+00:25:20,370 --> 00:25:22,200
+What's hardcore? Oh, it's a hot
+mess.
+
+474
+00:25:23,590 --> 00:25:25,090
+Nicolas Blank: it's a hot mess
+
+475
+00:25:25,090 --> 00:25:27,460
+Joey Snow: it's a hot mess. It's
+all we're doing things that was
+
+476
+00:25:27,460 --> 00:25:28,180
+never meant is it?
+
+477
+00:25:28,380 --> 00:25:29,640
+Warren du Toit: Is it is that
+comma?
+
+478
+00:25:29,000 --> 00:25:32,630
+Rick Claus: Is the quote of the
+show right there. It's a hot
+
+479
+00:25:32,630 --> 00:25:32,930
+mess.
+
+480
+00:25:34,550 --> 00:25:37,100
+Joey Snow: That's what Pamela
+told me anyway. Yeah, it's it.
+
+481
+00:25:37,100 --> 00:25:43,190
+Look at DNS it's always DNS.
+Yeah we always blame DNS.
+
+482
+00:25:44,150 --> 00:25:44,720
+Nicolas Blank: or networking
+
+483
+00:25:44,750 --> 00:25:47,000
+Rick Claus: I have a question
+for you. Actually. Yeah. If you
+
+484
+00:25:47,000 --> 00:25:50,840
+don't mind me, please. I mean,
+the show timeline. No, I like
+
+485
+00:25:50,870 --> 00:25:56,360
+well, it's my turn to talk about
+the, the the, the question the
+
+486
+00:25:56,360 --> 00:25:58,580
+the one of the topics we're
+talking about today is obviously
+
+487
+00:25:58,580 --> 00:26:01,280
+going to be multi cloud
+management, sort of Do you have
+
+488
+00:26:01,280 --> 00:26:04,430
+customers asking for this? Is it
+only that first level of
+
+489
+00:26:04,430 --> 00:26:07,100
+introductory people that are
+going that path? Or is everyone
+
+490
+00:26:07,100 --> 00:26:10,310
+asking for this? Because Is it a
+checkbox exercise? So or is it a
+
+491
+00:26:10,310 --> 00:26:12,920
+real actual ask? That's
+happened.
+
+492
+00:26:13,140 --> 00:26:14,700
+Warren du Toit: So to be honest
+with you, I think is a real
+
+493
+00:26:14,700 --> 00:26:21,480
+risk. Because you'll see that a
+particular client will never put
+
+494
+00:26:21,480 --> 00:26:27,840
+together just an Azure framework
+for their company. They want it
+
+495
+00:26:27,840 --> 00:26:31,710
+to be a cloud framework. So they
+want to make sure that these
+
+496
+00:26:31,710 --> 00:26:35,400
+policies cover everything moving
+forward, because it's a big
+
+497
+00:26:35,400 --> 00:26:38,730
+change for them. So they've now
+gone and set down policies who
+
+498
+00:26:38,730 --> 00:26:41,700
+can do this, you can do that
+that can be spun up that can't
+
+499
+00:26:41,700 --> 00:26:44,070
+wait, it can be accessed the
+portal from and that all gets
+
+500
+00:26:44,070 --> 00:26:47,460
+documented. But there's no point
+in doing it just for Azure.
+
+501
+00:26:47,790 --> 00:26:50,760
+You'll see some of the banks in
+South Africa, for instance, have
+
+502
+00:26:50,760 --> 00:26:54,930
+done AWS first course right and
+now they're putting that AWS
+
+503
+00:26:54,930 --> 00:26:59,670
+document to blueprints and
+obviously with something like
+
+504
+00:26:59,670 --> 00:27:03,660
+lights coming out as well,
+which, you know, manages those
+
+505
+00:27:03,660 --> 00:27:10,590
+blueprints across all those all
+those different tenants. Yes, I
+
+506
+00:27:10,590 --> 00:27:14,340
+would say having a single place
+to manage all those things is
+
+507
+00:27:14,340 --> 00:27:18,750
+very important, because some of
+them already have them. I mean,
+
+508
+00:27:18,780 --> 00:27:24,060
+you'll see Cape Town, for
+instance, has a very large, AWS
+
+509
+00:27:24,060 --> 00:27:25,290
+huge, huge country.
+
+510
+00:27:26,370 --> 00:27:28,980
+Nicolas Blank: In particular
+sectors like like retail. Yeah,
+
+511
+00:27:28,980 --> 00:27:29,910
+retail loves Amazon,
+
+512
+00:27:30,110 --> 00:27:33,290
+Warren du Toit: because for some
+reason you got these diehard
+
+513
+00:27:33,290 --> 00:27:37,580
+Linux dudes who haven't seen the
+light, and they're like, if
+
+514
+00:27:37,580 --> 00:27:41,630
+you're a Linux person, then you
+have to go AWS and be faithful,
+
+515
+00:27:42,530 --> 00:27:45,560
+which is like, the wrong way
+around. I mean, we know this. I
+
+516
+00:27:45,560 --> 00:27:50,270
+mean, I'm a Linux boy. And, you
+know, Microsoft is number one
+
+517
+00:27:50,270 --> 00:27:53,870
+open source contributor on the
+planet, but no, no, you're
+
+518
+00:27:53,870 --> 00:28:00,770
+betraying the you betraying the
+shell betraying the Shell, it's
+
+519
+00:28:00,770 --> 00:28:01,430
+a hot mess.
+
+520
+00:28:04,000 --> 00:28:06,250
+Joey Snow: Gonna be trading
+between betraying the shell and
+
+521
+00:28:06,970 --> 00:28:10,030
+hot mess are now the themes of
+this particular episode of the
+
+522
+00:28:10,030 --> 00:28:10,630
+podcast.
+
+523
+00:28:11,850 --> 00:28:13,680
+Warren du Toit: So to answer
+your question is I think it's I
+
+524
+00:28:13,680 --> 00:28:14,100
+think it's,
+
+525
+00:28:14,160 --> 00:28:16,050
+Nicolas Blank: I'll give you my
+spin on this as well and then
+
+526
+00:28:16,050 --> 00:28:19,740
+I'll, I'll maybe ask you to
+comment on it. So my biggest ask
+
+527
+00:28:19,740 --> 00:28:22,710
+for customers going multicloud
+is that they're trying to avoid
+
+528
+00:28:22,830 --> 00:28:27,870
+vendor lock in. So I'll put a
+little bit here put a little bit
+
+529
+00:28:27,870 --> 00:28:30,690
+day while use the commercial
+angle is, as you know, well that
+
+530
+00:28:31,020 --> 00:28:33,780
+I'm going to tell Microsoft
+there, I'm going to do a
+
+531
+00:28:33,780 --> 00:28:36,900
+percentage of my workload on
+another cloud, no matter how
+
+532
+00:28:36,900 --> 00:28:40,290
+well or how badly it does it
+because I'm trying to avoid
+
+533
+00:28:40,290 --> 00:28:43,140
+commercial lock and I want to
+commercial angle. The biggest
+
+534
+00:28:43,260 --> 00:28:47,250
+pain for me on that is
+management overhead. And having
+
+535
+00:28:47,280 --> 00:28:52,140
+a there's there's no single pane
+on anything. There's multiple
+
+536
+00:28:52,140 --> 00:28:54,690
+places of ordered. There's
+multiple management and
+
+537
+00:28:54,750 --> 00:28:57,990
+infrastructures, having to spend
+a lot of money with third
+
+538
+00:28:57,990 --> 00:29:01,770
+parties to get those logs into
+central location which tends to
+
+539
+00:29:01,770 --> 00:29:03,930
+be on premises, right? And not
+scale.
+
+540
+00:29:05,160 --> 00:29:11,400
+Rick Claus: Yep. So I agree with
+that. At the same time. What I
+
+541
+00:29:11,400 --> 00:29:13,830
+find is interesting is some
+customers that are jumping into
+
+542
+00:29:13,830 --> 00:29:17,760
+this conversation without
+thoroughly thinking it out is I
+
+543
+00:29:17,760 --> 00:29:20,280
+forget who mentioned it was on
+online, they were talking about
+
+544
+00:29:20,280 --> 00:29:22,710
+how, if you look at doing
+adopting a multi cloud
+
+545
+00:29:22,710 --> 00:29:25,800
+environments, you're not going
+to get the full depth and
+
+546
+00:29:25,800 --> 00:29:28,620
+breadth of the power of that
+particular platform vendor.
+
+547
+00:29:28,770 --> 00:29:32,130
+Yeah, because you have to leave
+only so much so deep. And that
+
+548
+00:29:32,130 --> 00:29:34,680
+applies to all three of the
+clouds. Yeah, that's out there.
+
+549
+00:29:34,950 --> 00:29:38,700
+That's what I find the the
+concept of arc very interesting,
+
+550
+00:29:39,060 --> 00:29:42,870
+because it doesn't matter to us
+where those resources happen to
+
+551
+00:29:42,870 --> 00:29:46,770
+be will give you the insights.
+So we're kind of like your, I'm
+
+552
+00:29:46,770 --> 00:29:49,320
+not going to call it a seven
+device, but we're kind of like
+
+553
+00:29:49,320 --> 00:29:53,310
+that inside of the Azure space.
+Because we bring stuff back into
+
+554
+00:29:53,310 --> 00:29:56,160
+duty now analytics on it, but
+you can leave your Kubernetes
+
+555
+00:29:56,160 --> 00:29:59,280
+running over an AWS if you want
+to. You can have your your
+
+556
+00:30:00,060 --> 00:30:04,200
+elastic compute or go off and do
+Nvidia AI type stuff in Google
+
+557
+00:30:04,200 --> 00:30:07,590
+if you want to do but you can
+also do it here too. And that's
+
+558
+00:30:07,620 --> 00:30:11,250
+true for as I mentioned that all
+three vendors, obviously, we
+
+559
+00:30:11,250 --> 00:30:13,920
+will make it the best experience
+possible inside of our own
+
+560
+00:30:13,920 --> 00:30:16,290
+clouds for all the different
+services that you have. Same
+
+561
+00:30:16,290 --> 00:30:18,960
+thing with AWS, same thing with
+Google. It's just the strategy
+
+562
+00:30:18,960 --> 00:30:21,480
+at all three players are doing,
+we're the first one to go out
+
+563
+00:30:21,480 --> 00:30:24,540
+and actually try to say, Okay,
+well, the reality is customers
+
+564
+00:30:24,540 --> 00:30:26,850
+are looking for this, we're
+asking for this. So let's go off
+
+565
+00:30:26,850 --> 00:30:29,520
+and give you an awesome
+experience here inside of Azure,
+
+566
+00:30:29,760 --> 00:30:32,370
+but then also give you the
+insights from other places.
+
+567
+00:30:33,840 --> 00:30:35,640
+Joey Snow: But it's the same
+thing from a security
+
+568
+00:30:35,640 --> 00:30:37,740
+perspective. And I hear this all
+the time when I talk about Azure
+
+569
+00:30:37,740 --> 00:30:40,380
+Active Directory, which then
+tends to lead down the
+
+570
+00:30:40,380 --> 00:30:43,950
+discussion of things like ATP
+and some of the other the other
+
+571
+00:30:43,980 --> 00:30:46,590
+security technologies that we
+have, because we're kind of all
+
+572
+00:30:46,590 --> 00:30:48,990
+together because that's how
+we're sold right as part of BMS,
+
+573
+00:30:49,020 --> 00:30:55,380
+right. But yes, there are multi
+vendors out there that the one
+
+574
+00:30:55,470 --> 00:30:59,970
+advantage that I see inside
+ourselves is the sheer volume of
+
+575
+00:31:00,960 --> 00:31:04,350
+of information and signals that
+we have, where we're getting
+
+576
+00:31:04,350 --> 00:31:08,160
+them from our ability to take
+action on those signals. And
+
+577
+00:31:08,160 --> 00:31:13,140
+then even more importantly, how
+inside all of our products, we
+
+578
+00:31:13,140 --> 00:31:16,290
+all can share that signals data,
+right? And we
+
+579
+00:31:16,290 --> 00:31:18,780
+Warren du Toit: can all take the
+same time as the new Microsoft,
+
+580
+00:31:18,780 --> 00:31:23,430
+right? So if you have to look
+from sort of when such a took
+
+581
+00:31:23,430 --> 00:31:28,890
+over, and that everything
+started getting open sourced,
+
+582
+00:31:29,010 --> 00:31:31,650
+and there was more
+collaboration, and they weren't
+
+583
+00:31:31,650 --> 00:31:36,420
+these big walls anymore. You can
+see that Microsoft now is
+
+584
+00:31:36,420 --> 00:31:40,680
+probably the number one
+integrator of other products
+
+585
+00:31:40,710 --> 00:31:44,640
+into their product, if you look
+at it holistically, there are
+
+586
+00:31:44,640 --> 00:31:48,840
+API's to do so many things there
+are I mean, if you look at the
+
+587
+00:31:48,840 --> 00:31:52,620
+graph framework, yeah, you can
+literally do whatever you want,
+
+588
+00:31:52,740 --> 00:31:56,610
+and get any data out of it. And
+then you can present it in a in
+
+589
+00:31:56,670 --> 00:32:01,080
+any way you want it to be and
+you can do it securely. And
+
+590
+00:32:01,110 --> 00:32:05,520
+there's like none of that you
+have to stick with us anymore.
+
+591
+00:32:05,790 --> 00:32:08,340
+What just choose it mix and
+match one
+
+592
+00:32:08,340 --> 00:32:10,530
+Joey Snow: of the biggest
+workloads that we authenticate
+
+593
+00:32:10,530 --> 00:32:12,090
+to is Google. Yeah.
+
+594
+00:32:14,550 --> 00:32:17,850
+I mean, that's we share that we
+share that all the time. I'd say
+
+595
+00:32:18,090 --> 00:32:21,210
+it was probably in Alex's
+presentation earlier this week.
+
+596
+00:32:21,270 --> 00:32:26,460
+Yeah. And so yeah, 100% I
+understand.
+
+597
+00:32:27,980 --> 00:32:29,300
+Nicolas Blank: what's the
+circumstance? They?
+
+598
+00:32:29,940 --> 00:32:31,440
+Joey Snow: Well, they're
+authenticating to Google
+
+599
+00:32:31,440 --> 00:32:32,100
+applications.
+
+600
+00:32:32,000 --> 00:32:33,950
+Nicolas Blank: Yeah, I was gonna
+say is it inbound from Google?
+
+601
+00:32:33,980 --> 00:32:35,210
+Or is it oubound to Google?
+
+602
+00:32:35,250 --> 00:32:38,250
+Joey Snow: So it's, it's an
+Azure Active Directory identity
+
+603
+00:32:38,250 --> 00:32:41,880
+is being used to access a Google
+Google Docs or whatever happens
+
+604
+00:32:41,880 --> 00:32:46,230
+to be because remember, and and,
+and identity is that's a little
+
+605
+00:32:46,230 --> 00:32:49,500
+bit tricky in terms of you
+really don't want to have
+
+606
+00:32:49,650 --> 00:32:52,410
+identities living in multiple
+places you don't because that
+
+607
+00:32:52,410 --> 00:32:56,250
+means there's more crappy
+passwords locating and that's
+
+608
+00:32:56,250 --> 00:32:59,580
+another thing that somebody has
+to manage. His identity is the
+
+609
+00:32:59,580 --> 00:33:01,740
+one thing that You have to, you
+have to make sure that you've
+
+610
+00:33:01,740 --> 00:33:04,860
+got it and it's secured. And
+it's, it's protected. And you
+
+611
+00:33:04,860 --> 00:33:07,020
+can manage it and you can cover
+and against it was only one of
+
+612
+00:33:07,020 --> 00:33:10,500
+them. Yeah. Well, that ideally,
+yes,
+
+613
+00:33:10,620 --> 00:33:13,350
+Warren du Toit: I do is anything
+I can take away from ignite is
+
+614
+00:33:13,350 --> 00:33:15,360
+how I can fix that problem that
+I'm having.
+
+615
+00:33:15,840 --> 00:33:19,860
+Joey Snow: But listen, we were
+very clear about our intention
+
+616
+00:33:19,860 --> 00:33:24,000
+moving forward. We want to take
+identity out of the hands of
+
+617
+00:33:24,000 --> 00:33:26,340
+companies and businesses and
+everybody else and bring it back
+
+618
+00:33:26,340 --> 00:33:30,390
+to the individual. That's,
+that's our future vision, right
+
+619
+00:33:30,390 --> 00:33:34,530
+where the person can control
+that identity and then give the
+
+620
+00:33:34,530 --> 00:33:40,440
+ability for me to us that it's
+explained then take it back. But
+
+621
+00:33:40,440 --> 00:33:44,340
+that's, that's, that's where we
+have to go. That's where we have
+
+622
+00:33:44,340 --> 00:33:49,680
+to go. And And particularly,
+just look, how many of us really
+
+623
+00:33:49,950 --> 00:33:54,570
+don't think our data is out
+there. Huh? Come on. You were
+
+624
+00:33:54,570 --> 00:33:57,750
+talking on the way to the
+airport here. They were PII on
+
+625
+00:33:57,750 --> 00:34:00,180
+your phone than there is on
+throughout your house. In any
+
+626
+00:34:00,180 --> 00:34:03,000
+documentation? Yeah, we carry
+these things around with us.
+
+627
+00:34:03,720 --> 00:34:06,900
+Right We connect 10 secure Wi Fi
+is and all the other bad
+
+628
+00:34:06,900 --> 00:34:07,800
+behavior that we have
+
+629
+00:34:07,830 --> 00:34:09,600
+Rick Claus: Bluetooth beacons.
+And as you're walking through a
+
+630
+00:34:09,600 --> 00:34:11,580
+mall, yeah, I don't know where
+you are in the mall and what
+
+631
+00:34:11,580 --> 00:34:13,320
+you're doing just by having a
+Bluetooth stack on.
+
+632
+00:34:13,380 --> 00:34:16,110
+Joey Snow: So I understand the
+concern around vendor lock in.
+
+633
+00:34:16,110 --> 00:34:20,340
+But at the same time, there are
+benefits to leveraging services
+
+634
+00:34:21,060 --> 00:34:24,480
+from a vendor that can have that
+communication and share that
+
+635
+00:34:24,480 --> 00:34:28,890
+data across and making that data
+exposed to you so that you can
+
+636
+00:34:28,890 --> 00:34:34,050
+take action or even better. Let
+the AI do it. Yeah. I don't want
+
+637
+00:34:34,050 --> 00:34:37,080
+to have to manage session risk.
+That's ridiculous to me. I don't
+
+638
+00:34:37,080 --> 00:34:41,580
+know what the best rule is for
+when when a session is risky. Or
+
+639
+00:34:41,580 --> 00:34:42,120
+when it user
+
+640
+00:34:42,120 --> 00:34:44,670
+Rick Claus: What do you mean, I
+can't log in here in Orlando and
+
+641
+00:34:44,670 --> 00:34:45,510
+in Seattle,
+
+642
+00:34:45,720 --> 00:34:48,870
+Joey Snow: within an hour each
+other time possible travel
+
+643
+00:34:48,870 --> 00:34:53,520
+scenario, or, hey, maybe I
+didn't know that my username and
+
+644
+00:34:53,520 --> 00:34:56,220
+password ended up in some breach
+and I've not changed it and I'm
+
+645
+00:34:56,220 --> 00:34:59,280
+a global admin. Yeah, you think
+you might want to know about
+
+646
+00:34:59,280 --> 00:35:02,460
+that and even better Just next
+time go who's the right one? No,
+
+647
+00:35:02,460 --> 00:35:05,700
+that's me because I've got a
+second factor off. Yes. And now,
+
+648
+00:35:05,880 --> 00:35:09,810
+Joey, let's reset your password.
+Or in this case, you know, just
+
+649
+00:35:10,050 --> 00:35:12,480
+MFA me because I'm pastoralists.
+Yeah, yeah.
+
+650
+00:35:12,570 --> 00:35:16,470
+Nicolas Blank: Oh, I'm just in
+time you so you don't need to be
+
+651
+00:35:16,860 --> 00:35:19,530
+a high risk person with global
+admin that gets targeted.
+
+652
+00:35:19,710 --> 00:35:22,230
+Joey Snow: Well, and that's
+that's really the key piece is
+
+653
+00:35:22,230 --> 00:35:24,870
+that you shouldn't be running
+global admin anyone? Yep. You
+
+654
+00:35:24,870 --> 00:35:27,660
+should only elevate when
+necessary and and even even more
+
+655
+00:35:27,660 --> 00:35:29,970
+importantly, we shouldn't be
+requiring you to be global admin
+
+656
+00:35:29,970 --> 00:35:32,160
+to do a lot of the things that
+you have, which is why we're
+
+657
+00:35:32,160 --> 00:35:35,310
+doing a lot of investment, a lot
+of work where I was about to
+
+658
+00:35:35,310 --> 00:35:37,110
+ask, because you know,
+
+659
+00:35:38,680 --> 00:35:40,450
+Nicolas Blank: there's a bunch
+of stuff in teams that you can't
+
+660
+00:35:40,450 --> 00:35:44,080
+do with Justin time. Other
+products. Yep, not quite there
+
+661
+00:35:44,080 --> 00:35:48,310
+yet. But all of the second teams
+is a very complicated beats
+
+662
+00:35:49,180 --> 00:35:53,140
+fine, but then the guidance that
+you see is I need this Roland
+
+663
+00:35:53,140 --> 00:35:57,010
+teams and I need that rollin
+teams and unless you and even if
+
+664
+00:35:57,010 --> 00:36:00,460
+you just in time them and this
+you then decided to Temporarily
+
+665
+00:36:00,460 --> 00:36:03,550
+grant someone Global Admins
+stuff still doesn't work. Right.
+
+666
+00:36:03,550 --> 00:36:06,970
+So our back is not as
+transparent as ubiquitous as we
+
+667
+00:36:06,970 --> 00:36:10,210
+wanted yet. But what I'm hearing
+from you is like,
+
+668
+00:36:11,010 --> 00:36:13,500
+Joey Snow: Yeah, well, we've
+been doing that we made
+
+669
+00:36:13,530 --> 00:36:16,350
+significant investments in that.
+We've made investments in that,
+
+670
+00:36:16,350 --> 00:36:18,480
+that we've talked about here
+with with some new reader roles
+
+671
+00:36:18,480 --> 00:36:22,260
+that we've that we've announced
+here. So we have to continue.
+
+672
+00:36:24,540 --> 00:36:27,060
+The best way that I can explain
+this is that we don't ship
+
+673
+00:36:27,060 --> 00:36:32,040
+product anymore. I we don't ship
+a new version of active
+
+674
+00:36:32,040 --> 00:36:34,470
+directory where we haven't done
+that in in years and years and
+
+675
+00:36:34,470 --> 00:36:37,560
+years. Yeah, we are a service.
+We enhance the service
+
+676
+00:36:37,560 --> 00:36:40,710
+consistently. We have to go
+faster. We have to do it faster,
+
+677
+00:36:40,710 --> 00:36:43,620
+because we have to get to our
+customers need it. Yeah. And
+
+678
+00:36:43,710 --> 00:36:47,940
+that's a difficult thing for IT
+professionals to kind of get
+
+679
+00:36:47,970 --> 00:36:50,970
+their heads around because
+either we're not fast enough or
+
+680
+00:36:50,970 --> 00:36:54,600
+we're too bloody fast. But
+that's where that that push and
+
+681
+00:36:54,600 --> 00:36:59,100
+pull. We made changes because we
+understood that we had to
+
+682
+00:36:59,100 --> 00:37:02,040
+provide this path Way to do
+hybrid identity?
+
+683
+00:37:02,400 --> 00:37:04,260
+Warren du Toit: And where do you
+draw the line of stability as
+
+684
+00:37:04,260 --> 00:37:05,910
+well? Right? Well, and how
+
+685
+00:37:05,910 --> 00:37:08,130
+Joey Snow: do we make it easier
+for people to actually go
+
+686
+00:37:08,130 --> 00:37:12,120
+password lists? And those are
+things that we heard from our
+
+687
+00:37:12,120 --> 00:37:15,210
+customers. They're like, Look,
+this is soo bone who I worked
+
+688
+00:37:15,210 --> 00:37:18,030
+for, says, when we did password
+list Initially, it was like a
+
+689
+00:37:18,030 --> 00:37:21,180
+moonshot. And our customers are
+like, Yo, what are you guys
+
+690
+00:37:21,180 --> 00:37:24,000
+doing? We're not like this.
+Yeah, we're like this, we need
+
+691
+00:37:24,000 --> 00:37:27,150
+you to help us get there in this
+manner. And we listened and we
+
+692
+00:37:27,150 --> 00:37:30,420
+made those adjustments. So I
+hundred percent hear you around
+
+693
+00:37:30,420 --> 00:37:33,840
+that in our back and those kinds
+of things. Just as a few years
+
+694
+00:37:33,840 --> 00:37:38,400
+ago, you had to be global admin
+to do everything. And that's not
+
+695
+00:37:38,400 --> 00:37:41,250
+good behavior. We have to change
+that behavior internally to and
+
+696
+00:37:41,250 --> 00:37:45,840
+we work on that. It's not just,
+hey, our customers are our
+
+697
+00:37:45,840 --> 00:37:48,780
+Microsoft to Microsoft is our
+customer to and we have to make
+
+698
+00:37:49,920 --> 00:37:52,620
+Rick Claus: that the best part
+is, as you mentioned, we don't
+
+699
+00:37:52,620 --> 00:37:56,910
+ship product anymore. Its
+services. I can't even not not
+
+700
+00:37:56,910 --> 00:37:59,280
+from the men's side of the
+design side as you brought up
+
+701
+00:37:59,280 --> 00:38:03,390
+there. But even just From a user
+side, opening up one of my apps
+
+702
+00:38:03,420 --> 00:38:09,240
+be outlook Word, PowerPoint,
+Excel flow tooling or Microsoft
+
+703
+00:38:09,240 --> 00:38:12,660
+Teams like that. I always get a
+little surprised in the morning
+
+704
+00:38:12,660 --> 00:38:14,700
+and says, Oh, you've been
+updated the latest version.
+
+705
+00:38:14,730 --> 00:38:17,940
+Okay, great. What changed? What
+can I find? as an end user?
+
+706
+00:38:17,940 --> 00:38:20,880
+That's a geek and a tech person.
+I love to go off and find all
+
+707
+00:38:20,880 --> 00:38:23,610
+the new stuff that's possibly
+there. People go off and find
+
+708
+00:38:23,610 --> 00:38:31,200
+it. Yeah. Yeah. Although all
+about stage not those are all
+
+709
+00:38:31,410 --> 00:38:33,120
+the different people. Yeah. And
+so you want to have that all
+
+710
+00:38:33,120 --> 00:38:36,870
+over the place. But yeah, no,
+teams of all. software products
+
+711
+00:38:36,870 --> 00:38:39,390
+evolve, the stuff inside of
+Azure evolves, there's no longer
+
+712
+00:38:39,390 --> 00:38:42,300
+gas' anymore. makes it hard for
+us to be able to talk about
+
+713
+00:38:42,300 --> 00:38:45,240
+announcements because you know,
+well that's been out for a while
+
+714
+00:38:45,240 --> 00:38:48,750
+but it just went ga but really,
+everyone's been using it for the
+
+715
+00:38:48,750 --> 00:38:52,050
+last six months. So really is a
+big hype anymore. Not so much
+
+716
+00:38:52,050 --> 00:38:55,260
+so, so it's it's kind of fun to
+see where that where that's
+
+717
+00:38:55,260 --> 00:38:57,480
+going to continue to evolve and
+how it changes us as
+
+718
+00:38:57,480 --> 00:38:58,230
+technologists.
+
+719
+00:38:58,870 --> 00:39:02,200
+Nicolas Blank: We are coming up
+to the The top of the hour so,
+
+720
+00:39:02,230 --> 00:39:03,730
+Rick Claus: and you've got a
+session to deliver somewhere
+
+721
+00:39:06,360 --> 00:39:06,930
+Joey Snow: in 20 minutes.
+
+722
+00:39:09,840 --> 00:39:12,450
+Nicolas Blank: So let us ask
+you, how would the like that?
+
+723
+00:39:12,540 --> 00:39:16,740
+How would the two of you like to
+be found on socials or dude? No,
+
+724
+00:39:16,740 --> 00:39:21,210
+no, let's not assume everybody
+knows who everybody is. So, let
+
+725
+00:39:21,210 --> 00:39:24,690
+us show you how they would like
+to be found. And then also ask
+
+726
+00:39:24,690 --> 00:39:31,350
+you one of the ones you would
+like to plug.
+
+727
+00:39:32,070 --> 00:39:34,200
+Joey Snow: Yeah, sure. Y'all go
+ahead
+
+728
+00:39:34,000 --> 00:39:38,290
+Rick Claus: and start so well.
+From a social and fun and
+
+729
+00:39:38,290 --> 00:39:40,840
+community perspective. You can
+find us both online together
+
+730
+00:39:40,840 --> 00:39:43,540
+because no one knows who is who
+and what is what and switch and
+
+731
+00:39:43,540 --> 00:39:46,990
+patch and patch and switch at
+sign patches, which is where we
+
+732
+00:39:46,990 --> 00:39:49,570
+normally happen to be on the
+social community and the fun
+
+733
+00:39:49,570 --> 00:39:49,870
+side.
+
+734
+00:39:50,410 --> 00:39:52,780
+Joey Snow: We do a podcast every
+other Friday on Twitch, it's
+
+735
+00:39:52,780 --> 00:39:56,380
+twitch.tv/patchandswitch. And
+then from a personal
+
+736
+00:39:56,380 --> 00:39:58,330
+perspective, you can find me on
+Twitter I'm at @Joeysnow
+
+737
+00:39:58,110 --> 00:40:01,200
+Rick Claus: snow and I'm at sign
+RicksterCDN and I managed a team
+
+738
+00:40:01,200 --> 00:40:05,670
+of folks that follow the
+hashtag, #AZops for our bat sign
+
+739
+00:40:05,670 --> 00:40:08,430
+l in case you have a question a
+out operations stuff inside
+
+740
+00:40:08,430 --> 00:40:11,760
+of Azure or on premises, or
+with identity or with teams o
+
+741
+00:40:11,760 --> 00:40:14,970
+ with other things like that. S
+oot us a message with the has
+
+742
+00:40:14,970 --> 00:40:17,550
+tag and one of us will be able
+to get you. We almost follo
+
+743
+00:40:17,550 --> 00:40:19,560
+ the sun around the Earth right 
+ow.
+
+744
+00:40:20,580 --> 00:40:21,540
+Joey Snow: And turn on MFA.
+
+745
+00:40:24,900 --> 00:40:26,790
+Rick Claus: It's a great demo to
+turn that on. By the way, you
+
+746
+00:40:26,790 --> 00:40:28,440
+know what it is?, Check.
+
+747
+00:40:32,430 --> 00:40:33,390
+Nicolas Blank: Guys, thank you
+so much.
+
+748
+00:40:37,350 --> 00:40:39,210
+Rick Claus: An awesome show.
+Thank you very much, see you
+
+749
+00:40:39,210 --> 00:40:39,480
+around
+
+750
+00:40:40,140 --> 00:40:43,140
+Warren du Toit: Everyone. Before
+you go, we just wanted to say
+
+751
+00:40:43,140 --> 00:40:45,390
+thank you for listening. We
+really enjoy putting this
+
+752
+00:40:45,390 --> 00:40:48,690
+podcast together for you every
+two weeks, please visit us at
+
+753
+00:40:48,690 --> 00:40:51,780
+the architects cloud.
+Alternatively, drop us a tweet.
+
+754
+00:40:51,870 --> 00:40:54,270
+We'd love to hear what you have
+to say @TheCloudArch.
+
