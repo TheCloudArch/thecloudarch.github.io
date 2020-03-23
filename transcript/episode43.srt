@@ -1,0 +1,4223 @@
+1
+00:00:19,080 --> 00:00:21,720
+Chris Goosen: Welcome to the
+cloud architects podcast, a
+
+2
+00:00:21,720 --> 00:00:25,560
+podcast about cloud technology
+and the people using it.
+
+3
+00:00:26,860 --> 00:00:28,990
+Nicolas Blank: The cloud
+architects podcast is sponsored
+
+4
+00:00:28,990 --> 00:00:32,920
+by Kemp technologies. Choose
+Kemp to optimize your multi
+
+5
+00:00:32,920 --> 00:00:35,980
+cloud application deployments
+and simplify multi cloud
+
+6
+00:00:35,980 --> 00:00:39,760
+application management. A single
+pane of glass for application
+
+7
+00:00:39,760 --> 00:00:44,320
+delivery, Kemp provides a 360
+degree view of your entire
+
+8
+00:00:44,320 --> 00:00:48,730
+application environment, and
+even third party ADCs. Download
+
+9
+00:00:48,730 --> 00:00:52,180
+Kemp 360 for free today at
+kemptechnologies.com
+
+10
+00:00:52,960 --> 00:00:55,540
+Chris Goosen: Hello and welcome
+to another episode of the cloud
+
+11
+00:00:55,540 --> 00:01:00,100
+architects podcast. Today we are
+in New Zealand of all places.
+
+12
+00:01:00,850 --> 00:01:03,130
+And I must say the weather out
+here is significantly better
+
+13
+00:01:03,130 --> 00:01:06,520
+than the weather in Sydney where
+I've just come from. So I took
+
+14
+00:01:06,520 --> 00:01:08,650
+the time took the opportunity
+here to sit down and we're going
+
+15
+00:01:08,650 --> 00:01:11,890
+to we're going to record and
+talk a little bit about teams.
+
+16
+00:01:12,340 --> 00:01:15,370
+We don't have on a nick today. I
+think Nick is in Singapore
+
+17
+00:01:15,370 --> 00:01:18,250
+somewhere. Not sure what
+Warren's doing. But for those of
+
+18
+00:01:18,250 --> 00:01:22,600
+you who love Warren's energy,
+never fear. We have a guest who
+
+19
+00:01:22,960 --> 00:01:25,900
+runs at that level right here.
+So I think we're gonna we're
+
+20
+00:01:25,900 --> 00:01:29,140
+gonna make up for it today. So
+excited to be sitting down with
+
+21
+00:01:29,140 --> 00:01:32,530
+Paul and Andrew here to talk
+about teams. Guys, you want to
+
+22
+00:01:32,530 --> 00:01:34,120
+do a quick introduction poll
+starting with you.
+
+23
+00:01:34,240 --> 00:01:37,690
+Paul Bloem: Yeah, absolutely. So
+my name is Paul Bloem. I have
+
+24
+00:01:37,690 --> 00:01:40,780
+been a MVP for the last, what is
+going for six years now?
+
+25
+00:01:41,110 --> 00:01:45,760
+Hopefully, seven soon. I look
+after a team that has got sort
+
+26
+00:01:45,760 --> 00:01:48,910
+of collaboration, teams, Skype
+for Business, all the pretty
+
+27
+00:01:48,910 --> 00:01:51,280
+stuff that gets connected to
+that, but more importantly,
+
+28
+00:01:51,280 --> 00:01:55,090
+these days. I'm focused on
+adoption on governance,
+
+29
+00:01:55,090 --> 00:01:56,860
+compliance and that sort of
+thing.
+
+30
+00:01:57,960 --> 00:01:58,620
+Chris Goosen: Very nice.
+
+31
+00:01:58,710 --> 00:02:01,650
+Andrew Morpeth: All right. My
+name is Andrew. I'm also an MVP
+
+32
+00:02:01,680 --> 00:02:06,360
+been one also for about six
+years I do believe. So I'm, I'm
+
+33
+00:02:06,360 --> 00:02:09,720
+an ex Skype for Business guy, I
+suppose we'll still a little bit
+
+34
+00:02:09,720 --> 00:02:13,080
+of Skype for Business came from
+the office communication server
+
+35
+00:02:13,080 --> 00:02:15,480
+day. So very much engrossed in
+the enterprise voice stuff,
+
+36
+00:02:15,840 --> 00:02:19,260
+transitioning at the moment into
+the Microsoft team's world with
+
+37
+00:02:19,260 --> 00:02:21,750
+enterprise voice glasses on at
+the moment, but sort of working
+
+38
+00:02:21,750 --> 00:02:23,850
+on all the other stuff that
+teams brings to the table.
+
+39
+00:02:24,599 --> 00:02:26,309
+Chris Goosen: And it brings a
+lot to the table. Right? I mean,
+
+40
+00:02:26,309 --> 00:02:29,699
+I think there's been, it's been
+the constant theme for for a
+
+41
+00:02:29,699 --> 00:02:32,069
+couple of years, at least now,
+there's been a lot of talk about
+
+42
+00:02:32,099 --> 00:02:35,039
+teams and teams and teams that
+and, you know, obviously, we
+
+43
+00:02:35,039 --> 00:02:37,739
+just come from ignite a couple
+three months ago now, can you
+
+44
+00:02:37,739 --> 00:02:41,189
+believe it three months. And
+there was a lot of announcements
+
+45
+00:02:41,189 --> 00:02:43,949
+that ignite and I mean, have you
+guys seen anything new since
+
+46
+00:02:43,949 --> 00:02:45,929
+ignite that that kind of sticks
+out to you?
+
+47
+00:02:46,439 --> 00:02:50,069
+Paul Bloem: Yeah, my favorite.
+new functionality is really the
+
+48
+00:02:50,069 --> 00:02:52,229
+SharePoint view that you get
+when you're looking at your
+
+49
+00:02:52,229 --> 00:02:55,859
+folder structure within teams,
+being able to look at the date
+
+50
+00:02:55,859 --> 00:02:59,069
+and timestamps and being able to
+change the views and create
+
+51
+00:02:59,069 --> 00:03:01,799
+perhaps even my own view I
+really liked it. It's Yeah,
+
+52
+00:03:01,800 --> 00:03:03,930
+Andrew Morpeth: it adds a bit of
+complication, but I like it as
+
+53
+00:03:03,930 --> 00:03:06,900
+well. I like that familiar view
+that you get from SharePoint and
+
+54
+00:03:06,900 --> 00:03:10,080
+there, but more buttons to get
+used to, I suppose for some
+
+55
+00:03:10,080 --> 00:03:12,210
+users, but I think it's a
+welcome addition.
+
+56
+00:03:12,479 --> 00:03:15,629
+Chris Goosen: Okay. Well, very
+nice. Yeah. I mean, there's I
+
+57
+00:03:15,629 --> 00:03:18,749
+think just recently I saw the
+there was the read receipts have
+
+58
+00:03:18,809 --> 00:03:21,509
+kind of made its way as well
+which is which is kind of fun
+
+59
+00:03:21,509 --> 00:03:25,559
+because especially when you're
+in a in a situation where you
+
+60
+00:03:25,559 --> 00:03:28,439
+know, islands mode, you don't
+always have to do it's gonna be
+
+61
+00:03:30,520 --> 00:03:34,060
+Andrew Morpeth: it could be seen
+as Big Brother ish. It is
+
+62
+00:03:34,060 --> 00:03:36,820
+configurable by policy but
+again, I like it it's good to
+
+63
+00:03:36,820 --> 00:03:40,270
+know when someone send your
+message. And of course, the
+
+64
+00:03:40,270 --> 00:03:43,390
+expectation should be sit that
+the chat is an instant message,
+
+65
+00:03:43,390 --> 00:03:46,660
+right? It's not It's not the
+expectation is not instant
+
+66
+00:03:46,660 --> 00:03:50,200
+anymore as it wasn't skype. And
+sort of training that out of
+
+67
+00:03:50,200 --> 00:03:53,440
+people is a hard thing because
+we still get those messages of
+
+68
+00:03:53,470 --> 00:03:58,630
+you know, hi, and then they wait
+for a response. Hi, back. And
+
+69
+00:03:58,660 --> 00:04:01,300
+don't just get to the point and
+check I'm not used to that
+
+70
+00:04:01,300 --> 00:04:04,150
+persistent nature that teams
+brings that skype never had.
+
+71
+00:04:04,319 --> 00:04:06,689
+Chris Goosen: Yeah, yeah, that's
+a good point. I think, you know,
+
+72
+00:04:06,899 --> 00:04:10,919
+read receipts or in any form of
+communication is always an
+
+73
+00:04:10,919 --> 00:04:14,759
+interesting one, right? Because
+like me personally, on my phone
+
+74
+00:04:14,999 --> 00:04:17,909
+on iMessage, I don't have
+receipts turned on. Yeah. So you
+
+75
+00:04:17,909 --> 00:04:20,519
+know, you'll guess if I've read
+it or not, but then when I use
+
+76
+00:04:20,519 --> 00:04:24,029
+WhatsApp, because I use WhatsApp
+a lot as well. I like, you know,
+
+77
+00:04:24,059 --> 00:04:26,609
+the fact the fact that folks can
+see that I've, you know, read it
+
+78
+00:04:26,639 --> 00:04:29,429
+or not. And it helps me when I
+can, you know, and I guess maybe
+
+79
+00:04:29,429 --> 00:04:32,159
+it's just the different types of
+people that communicate on
+
+80
+00:04:32,159 --> 00:04:34,229
+iMessage versus on WhatsApp.
+Yeah. Yeah, that's
+
+81
+00:04:34,230 --> 00:04:35,220
+Andrew Morpeth: right. It
+depends what you're trying to
+
+82
+00:04:35,220 --> 00:04:38,460
+avoid, as far as messages, most
+of your contact address list.
+
+83
+00:04:38,460 --> 00:04:38,610
+And
+
+84
+00:04:40,470 --> 00:04:42,540
+Paul Bloem: when I'm speaking to
+users, I'm always talking about
+
+85
+00:04:42,660 --> 00:04:46,350
+having some form of a social
+contract. And that is just the
+
+86
+00:04:46,380 --> 00:04:49,530
+nature in which we behave
+together. Yeah. So if we know
+
+87
+00:04:49,530 --> 00:04:52,530
+hey, if you've read a message
+then and if I want a response,
+
+88
+00:04:52,530 --> 00:04:54,570
+because that's a social
+contract, then please do
+
+89
+00:04:54,570 --> 00:04:58,140
+respond. Or whether we're
+sharing files or whatever it is
+
+90
+00:04:58,140 --> 00:05:00,540
+we're doing, there's sort of a
+social agreement. As to how
+
+91
+00:05:00,540 --> 00:05:02,580
+we'll be operating in their
+team, and I think that's
+
+92
+00:05:02,580 --> 00:05:06,060
+essential. Otherwise you do get
+that. Hey, are you just ignoring
+
+93
+00:05:06,060 --> 00:05:07,020
+me? And what's going on?
+
+94
+00:05:07,260 --> 00:05:10,950
+Chris Goosen: Yep, yep. And it's
+hard because sometimes you need
+
+95
+00:05:10,950 --> 00:05:14,730
+to gather your thoughts on
+something, right? And I like to
+
+96
+00:05:14,730 --> 00:05:18,330
+me, I guess etiquette would
+dictate that, like, Hey, give me
+
+97
+00:05:18,330 --> 00:05:20,280
+a second or Hey, I'm looking
+into that for you. I'll get back
+
+98
+00:05:20,280 --> 00:05:22,350
+to you in a second, right? Just
+to give someone a response so
+
+99
+00:05:22,350 --> 00:05:26,760
+that they know you have
+acknowledged the message. I find
+
+100
+00:05:26,760 --> 00:05:30,510
+that that's something that
+doesn't exist all that often in
+
+101
+00:05:30,510 --> 00:05:34,590
+business anymore, right? There's
+this I need this from you. Give
+
+102
+00:05:34,590 --> 00:05:35,160
+it to me
+
+103
+00:05:35,190 --> 00:05:38,100
+Andrew Morpeth: situation. And
+now now thing everyone wants
+
+104
+00:05:38,100 --> 00:05:40,680
+everything now these days. Yes,
+what we're conditioned for, I
+
+105
+00:05:40,680 --> 00:05:44,130
+suppose. But, yeah, again, that
+comes back to that social
+
+106
+00:05:44,130 --> 00:05:46,860
+contract. Right. And that's why
+the adoption piece is so
+
+107
+00:05:46,860 --> 00:05:50,700
+important. And unfortunately, it
+does get lifted out quite a bit.
+
+108
+00:05:50,730 --> 00:05:53,370
+And I think that's probably
+especially true maybe in our
+
+109
+00:05:53,370 --> 00:05:57,420
+region, because we're a little
+bit she'll be right. You know,
+
+110
+00:05:57,420 --> 00:06:00,000
+the users will figure it out.
+Let's spin the budget on
+
+111
+00:06:00,000 --> 00:06:04,560
+Technology, you know, the
+message I've got is that we can
+
+112
+00:06:04,560 --> 00:06:06,420
+just turn it all on in the
+cloud, we don't have service to
+
+113
+00:06:06,420 --> 00:06:10,020
+deploy as fireless services cost
+in that regard. So that should
+
+114
+00:06:10,020 --> 00:06:12,630
+be transition to watering and
+feeding your users and keeping
+
+115
+00:06:12,630 --> 00:06:14,700
+them up to speed and making sure
+they understand the tick,
+
+116
+00:06:14,700 --> 00:06:17,910
+because it's changing so
+quickly, that it's really hard
+
+117
+00:06:17,910 --> 00:06:21,450
+for anyone to keep up with even
+even myself, right. I mean, I
+
+118
+00:06:21,450 --> 00:06:23,820
+can I struggle to keep up and
+I'm dealing with a single
+
+119
+00:06:23,820 --> 00:06:24,300
+product.
+
+120
+00:06:24,540 --> 00:06:26,880
+Paul Bloem: Yeah, yeah. I
+couldn't agree more. And
+
+121
+00:06:26,940 --> 00:06:29,760
+unfortunately, organizations are
+looking at the technology and
+
+122
+00:06:29,760 --> 00:06:32,790
+going, we can deploy this at a
+much cheaper cost. Let's save
+
+123
+00:06:32,790 --> 00:06:37,560
+their budget. Yeah. But the real
+challenge is that traditionally,
+
+124
+00:06:37,560 --> 00:06:40,440
+folks haven't measured success
+in the way you would think they
+
+125
+00:06:40,440 --> 00:06:43,350
+would. They'd measure success
+based on does the technology
+
+126
+00:06:43,350 --> 00:06:47,040
+work? Check. It works. Does it
+do what it said on the label?
+
+127
+00:06:47,070 --> 00:06:49,980
+Yes, yes. But what they never
+measure is are people using it?
+
+128
+00:06:49,980 --> 00:06:53,460
+Are they circumventing it? Yeah.
+Is it actually being adopted and
+
+129
+00:06:53,460 --> 00:06:56,100
+used? Are you actually getting
+value for money for your
+
+130
+00:06:56,100 --> 00:06:58,770
+investment? Yep. Or is it just a
+white elephant you've just paid
+
+131
+00:06:58,770 --> 00:07:01,380
+for an off the wall. You've
+saved. So we've, you know,
+
+132
+00:07:01,380 --> 00:07:03,450
+Chris Goosen: we've had some
+great conversations on this show
+
+133
+00:07:03,450 --> 00:07:06,810
+about adoption and the
+difference between adoption and
+
+134
+00:07:06,810 --> 00:07:10,770
+consumption, right? And why it's
+really important to measure the
+
+135
+00:07:10,770 --> 00:07:14,010
+value that comes out of adopting
+something as opposed to, well,
+
+136
+00:07:14,040 --> 00:07:17,190
+you know, we have someone log
+into it once every six months,
+
+137
+00:07:17,190 --> 00:07:20,970
+and so therefore, the license is
+justified. So that's, I mean,
+
+138
+00:07:20,970 --> 00:07:24,780
+it's interesting, and I think
+it's a very, it can be a very
+
+139
+00:07:24,780 --> 00:07:28,740
+deep topic of conversation just
+by itself. But what are you guys
+
+140
+00:07:28,740 --> 00:07:32,160
+seeing as far as team's
+adoption, right? Because if you
+
+141
+00:07:32,160 --> 00:07:34,320
+listen to Microsoft and the
+Microsoft message, right,
+
+142
+00:07:34,350 --> 00:07:36,960
+obviously, there's a lot of
+investment going on in teams,
+
+143
+00:07:37,050 --> 00:07:39,870
+the team's product group are
+doing a lot to promote and
+
+144
+00:07:39,870 --> 00:07:43,590
+market the product. Are you
+seeing people adopting?
+
+145
+00:07:43,710 --> 00:07:45,120
+Andrew Morpeth: Yeah, hundred
+percent. I mean, most of the
+
+146
+00:07:45,120 --> 00:07:48,840
+customers I think we touch have
+already deployed teams to some
+
+147
+00:07:48,840 --> 00:07:52,980
+capacity. So you know, Microsoft
+wants seats turned on and that's
+
+148
+00:07:52,980 --> 00:07:55,530
+what they're pushing, right. But
+the most of the customers were
+
+149
+00:07:55,530 --> 00:07:57,870
+saying they've already turned
+the stuff on. They just need
+
+150
+00:07:57,870 --> 00:08:00,000
+help to do bits. They don't
+quite understand it in
+
+151
+00:08:00,000 --> 00:08:03,990
+enterprise voice is a key one,
+because it is still reasonably
+
+152
+00:08:03,990 --> 00:08:07,440
+technical. So that element we
+get pulled into a lot, I guess
+
+153
+00:08:07,440 --> 00:08:10,500
+the SharePoint aspect of it and
+the document management stuff is
+
+154
+00:08:10,830 --> 00:08:13,590
+a complex problem a lot of
+organizations have, they might
+
+155
+00:08:13,590 --> 00:08:16,950
+have things in Dropbox and
+various other storage solutions
+
+156
+00:08:16,950 --> 00:08:20,610
+or partially or, you know, not
+properly deployed SharePoint, I
+
+157
+00:08:20,610 --> 00:08:22,890
+need help in that regard. Those
+would be the two key things do
+
+158
+00:08:22,890 --> 00:08:23,130
+you think?
+
+159
+00:08:23,160 --> 00:08:24,660
+Paul Bloem: Well? Yeah,
+absolutely. Absolutely. We're
+
+160
+00:08:24,660 --> 00:08:27,390
+seeing a lot of organizer
+because we've got quite a long,
+
+161
+00:08:27,390 --> 00:08:30,540
+rich history in the Skype for
+business world. What we're
+
+162
+00:08:30,540 --> 00:08:32,220
+seeing is a lot of
+organizations, existing
+
+163
+00:08:32,220 --> 00:08:34,530
+customers, and some new who are
+going we're on Skype for
+
+164
+00:08:34,530 --> 00:08:37,800
+Business want to go to teams.
+And the challenge I'm seeing is
+
+165
+00:08:37,800 --> 00:08:40,530
+I'm going to them and I'm going
+well, if you want to go apples
+
+166
+00:08:40,530 --> 00:08:42,660
+for apples, because that's what
+they say to me. Can you show us
+
+167
+00:08:42,660 --> 00:08:45,480
+compete and so you can't because
+Skype is an apple, but teams is
+
+168
+00:08:45,480 --> 00:08:47,880
+a fruit salad. Yes, there's some
+apple in there. Yeah, but
+
+169
+00:08:47,880 --> 00:08:51,360
+there's a hell of a lot of other
+stuff in there, you know. And so
+
+170
+00:08:51,420 --> 00:08:53,640
+it's often my point of
+reference, just trying to bring
+
+171
+00:08:53,640 --> 00:08:56,340
+them on board and show them the
+teams is actually a portal
+
+172
+00:08:56,340 --> 00:08:59,730
+through which you access many
+other things including a slice
+
+173
+00:08:59,730 --> 00:09:00,000
+of Apple
+
+174
+00:09:00,240 --> 00:09:03,210
+Chris Goosen: Yep, fair enough.
+That's very well said. I think
+
+175
+00:09:03,210 --> 00:09:04,530
+we might use that future.
+
+176
+00:09:05,669 --> 00:09:07,259
+Andrew Morpeth: I'm gonna adopt
+that too. I've heard it many
+
+177
+00:09:07,259 --> 00:09:09,809
+times but haven't adopted into
+my own vocab yet.
+
+178
+00:09:10,110 --> 00:09:13,500
+Chris Goosen: Do you think
+there's a difference to or in
+
+179
+00:09:13,500 --> 00:09:17,610
+the way? adoption is happening
+in like here in New Zealand or
+
+180
+00:09:17,610 --> 00:09:21,450
+in the APAC region, for example
+versus North American, the rest
+
+181
+00:09:21,450 --> 00:09:21,960
+of the world?
+
+182
+00:09:23,100 --> 00:09:25,380
+Paul Bloem: It's a it's a good
+question. We don't have the
+
+183
+00:09:25,380 --> 00:09:27,690
+visibility we have what's
+happening elsewhere is through
+
+184
+00:09:27,690 --> 00:09:30,270
+our, you know, our connection
+through the MVP program and that
+
+185
+00:09:30,270 --> 00:09:33,120
+sort of thing. What what I'm
+seeing and I'm sure Andrew,
+
+186
+00:09:33,120 --> 00:09:36,810
+you're probably on the same
+page. A lot of organizations is
+
+187
+00:09:36,810 --> 00:09:39,630
+kind of two, two parts to it.
+There are those who are really
+
+188
+00:09:39,630 --> 00:09:44,040
+keen to jump in and get it done
+and who are happy to see the
+
+189
+00:09:44,040 --> 00:09:47,190
+limitations or see the
+challenges and find ways around
+
+190
+00:09:47,190 --> 00:09:49,740
+them. Because you've highlighted
+them upfront and then there are
+
+191
+00:09:49,740 --> 00:09:52,770
+others who go I'll just sit back
+and hold until you tell me it's
+
+192
+00:09:52,770 --> 00:09:55,560
+all good. And that's kind of the
+two views when they're coming
+
+193
+00:09:55,560 --> 00:09:58,110
+from sort of a Skype well then
+they are including Andrew
+
+194
+00:09:58,110 --> 00:09:59,520
+specialty enterprise voice
+
+195
+00:10:00,000 --> 00:10:02,280
+Andrew Morpeth: If I was to take
+a guess I think it comes down to
+
+196
+00:10:02,280 --> 00:10:05,730
+size of organization as to
+whether and how much time that
+
+197
+00:10:05,730 --> 00:10:08,850
+they'll spend on adoption. And
+in the New Zealand region, I
+
+198
+00:10:08,850 --> 00:10:11,790
+guess the the typical business
+size is probably under 100
+
+199
+00:10:11,790 --> 00:10:14,850
+seats, right, we get the odd,
+you know, hundred 500 seats,
+
+200
+00:10:15,150 --> 00:10:18,960
+thousand, you know, four or
+5000s getting pretty big, you
+
+201
+00:10:18,960 --> 00:10:21,990
+know, biggest company in this
+entire country is about 35,000
+
+202
+00:10:21,990 --> 00:10:25,890
+seats run. So I think it
+probably comes down to that. So
+
+203
+00:10:26,040 --> 00:10:30,330
+my expectation would be sort of
+North America excetera a lot, a
+
+204
+00:10:30,360 --> 00:10:33,210
+lot more bigger companies, they
+would probably spend a lot more
+
+205
+00:10:33,210 --> 00:10:36,480
+money on that stuff. They got a
+lot more people to address. How
+
+206
+00:10:36,480 --> 00:10:38,910
+did it get the information
+across versus say, 100 seat
+
+207
+00:10:38,910 --> 00:10:42,360
+organization, it's a lot easier
+for the IT department to just do
+
+208
+00:10:42,360 --> 00:10:44,400
+that they kind of personally
+know the users.
+
+209
+00:10:44,610 --> 00:10:47,070
+Paul Bloem: You know, it's a bit
+easier. Yeah. What we're having
+
+210
+00:10:47,070 --> 00:10:50,610
+to come up with ways to
+introduce adoption concepts and
+
+211
+00:10:50,610 --> 00:10:53,790
+principles in bite sized chunks
+getting back to my food analogy,
+
+212
+00:10:54,090 --> 00:10:56,850
+because no one's got the funding
+divvied up the whole bowl,
+
+213
+00:10:56,850 --> 00:10:59,220
+right? Yep. So we've got to give
+them a little spoon feed chunks
+
+214
+00:10:59,220 --> 00:11:00,300
+as they need to I think
+
+215
+00:11:00,300 --> 00:11:02,370
+Chris Goosen: that's absolutely
+fascinating. I mean, I had not
+
+216
+00:11:02,370 --> 00:11:07,110
+considered that that the market
+size is, you know, the average
+
+217
+00:11:07,110 --> 00:11:10,080
+company size is going to be
+smaller. And so the way that you
+
+218
+00:11:10,860 --> 00:11:13,260
+when you're in a smaller
+business, there is more of a
+
+219
+00:11:13,260 --> 00:11:16,200
+familiarity of you know, people
+know each other people know the
+
+220
+00:11:16,200 --> 00:11:19,560
+IT people. And so I think you do
+deal with training and adoption
+
+221
+00:11:19,560 --> 00:11:22,470
+slightly differently to, you
+know, when your hundred thousand
+
+222
+00:11:22,470 --> 00:11:25,110
+seat company and the IT guy
+doesn't know, you're just a
+
+223
+00:11:25,110 --> 00:11:29,340
+name, or an email address to
+them, right. They don't know
+
+224
+00:11:29,340 --> 00:11:30,480
+each other. No one knows each
+other.
+
+225
+00:11:30,539 --> 00:11:32,309
+Paul Bloem: Yeah, absolutely.
+And then, of course, when you're
+
+226
+00:11:32,309 --> 00:11:35,999
+looking at the adoption, sort of
+the, the portfolio of skills you
+
+227
+00:11:35,999 --> 00:11:39,089
+need, you know, there's all
+these different roles that when
+
+228
+00:11:39,089 --> 00:11:41,549
+you look at the Microsoft
+framework, there's all these
+
+229
+00:11:41,549 --> 00:11:44,189
+different people you've got in
+there. You come down to New
+
+230
+00:11:44,189 --> 00:11:49,229
+Zealand, and what do you find?
+Well, your admin are all things
+
+231
+00:11:49,229 --> 00:11:52,409
+to all people within that space.
+Yeah. And so you know, it is
+
+232
+00:11:52,409 --> 00:11:53,879
+what it is, and you just got to
+go with it.
+
+233
+00:11:54,179 --> 00:11:56,879
+Chris Goosen: Yeah, fair enough.
+And so, with that, I mean, I
+
+234
+00:11:56,879 --> 00:11:59,369
+guess if we look at the types of
+companies around here are you
+
+235
+00:11:59,369 --> 00:12:02,999
+seeing One of the things we've
+seen a lot of over the last six
+
+236
+00:12:02,999 --> 00:12:06,419
+or seven months, maybe nine
+months is tenant to tenant type
+
+237
+00:12:06,419 --> 00:12:10,619
+migrations, m&a type situations,
+right? And we had for a long
+
+238
+00:12:10,619 --> 00:12:13,919
+time we, that process was pretty
+well understood and was pretty
+
+239
+00:12:13,919 --> 00:12:18,239
+well, we had it down. We knew,
+with the workloads that most
+
+240
+00:12:18,239 --> 00:12:20,939
+companies adopted, we could do
+those types of projects pretty
+
+241
+00:12:20,939 --> 00:12:24,599
+easily with some tool sets and
+things like that. But with teams
+
+242
+00:12:24,599 --> 00:12:28,229
+in the mix, and because of
+people adopting teams, it's
+
+243
+00:12:28,229 --> 00:12:31,109
+inevitable that every tenant now
+has some form of team stuff.
+
+244
+00:12:31,109 --> 00:12:33,539
+Right. And, you know, just
+recently, I was working with a
+
+245
+00:12:33,539 --> 00:12:38,309
+customer where they, you know,
+they had kind of sold off a part
+
+246
+00:12:38,309 --> 00:12:42,329
+of their business divested a
+part of their business, and they
+
+247
+00:12:42,329 --> 00:12:46,229
+had two and a half thousand
+teams. And and the new business
+
+248
+00:12:46,229 --> 00:12:48,389
+was only taking like 500 of
+those two and a half thousand
+
+249
+00:12:48,389 --> 00:12:51,509
+teams. And it became I mean, it
+was, it was very interesting.
+
+250
+00:12:51,509 --> 00:12:57,479
+Yeah, yeah, I got to know the
+graph API. That's an I I
+
+251
+00:12:57,479 --> 00:13:01,289
+probably would have ever wanted
+to drop it. That project. But I
+
+252
+00:13:01,289 --> 00:13:05,219
+mean, it was fun, though, but it
+is very complex.
+
+253
+00:13:05,309 --> 00:13:07,949
+Paul Bloem: Yeah, that the tools
+for that sort of tenant tenant
+
+254
+00:13:07,949 --> 00:13:11,549
+migrations there. Yeah, I guess
+I mean, they hardly existing.
+
+255
+00:13:11,549 --> 00:13:15,149
+Right. They're they're pretty,
+pretty juvenile at best. And so
+
+256
+00:13:15,149 --> 00:13:18,509
+a lot of that comes down to the
+skill sets of the resources
+
+257
+00:13:18,509 --> 00:13:19,139
+using,
+
+258
+00:13:19,409 --> 00:13:21,239
+Andrew Morpeth: and that can be
+a creative challenge. And
+
+259
+00:13:21,000 --> 00:13:24,810
+Chris Goosen: it definitely, you
+know, I think that the point
+
+260
+00:13:24,810 --> 00:13:27,960
+there, or at least to me, is
+it's arguable whether the
+
+261
+00:13:28,230 --> 00:13:31,620
+investment in because let's be
+honest, you can do anything. If
+
+262
+00:13:31,620 --> 00:13:34,290
+you put your mind to it. We have
+PowerShell we have automation
+
+263
+00:13:34,290 --> 00:13:36,540
+things at the end, we can
+eventually we can get there,
+
+264
+00:13:36,570 --> 00:13:39,150
+right? Oh, you want to migrate
+conversation history? Well,
+
+265
+00:13:39,150 --> 00:13:41,280
+there's no real API for that,
+but we could probably get it
+
+266
+00:13:41,280 --> 00:13:45,960
+done. I know Lee Ford. MVP out
+of the UK has a fantastic script
+
+267
+00:13:45,960 --> 00:13:50,820
+and does some stuff. And you
+know, I used his stuff a lot in
+
+268
+00:13:50,820 --> 00:13:54,270
+the past or at least on that
+project. I owe you a beer there
+
+269
+00:13:54,390 --> 00:13:57,600
+Lee we'll see each other at
+summit. I'm buying the first
+
+270
+00:13:57,600 --> 00:13:57,930
+round.
+
+271
+00:13:58,350 --> 00:13:59,670
+Andrew Morpeth: About a second
+Yeah.
+
+272
+00:14:00,000 --> 00:14:02,130
+Chris Goosen: But you've got to
+get to a point at some point
+
+273
+00:14:02,130 --> 00:14:05,040
+where you go, well, the resource
+costs associated with coming up
+
+274
+00:14:05,040 --> 00:14:08,790
+with these include g bomb Grant
+Solutions isn't worth the reward
+
+275
+00:14:08,790 --> 00:14:10,740
+of Yeah, getting the stuff.
+Absolutely.
+
+276
+00:14:10,769 --> 00:14:13,469
+Paul Bloem: You've got to, and
+we had a discussion about that
+
+277
+00:14:13,469 --> 00:14:16,619
+earlier today. Sometimes you've
+got the sort of idea of
+
+278
+00:14:16,619 --> 00:14:20,069
+perfection on a plan of where
+you got to go. And then there's
+
+279
+00:14:20,069 --> 00:14:22,919
+the budget. Yep. So you got to
+kind of draw a line in the sand
+
+280
+00:14:22,919 --> 00:14:25,739
+and go, look, we can give you
+that perfect outcome that you
+
+281
+00:14:25,739 --> 00:14:29,129
+want, but it's gonna cost you a
+hell of a lot of money. So what
+
+282
+00:14:29,129 --> 00:14:32,189
+are you comfortable with paying?
+Yeah, how much can we deliver
+
+283
+00:14:32,189 --> 00:14:35,519
+for that? And you've got to set
+that expectation right from the
+
+284
+00:14:35,519 --> 00:14:38,009
+beginning. And it gives you a
+bit of leeway to deliver
+
+285
+00:14:38,009 --> 00:14:38,549
+accordingly.
+
+286
+00:14:38,580 --> 00:14:40,950
+Chris Goosen: Yeah. And I think
+that's, that's the important
+
+287
+00:14:40,950 --> 00:14:43,680
+part. That's our job as
+technologists, right, is to be
+
+288
+00:14:44,400 --> 00:14:47,130
+upfront with our customers and
+actually advise them to that,
+
+289
+00:14:47,130 --> 00:14:51,750
+right. I think Unfortunately,
+there's this sort of sense
+
+290
+00:14:51,780 --> 00:14:54,720
+lately of people just becoming
+button clickers, right, instead
+
+291
+00:14:54,720 --> 00:14:58,560
+of actually being advisors or
+consultants to to the customers
+
+292
+00:14:58,560 --> 00:15:01,140
+because you know, it's so much
+cheaper to do it. Project 100%
+
+293
+00:15:01,140 --> 00:15:03,360
+remote that it is yeah, to go
+and stand there talking to your
+
+294
+00:15:03,360 --> 00:15:05,400
+customer. But when you're
+actually spending the time with
+
+295
+00:15:05,400 --> 00:15:07,320
+them, you can actually then have
+types these types of
+
+296
+00:15:07,320 --> 00:15:10,020
+conversations and actually
+deliver significant more value
+
+297
+00:15:10,020 --> 00:15:12,300
+than just Next. Next Next thing
+through that
+
+298
+00:15:13,440 --> 00:15:15,510
+Andrew Morpeth: person is so
+important. Yeah, video
+
+299
+00:15:15,510 --> 00:15:19,050
+conferencing to a degree. Yeah.
+You need to get to know people
+
+300
+00:15:19,050 --> 00:15:21,660
+and have candid conversations.
+And yeah, at least initially,
+
+301
+00:15:21,660 --> 00:15:23,490
+you need to have those in
+person, I still think there's
+
+302
+00:15:23,490 --> 00:15:24,300
+still merit in that.
+
+303
+00:15:24,450 --> 00:15:26,790
+Paul Bloem: We're still old
+school that way within our team.
+
+304
+00:15:27,630 --> 00:15:32,190
+Any project that we kick off, we
+always insist on you know,
+
+305
+00:15:32,190 --> 00:15:36,270
+initially at very least getting
+them eye to eye contact. Our
+
+306
+00:15:36,300 --> 00:15:40,380
+body language, customer's body
+language, you basically install
+
+307
+00:15:40,380 --> 00:15:43,500
+confidence, and you help them to
+appreciate that, hey, these guys
+
+308
+00:15:43,500 --> 00:15:46,380
+know what they're doing and
+they're here to help me. And of
+
+309
+00:15:46,380 --> 00:15:48,750
+course between Andrew and I were
+always waiting for that first
+
+310
+00:15:48,750 --> 00:15:50,370
+project in Fiji but it hasn't
+happened
+
+311
+00:15:52,110 --> 00:15:53,940
+Andrew Morpeth: yet, or any
+other island nation.
+
+312
+00:15:55,520 --> 00:15:59,660
+Chris Goosen: So tell me about
+and I think you might be the
+
+313
+00:15:59,660 --> 00:16:02,150
+best Andrew might be the most
+positive sort of work. So the
+
+314
+00:16:02,150 --> 00:16:06,110
+islands mode trap is something
+that I've, we've seen a lot of
+
+315
+00:16:06,179 --> 00:16:10,019
+Andrew Morpeth: Yep. Yeah, I've
+heard that term I coined I
+
+316
+00:16:10,019 --> 00:16:12,779
+haven't quite used it myself,
+but it's certainly a problem.
+
+317
+00:16:13,859 --> 00:16:17,669
+You know, Microsoft obviously
+want adoption of teams. And for
+
+318
+00:16:17,669 --> 00:16:22,199
+them islands makes sense because
+it means by default, generally
+
+319
+00:16:22,199 --> 00:16:24,239
+speaking, if you're a three,
+five, you know, one of those
+
+320
+00:16:24,239 --> 00:16:26,399
+plans you get, it's going to
+just be turned on unless the
+
+321
+00:16:26,399 --> 00:16:28,979
+admins have done something to
+circumvent that, right. You just
+
+322
+00:16:28,979 --> 00:16:32,549
+get it. So if someone starts
+using it, since an IM chat, I
+
+323
+00:16:32,549 --> 00:16:36,089
+should call up to someone or
+some sort of message, it will
+
+324
+00:16:36,089 --> 00:16:38,909
+get to the other participant and
+they can kind of join and it's
+
+325
+00:16:38,909 --> 00:16:44,639
+there. The problem I find with
+it is it causes interrupt issues
+
+326
+00:16:44,639 --> 00:16:47,609
+because in Ireland's as the name
+suggests, both Skype for
+
+327
+00:16:47,609 --> 00:16:51,269
+Business if you're using that as
+very separate teams and they run
+
+328
+00:16:51,269 --> 00:16:54,659
+independently of each other. And
+with Ireland's being the
+
+329
+00:16:54,659 --> 00:16:57,599
+default. You really need your
+customers to understand that
+
+330
+00:16:57,599 --> 00:17:00,359
+they need to drive adoption away
+from Skype entities. teams and
+
+331
+00:17:00,359 --> 00:17:02,879
+make sure everyone's aware of
+it. Because things that can
+
+332
+00:17:02,879 --> 00:17:06,419
+happen. For example, as I seen
+Paul a chat message, right? He
+
+333
+00:17:06,419 --> 00:17:08,399
+doesn't know what teams is he's
+never used it because his
+
+334
+00:17:08,399 --> 00:17:11,069
+company hasn't announced that it
+exists. It's just turned on. And
+
+335
+00:17:11,069 --> 00:17:13,769
+he's found it. I found it. And
+I've sent him a chat message.
+
+336
+00:17:14,369 --> 00:17:16,499
+Yes, he'll get an email
+notification, say someone's
+
+337
+00:17:16,499 --> 00:17:18,929
+trying to get you in teams. But
+he's never heard of his Oh, was
+
+338
+00:17:18,929 --> 00:17:21,209
+this team's thing throws it in
+this junk email, right. So
+
+339
+00:17:21,209 --> 00:17:25,079
+creates a poor experience for
+the users that who are using it.
+
+340
+00:17:25,079 --> 00:17:29,399
+And the ones because of the ones
+that aren't interested in kind
+
+341
+00:17:29,399 --> 00:17:32,369
+of self learning it. So that's
+where the problem is. So what
+
+342
+00:17:32,369 --> 00:17:35,579
+you really want in my view, is
+you want to make a call up
+
+343
+00:17:35,579 --> 00:17:38,819
+front, you want to decide what
+platform you're going to use,
+
+344
+00:17:39,089 --> 00:17:42,599
+and sit that mode accordingly.
+For one by doing that, it
+
+345
+00:17:42,599 --> 00:17:45,989
+ensures that the interrupt
+works. We get a lot of customers
+
+346
+00:17:45,989 --> 00:17:49,829
+saying it doesn't work. And it's
+not that it doesn't work. It's
+
+347
+00:17:49,829 --> 00:17:52,409
+that probably you're in islands
+mode, or probably you don't
+
+348
+00:17:52,409 --> 00:17:56,339
+quite understand what the modes
+actually mean. So in the very
+
+349
+00:17:56,339 --> 00:18:01,199
+basic sense of it, there's a
+Skype only mode which centrally,
+
+350
+00:18:01,229 --> 00:18:04,349
+your teams is disabled, and you
+only use Skype. And then at the
+
+351
+00:18:04,349 --> 00:18:06,809
+other end of the scale, there's
+a team's only mode where you
+
+352
+00:18:06,809 --> 00:18:10,589
+don't use Skype anymore. And you
+you fully transition to teams.
+
+353
+00:18:10,799 --> 00:18:13,529
+There's modes in the middle that
+let you transition features
+
+354
+00:18:13,529 --> 00:18:16,499
+across, for example, there's a
+Skype with teams meeting mode,
+
+355
+00:18:16,979 --> 00:18:19,409
+right. And those modes
+essentially will allow you to
+
+356
+00:18:19,409 --> 00:18:23,579
+present to the user what they
+should be using and what client
+
+357
+00:18:23,909 --> 00:18:27,119
+and if you have half your user
+base on Skype, and half on
+
+358
+00:18:27,119 --> 00:18:30,569
+teams, it guarantees the
+interrupt based on the modes
+
+359
+00:18:30,569 --> 00:18:34,739
+that each of your users are on.
+So if I'm in Skype, and I send a
+
+360
+00:18:34,739 --> 00:18:37,439
+chat message to someone who is
+in teams, I don't need to know
+
+361
+00:18:37,439 --> 00:18:40,109
+that they're in teams. By
+setting those policies correctly
+
+362
+00:18:40,109 --> 00:18:43,019
+for each user. Microsoft will
+make sure that that happens,
+
+363
+00:18:43,019 --> 00:18:46,019
+right. And and largely this
+works. This works well. And it
+
+364
+00:18:46,019 --> 00:18:51,119
+works for even for Skype hybrid
+server deployments. So yes, I
+
+365
+00:18:51,119 --> 00:18:54,029
+think it probably is a trap.
+That's probably not the best
+
+366
+00:18:54,029 --> 00:18:57,659
+default. I understand why
+Microsoft have done it. But
+
+367
+00:18:57,659 --> 00:19:00,419
+it's, you know, it's up to you
+IT admins out there, too. Get
+
+368
+00:19:00,419 --> 00:19:02,819
+across it and make sure you
+deploy the mode that suits you
+
+369
+00:19:02,819 --> 00:19:04,049
+and understand what it means.
+
+370
+00:19:04,110 --> 00:19:06,360
+Chris Goosen: Yeah, I think so.
+But really bottom line here is
+
+371
+00:19:06,360 --> 00:19:10,020
+it can be really confusing to
+the end user when when email
+
+372
+00:19:10,110 --> 00:19:13,380
+messages flying around. And
+yeah, you know, and I saw this,
+
+373
+00:19:13,950 --> 00:19:17,190
+you know, internally, we we
+weren't on as much for a long
+
+374
+00:19:17,190 --> 00:19:21,180
+time. And, you know, I was on
+teams only because I was one of
+
+375
+00:19:21,180 --> 00:19:23,340
+the tests guinea pigs, right.
+But then like, my manager, for
+
+376
+00:19:23,340 --> 00:19:26,970
+example, would not be and so I'm
+trying to, I am aiming from
+
+377
+00:19:26,970 --> 00:19:31,440
+teams, two teams, but you know,
+his presence is away because
+
+378
+00:19:31,440 --> 00:19:33,600
+he's not even looking at the
+team's client. He's using Skype
+
+379
+00:19:33,600 --> 00:19:36,270
+for everything. So I ended up
+having two contacts for him one
+
+380
+00:19:36,270 --> 00:19:40,200
+that has the Skype icon next to
+it. One that doesn't it. Like
+
+381
+00:19:40,200 --> 00:19:42,480
+for me, that's confusing. Can
+you imagine for like an end user
+
+382
+00:19:42,480 --> 00:19:44,040
+who has no idea what's going on
+here? It's
+
+383
+00:19:44,040 --> 00:19:46,770
+Paul Bloem: a shame because the
+technology we're talking about
+
+384
+00:19:46,770 --> 00:19:50,040
+is designed to connect people.
+Yes. Forget it. We're in a
+
+385
+00:19:50,040 --> 00:19:53,340
+situation where we're
+disconnecting. Yes, yeah.
+
+386
+00:19:53,430 --> 00:19:55,710
+Chris Goosen: Yeah. So I think
+really important to spend the
+
+387
+00:19:55,710 --> 00:20:00,000
+time here thinking about not
+only like, how will you want
+
+388
+00:20:00,000 --> 00:20:02,730
+What the best user experience is
+going to be for your situation.
+
+389
+00:20:02,880 --> 00:20:07,320
+But also, make sure the timeline
+is understood because it can be
+
+390
+00:20:07,320 --> 00:20:12,450
+very easy trap to fall into
+forgive the pun, to, okay, we're
+
+391
+00:20:12,450 --> 00:20:15,000
+going to enable this, it's going
+to coexist. So we don't need to
+
+392
+00:20:15,000 --> 00:20:17,850
+worry about accelerating the
+deployment, because, hey, it's
+
+393
+00:20:17,850 --> 00:20:20,310
+going to work right. You know,
+it's kind of like a, like a
+
+394
+00:20:20,310 --> 00:20:22,740
+hybrid deployment. You know,
+there are a lot of folks in the
+
+395
+00:20:22,740 --> 00:20:26,460
+exchange water use hybrid as a
+long term coexistence mode,
+
+396
+00:20:26,460 --> 00:20:29,760
+right, which is, which is fine
+and in, it certainly works for
+
+397
+00:20:29,760 --> 00:20:32,010
+that. But you don't want to be
+doing that with this. You kind
+
+398
+00:20:32,010 --> 00:20:34,950
+of want to use it to make sure
+that you're transitioning
+
+399
+00:20:34,950 --> 00:20:37,440
+correctly, but get the
+transaction done as quickly as
+
+400
+00:20:37,440 --> 00:20:37,860
+you can. Yeah,
+
+401
+00:20:37,860 --> 00:20:38,730
+Paul Bloem: it's got to be a
+driver.
+
+402
+00:20:38,760 --> 00:20:40,350
+Andrew Morpeth: Yeah,
+absolutely. Yeah. Once customers
+
+403
+00:20:40,380 --> 00:20:43,560
+understand what it means it's
+actually a reasonably easy
+
+404
+00:20:43,560 --> 00:20:46,350
+decision to take to the business
+and say, Look, we need to make
+
+405
+00:20:46,350 --> 00:20:50,430
+this decision, what's it going
+to be? And then what I mean, the
+
+406
+00:20:50,430 --> 00:20:53,790
+easiest thing to do and if
+people had people have done that
+
+407
+00:20:53,880 --> 00:20:57,780
+out the out front, right, or if
+Microsoft had made Skype only
+
+408
+00:20:57,780 --> 00:21:00,720
+the default because everyone was
+on Skype or You know, something
+
+409
+00:21:00,720 --> 00:21:03,150
+like that. And then he forced
+the admins to make the decision,
+
+410
+00:21:03,210 --> 00:21:06,810
+it probably would have created a
+bitter experience, because
+
+411
+00:21:06,810 --> 00:21:09,030
+people would have had to go and
+turn things on and really
+
+412
+00:21:09,030 --> 00:21:12,180
+understand what it meant. And I
+personally don't like the
+
+413
+00:21:12,180 --> 00:21:12,990
+default. But
+
+414
+00:21:13,350 --> 00:21:16,590
+Paul Bloem: yeah, I'll back you
+up on that. I totally agree. I
+
+415
+00:21:16,590 --> 00:21:20,010
+don't like the idea of having
+dual apps with overlapping
+
+416
+00:21:20,010 --> 00:21:24,030
+features. It confuses people.
+But as soon as you change those
+
+417
+00:21:24,030 --> 00:21:27,480
+modes to something else, you're
+taking something away and if you
+
+418
+00:21:27,480 --> 00:21:30,300
+ever want to annoy users take
+something away so it leaves you
+
+419
+00:21:30,300 --> 00:21:32,730
+in a in a nasty place which I
+guess is a good thing for us
+
+420
+00:21:32,730 --> 00:21:34,140
+since it's how we make our bread
+
+421
+00:21:34,320 --> 00:21:37,080
+Andrew Morpeth: well one thing I
+find amusing is that that is
+
+422
+00:21:37,080 --> 00:21:40,530
+completely the opposite in the
+personal world, like people run
+
+423
+00:21:40,530 --> 00:21:43,350
+around with WhatsApp iMessage
+everything on their phones they
+
+424
+00:21:43,350 --> 00:21:46,050
+got no problem switching between
+them for you know different
+
+425
+00:21:46,050 --> 00:21:48,870
+chats but when it comes to
+enterprise Yep, it kind of has
+
+426
+00:21:48,870 --> 00:21:52,620
+to be run by the business that
+you work for otherwise they
+
+427
+00:21:52,680 --> 00:21:54,420
+disinterested in it for what are
+
+428
+00:21:54,000 --> 00:21:56,850
+Chris Goosen: we also we're at a
+point now where things are so
+
+429
+00:21:57,360 --> 00:22:01,440
+like the always on on by default
+is Such a thing now, right? Like
+
+430
+00:22:01,440 --> 00:22:04,830
+if you I think the the team's
+app is now being deployed with,
+
+431
+00:22:05,070 --> 00:22:08,100
+with Office. Yeah. So to kind of
+get away from it, and you know,
+
+432
+00:22:08,100 --> 00:22:13,350
+I, my wife, I often use my
+wife's company organization as a
+
+433
+00:22:13,350 --> 00:22:17,880
+great kind of example of a lot
+of things because they, you
+
+434
+00:22:17,880 --> 00:22:21,330
+know, they use the whole gamut
+of technologies. They use
+
+435
+00:22:21,330 --> 00:22:24,090
+Google, they use WebEx stuff.
+And I know the other day, I was
+
+436
+00:22:24,090 --> 00:22:25,890
+looking at a laptop for
+something, I was helping you out
+
+437
+00:22:25,890 --> 00:22:28,620
+with something. And I was like,
+Hey, you have teams, and she was
+
+438
+00:22:28,620 --> 00:22:30,300
+like, oh, let's just got
+installed the other day. I don't
+
+439
+00:22:30,300 --> 00:22:36,120
+know what that's for. Yeah,
+exactly. So it's kind of just,
+
+440
+00:22:36,120 --> 00:22:39,270
+uh, you know, you, you just, I
+mean, it's a great example of
+
+441
+00:22:39,300 --> 00:22:41,490
+actually being able to, you
+know, communicate to your users
+
+442
+00:22:41,490 --> 00:22:44,850
+when changes coming. But also,
+there's so much overlap between
+
+443
+00:22:44,850 --> 00:22:47,490
+so many different things and
+different vendors are doing same
+
+444
+00:22:47,490 --> 00:22:50,370
+things. And you know, why on
+earth the WebEx folks called
+
+445
+00:22:50,370 --> 00:22:53,100
+their product teams as well.
+It's just beyond me like it
+
+446
+00:22:53,100 --> 00:22:53,400
+just,
+
+447
+00:22:53,430 --> 00:22:54,870
+Andrew Morpeth: you know, mix it
+up some more.
+
+448
+00:22:55,590 --> 00:22:57,720
+Chris Goosen: But let's not
+scratch open that wound right
+
+449
+00:22:57,720 --> 00:23:03,090
+now. So, okay, so let's, let's
+talk a little bit about, I
+
+450
+00:23:03,090 --> 00:23:06,120
+guess, direct routing and the
+voice side of things.
+
+451
+00:23:06,510 --> 00:23:08,670
+Andrew Morpeth: Okay. So for
+those that don't know direct
+
+452
+00:23:08,670 --> 00:23:12,600
+routing is essentially a bring
+your own SIP trunk to Microsoft
+
+453
+00:23:12,600 --> 00:23:16,080
+Teams. It's a it's an over the
+internet encrypt encrypted SIP
+
+454
+00:23:16,080 --> 00:23:22,440
+trunk between your session
+border controller or SBC to the
+
+455
+00:23:22,440 --> 00:23:26,670
+Microsoft Teams edge. There's
+various ways you can deploy it.
+
+456
+00:23:26,670 --> 00:23:31,500
+So you can use a supported or
+certified SBC. So there's the
+
+457
+00:23:31,500 --> 00:23:34,650
+likes of ribbon audiocodes. And
+there's a few other ones Oracle
+
+458
+00:23:34,650 --> 00:23:37,800
+and I'm trying to rattle them
+off off the top of my head hear
+
+459
+00:23:38,430 --> 00:23:40,920
+this, but the other way you can
+do that is it's opened the doors
+
+460
+00:23:40,920 --> 00:23:44,040
+for telcos to start offering the
+service as well. So they're
+
+461
+00:23:44,040 --> 00:23:47,460
+building out their SBC platforms
+to support direct routing and
+
+462
+00:23:47,460 --> 00:23:51,330
+then offering SIP trunks
+directly to teams on your behalf
+
+463
+00:23:51,330 --> 00:23:54,690
+right at little to no more
+additional costs as what we're
+
+464
+00:23:54,690 --> 00:23:58,260
+seeing in the market here. So
+you know, it might be $1 $2 more
+
+465
+00:23:58,260 --> 00:24:01,740
+for a SIP trunk as opposed to
+Something delivered on premise
+
+466
+00:24:01,770 --> 00:24:04,320
+that you'd have to hook up to
+your own SBC. They take away the
+
+467
+00:24:04,320 --> 00:24:06,840
+headache. And that makes sense
+for a lot of customers who are
+
+468
+00:24:06,840 --> 00:24:08,910
+trying to get everything off
+Prem, move everything to cloud.
+
+469
+00:24:09,270 --> 00:24:11,760
+They've already got a telco
+relationship, that telco offers
+
+470
+00:24:11,760 --> 00:24:15,240
+the service. They just turn it
+on, migrate the numbers across,
+
+471
+00:24:15,690 --> 00:24:19,500
+and you're done. There's still
+some merit. I think in having an
+
+472
+00:24:19,500 --> 00:24:24,660
+SBC. I like it. When customers
+choose the SBC option selfishly
+
+473
+00:24:24,660 --> 00:24:28,860
+probably because it gives me a
+inbetween vantage point to see
+
+474
+00:24:28,860 --> 00:24:31,320
+where things are going wrong if
+they're going wrong. It also
+
+475
+00:24:31,320 --> 00:24:35,010
+lets me do things like
+manipulate numbers and and, you
+
+476
+00:24:35,010 --> 00:24:37,410
+know, do some diverting and
+different things like that
+
+477
+00:24:37,410 --> 00:24:41,280
+that's not quite there in the
+team's Admin Center at the
+
+478
+00:24:41,280 --> 00:24:44,220
+moment or available as a
+feature, right. So the SBC gives
+
+479
+00:24:44,220 --> 00:24:46,920
+you some additional capability
+that you wouldn't have if you go
+
+480
+00:24:46,920 --> 00:24:50,790
+for a run of the mill hosted
+solution. So those are the two
+
+481
+00:24:51,060 --> 00:24:53,370
+options we have in our market
+and there's obviously the
+
+482
+00:24:53,370 --> 00:24:56,430
+Microsoft calling plans, but
+they're only in sort of 11 1213
+
+483
+00:24:56,430 --> 00:24:58,950
+countries off the top of my
+head. Were you just buying the
+
+484
+00:24:58,950 --> 00:25:01,110
+minutes directly of Microsoft.
+
+485
+00:25:01,000 --> 00:25:03,970
+Chris Goosen: Yeah. How what
+would you say would be the
+
+486
+00:25:03,970 --> 00:25:06,430
+percentage of folks who
+organizations who already have
+
+487
+00:25:06,430 --> 00:25:10,630
+an SBC that that they just
+essentially using what they have
+
+488
+00:25:10,630 --> 00:25:12,250
+versus new purchases? Yeah,
+
+489
+00:25:12,000 --> 00:25:15,990
+Andrew Morpeth: a lot of our
+customers because we've been
+
+490
+00:25:15,990 --> 00:25:19,140
+just hitting the sand with Skype
+for Business for so long so many
+
+491
+00:25:19,140 --> 00:25:22,860
+years. You know, all the
+customers we deal with a pretty
+
+492
+00:25:22,860 --> 00:25:26,580
+well I'd say 95% of our Skype
+customers are enterprise voice
+
+493
+00:25:26,580 --> 00:25:30,840
+enabled which means they have
+SBCs a lot of those SBCs have
+
+494
+00:25:30,840 --> 00:25:33,240
+always been Microsoft Certified
+so therefore they can be
+
+495
+00:25:33,240 --> 00:25:36,960
+firmware upgraded to support the
+team's journey. So yeah, most of
+
+496
+00:25:36,960 --> 00:25:41,550
+our customers who have Scott
+definitely will have an SBC if
+
+497
+00:25:41,550 --> 00:25:43,530
+they don't, you know, you can
+buy one you can go for the
+
+498
+00:25:43,530 --> 00:25:46,800
+hosted service. These are all
+supported virtualized now. So
+
+499
+00:25:46,830 --> 00:25:50,220
+you know, you can get pick one
+up for a few hundred bucks. It's
+
+500
+00:25:50,220 --> 00:25:54,270
+a reasonably cheap entry point.
+Yeah. If you want to host it. We
+
+501
+00:25:54,270 --> 00:25:54,330
+have
+
+502
+00:25:54,480 --> 00:25:57,030
+Paul Bloem: we have a split with
+several organizations and
+
+503
+00:25:57,030 --> 00:25:59,370
+there's a number I'm working
+with at the moment who are
+
+504
+00:25:59,370 --> 00:26:02,640
+trying to be resilient
+geographically to, you know,
+
+505
+00:26:02,940 --> 00:26:05,700
+disasters and that sort of
+thing. But a lot of them have
+
+506
+00:26:05,700 --> 00:26:08,940
+components that don't
+traditionally work with sort of
+
+507
+00:26:08,940 --> 00:26:11,880
+a hosted or cloud based SBC so
+that they might have some
+
+508
+00:26:11,910 --> 00:26:15,750
+elevator phones, they might have
+some Nish contact center that
+
+509
+00:26:15,750 --> 00:26:19,260
+doesn't talk to teams. And so
+we'll use the session border
+
+510
+00:26:19,260 --> 00:26:22,530
+controller as a voice gateway or
+router, right, that allows you
+
+511
+00:26:22,530 --> 00:26:26,940
+to intercept and interoperate
+these different platforms. fair
+
+512
+00:26:26,940 --> 00:26:30,930
+to say those are massively more
+complex in terms of deployment,
+
+513
+00:26:31,140 --> 00:26:33,900
+and looking after and so on. And
+that I guess it's fair to say
+
+514
+00:26:33,900 --> 00:26:37,320
+that's our Kung Fu, we may get
+some good margin of that. We
+
+515
+00:26:37,320 --> 00:26:41,850
+know that space very well. And
+those who have gone down that
+
+516
+00:26:41,850 --> 00:26:45,210
+path have made their choice
+knowingly because of
+
+517
+00:26:45,210 --> 00:26:47,970
+constraints, functions,
+features, that sort of thing
+
+518
+00:26:47,970 --> 00:26:50,280
+that's not available in the
+Skype or even team's world.
+
+519
+00:26:50,480 --> 00:26:52,880
+Andrew Morpeth: Yeah, that's
+right. But the key the key
+
+520
+00:26:52,880 --> 00:26:56,240
+things we use SBCs for if we
+have access to them ourselves,
+
+521
+00:26:56,750 --> 00:26:59,900
+number one, and ELA and
+allocated numbers. There's no
+
+522
+00:26:59,900 --> 00:27:03,230
+reason way to handle that in
+teams right now. So in the SBC,
+
+523
+00:27:03,230 --> 00:27:06,110
+I can I can see that teams
+doesn't know what that number
+
+524
+00:27:06,110 --> 00:27:09,260
+is. And then I can basically do
+a reroute and maybe rewrite that
+
+525
+00:27:09,260 --> 00:27:11,720
+as the reception queue or
+something like that and send the
+
+526
+00:27:11,720 --> 00:27:14,960
+number elsewhere. It's probably
+one of the key things that we
+
+527
+00:27:14,960 --> 00:27:18,230
+use it for. And also just
+general number manipulations,
+
+528
+00:27:18,230 --> 00:27:21,020
+which, as far as I can tell,
+I've seen, I've seen some stuff
+
+529
+00:27:21,020 --> 00:27:26,540
+surface in the PowerShell.
+Properties, but I don't believe
+
+530
+00:27:26,540 --> 00:27:30,020
+they're accessible to be seen
+just yet. But there are some
+
+531
+00:27:30,020 --> 00:27:32,990
+translation capabilities that I
+think are going to be surfaced
+
+532
+00:27:32,990 --> 00:27:36,500
+in teams soon. So that will
+negate some of us. But that's
+
+533
+00:27:36,500 --> 00:27:40,610
+probably the key thing that we
+enjoy having an SBC for, on top
+
+534
+00:27:40,610 --> 00:27:43,580
+of bit, the trace, the
+traceability being able to see
+
+535
+00:27:43,580 --> 00:27:46,520
+what what is Microsoft saying,
+what are the telco say? Yep. And
+
+536
+00:27:46,520 --> 00:27:50,060
+where should I focus my efforts
+to find the problem versus don't
+
+537
+00:27:50,060 --> 00:27:53,420
+have an SBC I need to look in
+the Microsoft portal, try and
+
+538
+00:27:53,450 --> 00:27:56,630
+gather as much information I can
+from the logging, which is not
+
+539
+00:27:56,630 --> 00:28:00,500
+as detailed as traces and go
+from there. And then Maybe I've
+
+540
+00:28:00,500 --> 00:28:02,960
+got to engage the telco because
+its their problem so, it takes a
+
+541
+00:28:02,960 --> 00:28:06,830
+little bit longer yes on an SBC
+trace, we can figure out exactly
+
+542
+00:28:06,830 --> 00:28:08,720
+what's going on straightaway.
+Yeah,
+
+543
+00:28:08,900 --> 00:28:12,050
+Chris Goosen: I can see how that
+would be beneficial and how
+
+544
+00:28:12,230 --> 00:28:14,720
+potentially having some third
+party doing the sort of cloud
+
+545
+00:28:14,720 --> 00:28:18,980
+SBC situation would would cause
+a situation of people pointing
+
+546
+00:28:18,980 --> 00:28:22,160
+fingers at each other, right?
+Yeah. But then but then you also
+
+547
+00:28:22,160 --> 00:28:23,750
+have a few you know, if you
+really want to keep it very
+
+548
+00:28:23,750 --> 00:28:26,180
+simple and you potentially a
+smaller organization, you could
+
+549
+00:28:26,180 --> 00:28:28,880
+just buy the minutes if you're
+in a supportive market, you
+
+550
+00:28:28,880 --> 00:28:31,310
+could just buy the minutes from
+Microsoft and distribute it all.
+
+551
+00:28:31,370 --> 00:28:33,680
+Then you have the one throat to
+choke as they say, Well, yeah,
+
+552
+00:28:33,680 --> 00:28:35,870
+it's all Microsoft Microsoft
+thing that exact Okay,
+
+553
+00:28:36,240 --> 00:28:37,860
+Andrew Morpeth: so there's
+plenty options. It just comes
+
+554
+00:28:37,860 --> 00:28:40,290
+down to your your preference,
+okay, we just normally talk it
+
+555
+00:28:40,290 --> 00:28:42,870
+through with the customer.
+totally up to them. We don't we
+
+556
+00:28:42,870 --> 00:28:46,170
+don't push any particular way of
+doing it down their throat. It's
+
+557
+00:28:46,170 --> 00:28:46,470
+Yeah, we
+
+558
+00:28:46,470 --> 00:28:50,130
+Paul Bloem: don't we don't have
+a preferred service or anything
+
+559
+00:28:50,130 --> 00:28:53,340
+like it will be. We basically go
+pros and cons. What's the
+
+560
+00:28:53,340 --> 00:28:56,520
+customer's current relationships
+with with whoever they're
+
+561
+00:28:56,520 --> 00:28:59,100
+dealing with, and then we try
+and work with them to find some
+
+562
+00:28:59,100 --> 00:28:59,790
+short yet
+
+563
+00:29:00,570 --> 00:29:02,730
+Chris Goosen: And how about I
+mean, are you seeing a lot of
+
+564
+00:29:02,730 --> 00:29:06,570
+customers replacing their
+traditional PBX systems with
+
+565
+00:29:06,600 --> 00:29:09,210
+with teams? And do you think
+teams is ready for that? Is it
+
+566
+00:29:09,210 --> 00:29:09,390
+really?
+
+567
+00:29:11,700 --> 00:29:15,870
+Andrew Morpeth: It's a hard one
+to answer. It's not quite there.
+
+568
+00:29:15,900 --> 00:29:19,080
+Really. It's at the tipping
+point, I think so where it will
+
+569
+00:29:19,080 --> 00:29:22,020
+suit a customer as well. You've
+got simple requirements. Okay.
+
+570
+00:29:22,020 --> 00:29:24,990
+So we're we're mostly seeing
+people take the plunge to
+
+571
+00:29:24,990 --> 00:29:29,430
+enterprise voice and teams, is
+professional services type
+
+572
+00:29:29,430 --> 00:29:31,890
+industries, because they don't
+have super complex requirements.
+
+573
+00:29:31,890 --> 00:29:35,580
+This generally people like us,
+lawyers, accountants, those
+
+574
+00:29:35,580 --> 00:29:38,580
+sorts of people who are making
+and receiving calls directly to
+
+575
+00:29:38,580 --> 00:29:42,630
+them. And they might have a
+receptionist or to receptionist
+
+576
+00:29:42,630 --> 00:29:45,480
+or something like that simple
+call flow coming in, distributes
+
+577
+00:29:45,480 --> 00:29:48,270
+calls, that that works pretty
+well. But there's still
+
+578
+00:29:48,300 --> 00:29:52,440
+limitations even in that right.
+The call queues are getting
+
+579
+00:29:52,440 --> 00:29:54,840
+pretty good. Some of the
+features of the call queues
+
+580
+00:29:55,230 --> 00:29:58,890
+getting better than Skype, some
+aren't quite as mature. The
+
+581
+00:29:58,890 --> 00:30:01,740
+biggest ones that we come up
+against that a well worth noting
+
+582
+00:30:01,770 --> 00:30:06,090
+is, by default from a queue, you
+can't fold out to a PSTN number,
+
+583
+00:30:06,120 --> 00:30:08,670
+you know, it's quite a common
+requirement, maybe an uncle tick
+
+584
+00:30:08,670 --> 00:30:11,340
+or something you need to go
+directly out. So, workaround,
+
+585
+00:30:11,340 --> 00:30:14,340
+you need a dummy user account
+that's fully licensed, you know,
+
+586
+00:30:14,340 --> 00:30:18,450
+so you kind of have to create
+your own creative ways of doing
+
+587
+00:30:18,450 --> 00:30:23,010
+things. Another one that we that
+impacts us, I think it's more of
+
+588
+00:30:23,010 --> 00:30:26,760
+an APAC issue. Not a global
+issue from other people I've
+
+589
+00:30:26,760 --> 00:30:30,240
+talked to is that there's
+significant call queue delay. So
+
+590
+00:30:30,240 --> 00:30:34,140
+when you answer a call queue
+call, you can I've seen up to
+
+591
+00:30:34,170 --> 00:30:36,600
+eight seconds before you get
+audio right. Wow, that's a
+
+592
+00:30:36,600 --> 00:30:40,470
+pretty disjointed experience for
+the agent trying to answer calls
+
+593
+00:30:40,470 --> 00:30:42,540
+right, where they're going to
+sit there and wait for the the
+
+594
+00:30:42,540 --> 00:30:46,470
+audio to kick in. So that's
+problematic. And we've we've had
+
+595
+00:30:46,470 --> 00:30:48,990
+to for some customers who don't
+think that's acceptable, and I
+
+596
+00:30:48,990 --> 00:30:51,510
+don't think that's acceptable
+personally, some customers live
+
+597
+00:30:51,510 --> 00:30:53,370
+with it. But for customers that
+don't want to live with it,
+
+598
+00:30:53,370 --> 00:30:57,960
+we've had to use again, dummy
+user accounts using the core
+
+599
+00:30:57,960 --> 00:31:01,200
+group capability of a user
+endpoint tops it out, right? So
+
+600
+00:31:01,200 --> 00:31:05,520
+we create a core group in the
+user config and distribute calls
+
+601
+00:31:05,520 --> 00:31:08,880
+that way. Again, another
+creative way of doing things to
+
+602
+00:31:08,880 --> 00:31:13,650
+work around some immaturities in
+the product. So, you know, if,
+
+603
+00:31:13,830 --> 00:31:16,140
+if you're going to move
+enterprise voice to teams, my
+
+604
+00:31:16,140 --> 00:31:19,740
+general messages, you've got to
+be willing to deal with some
+
+605
+00:31:19,740 --> 00:31:22,830
+rough edges. I wouldn't call it
+bleeding edge anymore, but it's
+
+606
+00:31:22,830 --> 00:31:25,620
+kind of just come out of the
+bleeding edge. And it's for the
+
+607
+00:31:25,620 --> 00:31:29,910
+early majority, certainly who
+are willing and able and
+
+608
+00:31:29,910 --> 00:31:34,590
+prepared to be kind of flexible
+and you know, working around how
+
+609
+00:31:34,590 --> 00:31:37,320
+they might have expected it to
+work versus the realities of it.
+
+610
+00:31:37,770 --> 00:31:41,610
+So you really need to make sure
+you understand how enterprise
+
+611
+00:31:41,610 --> 00:31:46,110
+voice works and compare feature
+for feature for you know, what
+
+612
+00:31:46,110 --> 00:31:48,180
+you've got and what you've come
+from and determine what you're
+
+613
+00:31:48,180 --> 00:31:51,300
+prepared to give up them to get
+to teams at this enterprise
+
+614
+00:31:51,300 --> 00:31:55,200
+voice for at this early stage.
+Yeah, but enterprise voice is
+
+615
+00:31:55,200 --> 00:31:57,870
+not what Microsoft's really
+pushing as a it's really the
+
+616
+00:31:57,870 --> 00:32:02,100
+collaboration So that stuff's
+gonna mature, they're moving it
+
+617
+00:32:02,100 --> 00:32:05,610
+from the Skype online world it's
+getting there. It's, it's, I've
+
+618
+00:32:05,610 --> 00:32:08,820
+always said probably by the end
+of this year, we'll probably be
+
+619
+00:32:08,820 --> 00:32:11,850
+at the point where Man, these
+features are actually probably
+
+620
+00:32:11,850 --> 00:32:15,030
+better than Skype. Now a lot of
+them are already kind of better.
+
+621
+00:32:15,180 --> 00:32:17,340
+I like the auto attendance
+better the text to speech,
+
+622
+00:32:17,340 --> 00:32:20,160
+there's a lot of stuff that's
+better is just some stuff that's
+
+623
+00:32:20,160 --> 00:32:21,390
+just not quite there
+
+624
+00:32:21,000 --> 00:32:23,520
+Paul Bloem: It needs a bit of
+time to mature. So a lot of
+
+625
+00:32:23,520 --> 00:32:26,460
+businesses are not quite ready
+to take the plant. They want to
+
+626
+00:32:26,460 --> 00:32:30,390
+see it prove itself and you who
+can blame them? Yeah. But for
+
+627
+00:32:30,390 --> 00:32:34,050
+me, the real shining star in the
+team space when you're coming
+
+628
+00:32:34,050 --> 00:32:37,800
+from a Skype for business
+background is the meeting space.
+
+629
+00:32:38,040 --> 00:32:40,740
+I absolutely love the meeting
+space. It's one of my favorite
+
+630
+00:32:40,740 --> 00:32:43,560
+things to talk about it being
+able to see and there's some
+
+631
+00:32:43,590 --> 00:32:46,740
+really cool things coming that
+just can't wait to get my hands
+
+632
+00:32:46,740 --> 00:32:51,930
+on and just having a look at
+Skype versus a team's meeting.
+
+633
+00:32:51,930 --> 00:32:53,670
+It kind of feels a little 80s.
+Yeah.
+
+634
+00:32:54,600 --> 00:32:57,060
+Andrew Morpeth: I mean, yeah,
+hasn't changed much past what it
+
+635
+00:32:57,060 --> 00:33:00,660
+was a messenger you know, it's
+all that same sort of format, it
+
+636
+00:33:00,660 --> 00:33:03,270
+looks nice bit nicer. But it's
+sort of that messenger. It's
+
+637
+00:33:03,270 --> 00:33:06,600
+very old school instant message.
+And I say, teams is definitely
+
+638
+00:33:06,600 --> 00:33:08,910
+the new thing and the way
+forward and just jumping back to
+
+639
+00:33:08,910 --> 00:33:12,270
+modes, right? This is where you
+can use Mosier advantage if
+
+640
+00:33:12,270 --> 00:33:14,460
+you're a Skype customer and
+you're an enterprise voice in
+
+641
+00:33:14,460 --> 00:33:17,220
+teams isn't ready for you've
+checked it out, you can still
+
+642
+00:33:17,220 --> 00:33:20,520
+enable your users as Skype for
+Business with teams
+
+643
+00:33:20,550 --> 00:33:23,940
+collaboration and meetings. So
+that lights up meetings and
+
+644
+00:33:23,940 --> 00:33:26,250
+teams and you've got the
+collaboration stuff, which Skype
+
+645
+00:33:27,000 --> 00:33:30,000
+arguably doesn't work that
+either doesn't do and meetings,
+
+646
+00:33:30,000 --> 00:33:32,850
+probably not as good. You can
+light that up in teams, but
+
+647
+00:33:32,850 --> 00:33:36,180
+still ensure that the enterprise
+voice features are still in
+
+648
+00:33:36,180 --> 00:33:38,940
+teams. And so sorry. Yeah, yeah.
+
+649
+00:33:39,240 --> 00:33:42,000
+Chris Goosen: Yeah, that's
+actually a good point. Um, I you
+
+650
+00:33:42,000 --> 00:33:46,260
+know, I think we're seeing rapid
+development on this though,
+
+651
+00:33:46,260 --> 00:33:48,390
+right? It's not like Microsoft
+were promising or making
+
+652
+00:33:48,390 --> 00:33:50,820
+promises a year ago that they
+still making today
+
+653
+00:33:50,840 --> 00:33:53,540
+Andrew Morpeth: or we're still
+delivering stuff. Yeah. Which
+
+654
+00:33:53,540 --> 00:33:58,520
+which, but Skype didn't really
+change too much over the last. I
+
+655
+00:33:58,520 --> 00:34:02,600
+mean between 2013 and 20. 15
+versions? I mean, yeah, there
+
+656
+00:34:02,600 --> 00:34:05,030
+were a few sort of small
+additions, but it hasn't
+
+657
+00:34:05,240 --> 00:34:08,600
+fundamentally changed for quite
+a long time. Whereas teams is
+
+658
+00:34:08,600 --> 00:34:11,630
+new and exciting. And it's
+certainly the way forward and
+
+659
+00:34:11,630 --> 00:34:15,200
+and it's, I think meeting the
+needs of the modern kind of
+
+660
+00:34:15,200 --> 00:34:20,510
+information work a much better
+than Skype does or ever will.
+
+661
+00:34:20,510 --> 00:34:26,060
+Because, you know, Skype's, I
+guess, at the start of at sunset
+
+662
+00:34:26,060 --> 00:34:29,030
+and a lot of ways, right, it's
+still a valid product, we still
+
+663
+00:34:29,030 --> 00:34:31,910
+recommend it where it makes
+sense. And the great thing about
+
+664
+00:34:31,910 --> 00:34:36,440
+choosing Scott is that you have
+a way to get to teams, it's you
+
+665
+00:34:36,440 --> 00:34:39,470
+can have, you can still deploy
+Skype and have some users on
+
+666
+00:34:39,470 --> 00:34:41,840
+teams, you can have some of your
+users using teams made, you
+
+667
+00:34:41,840 --> 00:34:44,300
+know, you've got the best of
+both worlds if you go that way.
+
+668
+00:34:44,750 --> 00:34:48,230
+And yeah, still completely valid
+solution, completely valid
+
+669
+00:34:48,230 --> 00:34:52,310
+solution, but it is it's kind of
+where the PBX was 15 years ago
+
+670
+00:34:52,310 --> 00:34:56,990
+when Skype and these UC platform
+started coming out. PB x's are
+
+671
+00:34:56,990 --> 00:34:59,990
+still around, but they're sort
+of kind of the almost did now.
+
+672
+00:34:59,990 --> 00:35:04,430
+Right. Scott's gonna be around
+for 510 years, I'd say, you
+
+673
+00:35:04,430 --> 00:35:06,650
+know, before it disappears.
+
+674
+00:35:06,960 --> 00:35:09,300
+Paul Bloem: Yeah, no, I
+absolutely agree. It's been
+
+675
+00:35:09,300 --> 00:35:11,550
+incredible. I come from a PBX
+background, he used to work for
+
+676
+00:35:11,550 --> 00:35:16,560
+Siemens, and the the mentality
+there was delivering services in
+
+677
+00:35:16,560 --> 00:35:20,430
+a way that they could address
+what they perceive as problems,
+
+678
+00:35:20,460 --> 00:35:22,380
+like, you know, pick up groups
+and hunt groups and all this
+
+679
+00:35:22,380 --> 00:35:25,140
+sort of thing. And I always say
+that, you know, with Skype, and
+
+680
+00:35:25,140 --> 00:35:30,060
+also with teams, the notion is
+different. I always argue with,
+
+681
+00:35:30,090 --> 00:35:31,920
+you know, when I'm doing
+training sessions with users
+
+682
+00:35:31,920 --> 00:35:35,460
+always tell them that when, when
+I'm trying to reach you, who
+
+683
+00:35:35,460 --> 00:35:38,880
+knows best how to get hold of
+you, me, or you, will you do you
+
+684
+00:35:38,880 --> 00:35:41,010
+know, whether you're on the run
+or whether you're at home or
+
+685
+00:35:41,010 --> 00:35:44,520
+whether you're in a hotel, so I
+shouldn't change my behavior of
+
+686
+00:35:44,520 --> 00:35:47,400
+reaching you, you control how
+that's delivered. And that's
+
+687
+00:35:47,400 --> 00:35:50,160
+fundamentally how it's changed
+the way people communicate. It's
+
+688
+00:35:50,160 --> 00:35:53,790
+been brilliant. But the scary
+bit is it's developing so fast,
+
+689
+00:35:53,790 --> 00:35:57,300
+and that's scary, but it's also
+very exciting. And very often,
+
+690
+00:35:57,300 --> 00:35:59,670
+and we might have to take a time
+check right now because this
+
+691
+00:35:59,670 --> 00:36:02,100
+might be invalid by the time I
+get to the end of the sentence,
+
+692
+00:36:02,790 --> 00:36:07,740
+current state of features is
+evolving so fast that sometimes
+
+693
+00:36:07,740 --> 00:36:10,410
+I'm busy showing somebody
+something and then I find that
+
+694
+00:36:10,410 --> 00:36:11,010
+it's changed.
+
+695
+00:36:11,930 --> 00:36:13,820
+Chris Goosen: Well, we will run
+into that problem every now and
+
+696
+00:36:13,820 --> 00:36:16,130
+then right away. The best is
+when you're in the Admin Center
+
+697
+00:36:16,130 --> 00:36:18,230
+trying to do a demo of something
+that the customer has asked,
+
+698
+00:36:18,320 --> 00:36:21,290
+then you can't find where it is.
+You're like, I saw this was here
+
+699
+00:36:21,290 --> 00:36:24,260
+just yesterday. And they're
+like, yeah, sure, it was. Yeah.
+
+700
+00:36:25,370 --> 00:36:27,560
+And this is because the UI moves
+something just a little bit
+
+701
+00:36:27,560 --> 00:36:30,620
+around. So that's it. I mean,
+it's it's a problem. Right. But
+
+702
+00:36:30,830 --> 00:36:33,500
+I guess it's part of the
+challenge we have is just going
+
+703
+00:36:33,500 --> 00:36:38,090
+to stay on top of that. And so I
+mean, we, we talked about, I
+
+704
+00:36:38,090 --> 00:36:42,800
+guess, teams being a fairly, you
+know, fruit salad versus just an
+
+705
+00:36:42,800 --> 00:36:45,830
+apple. Right. But, I mean, I
+guess one of the questions that
+
+706
+00:36:45,830 --> 00:36:47,690
+a lot of folks probably
+listening to this or watching
+
+707
+00:36:47,690 --> 00:36:51,260
+this have is how is their
+skillset relevant in the new
+
+708
+00:36:51,260 --> 00:36:54,680
+teams world, right, because I
+think, to me right now, there's
+
+709
+00:36:54,680 --> 00:36:58,100
+no such thing as a team's SME
+because teams is made up of so
+
+710
+00:36:58,100 --> 00:37:01,430
+many different pieces, hit the
+fruit salad That it depends on
+
+711
+00:37:01,430 --> 00:37:02,510
+your background and where you
+come from.
+
+712
+00:37:02,510 --> 00:37:05,900
+Paul Bloem: Absolutely. It's,
+it's at this early stage, there
+
+713
+00:37:05,930 --> 00:37:08,960
+are not a lot of people on the
+planet who have got a handle
+
+714
+00:37:09,140 --> 00:37:14,330
+across, even 80% of the
+underlying bits of technology.
+
+715
+00:37:14,330 --> 00:37:16,790
+And, and we're finding that you
+know, So traditionally coming
+
+716
+00:37:16,790 --> 00:37:19,280
+from a voice background and
+having lots of Skype for
+
+717
+00:37:19,280 --> 00:37:21,620
+Business, and now transitioning
+into the governance and
+
+718
+00:37:21,860 --> 00:37:26,030
+compliance areas and all the
+adoption stuff. When you look at
+
+719
+00:37:26,030 --> 00:37:30,050
+that whole spectrum, you do need
+different skill sets across so
+
+720
+00:37:30,050 --> 00:37:33,110
+you there is you're dead, right?
+There is no such thing as one
+
+721
+00:37:33,110 --> 00:37:36,200
+person who knows it all. And and
+we're finding that, you know,
+
+722
+00:37:36,200 --> 00:37:38,990
+we've got some SharePoint guys
+in the team, and I'm relying
+
+723
+00:37:38,990 --> 00:37:41,300
+heavily on them, and they're
+teaching me things all the time.
+
+724
+00:37:41,330 --> 00:37:45,290
+Yep. And just getting a feel for
+how they, you know, put things
+
+725
+00:37:45,290 --> 00:37:48,500
+in place around governance,
+compliance, and, you know,
+
+726
+00:37:48,500 --> 00:37:52,370
+around all that sort of control,
+but I'm learning lots, but what
+
+727
+00:37:52,370 --> 00:37:56,270
+I'm finding is there's a lot
+more consulting than actual
+
+728
+00:37:56,300 --> 00:37:58,250
+pushing nerd knobs and buttons.
+
+729
+00:37:58,350 --> 00:37:59,520
+Chris Goosen: Yes, yeah,
+
+730
+00:37:59,550 --> 00:38:02,070
+Andrew Morpeth: yeah, it's Very
+true. Yeah. I mean, I somewhat
+
+731
+00:38:02,070 --> 00:38:05,400
+missed the Skype days where you
+could be intimately familiar
+
+732
+00:38:05,400 --> 00:38:07,860
+with a single platform and just
+know everything about it.
+
+733
+00:38:08,070 --> 00:38:11,670
+Because now in this world, you
+cannot know everything about the
+
+734
+00:38:11,670 --> 00:38:14,940
+entire stack. And teams is just
+a window into multiple micro
+
+735
+00:38:14,940 --> 00:38:19,260
+services in teams, I'd say to
+sis admins, you've already got a
+
+736
+00:38:19,260 --> 00:38:22,440
+whole ton of skills already that
+you might not know you have.
+
+737
+00:38:22,680 --> 00:38:26,310
+Because teams is leveraging
+stuff you already know. It's
+
+738
+00:38:26,310 --> 00:38:30,510
+just a window into that that
+stuff, right? So yes, it is a
+
+739
+00:38:30,630 --> 00:38:32,850
+collaboration focused product
+and there's stuff to learn in
+
+740
+00:38:32,850 --> 00:38:35,820
+that regard. But a lot of the
+underlying technologies you
+
+741
+00:38:35,820 --> 00:38:36,930
+probably familiar with
+
+742
+00:38:37,140 --> 00:38:41,940
+Chris Goosen: it so my Sorry,
+it's almost like it the the
+
+743
+00:38:41,940 --> 00:38:46,320
+different areas or components of
+it also make for different
+
+744
+00:38:46,320 --> 00:38:49,260
+deployments. Right. So for
+example, when you have a voice
+
+745
+00:38:49,740 --> 00:38:52,290
+deployment, your voice
+requirements, I guess, fairly
+
+746
+00:38:52,290 --> 00:38:54,930
+binary in terms of customers are
+going to know they have these
+
+747
+00:38:54,930 --> 00:38:57,660
+phone numbers that need to be
+answered in this way or handled
+
+748
+00:38:57,660 --> 00:39:00,000
+in this way. But when it comes
+to the compliance and the
+
+749
+00:39:00,000 --> 00:39:02,430
+governance stuff. That stuff's
+gonna be so varied based on
+
+750
+00:39:02,430 --> 00:39:06,960
+industry and location. And very
+often, customers don't actually
+
+751
+00:39:06,960 --> 00:39:10,020
+have. They don't understand the
+requirements that they have
+
+752
+00:39:10,290 --> 00:39:12,780
+Andrew Morpeth: muted a lot of
+customers exactly in small I
+
+753
+00:39:12,780 --> 00:39:15,810
+couldn't afford to put that
+stuff in. But now they get it.
+
+754
+00:39:15,840 --> 00:39:18,870
+Yep. So they can deploy it, but
+they know nothing about it,
+
+755
+00:39:18,870 --> 00:39:19,200
+really.
+
+756
+00:39:19,000 --> 00:39:21,070
+Chris Goosen: And if they don't
+make the right, you know, it's
+
+757
+00:39:21,070 --> 00:39:23,980
+almost like making the right
+governance decisions up front.
+
+758
+00:39:24,040 --> 00:39:27,820
+You know, if we take our minds
+back to, you know, 8 10 years
+
+759
+00:39:27,820 --> 00:39:30,850
+ago, when the Yammer was, you
+know, first busting up on the
+
+760
+00:39:30,850 --> 00:39:33,220
+scene may even have been longer
+than that. I don't want to go
+
+761
+00:39:33,220 --> 00:39:37,510
+back that far. But, you know, I
+have battle scars from but but
+
+762
+00:39:37,540 --> 00:39:40,360
+it was one of those things
+where, like, if you didn't, in
+
+763
+00:39:40,360 --> 00:39:44,560
+the very beginning, put in some
+really solid governance. It
+
+764
+00:39:44,560 --> 00:39:47,530
+became such a mess. Yeah. And
+and then fixing it retroactively
+
+765
+00:39:47,530 --> 00:39:50,380
+afterwards was really hard. And
+teams is kind of like that, too.
+
+766
+00:39:50,380 --> 00:39:53,560
+I think like if you just enable
+it and just walk away. You're
+
+767
+00:39:53,560 --> 00:39:54,700
+going to come back in a week and
+it's going
+
+768
+00:39:54,000 --> 00:39:57,000
+Paul Bloem: to be absolutely so
+so take your Yammer problem.
+
+769
+00:39:57,030 --> 00:39:59,040
+Yeah. And I'll see your Yeah,
+Yammer problem with my
+
+770
+00:39:59,040 --> 00:40:02,160
+SharePoint issue. Yeah. 10
+exactly, which was just to add
+
+771
+00:40:02,160 --> 00:40:04,620
+on, and she'll be right, what
+happened? Yep. And then we'll
+
+772
+00:40:04,620 --> 00:40:07,140
+throw in some Skype for Business
+and a few other bits and pieces.
+
+773
+00:40:07,140 --> 00:40:10,710
+And guess what? We have the most
+complicated combination of
+
+774
+00:40:10,710 --> 00:40:14,190
+things we've ever seen. Yeah.
+And so what could possibly go
+
+775
+00:40:14,190 --> 00:40:14,310
+wrong?
+
+776
+00:40:14,310 --> 00:40:18,000
+Chris Goosen: Yeah, exactly. And
+people, people almost like
+
+777
+00:40:18,000 --> 00:40:20,670
+because we talked about, and I
+said this already one time.
+
+778
+00:40:20,880 --> 00:40:24,120
+Today, we talk about change
+management and adoption a lot on
+
+779
+00:40:24,120 --> 00:40:28,470
+this on the show. And we talk
+about governance and compliance
+
+780
+00:40:28,470 --> 00:40:31,080
+and all of these things. And a
+lot of people think that these
+
+781
+00:40:31,080 --> 00:40:33,240
+are just buzzwords that we're
+throwing out and because they
+
+782
+00:40:33,240 --> 00:40:37,080
+sound cool, well, this this very
+good reason why these things
+
+783
+00:40:37,080 --> 00:40:40,590
+come up over and over and over
+again is because, you know, I'm
+
+784
+00:40:40,590 --> 00:40:43,860
+sure you guys also see customers
+who have not made the right
+
+785
+00:40:43,860 --> 00:40:46,920
+decisions up front or have kind
+of gone down the wrong path just
+
+786
+00:40:46,920 --> 00:40:49,470
+a little bit and then you come
+in and now you're, you're trying
+
+787
+00:40:49,470 --> 00:40:53,100
+to backtrack just a tad to to
+help them out. And so that's it,
+
+788
+00:40:53,100 --> 00:40:55,890
+you know, the message is
+consistent because these things
+
+789
+00:40:55,890 --> 00:40:56,670
+are really important.
+
+790
+00:40:56,700 --> 00:41:01,020
+Paul Bloem: Yeah, I tell stories
+to the highlight you So we keep
+
+791
+00:41:01,020 --> 00:41:03,810
+the innocent innocent by not
+naming any names. And I always
+
+792
+00:41:03,810 --> 00:41:06,870
+tell them a story. So depending
+on the the organization, and I
+
+793
+00:41:06,870 --> 00:41:09,780
+use some scary story, I heard a
+story last week from a customer
+
+794
+00:41:09,780 --> 00:41:13,980
+who said, We don't like to, you
+know, talking about shadow IT,
+
+795
+00:41:13,980 --> 00:41:17,220
+we don't like to force our users
+down any particular path. There
+
+796
+00:41:17,220 --> 00:41:20,550
+are creative bunch, and we don't
+want to limit that. And of
+
+797
+00:41:20,550 --> 00:41:24,210
+course, at the same time,
+they're they're an organization
+
+798
+00:41:24,210 --> 00:41:27,660
+who's creating new things. And
+if those things were to leak,
+
+799
+00:41:27,690 --> 00:41:30,240
+yeah, well, that'd be the end of
+them. Yep. So once I'm married
+
+800
+00:41:30,240 --> 00:41:33,510
+those two things together and
+said so. So I've got some some
+
+801
+00:41:33,510 --> 00:41:35,970
+pictures we took the other
+night, Andrew, I'll share them
+
+802
+00:41:35,970 --> 00:41:38,520
+with you. They're my Dropbox and
+I accidentally share the entire
+
+803
+00:41:38,790 --> 00:41:41,640
+Dropbox directory. I also have
+some very sensitive information
+
+804
+00:41:41,640 --> 00:41:44,970
+in there right now and knowing
+we have shared with you, and I
+
+805
+00:41:44,970 --> 00:41:46,230
+can't even tell
+
+806
+00:41:46,260 --> 00:41:47,550
+Chris Goosen: you access.
+Exactly.
+
+807
+00:41:47,580 --> 00:41:49,950
+Paul Bloem: Yeah. So there's all
+this kind of stuff. So I usually
+
+808
+00:41:49,950 --> 00:41:52,560
+just find an angle for the
+customer in question, and then
+
+809
+00:41:52,890 --> 00:41:55,830
+I'll tell them a story leading
+down a path. Yeah. And usually
+
+810
+00:41:55,830 --> 00:41:58,140
+at the end of it, they've got
+these massive eyeballs staring
+
+811
+00:41:58,140 --> 00:42:00,300
+at me and like I've just scare
+the hell out. Do it.
+
+812
+00:42:00,750 --> 00:42:02,580
+Andrew Morpeth: Yeah. And you
+don't have to necessarily go
+
+813
+00:42:02,580 --> 00:42:05,400
+bananas on it, but you've got to
+at least sit down and have the
+
+814
+00:42:05,400 --> 00:42:08,730
+conversations with the business
+and just go, you know, at least
+
+815
+00:42:08,730 --> 00:42:12,480
+make an informed decision. Yeah.
+And goes because fires you can
+
+816
+00:42:12,480 --> 00:42:15,870
+afford to or want to or you
+know, but at least have a bit of
+
+817
+00:42:15,870 --> 00:42:17,760
+a think about it before you just
+didn't roll on
+
+818
+00:42:17,820 --> 00:42:18,960
+Paul Bloem: know the risks.
+Right? Yeah.
+
+819
+00:42:18,990 --> 00:42:23,670
+Chris Goosen: Yep. I absolutely.
+I think that's a very, very good
+
+820
+00:42:23,670 --> 00:42:28,110
+advice. And it's the kind of, I
+guess, top off or come to a
+
+821
+00:42:28,110 --> 00:42:31,500
+close here, guys, it's been
+awesome talking to you. Thank
+
+822
+00:42:31,500 --> 00:42:34,530
+you for taking the time and
+showing me around Auckland in
+
+823
+00:42:34,530 --> 00:42:36,930
+the great weather and whatnot.
+And before we go, I guess we you
+
+824
+00:42:36,930 --> 00:42:40,590
+know, we always kind of like to
+plug give you the opportunity to
+
+825
+00:42:40,590 --> 00:42:43,440
+plug yourself so each of you
+studying the book, how do you
+
+826
+00:42:43,440 --> 00:42:45,300
+want to be found Do you even
+want to be found?
+
+827
+00:42:45,750 --> 00:42:48,570
+Paul Bloem: Hidden not hiding? I
+try to make a bit of noise on
+
+828
+00:42:48,570 --> 00:42:52,590
+LinkedIn and it's just
+PaulBorm_NZ. That's where I'm at
+
+829
+00:42:52,620 --> 00:42:57,900
+and of course my blog as
+yucsorted.com. That's where I
+
+830
+00:42:57,900 --> 00:42:59,100
+am. Yeah, fair enough.
+
+831
+00:42:59,540 --> 00:43:02,300
+Andrew Morpeth: Yeah, almost.
+active on the Twitter community.
+
+832
+00:43:02,510 --> 00:43:06,140
+My handle is @AndrewMorpeth.
+That might be a bit difficult to
+
+833
+00:43:06,140 --> 00:43:11,300
+spell. So find me at ucgeek.co
+That's my blog. So check me out
+
+834
+00:43:11,300 --> 00:43:14,000
+there and the links to Twitter
+and various other channels that
+
+835
+00:43:14,000 --> 00:43:16,610
+I post information on there as
+well.
+
+836
+00:43:16,710 --> 00:43:18,840
+Chris Goosen: Cool. I'll put all
+that in the show notes too. So
+
+837
+00:43:18,840 --> 00:43:21,690
+folks can just click through and
+and I guess the next thing when
+
+838
+00:43:21,690 --> 00:43:23,610
+next time we'll be seeing each
+other is that summit coming up
+
+839
+00:43:23,610 --> 00:43:26,910
+in full year? Bring it on month
+or so just to sort of a month so
+
+840
+00:43:26,970 --> 00:43:27,180
+I
+
+841
+00:43:27,180 --> 00:43:29,550
+Paul Bloem: know now it's it's
+been recorded first round to be
+
+842
+00:43:29,550 --> 00:43:30,180
+a second. That'd be
+
+843
+00:43:30,180 --> 00:43:32,610
+Andrew Morpeth: Yeah, fair
+enough. We know he's not
+
+844
+00:43:32,610 --> 00:43:33,270
+offering anything
+
+845
+00:43:33,300 --> 00:43:36,000
+Chris Goosen: we may or may not
+be a Joey's at some point.
+
+846
+00:43:36,330 --> 00:43:39,540
+During summer we will be. Well,
+guys, thank you again for your
+
+847
+00:43:39,540 --> 00:43:42,000
+time. Really appreciate it.
+Yeah. So it's the sit down here
+
+848
+00:43:42,000 --> 00:43:44,550
+and I'm sure we'll be chatting
+again. Thank you. Cool.
+
+849
+00:43:45,980 --> 00:43:48,980
+Warren du Toit: Everyone. Before
+you go, we just wanted to say
+
+850
+00:43:48,980 --> 00:43:51,260
+thank you for listening. We
+really enjoyed putting this
+
+851
+00:43:51,260 --> 00:43:54,650
+podcast together for you every
+two weeks. Please visit us at
+
+852
+00:43:54,680 --> 00:43:57,650
+thearchitects.cloud.
+Alternatively, drop us a tweet.
+
+853
+00:43:57,740 --> 00:44:00,440
+We'd love to hear what you have
+to say @thecloudarch
+
