@@ -1,0 +1,4903 @@
+1
+00:00:19,080 --> 00:00:21,720
+Chris Goosen: Welcome to the
+cloud architects podcast, a
+
+2
+00:00:21,720 --> 00:00:25,560
+podcast about cloud technology
+and the people using it.
+
+3
+00:00:26,860 --> 00:00:28,990
+Nicolas Blank: The cloud
+architects podcast is sponsored
+
+4
+00:00:28,990 --> 00:00:32,920
+by Kemp technologies. Choose
+Kemp to optimize your multi
+
+5
+00:00:32,920 --> 00:00:35,980
+cloud application deployments
+and simplify multi cloud
+
+6
+00:00:35,980 --> 00:00:39,790
+application management. A single
+pane of glass for application
+
+7
+00:00:39,790 --> 00:00:44,320
+delivery, Kemp provides a 360
+degree view of your entire
+
+8
+00:00:44,320 --> 00:00:48,730
+application environment, and
+even third party ADCs. Download
+
+9
+00:00:48,730 --> 00:00:52,660
+Kemp 360 for free today at
+Kemptechnologies.com
+
+10
+00:00:53,230 --> 00:00:57,550
+Warren du Toit: Hello, everyone,
+and welcome to another episode
+
+11
+00:00:57,580 --> 00:01:02,890
+of the cloud architects podcast
+yet I feel the same as you. It's
+
+12
+00:01:02,890 --> 00:01:06,430
+been a while. It has definitely
+been a while. It's been a crazy
+
+13
+00:01:06,430 --> 00:01:11,110
+year. And I think that this is
+like gonna be the first of many
+
+14
+00:01:11,200 --> 00:01:17,470
+Corona episodes where we talk
+about things that have been
+
+15
+00:01:17,470 --> 00:01:22,720
+happening in sort of how we've
+been forced to change the way we
+
+16
+00:01:22,720 --> 00:01:27,250
+work. And so I'd like to
+introduce my co hosts yet again.
+
+17
+00:01:27,520 --> 00:01:28,750
+It's good to see you guys.
+
+18
+00:01:28,990 --> 00:01:30,340
+Nicolas Blank: Hey, Nick.
+
+19
+00:01:30,460 --> 00:01:31,300
+Chris Goosen: Hey, Chris here.
+
+20
+00:01:31,690 --> 00:01:35,650
+Warren du Toit: And today, we
+have an amazing guest. And we'll
+
+21
+00:01:35,650 --> 00:01:38,770
+introduce him shortly. I think
+Nick wants to pick on me a
+
+22
+00:01:38,770 --> 00:01:39,310
+little bit.
+
+23
+00:01:39,760 --> 00:01:43,000
+Nicolas Blank: I do. I do. And I
+want to pick on Warren and Chris
+
+24
+00:01:43,000 --> 00:01:46,690
+both because both of them have
+had some changes lately. And we
+
+25
+00:01:46,690 --> 00:01:49,090
+want to talk about some of those
+changes because they do have
+
+26
+00:01:49,090 --> 00:01:52,960
+context for today's show. And
+I'm going to add a little bit of
+
+27
+00:01:52,960 --> 00:01:58,660
+a mystery by saying that they
+have both a joint true of the
+
+28
+00:01:58,660 --> 00:02:04,600
+world's large Just security
+vendors. And so why don't we
+
+29
+00:02:04,600 --> 00:02:07,510
+start with you, Warren, why
+don't you tell us what have you
+
+30
+00:02:07,510 --> 00:02:08,380
+been doing lately?
+
+31
+00:02:08,990 --> 00:02:11,360
+Warren du Toit: Yeah. So you
+know, it's strange when you say
+
+32
+00:02:11,360 --> 00:02:15,470
+security vendor, right? Because
+that's, that's a new thing. I
+
+33
+00:02:15,470 --> 00:02:20,570
+mean, who ever thought that
+Microsoft would be a security
+
+34
+00:02:20,570 --> 00:02:24,050
+vendor. So yeah, I started
+working for Microsoft this
+
+35
+00:02:24,050 --> 00:02:29,120
+month. It was was a bit tough
+because I had to give up my MVP
+
+36
+00:02:29,120 --> 00:02:35,510
+status, but it's okay. I don't
+have a trophy anymore. I'm more
+
+37
+00:02:35,510 --> 00:02:38,360
+have a blue badge. I mean, it's
+somewhere here and I could
+
+38
+00:02:38,360 --> 00:02:46,070
+probably show you but yeah, I
+have cloud solutions architect.
+
+39
+00:02:46,880 --> 00:02:52,100
+I guess. The really cool thing
+is that I get to use the
+
+40
+00:02:52,100 --> 00:02:59,330
+internal Microsoft tenant now
+for Azure. Ah, okay.But anyway..
+
+41
+00:02:59,360 --> 00:03:03,200
+Nicolas Blank: for all your
+hosting requirements. @WarrenDT
+
+42
+00:03:03,260 --> 00:03:03,920
+on Twitter.
+
+43
+00:03:05,000 --> 00:03:07,400
+Warren du Toit: Don't go
+breaking some new NDAs But
+
+44
+00:03:07,400 --> 00:03:11,090
+still, I think I think it's a
+beautiful thing. It's a
+
+45
+00:03:11,090 --> 00:03:14,300
+wonderful company to work for.
+And as Fran was saying a little
+
+46
+00:03:14,300 --> 00:03:18,140
+bit earlier while we were
+entering Satya as done amazing
+
+47
+00:03:18,140 --> 00:03:22,400
+things, man. He really, really
+has incredible company to work
+
+48
+00:03:22,400 --> 00:03:27,470
+for and like parental pandemic
+leave. Can you believe? So? I
+
+49
+00:03:27,470 --> 00:03:31,520
+get if I wanted to, I mean,
+provided the workload isn't too
+
+50
+00:03:31,520 --> 00:03:34,970
+hectic I can do. I can teach my
+child, I can take Lee even teach
+
+51
+00:03:34,970 --> 00:03:37,970
+my child which is which is
+pretty read. So I think that's
+
+52
+00:03:37,970 --> 00:03:40,250
+that's that's the that's a cool
+thing. And yeah, like I say,
+
+53
+00:03:40,610 --> 00:03:46,430
+it's it's amazing to be actually
+sort of in a as an MVP, you sort
+
+54
+00:03:46,430 --> 00:03:51,260
+of delve into it. And you push
+to sort of create this second
+
+55
+00:03:51,260 --> 00:03:55,670
+career. So with an MVP, many
+Yeah, you're you really work
+
+56
+00:03:55,670 --> 00:03:58,550
+hard to maintain the two and now
+I'm lucky enough to be like
+
+57
+00:03:58,550 --> 00:04:03,050
+okay, well the two have merged
+So not only do I get to promote
+
+58
+00:04:03,050 --> 00:04:07,370
+Microsoft technology, and use
+Microsoft technology, it's my
+
+59
+00:04:07,370 --> 00:04:08,960
+job. So it's good.
+
+60
+00:04:09,650 --> 00:04:11,090
+Chris Goosen: Yeah, well done.
+That's awesome, man.
+
+61
+00:04:11,120 --> 00:04:18,470
+Congratulations for that. You
+know, so yeah. Yeah, I have
+
+62
+00:04:18,470 --> 00:04:20,630
+actually in its it's been
+probably the biggest change for
+
+63
+00:04:20,630 --> 00:04:24,710
+me in my entire career right for
+the first time ever. And I've
+
+64
+00:04:24,740 --> 00:04:27,620
+been thinking about this a lot
+this this week in particular,
+
+65
+00:04:27,620 --> 00:04:30,050
+because for the first time ever,
+I'm not working for a very large
+
+66
+00:04:30,050 --> 00:04:32,930
+Microsoft gold partner. Right.
+And so that's been very
+
+67
+00:04:32,930 --> 00:04:36,950
+interesting. And so I made a
+move a bit of a career change, I
+
+68
+00:04:36,950 --> 00:04:40,460
+guess, if you will, earlier in
+the year. So right after we
+
+69
+00:04:40,460 --> 00:04:44,690
+recorded the last episode, which
+was in New Zealand, I joined a
+
+70
+00:04:44,690 --> 00:04:47,240
+company called Kudelski
+Security. And so I'm gonna be
+
+71
+00:04:47,240 --> 00:04:49,340
+heading up the Microsoft
+practice, Microsoft Security
+
+72
+00:04:49,340 --> 00:04:52,760
+practice at Kudelski. And we're
+super excited because, you know,
+
+73
+00:04:52,760 --> 00:04:55,070
+you mentioned before, you know,
+Microsoft being one of the
+
+74
+00:04:55,070 --> 00:04:57,830
+world's largest security
+vendors, right. And that's, it's
+
+75
+00:04:57,830 --> 00:05:01,550
+so true. That's the messaging
+that we're using. And it's
+
+76
+00:05:01,640 --> 00:05:03,890
+exciting to kind of be on the
+forefront of that. So still
+
+77
+00:05:03,890 --> 00:05:06,320
+working very much in the office
+365 space for now in the
+
+78
+00:05:06,350 --> 00:05:10,730
+Microsoft 365 space, but very
+much focusing and looking at
+
+79
+00:05:10,730 --> 00:05:14,480
+everything through a security
+focused lens now, as opposed to
+
+80
+00:05:14,480 --> 00:05:17,720
+the productivity focused lens
+from before. And I guess that's
+
+81
+00:05:17,720 --> 00:05:21,080
+part of why I think this episode
+kind of came together because
+
+82
+00:05:21,260 --> 00:05:25,040
+I've been immersed in working
+with some really, really smart
+
+83
+00:05:25,040 --> 00:05:28,400
+people. And one of those people
+is joining us on the call today.
+
+84
+00:05:28,430 --> 00:05:31,550
+And I was super excited because
+my head started spinning day
+
+85
+00:05:31,550 --> 00:05:34,220
+one, start, you know, trying to
+pick up the vernacular and
+
+86
+00:05:34,220 --> 00:05:36,950
+trying to pick up all the new
+concepts in this new cyber
+
+87
+00:05:36,950 --> 00:05:40,610
+security world. And so we
+thought it'd be really good idea
+
+88
+00:05:40,610 --> 00:05:44,390
+to bring Francisco Donoso onto
+the show, to talk a little bit
+
+89
+00:05:44,390 --> 00:05:47,150
+about that world and break it
+down a little bit so that we can
+
+90
+00:05:47,150 --> 00:05:50,450
+kind of do a, you know,
+cybersecurity for IT pros, if
+
+91
+00:05:50,450 --> 00:05:52,820
+you will. And so with that, I
+want to introduce our guest
+
+92
+00:05:52,820 --> 00:05:55,760
+today, Francisco or Fran,
+welcome to the show.
+
+93
+00:05:57,510 --> 00:05:59,400
+Francisco Donoso: Thank you very
+much for having me, Chris
+
+94
+00:05:59,760 --> 00:06:02,370
+Warren. Nick, it's a pleasure to
+be here.
+
+95
+00:06:02,730 --> 00:06:04,950
+Chris Goosen: Yeah. Do you want
+to just do a quick introduction
+
+96
+00:06:04,950 --> 00:06:08,310
+and sort of tell folks about
+yourself and what you do? And
+
+97
+00:06:08,310 --> 00:06:09,090
+have done? Yeah.
+
+98
+00:06:09,530 --> 00:06:12,470
+Francisco Donoso: Yeah,
+absolutely. So, as Chris
+
+99
+00:06:12,470 --> 00:06:15,140
+mentioned, we both work together
+at a company called Kudelski
+
+100
+00:06:15,140 --> 00:06:18,320
+Security. And it's been a real
+pleasure, the last few months
+
+101
+00:06:18,320 --> 00:06:20,840
+getting a chance to work closely
+with Chris, we've been working
+
+102
+00:06:20,840 --> 00:06:23,780
+very closely for the last few
+months. And that's been great.
+
+103
+00:06:24,770 --> 00:06:28,040
+as Chris mentioned, you know,
+I've been in cybersecurity for
+
+104
+00:06:28,340 --> 00:06:32,480
+almost the entirety of my
+professional career. I sort of
+
+105
+00:06:32,480 --> 00:06:35,870
+fell into it. In the very
+beginning, I got a job at a
+
+106
+00:06:36,080 --> 00:06:41,000
+company like koski years ago,
+doing like security monitoring
+
+107
+00:06:41,000 --> 00:06:44,570
+for a bunch of different
+companies. And I fell in love
+
+108
+00:06:44,570 --> 00:06:48,140
+with it. I fell in love with
+cyber security, even though that
+
+109
+00:06:48,140 --> 00:06:51,890
+wasn't a consideration, you
+know, when I was in school, but
+
+110
+00:06:52,010 --> 00:06:56,750
+through my career, sorry, guys,
+I've had an opportunity to
+
+111
+00:06:57,050 --> 00:07:00,290
+actually kind of travel all over
+the world and work with so The
+
+112
+00:07:00,290 --> 00:07:04,070
+world's largest companies. I've
+spent a lot of time in the
+
+113
+00:07:04,070 --> 00:07:08,030
+Middle East. After some big
+breaches of some of the world's
+
+114
+00:07:08,030 --> 00:07:12,080
+most valuable companies, I got a
+chance to help organizations,
+
+115
+00:07:12,320 --> 00:07:15,350
+but you know, across healthcare
+or all sorts of different
+
+116
+00:07:15,350 --> 00:07:20,120
+places, kind of recover after
+some large breaches. And it's,
+
+117
+00:07:20,270 --> 00:07:23,750
+it's been a passion of mine,
+helping organizations understand
+
+118
+00:07:23,930 --> 00:07:29,420
+how things are changing with the
+cloud, if you will. One of my
+
+119
+00:07:29,420 --> 00:07:32,990
+favorite things about
+cybersecurity in general is how
+
+120
+00:07:32,990 --> 00:07:36,440
+quickly we have to adapt to new
+technology. I think all of us
+
+121
+00:07:36,440 --> 00:07:40,160
+are probably familiar with that
+stuff as new technology comes
+
+122
+00:07:40,160 --> 00:07:44,780
+out. It's been a blast because I
+get to learn how to use it from,
+
+123
+00:07:45,470 --> 00:07:48,110
+like, administrative perspective
+and then have to think through
+
+124
+00:07:48,110 --> 00:07:51,800
+how do we potentially secure
+this stuff? Kubernetes and cloud
+
+125
+00:07:51,800 --> 00:07:53,360
+environments and office 365,
+
+126
+00:07:56,750 --> 00:07:58,910
+Chris Goosen: Okay, I was gonna
+say you said the K word
+
+127
+00:07:59,990 --> 00:08:02,090
+Nicolas Blank: Somebody, at
+least it wasn't me.
+
+128
+00:08:04,310 --> 00:08:06,350
+Francisco Donoso: And, and
+through my career, you know,
+
+129
+00:08:06,380 --> 00:08:10,670
+I've had the opportunity to work
+in places like Kudelski building
+
+130
+00:08:11,180 --> 00:08:14,930
+security practice to help our
+customers. But I've also been
+
+131
+00:08:15,140 --> 00:08:19,460
+security engineer at a company
+that's now owned by Twilio, that
+
+132
+00:08:19,460 --> 00:08:23,060
+process more traffic per day
+than Twitter. And I had to learn
+
+133
+00:08:23,060 --> 00:08:26,390
+a lot about how people were
+managing infrastructure at
+
+134
+00:08:26,390 --> 00:08:29,900
+scale, and how that changed my
+perspective or my role as a
+
+135
+00:08:29,900 --> 00:08:33,800
+security person. And then I've
+also worked for a startup where
+
+136
+00:08:33,950 --> 00:08:36,830
+I built all the Kubernetes
+stuff, because we didn't have
+
+137
+00:08:36,830 --> 00:08:40,610
+anything we needed to deploy
+code. Kubernetes seemed like a
+
+138
+00:08:40,610 --> 00:08:43,400
+cool project. And then I had to
+figure out how to secure it. So
+
+139
+00:08:43,550 --> 00:08:46,100
+I've kind of been all over the
+place and I've enjoyed every
+
+140
+00:08:46,000 --> 00:08:48,910
+Warren du Toit: It's not that
+easy to build Kubernetes from
+
+141
+00:08:46,100 --> 00:08:46,640
+second of it.
+
+142
+00:08:48,910 --> 00:08:49,300
+scratch.
+
+143
+00:08:50,970 --> 00:08:53,010
+Francisco Donoso: No specially
+when you've never used it
+
+144
+00:08:53,010 --> 00:08:55,590
+before. So it was a it was a
+really it was a really fun
+
+145
+00:08:55,590 --> 00:08:59,130
+experience, though. And that's
+really what I love about the
+
+146
+00:08:59,130 --> 00:09:01,590
+industry that we're at
+technology in general, just like
+
+147
+00:09:01,620 --> 00:09:04,140
+you just get thrown in, and you
+have to figure it out.
+
+148
+00:09:05,429 --> 00:09:08,099
+Warren du Toit: How much how
+much and this this is this, this
+
+149
+00:09:08,099 --> 00:09:10,679
+equation, when I heard you're
+gonna have you on the show, I
+
+150
+00:09:10,679 --> 00:09:12,899
+was thinking to myself, the
+first question I'm going to ask
+
+151
+00:09:12,899 --> 00:09:17,579
+is a Mr. Robot question. It's
+gonna be like, how much like Mr.
+
+152
+00:09:17,579 --> 00:09:23,639
+Robot is being in security? I
+mean, cuz when you look at it,
+
+153
+00:09:23,789 --> 00:09:27,839
+he, I mean, all of those
+commands and things that he ran
+
+154
+00:09:27,839 --> 00:09:30,779
+and obviously they did a lot of
+research into Mr. Robot and what
+
+155
+00:09:30,779 --> 00:09:34,319
+sort of rootkits were being run
+and Kali, Linux and all that
+
+156
+00:09:34,319 --> 00:09:38,219
+kind of stuff. And like, do you
+use Kali Linux?
+
+157
+00:09:40,110 --> 00:09:43,410
+Francisco Donoso: It really
+depends. The answer is yes, it
+
+158
+00:09:43,410 --> 00:09:49,350
+depends on vironment, right,
+yeah. Mr. Robot has done the
+
+159
+00:09:49,350 --> 00:09:52,860
+best job that I've seen thus
+far. It really kind of
+
+160
+00:09:52,920 --> 00:09:56,430
+explaining what cyber security
+looks like from an attackers
+
+161
+00:09:56,430 --> 00:10:00,000
+perspective. And just recently,
+actually, I have the opposite.
+
+162
+00:10:00,000 --> 00:10:03,570
+You need to join a company that
+was built by teams who used to
+
+163
+00:10:03,570 --> 00:10:08,340
+build offensive stuff for
+people. So I've had a lot of
+
+164
+00:10:08,340 --> 00:10:12,570
+opportunity to work with some of
+the world's best hackers. It was
+
+165
+00:10:12,600 --> 00:10:16,800
+it was mind blowing, because
+they would be able to go find a
+
+166
+00:10:16,800 --> 00:10:22,110
+zero day a zero day exploit in
+technology used across the world
+
+167
+00:10:22,140 --> 00:10:25,110
+in like two days, which I didn't
+know was possible at the time.
+
+168
+00:10:25,530 --> 00:10:30,240
+But I think the biggest thing
+that that all of those shows
+
+169
+00:10:30,240 --> 00:10:33,750
+kind of miss is just how much
+failure there is before that,
+
+170
+00:10:33,750 --> 00:10:39,060
+like, success. And what has to
+keep you going when you're in
+
+171
+00:10:39,060 --> 00:10:43,350
+that side of the house, which is
+the attacker side is you have to
+
+172
+00:10:43,380 --> 00:10:46,650
+be okay with the failure but
+really love the adrenaline of
+
+173
+00:10:46,680 --> 00:10:51,120
+the success. Because it's like
+99% failure and banging your
+
+174
+00:10:51,120 --> 00:10:54,360
+head against something that you
+just don't understand. To get to
+
+175
+00:10:54,360 --> 00:10:56,790
+the point where you're like, Oh
+my god, I did it. I exploited
+
+176
+00:10:56,790 --> 00:11:01,710
+this thing. And that's amazing.
+Okay. Let me go back to pounding
+
+177
+00:11:01,710 --> 00:11:04,260
+my head against the wall to
+figure out how to how to do the
+
+178
+00:11:04,260 --> 00:11:07,320
+next thing. So I think that
+that's really what's missing
+
+179
+00:11:07,319 --> 00:11:09,539
+Warren du Toit: the emotion. I
+remember how you did it so that
+
+180
+00:11:09,539 --> 00:11:12,029
+you could protect yourself
+against it.
+
+181
+00:11:12,090 --> 00:11:13,050
+Yeah, yeah.
+
+182
+00:11:15,910 --> 00:11:18,580
+Chris Goosen: That's
+fascinating, right. I think. I
+
+183
+00:11:18,580 --> 00:11:21,730
+think part of that is, you know,
+these conversations, these types
+
+184
+00:11:21,730 --> 00:11:25,330
+of conversations and the fact
+that we've all thought about and
+
+185
+00:11:26,050 --> 00:11:29,590
+understood the need to be more
+security focused, especially in
+
+186
+00:11:29,590 --> 00:11:33,940
+the last 10, eight to 10 years,
+right with, everything's moving
+
+187
+00:11:33,940 --> 00:11:36,940
+into the public domain, if you
+will, as far as like the cloud
+
+188
+00:11:36,940 --> 00:11:40,360
+and stuff is not as publicly
+accessible. You can't just wrap
+
+189
+00:11:40,360 --> 00:11:44,710
+your arms around your data
+center anymore and go Okay,
+
+190
+00:11:44,710 --> 00:11:47,200
+well, we'll just put a firewall
+and now stuffs protected, right?
+
+191
+00:11:47,200 --> 00:11:51,610
+I remember, man, this would have
+been probably, I'm thinking
+
+192
+00:11:51,610 --> 00:11:59,380
+probably around 2005, maybe
+2004. I was at a teched event,
+
+193
+00:11:59,410 --> 00:12:03,790
+Microsoft tech event. It was in
+Joburg. So it was the early one
+
+194
+00:12:04,330 --> 00:12:09,130
+did them in, in Sun City. And
+there was a guy gentleman by the
+
+195
+00:12:09,130 --> 00:12:13,840
+name of Steve Riley, who used to
+work for Microsoft trustworthy
+
+196
+00:12:13,840 --> 00:12:17,470
+computing group, and went on to
+AWS and I'm not sure where he is
+
+197
+00:12:17,470 --> 00:12:20,500
+now riverbed, I think at one
+point too And at that time, he
+
+198
+00:12:20,500 --> 00:12:25,840
+was talking about the concept of
+perimeter boundary, less data
+
+199
+00:12:25,840 --> 00:12:27,760
+centers, right. And I still
+remember the talk was called
+
+200
+00:12:27,760 --> 00:12:31,330
+something like, you know, it's
+10am. Do you know what your data
+
+201
+00:12:31,330 --> 00:12:35,710
+is? And people just lost their
+mind, because this guy was like,
+
+202
+00:12:36,430 --> 00:12:38,950
+it's the time is coming, where
+you're not going to have a
+
+203
+00:12:38,950 --> 00:12:42,430
+perimeter, you're going to have
+to shift stuff, somewhere,
+
+204
+00:12:42,430 --> 00:12:46,210
+wherever anyone can access it.
+And you need to rethink what
+
+205
+00:12:46,210 --> 00:12:49,540
+that means to you and your
+organization. And Fast Forward
+
+206
+00:12:49,540 --> 00:12:52,840
+15 years, you know, I mean,
+we've been going down this route
+
+207
+00:12:52,840 --> 00:12:54,970
+for a while now. But Fast
+Forward 15 years, it has never
+
+208
+00:12:54,970 --> 00:12:58,720
+been more true. So welcome to
+the cloud. Yeah, welcome to the
+
+209
+00:12:58,720 --> 00:13:00,790
+cloud, right. So So we've all
+kind of Being This is something
+
+210
+00:13:00,790 --> 00:13:04,120
+that's been on our, I guess, in
+our minds for a little while,
+
+211
+00:13:04,120 --> 00:13:06,160
+but I think when you start
+really digging into it, man,
+
+212
+00:13:06,160 --> 00:13:08,740
+it's a whole new world. Right.
+And so I guess Fran, one of the
+
+213
+00:13:08,740 --> 00:13:13,120
+things I wanted to kind of, I
+guess, asked you or ask you to
+
+214
+00:13:13,750 --> 00:13:17,620
+unpack for us to break out is
+the concept of the vernacular
+
+215
+00:13:17,620 --> 00:13:21,220
+and the concepts that kind of
+float around in cyberspace,
+
+216
+00:13:21,220 --> 00:13:24,100
+right, because you hear people
+talk about blue team and red
+
+217
+00:13:24,100 --> 00:13:26,680
+team and white hat and black
+hat. It sounds like people just
+
+218
+00:13:26,680 --> 00:13:29,500
+love colors in the security
+world. But there's some river
+
+219
+00:13:29,530 --> 00:13:31,840
+they have very specific
+meanings, though, right, those
+
+220
+00:13:31,840 --> 00:13:33,040
+terms and those phrases.
+
+221
+00:13:34,680 --> 00:13:36,720
+Francisco Donoso: Yeah, yeah,
+absolutely. But before I do
+
+222
+00:13:36,720 --> 00:13:39,540
+that, I'm sorry, I just kind of
+mentioned something that you
+
+223
+00:13:39,540 --> 00:13:43,170
+reminded me of that talk where
+you said, Hey, you know,
+
+224
+00:13:43,440 --> 00:13:46,950
+boundary lis networks and data
+centers are a real thing. The
+
+225
+00:13:46,950 --> 00:13:49,500
+first time I had an experience
+like that, that had to kind of
+
+226
+00:13:49,500 --> 00:13:53,310
+shift. My entire mindset was
+when I was working at a company
+
+227
+00:13:53,310 --> 00:13:57,660
+that got purchased by Twilio.
+And we were processing so much
+
+228
+00:13:57,660 --> 00:14:01,980
+data that when we started
+looking at firewall vendors for
+
+229
+00:14:02,010 --> 00:14:05,160
+protecting our data center, he
+would have literally cost
+
+230
+00:14:05,460 --> 00:14:08,790
+hundreds of millions of dollars
+to buy hardware powerful enough
+
+231
+00:14:09,150 --> 00:14:12,720
+to secure our environment from
+like a traditional network
+
+232
+00:14:12,720 --> 00:14:15,990
+segmentation perspective. So we
+had to shift and say, Okay,
+
+233
+00:14:15,990 --> 00:14:18,180
+well, now we're managing
+firewalls at every single
+
+234
+00:14:18,180 --> 00:14:21,690
+server. And it was just such an
+interesting shift that I think
+
+235
+00:14:21,720 --> 00:14:25,500
+most organizations are now
+having to think about, right? I
+
+236
+00:14:25,500 --> 00:14:27,630
+don't know how many
+organizations are so large that
+
+237
+00:14:27,750 --> 00:14:31,650
+they literally can't buy enough
+hardware to, like process the
+
+238
+00:14:31,650 --> 00:14:35,370
+security traffic from a firewall
+perspective, but that was a that
+
+239
+00:14:35,370 --> 00:14:40,650
+was a really interesting change
+in kind of mindset for me. But
+
+240
+00:14:40,650 --> 00:14:43,890
+yeah, just like you mentioned,
+you know, there's a lot of
+
+241
+00:14:43,920 --> 00:14:47,880
+terms. And I think that this is
+something that's been specially
+
+242
+00:14:47,880 --> 00:14:51,450
+pervasive in cybersecurity, and
+I'm not sure exactly why it's so
+
+243
+00:14:51,450 --> 00:14:56,310
+bad in this specific section,
+but we have a lot of terms like
+
+244
+00:14:56,310 --> 00:14:59,790
+blue team, right, which
+essentially is really just
+
+245
+00:14:59,850 --> 00:15:04,800
+defensive guys. Right? So it
+actually a lot of the terms that
+
+246
+00:15:04,800 --> 00:15:08,940
+you hear in cyber security come
+from, like old military
+
+247
+00:15:08,940 --> 00:15:13,560
+backgrounds, because some of the
+very first, people who started
+
+248
+00:15:13,560 --> 00:15:16,710
+thinking about cyber security
+came from the like, national
+
+249
+00:15:16,710 --> 00:15:22,650
+security or defense space. So
+the word red team as an example,
+
+250
+00:15:22,650 --> 00:15:26,010
+which is intended to denote
+someone who's like trying to
+
+251
+00:15:26,010 --> 00:15:28,710
+attack you in terms of a
+cybersecurity exercise they're
+
+252
+00:15:28,710 --> 00:15:32,580
+trying to break into your
+environment. In order to help
+
+253
+00:15:32,580 --> 00:15:37,680
+you see what could happen came
+from the, from the military
+
+254
+00:15:37,680 --> 00:15:40,500
+world, there would be a red team
+who would work on a training
+
+255
+00:15:40,500 --> 00:15:43,980
+exercise with a team by I don't
+know breaking into some compound
+
+256
+00:15:44,010 --> 00:15:47,940
+and seeing how far they get. So
+the red team in cybersecurity is
+
+257
+00:15:47,940 --> 00:15:50,790
+essentially the same thing. Hey,
+can we break into your
+
+258
+00:15:50,790 --> 00:15:54,480
+organization? How far can we
+get? How realistic can we be?
+
+259
+00:15:54,780 --> 00:15:57,750
+And the blue team is sort of the
+opposite of that right that
+
+260
+00:15:57,900 --> 00:16:00,750
+their defensive team was sitting
+there trying See if they can
+
+261
+00:16:00,750 --> 00:16:04,140
+find those bad guys, or in the
+real military,
+
+262
+00:16:04,170 --> 00:16:05,730
+Warren du Toit: Do they work
+well together?
+
+263
+00:16:07,379 --> 00:16:10,079
+Francisco Donoso: Yeah, that's
+really. Yeah.
+
+264
+00:16:11,159 --> 00:16:13,169
+Warren du Toit: Because I mean,
+like the one does the one and
+
+265
+00:16:13,169 --> 00:16:15,299
+the one does the other, but
+they're essentially trying to
+
+266
+00:16:15,299 --> 00:16:19,229
+achieve the same results.
+They're trying to find a way to
+
+267
+00:16:19,229 --> 00:16:22,949
+prevent the person from getting
+in, right? Because obviously,
+
+268
+00:16:22,949 --> 00:16:25,469
+you're not talking in context of
+a blackhead. Now, you're not
+
+269
+00:16:25,469 --> 00:16:29,309
+talking about hackers trying to
+do evil. You're talking about
+
+270
+00:16:29,309 --> 00:16:31,499
+two teams trying to achieve the
+same goal.
+
+271
+00:16:33,570 --> 00:16:36,060
+Francisco Donoso: Yeah, I think
+what you're seeing now is more
+
+272
+00:16:36,060 --> 00:16:40,980
+and more of the answer is yes.
+Previously not so much enough.
+
+273
+00:16:41,040 --> 00:16:43,740
+I've had the opportunity now to
+be on both sides of the coin,
+
+274
+00:16:43,740 --> 00:16:50,040
+and I love them both. Prior to
+joining klc security, I spent
+
+275
+00:16:50,040 --> 00:16:52,650
+some time at a company that was
+trying to build an automated red
+
+276
+00:16:52,650 --> 00:16:56,430
+team, and that was some of the
+most fun I've ever had in my
+
+277
+00:16:56,490 --> 00:17:01,110
+career. That's where I had to
+learn Kubernetes To figure out
+
+278
+00:17:01,110 --> 00:17:03,420
+how to have a security
+environment where we literally
+
+279
+00:17:03,420 --> 00:17:06,780
+had zero and it's like we
+literally had millions of
+
+280
+00:17:06,780 --> 00:17:09,060
+dollars of zero days that we
+developed, and I had to figure
+
+281
+00:17:09,060 --> 00:17:13,770
+out how to secure that using
+some magic. But what I, what
+
+282
+00:17:13,770 --> 00:17:19,440
+I've seen is that a lot of red
+teams from like your traditional
+
+283
+00:17:19,440 --> 00:17:23,130
+cyber security vendors, they
+really just feel like they're
+
+284
+00:17:23,130 --> 00:17:26,310
+there to beat up the blue team,
+right? It just feels like sort
+
+285
+00:17:26,310 --> 00:17:30,360
+of a bully coming in and say,
+Look at how bad you are, you
+
+286
+00:17:30,360 --> 00:17:34,020
+suck. You didn't find any of
+this. And that was a lot of
+
+287
+00:17:34,050 --> 00:17:38,310
+pervasiveness around cyber
+security for a while. But now, a
+
+288
+00:17:38,310 --> 00:17:41,520
+lot of that attitude has luckily
+shifted right where, Look, guys,
+
+289
+00:17:41,550 --> 00:17:44,970
+the only reason we hired you to
+be a red team is to help our
+
+290
+00:17:44,970 --> 00:17:48,300
+blue team get better. So you
+need to work together to do that
+
+291
+00:17:48,300 --> 00:17:51,960
+and accomplish that. And there's
+some firms out there. In fact,
+
+292
+00:17:51,990 --> 00:17:55,860
+Walmart has some of the best Red
+and Blue Team guys that I've
+
+293
+00:17:55,860 --> 00:17:58,830
+ever met in my entire career.
+Both of their teams are
+
+294
+00:17:58,830 --> 00:18:02,730
+fantastic. The reason they've
+succeeded so much, is because
+
+295
+00:18:02,760 --> 00:18:05,700
+they have this partnership where
+they're just constantly
+
+296
+00:18:05,700 --> 00:18:09,600
+sparring. The Red Team figures
+out a really novel way to go
+
+297
+00:18:09,600 --> 00:18:13,050
+after some part of the Walmart
+environment. And then the blue
+
+298
+00:18:13,050 --> 00:18:16,710
+team does eventually catch them.
+But it's all about, okay, well,
+
+299
+00:18:16,740 --> 00:18:19,680
+that's really cool. How did you
+get here? And then what could I
+
+300
+00:18:19,680 --> 00:18:22,710
+do to potentially detect you in
+this new novel way that you came
+
+301
+00:18:22,710 --> 00:18:26,220
+up with, literally just to break
+into this environment, and just
+
+302
+00:18:26,220 --> 00:18:29,580
+constantly having that
+collaboration, because it needs
+
+303
+00:18:29,580 --> 00:18:32,310
+to be a collaboration. And
+what's what's really interesting
+
+304
+00:18:32,310 --> 00:18:35,370
+in that environment is, you
+know, a red team engagement,
+
+305
+00:18:35,430 --> 00:18:38,730
+depending on how sophisticated
+it is, could be a year long,
+
+306
+00:18:39,090 --> 00:18:42,330
+right? And for the first six
+months of that, the blue team
+
+307
+00:18:42,330 --> 00:18:44,970
+may not even see anything that
+the red team has done. It's all
+
+308
+00:18:44,970 --> 00:18:47,880
+maybe reconnaissance and
+staging, to make sure that when
+
+309
+00:18:47,880 --> 00:18:51,660
+they break in, they have a way
+to control what they've broken
+
+310
+00:18:51,660 --> 00:18:56,850
+into. But a lot of the value out
+of that comes What did you spend
+
+311
+00:18:57,000 --> 00:19:00,570
+six months doing? What did you
+do? Oh, you register it A domain
+
+312
+00:19:00,570 --> 00:19:03,540
+that looks just like mine, how
+could I potentially identify
+
+313
+00:19:03,540 --> 00:19:06,780
+that to see if in the future,
+someone else's staging something
+
+314
+00:19:06,780 --> 00:19:12,000
+similarly? Or, hey, I responded
+in a way that actually gave you
+
+315
+00:19:12,000 --> 00:19:15,300
+more access. So this is
+something that we saw at that
+
+316
+00:19:15,300 --> 00:19:20,280
+company A while ago where a blue
+team when they're in an
+
+317
+00:19:20,280 --> 00:19:24,360
+environment where there's
+potentially real breach, right,
+
+318
+00:19:24,360 --> 00:19:27,030
+because the goal of a red team
+should be the blue team should
+
+319
+00:19:27,030 --> 00:19:29,220
+never be in a position where
+they're like, Oh, that's just
+
+320
+00:19:29,220 --> 00:19:32,910
+the red team, we'll deal with it
+later. They need to react as if
+
+321
+00:19:32,910 --> 00:19:36,900
+it is a real attacker,
+constantly. And often what
+
+322
+00:19:36,900 --> 00:19:40,440
+happens is, for blue teams who
+haven't had that experience,
+
+323
+00:19:40,680 --> 00:19:44,160
+they react in a way that's
+actually extremely advantageous
+
+324
+00:19:44,190 --> 00:19:49,500
+to an attacker. An example would
+be, we've had cases where a blue
+
+325
+00:19:49,500 --> 00:19:52,740
+team person would log into a
+machine that we had compromised
+
+326
+00:19:52,770 --> 00:19:56,850
+using their privileged domain
+account, which means Hey, now
+
+327
+00:19:56,850 --> 00:19:59,580
+we've got your credentials.
+We've got your privileged domain
+
+328
+00:19:59,580 --> 00:20:02,460
+account. Thank you very much
+blue team, you've made our job
+
+329
+00:20:02,670 --> 00:20:07,380
+significantly easier. So a lot
+of it is just helping the blue
+
+330
+00:20:07,380 --> 00:20:12,810
+team understand how they should
+react calmly, in a kind of
+
+331
+00:20:12,810 --> 00:20:15,750
+structured way and think about
+how they're going to react to an
+
+332
+00:20:15,750 --> 00:20:20,340
+attacker, because reacting
+correctly, could be disastrous,
+
+333
+00:20:20,340 --> 00:20:23,340
+right? It could give the bad
+guys exactly what they need. And
+
+334
+00:20:23,340 --> 00:20:27,990
+we see that a lot here at klc
+security and other firms where
+
+335
+00:20:27,990 --> 00:20:32,400
+blue teams who don't have that
+experience, React poorly, and
+
+336
+00:20:32,460 --> 00:20:36,690
+cause unfortunately more harm
+than good when they're reacting.
+
+337
+00:20:37,080 --> 00:20:39,780
+So I think that the most
+important part of a red team
+
+338
+00:20:39,780 --> 00:20:43,380
+really is not just how do you
+break into this environment?
+
+339
+00:20:43,410 --> 00:20:47,610
+That's always useful information
+as a defender, but how did I as
+
+340
+00:20:47,610 --> 00:20:50,790
+a defender make missteps that
+made it worse, and how do I
+
+341
+00:20:50,790 --> 00:20:53,490
+train my team to prevent that
+stuff in the future?
+
+342
+00:20:55,290 --> 00:20:57,510
+Chris Goosen: That's
+fascinating. I you know, you
+
+343
+00:20:57,510 --> 00:21:01,350
+were talking about the sparring
+and I remember It was early last
+
+344
+00:21:01,350 --> 00:21:05,700
+year, I did a security training
+course. And I was we were on
+
+345
+00:21:05,700 --> 00:21:08,580
+like a campus where we would,
+you know, we there the whole day
+
+346
+00:21:08,580 --> 00:21:12,300
+type of thing. And then we would
+have lunch, and snack breaks and
+
+347
+00:21:12,300 --> 00:21:15,990
+whatnot in the cafeteria on this
+training campus. And the
+
+348
+00:21:15,990 --> 00:21:18,930
+lunchtime conversations were
+worth almost more than the
+
+349
+00:21:18,930 --> 00:21:22,020
+course was because I mean, it
+was a fantastic course. But the
+
+350
+00:21:22,020 --> 00:21:24,960
+lifestyle conversations were
+great, because the very
+
+351
+00:21:24,960 --> 00:21:28,320
+backgrounds of the people that
+were on this course, was
+
+352
+00:21:28,320 --> 00:21:30,840
+fascinating, right? We had
+these, like really hardcore risk
+
+353
+00:21:30,840 --> 00:21:34,260
+and compliance folks. And then
+we had like, you know, kind of
+
+354
+00:21:34,260 --> 00:21:38,370
+consultant type people like us.
+And then we had really hardcore,
+
+355
+00:21:38,370 --> 00:21:41,700
+like red or blue team, offensive
+and defensive folks, right. And
+
+356
+00:21:41,700 --> 00:21:44,880
+so these guys would be talking
+about someone like the and many
+
+357
+00:21:44,880 --> 00:21:47,880
+of them represented some pretty
+large and very well known
+
+358
+00:21:47,970 --> 00:21:52,980
+organizations. And so you hear
+about the ways they try and get
+
+359
+00:21:52,980 --> 00:21:56,490
+in and it's not even only from a
+from a you know, breaking
+
+360
+00:21:56,490 --> 00:21:58,620
+through network layer type
+stuff, but like even just
+
+361
+00:21:58,620 --> 00:22:02,970
+physical security penetration
+testing, right, like trying to
+
+362
+00:22:02,970 --> 00:22:06,150
+sneak in as a pregnant lady, or
+you know, get through security,
+
+363
+00:22:06,180 --> 00:22:08,490
+physical security controls,
+because you're pregnant, you
+
+364
+00:22:08,490 --> 00:22:11,790
+can't fit in, you know that all
+of these like wildly crazy
+
+365
+00:22:11,790 --> 00:22:14,640
+concepts. So you just go people
+do that and what yeah, we run
+
+366
+00:22:14,640 --> 00:22:17,970
+these types of operations all
+the time, like, get really,
+
+367
+00:22:17,970 --> 00:22:20,460
+really good looking girl to come
+in and try and walk back, you
+
+368
+00:22:20,460 --> 00:22:24,780
+know, all that type of stuff.
+And it's amazing how they, you
+
+369
+00:22:24,780 --> 00:22:28,020
+know, they would target people
+like target a particular
+
+370
+00:22:28,020 --> 00:22:30,360
+security guard, physical
+security guard, because, you
+
+371
+00:22:30,360 --> 00:22:33,120
+know, maybe he has a wandering
+eye. So you bring in an
+
+372
+00:22:33,120 --> 00:22:35,580
+attractive young lady to try and
+do you know what I mean, like,
+
+373
+00:22:35,610 --> 00:22:38,310
+the social engineering aspect of
+this is the sound of
+
+374
+00:22:39,230 --> 00:22:42,440
+Warren du Toit: what's what's
+the end goal, right? I mean, I
+
+375
+00:22:42,440 --> 00:22:45,410
+think this is also quite
+important, because, you know,
+
+376
+00:22:45,410 --> 00:22:51,140
+like, if we weren't humans, and
+we didn't have freewill and they
+
+377
+00:22:51,140 --> 00:23:01,280
+weren't. I don't want to
+swear... Pierre, I'm saving you
+
+378
+00:23:01,280 --> 00:23:07,040
+here, pal. And I'd like you get
+really bad people. Okay, then
+
+379
+00:23:07,100 --> 00:23:11,330
+once certain things for certain
+things, but I mean like to go
+
+380
+00:23:11,330 --> 00:23:15,830
+and hire someone that is going
+to do that takes a lot of
+
+381
+00:23:15,830 --> 00:23:20,480
+planning a lot of motivation, a
+lot of money to orchestrate
+
+382
+00:23:20,480 --> 00:23:23,630
+these sorts of social
+engineering attacks and things
+
+383
+00:23:23,630 --> 00:23:30,080
+like that. What is the end goal?
+Is it to go haha I got in or is
+
+384
+00:23:30,080 --> 00:23:33,620
+it more of a like, okay, we're
+actually going to steal stuff.
+
+385
+00:23:33,650 --> 00:23:37,700
+And it's actually corporate
+corporate corporate espionage
+
+386
+00:23:37,730 --> 00:23:41,270
+and all these conspiracy
+theorists throughout the world.
+
+387
+00:23:41,600 --> 00:23:43,910
+were absolutely right. And
+you're thinking,
+
+388
+00:23:44,890 --> 00:23:48,550
+Nicolas Blank: I can answer that
+very quickly. For me, based on
+
+389
+00:23:48,910 --> 00:23:53,590
+the last three, four weeks, I
+think the last four weeks we've
+
+390
+00:23:53,590 --> 00:24:03,070
+had three post breach requests
+and my last One was from a bank,
+
+391
+00:24:03,100 --> 00:24:10,030
+which I will not name, who on
+the basis of an email, which
+
+392
+00:24:10,030 --> 00:24:13,840
+came from a domain name, which
+was one letter away from the
+
+393
+00:24:13,840 --> 00:24:19,870
+production domain. Right,
+however, had all the rights spam
+
+394
+00:24:19,870 --> 00:24:23,890
+records in place, so SPF and
+DKIM all checked out, it should
+
+395
+00:24:23,890 --> 00:24:31,060
+a request to accounts payable.
+With and you can see how much
+
+396
+00:24:31,090 --> 00:24:33,730
+how long this breach has been
+been in place. I'll tell you in
+
+397
+00:24:33,730 --> 00:24:38,560
+a second and send a request
+accounts payable to say please
+
+398
+00:24:38,560 --> 00:24:41,710
+will you pay this amount? The
+person from accounts payable
+
+399
+00:24:41,710 --> 00:24:47,680
+said Hang on, this looks fishy.
+Should I respond to this? And
+
+400
+00:24:47,710 --> 00:24:52,000
+five minutes later, an email
+came back from the attacking
+
+401
+00:24:52,000 --> 00:24:56,380
+domain saying yes, this is
+correct. Go ahead and pay. And
+
+402
+00:24:56,410 --> 00:24:59,710
+what's even worse is that the
+attacker had crafted a PDF
+
+403
+00:24:59,710 --> 00:25:04,960
+document With three signatures,
+which they had literally
+
+404
+00:25:04,960 --> 00:25:08,890
+photoshopped on top of a PDF, so
+at first glance, it looks
+
+405
+00:25:08,890 --> 00:25:12,490
+correct. But the second glance
+you can see was manufactured in
+
+406
+00:25:12,520 --> 00:25:15,850
+the lost $400,000 on a Friday
+morning.
+
+407
+00:25:18,480 --> 00:25:23,400
+Chris Goosen: So yeah, yeah. The
+the goal, I guess is is trying
+
+408
+00:25:23,400 --> 00:25:25,770
+to secure all the aspects,
+right, all the elements and is
+
+409
+00:25:25,770 --> 00:25:29,010
+this fascinating? So there's a
+podcast that I listened to quite
+
+410
+00:25:29,010 --> 00:25:31,260
+a lot called the Darknet
+diaries. And if you haven't
+
+411
+00:25:31,260 --> 00:25:35,130
+checked it out, well worth
+listening to. One of the
+
+412
+00:25:35,130 --> 00:25:40,140
+episodes talks about I can't
+remember the exact firm name but
+
+413
+00:25:40,140 --> 00:25:43,680
+a couple of guys who were hired
+to do some physical penetration
+
+414
+00:25:43,680 --> 00:25:47,790
+testing by a government entity.
+I think it was up in Iowa.
+
+415
+00:25:47,820 --> 00:25:50,280
+Actually, it wasn't it
+definitely was a Dallas, Iowa. I
+
+416
+00:25:50,280 --> 00:25:55,650
+remember because I was like
+downtown, and they essentially
+
+417
+00:25:55,650 --> 00:25:59,520
+got caught but knowingly got
+caught they tripped in alarm at
+
+418
+00:25:59,520 --> 00:26:03,360
+a courthouse. They had managed
+to get into after some recon and
+
+419
+00:26:03,360 --> 00:26:06,240
+whatnot. And so they waited for
+the cops. And as they normally
+
+420
+00:26:06,240 --> 00:26:08,280
+would, you know, when the cops
+come and rescue, you give them
+
+421
+00:26:08,280 --> 00:26:11,340
+a, you know, a document that
+says we were hired to do this,
+
+422
+00:26:11,340 --> 00:26:14,430
+here's the signatures of other
+people. But that didn't, there
+
+423
+00:26:14,430 --> 00:26:18,630
+was some kind of, I guess, chain
+of command issue in that
+
+424
+00:26:18,630 --> 00:26:22,110
+process. And these guys ended up
+getting arrested and prosecuted
+
+425
+00:26:22,110 --> 00:26:25,680
+for doing this. And it was a
+pretty big, big, big deal. But
+
+426
+00:26:25,680 --> 00:26:29,040
+fascinating story, if you listen
+to not only the things that
+
+427
+00:26:29,040 --> 00:26:32,340
+they've that they do, to be able
+to try these things. So you
+
+428
+00:26:32,340 --> 00:26:36,930
+know, I guess the point I'm
+making is very interesting. It's
+
+429
+00:26:36,930 --> 00:26:39,030
+a it's a very interesting
+concept, right? The whole kind
+
+430
+00:26:39,030 --> 00:26:41,700
+of blue red team thing.
+
+431
+00:26:43,890 --> 00:26:44,190
+Nicolas Blank: Chris.
+
+432
+00:26:44,520 --> 00:26:44,760
+Chris Goosen: Yeah.
+
+433
+00:26:45,420 --> 00:26:47,910
+Nicolas Blank: I want to
+challenge you on that because we
+
+434
+00:26:47,910 --> 00:26:50,910
+talking about companies like
+Walmart writ large enough to
+
+435
+00:26:50,910 --> 00:26:54,000
+have written blue team, right.
+And obviously, the guarding
+
+436
+00:26:54,000 --> 00:26:57,870
+against and this is where things
+get super interesting because
+
+437
+00:26:57,870 --> 00:27:02,340
+companies of that size will
+suffer things like nation state
+
+438
+00:27:02,340 --> 00:27:06,660
+attack and companies or or
+should we say attackers with
+
+439
+00:27:06,660 --> 00:27:12,090
+literally unlimited budgets. But
+what I'm finding in in customers
+
+440
+00:27:12,090 --> 00:27:17,010
+both large and small lately
+who've been breached is that
+
+441
+00:27:17,340 --> 00:27:19,680
+these are not companies with
+blue and red team. These are
+
+442
+00:27:19,680 --> 00:27:25,320
+just companies who have some
+really, really basic things that
+
+443
+00:27:25,320 --> 00:27:28,470
+they haven't bothered doing from
+a security point of view. Like
+
+444
+00:27:28,680 --> 00:27:32,460
+they are still susceptible to
+things like password sprays,
+
+445
+00:27:32,490 --> 00:27:36,480
+attacks, and they're going to
+cloud like office 365 that they
+
+446
+00:27:36,480 --> 00:27:40,470
+haven't disabled legacy awesome,
+then they're surprised because
+
+447
+00:27:40,530 --> 00:27:45,840
+there's an attack and that's the
+last right guys. Well, I'd love
+
+448
+00:27:45,840 --> 00:27:51,330
+for you guys now who are in the
+dedicated security space to to
+
+449
+00:27:51,420 --> 00:27:53,400
+pass some commentary on that
+way.
+
+450
+00:27:53,810 --> 00:27:59,120
+The.. in my mind, and I don't
+mean this as a scare mongering
+
+451
+00:27:59,120 --> 00:28:03,440
+thing at all. Hear me, right? I
+think most of the world who
+
+452
+00:28:03,440 --> 00:28:07,070
+doesn't have any kind of
+security consciousness is so
+
+453
+00:28:07,130 --> 00:28:12,050
+stunning the exposed that we
+actually beyond what Microsoft
+
+454
+00:28:12,050 --> 00:28:15,680
+says in terms of assuming breach
+of trust exposed?
+
+455
+00:28:16,350 --> 00:28:18,240
+Chris Goosen: That's I mean,
+that's a that's a great point.
+
+456
+00:28:18,240 --> 00:28:21,270
+And I think that's, that's part
+of the reason why I think it's
+
+457
+00:28:21,270 --> 00:28:23,400
+important to have these types of
+conversations, right? Because I
+
+458
+00:28:23,400 --> 00:28:30,180
+think there shouldn't be a, like
+a silo between the Information
+
+459
+00:28:30,180 --> 00:28:32,130
+Technology Group and the
+information security group
+
+460
+00:28:32,130 --> 00:28:35,700
+anymore like this has to become,
+they have to be able to work
+
+461
+00:28:35,700 --> 00:28:38,190
+together a lot more than what's
+what's fascinating about the
+
+462
+00:28:38,190 --> 00:28:41,190
+middle. No, in this is true,
+right? Because what's
+
+463
+00:28:41,190 --> 00:28:44,670
+fascinating about the space, and
+Fran has some really good data
+
+464
+00:28:44,670 --> 00:28:49,170
+on this as well is that
+historically, the security teams
+
+465
+00:28:49,170 --> 00:28:52,800
+and the infosec guys go and buy
+the security products separately
+
+466
+00:28:52,830 --> 00:28:54,990
+from the people who are buying
+productivity product team,
+
+467
+00:28:54,990 --> 00:28:58,560
+right. And so what Microsoft is
+coming in and done as well with
+
+468
+00:28:58,560 --> 00:29:02,370
+bundling everything together.
+When the productivity team buys
+
+469
+00:29:02,730 --> 00:29:06,990
+em 365, they're now getting all
+of the security products, right?
+
+470
+00:29:06,990 --> 00:29:09,120
+And so what I had seen
+previously with working with
+
+471
+00:29:09,120 --> 00:29:13,200
+large customers is that you go
+through this massive migration
+
+472
+00:29:13,200 --> 00:29:16,020
+program, and you're, you know,
+halfway through it, and then all
+
+473
+00:29:16,020 --> 00:29:19,170
+of a sudden, the security guys
+are like, hang on, what is this
+
+474
+00:29:19,170 --> 00:29:22,230
+conditional access thing you
+guys are wanting to it? And why
+
+475
+00:29:22,230 --> 00:29:27,000
+would we involve when we told,
+like, pump the brakes? Because
+
+476
+00:29:27,000 --> 00:29:28,440
+then they're like, well, we
+don't want to use a Microsoft
+
+477
+00:29:28,440 --> 00:29:31,140
+Security product, or we weren't
+involved in that decision. So
+
+478
+00:29:31,140 --> 00:29:33,480
+now we need to go and understand
+what the product can do and go
+
+479
+00:29:33,480 --> 00:29:36,420
+through the whole due diligence
+process. So there's Microsoft
+
+480
+00:29:36,420 --> 00:29:39,660
+that kind of tipping the space
+upside down, if you will, in a
+
+481
+00:29:39,660 --> 00:29:43,410
+sense, because you kind of have
+to, they're forcing those teams
+
+482
+00:29:43,410 --> 00:29:46,620
+to to work together, I think,
+and I think that's where this
+
+483
+00:29:46,620 --> 00:29:49,800
+thing becomes really, really
+fascinating. But to your point
+
+484
+00:29:49,800 --> 00:29:54,750
+about being exposed. One of the
+things that I think is important
+
+485
+00:29:54,750 --> 00:29:58,890
+to mention is that especially in
+the Microsoft ecosystem, those
+
+486
+00:29:58,890 --> 00:30:01,560
+basic security controls roles
+exist, folks are just not
+
+487
+00:30:01,560 --> 00:30:04,230
+implementing them. Right. So
+looking at MFA, like what were
+
+488
+00:30:04,230 --> 00:30:08,310
+the stats, something like, it's
+like less than 15% of users are
+
+489
+00:30:08,310 --> 00:30:12,660
+actually using MFA every month.
+Everyone in every tenant has the
+
+490
+00:30:12,660 --> 00:30:15,330
+ability to enable MFA. But not
+everyone is doing it.
+
+491
+00:30:15,990 --> 00:30:17,220
+Francisco Donoso: That's why
+included.
+
+492
+00:30:17,460 --> 00:30:19,470
+Chris Goosen: Yeah, exactly. And
+so that's why I like Emma's we
+
+493
+00:30:19,470 --> 00:30:22,920
+should start every every episode
+with like, interface.
+
+494
+00:30:25,480 --> 00:30:28,180
+Nicolas Blank: So let's try this
+one over to Fran for for some
+
+495
+00:30:28,180 --> 00:30:30,880
+common ci, basic security stuff.
+
+496
+00:30:33,420 --> 00:30:34,440
+Warren du Toit: Is that such a
+thing?
+
+497
+00:30:35,890 --> 00:30:39,850
+Francisco Donoso: There really,
+there really is. I think what
+
+498
+00:30:39,850 --> 00:30:44,950
+you'll find is that almost every
+compromised, larger small if
+
+499
+00:30:44,950 --> 00:30:49,780
+it's a small community bank or a
+large multinational happens,
+
+500
+00:30:50,200 --> 00:30:56,440
+because of some small basic kind
+of misconfigure ation of
+
+501
+00:30:56,500 --> 00:30:59,710
+technology, things that you've
+already mentioned. Maybe
+
+502
+00:30:59,890 --> 00:31:03,100
+organization that doesn't have
+any multi factor authentication,
+
+503
+00:31:03,430 --> 00:31:06,940
+or even enabled multi factor
+authentication, but forgot about
+
+504
+00:31:06,940 --> 00:31:09,670
+legacy protocols that don't
+support multi factor
+
+505
+00:31:09,670 --> 00:31:13,570
+authentication, which then gives
+you access to email which you
+
+506
+00:31:13,570 --> 00:31:18,430
+can use to pivot as an attacker
+to another, another, you know,
+
+507
+00:31:18,520 --> 00:31:21,400
+method of compromise, I could
+trick Chris to do something on
+
+508
+00:31:21,400 --> 00:31:25,060
+my behalf if I have access to
+Kudelski Security email as an
+
+509
+00:31:25,060 --> 00:31:31,150
+example. So I think that a lot
+of what you see is really the
+
+510
+00:31:31,150 --> 00:31:34,690
+cause of this, in my mind is two
+things. One, it teams are moving
+
+511
+00:31:34,690 --> 00:31:37,240
+really fast. And they're
+constantly under immense
+
+512
+00:31:37,240 --> 00:31:40,600
+pressure to deliver value to an
+organization, right? Because
+
+513
+00:31:40,600 --> 00:31:43,870
+they need to that's they're
+there to enable an organization
+
+514
+00:31:43,870 --> 00:31:46,870
+to conduct their business.
+Nobody runs an IT team just
+
+515
+00:31:46,870 --> 00:31:50,200
+because they love it. They're
+there to enable an organization
+
+516
+00:31:50,680 --> 00:31:54,040
+and they're moving very fast,
+and they don't have the time to
+
+517
+00:31:54,070 --> 00:31:58,420
+take a second and think about,
+okay, well how does this change
+
+518
+00:31:58,420 --> 00:32:02,230
+my exposure? I'm about To go and
+put this thing on the internet,
+
+519
+00:32:02,320 --> 00:32:06,190
+or I've just migrated to Office
+365? How does that change the
+
+520
+00:32:06,190 --> 00:32:10,600
+way that someone could interact
+with my environment? And that's
+
+521
+00:32:10,600 --> 00:32:13,300
+where a red team comes in,
+right? Because a lot of the
+
+522
+00:32:13,300 --> 00:32:18,520
+defensive guys or even just it
+guys, they don't know what they
+
+523
+00:32:18,520 --> 00:32:22,630
+don't know. They don't know how
+a system can be misused. And the
+
+524
+00:32:22,630 --> 00:32:26,560
+reason that hackers or attackers
+are so successful is because
+
+525
+00:32:26,950 --> 00:32:30,790
+they're, honestly all the time
+just being creative. How could I
+
+526
+00:32:30,790 --> 00:32:34,240
+use this thing for what it
+exactly was not intended to do
+
+527
+00:32:34,450 --> 00:32:38,620
+on my behalf to be able to break
+into an organization? So I think
+
+528
+00:32:38,620 --> 00:32:42,550
+that a lot of it is the IT team
+just doesn't have the time, but
+
+529
+00:32:42,550 --> 00:32:47,590
+they also don't have the kind of
+concept of how do I misuse this
+
+530
+00:32:47,590 --> 00:32:50,830
+thing to gain an advantage or
+break into this organization.
+
+531
+00:32:51,280 --> 00:32:55,180
+And the second half, I think, is
+security teams kind of all over
+
+532
+00:32:55,180 --> 00:32:58,150
+the place, have built this
+culture where they're just the
+
+533
+00:32:58,150 --> 00:33:01,810
+know people. They're the people
+That nobody wants to talk to,
+
+534
+00:33:02,020 --> 00:33:05,140
+because they're gonna cause a
+project to grind to a halt.
+
+535
+00:33:05,470 --> 00:33:08,050
+Right? They're not there to
+enable the business. They're
+
+536
+00:33:08,050 --> 00:33:12,010
+there to just say no, and tell
+the IT team too bad, you got to
+
+537
+00:33:12,010 --> 00:33:16,240
+go do this all again. So I think
+that, that what's really
+
+538
+00:33:16,240 --> 00:33:20,260
+important for any organization
+is to build a culture where the
+
+539
+00:33:20,260 --> 00:33:24,520
+security team is an enabler to
+the ITT, right? An example of
+
+540
+00:33:24,520 --> 00:33:29,200
+this is actually Facebook and
+some of the big like Silicon
+
+541
+00:33:29,200 --> 00:33:32,740
+Valley companies. The security
+teams are working directly with
+
+542
+00:33:32,770 --> 00:33:36,790
+the DevOps teams or the IT teams
+to help enable security and make
+
+543
+00:33:36,790 --> 00:33:40,780
+their lives easier. A perfect
+example from Facebook is that
+
+544
+00:33:40,780 --> 00:33:45,850
+Facebook security team wrote a
+piece of code, a library that
+
+545
+00:33:45,850 --> 00:33:49,120
+enabled secure checking of
+passwords, and they literally
+
+546
+00:33:49,120 --> 00:33:51,400
+went to the development teams
+and said, Hey, you guys don't
+
+547
+00:33:51,400 --> 00:33:53,770
+have to worry about this
+anymore. Just use this thing
+
+548
+00:33:53,770 --> 00:33:56,410
+that we wrote. And you don't
+have to worry about it. There's
+
+549
+00:33:56,410 --> 00:33:59,920
+not a lot of teams that are
+doing that. A lot of teams take
+
+550
+00:33:59,920 --> 00:34:03,310
+up backseat and they're there to
+like I said, say no rather than
+
+551
+00:34:03,310 --> 00:34:06,880
+collaborate with a technology
+team and say how do we make this
+
+552
+00:34:06,880 --> 00:34:12,460
+project success? successful? But
+securely? So I think, really it
+
+553
+00:34:12,460 --> 00:34:15,940
+is a lot of companies don't have
+the basics, right? Because it
+
+554
+00:34:15,940 --> 00:34:18,880
+administrators too busy. They
+put something up, they forget
+
+555
+00:34:18,880 --> 00:34:23,410
+about it. Nobody does inventory.
+Well, nobody, literally any
+
+556
+00:34:23,410 --> 00:34:27,100
+company I've ever worked for.
+None of them do true inventory.
+
+557
+00:34:27,100 --> 00:34:30,370
+Correct. Nobody knows what they
+own. But at the same time, even
+
+558
+00:34:30,370 --> 00:34:34,030
+if they know what they own, they
+don't know how they potentially
+
+559
+00:34:34,030 --> 00:34:36,700
+have misconfigured it and how
+that could be advantageous to an
+
+560
+00:34:36,700 --> 00:34:38,350
+attacker. So yeah.
+
+561
+00:34:39,810 --> 00:34:44,400
+Chris Goosen: So do you think
+that slops just changing gears
+
+562
+00:34:44,400 --> 00:34:46,590
+just a little bit here, but
+thinking about sort of moved on
+
+563
+00:34:46,590 --> 00:34:48,480
+the management side? Do you
+think that there's a
+
+564
+00:34:49,110 --> 00:34:53,370
+misunderstanding between
+organizations using a managed
+
+565
+00:34:53,370 --> 00:34:58,800
+service versus it with an
+expectation and this happens in
+
+566
+00:34:58,800 --> 00:35:01,200
+the cloud to write this have
+certainly ever been discussions
+
+567
+00:35:01,200 --> 00:35:03,810
+that I've had with folks go,
+Well, I want permissive
+
+568
+00:35:03,810 --> 00:35:06,780
+environments a mess, but we
+might, we're going to AWS or
+
+569
+00:35:06,780 --> 00:35:09,300
+we're going to Azure, so it's
+gonna be perfect and was like,
+
+570
+00:35:09,300 --> 00:35:11,430
+Well, no, that's not quite how
+this works. Like, you don't just
+
+571
+00:35:11,430 --> 00:35:14,070
+throw stuff up into the cloud.
+And then now it works. Right. So
+
+572
+00:35:14,070 --> 00:35:16,260
+do you think there's a there's
+also a bit of a misconception
+
+573
+00:35:16,260 --> 00:35:19,950
+that people go well, we're
+moving to Microsoft, to the
+
+574
+00:35:19,950 --> 00:35:23,670
+Microsoft, you know, in 365,
+platform, Mexican to deal with a
+
+575
+00:35:23,670 --> 00:35:27,570
+security now? move on? Yeah,
+yeah. What are you seeing?
+
+576
+00:35:27,570 --> 00:35:27,960
+Right?
+
+577
+00:35:29,490 --> 00:35:32,100
+Francisco Donoso: I think so. I
+think absolutely. I think a lot
+
+578
+00:35:32,100 --> 00:35:35,760
+of organizations are based at
+the very beginning of cloud, if
+
+579
+00:35:35,760 --> 00:35:39,210
+you will, right, like
+Infrastructure as a Service.
+
+580
+00:35:40,140 --> 00:35:43,290
+They didn't consider the shared
+responsibility model, right?
+
+581
+00:35:43,320 --> 00:35:47,400
+They just saw, hey, I'm putting
+my data in AWS now it's their
+
+582
+00:35:47,400 --> 00:35:50,340
+job, or I'm putting my
+infrastructure in Azure. Now
+
+583
+00:35:50,340 --> 00:35:53,970
+Microsoft has to deal with it.
+That's not the case. And I think
+
+584
+00:35:53,970 --> 00:35:59,370
+what you've seen is all of these
+companies Microsoft and Google
+
+585
+00:35:59,400 --> 00:36:05,730
+and AWS have started to enable
+their their customers to build
+
+586
+00:36:05,730 --> 00:36:09,750
+some really secure software in
+some very secure environments,
+
+587
+00:36:10,830 --> 00:36:14,010
+essentially included right for
+free and their plans are there.
+
+588
+00:36:14,040 --> 00:36:18,120
+They're doing a lot to enable
+their clients, Microsoft with
+
+589
+00:36:18,390 --> 00:36:21,060
+MFA for free and all of the
+security features they built
+
+590
+00:36:21,060 --> 00:36:24,930
+into even base enterprise plans
+for office 365. But
+
+591
+00:36:24,930 --> 00:36:28,590
+organizations aren't taking
+advantage of them. Because one
+
+592
+00:36:28,620 --> 00:36:31,830
+they either don't know or two,
+they think it's Microsoft's
+
+593
+00:36:31,830 --> 00:36:36,960
+problem. The Microsoft's problem
+kind of aspect has changed. I
+
+594
+00:36:36,960 --> 00:36:40,020
+think what you've seen in the
+security industry over the last
+
+595
+00:36:40,020 --> 00:36:43,620
+few years is a lot of education
+that just because you put your
+
+596
+00:36:43,620 --> 00:36:46,740
+infrastructure in AWS doesn't
+mean that you're now hands off
+
+597
+00:36:46,890 --> 00:36:51,570
+and you have kind of no longer
+responsibility for securing it.
+
+598
+00:36:52,320 --> 00:36:57,870
+So hopefully that seems to be
+changing slowly but surely. But
+
+599
+00:36:57,930 --> 00:37:01,350
+at the same time, what I've seen
+that's unfortunate is a lot of
+
+600
+00:37:01,350 --> 00:37:07,620
+traditional IT security guys.
+They don't know how AWS or Azure
+
+601
+00:37:07,620 --> 00:37:10,920
+works, right? They don't know
+how office works. So they're put
+
+602
+00:37:10,920 --> 00:37:13,980
+in this position where they're
+familiar with maybe the on
+
+603
+00:37:13,980 --> 00:37:17,130
+premise, legacy way to do
+things. But they also need to
+
+604
+00:37:17,130 --> 00:37:19,920
+learn about these technologies
+to be effective at securing
+
+605
+00:37:19,920 --> 00:37:24,480
+them. And a lot of a lot of
+organizations are enabling their
+
+606
+00:37:24,480 --> 00:37:27,510
+security teams to go and learn
+that stuff. So they can be
+
+607
+00:37:27,510 --> 00:37:30,060
+effective. hopefully that
+answered your question. Yeah,
+
+608
+00:37:30,060 --> 00:37:31,110
+that's a definite. that's a
+
+609
+00:37:31,140 --> 00:37:33,840
+Chris Goosen: that's a
+fascinating point. Do you think?
+
+610
+00:37:36,450 --> 00:37:39,420
+I mean, there is obviously a
+very big difference between your
+
+611
+00:37:39,420 --> 00:37:43,320
+traditional managed services
+type business, right. And Nick,
+
+612
+00:37:43,320 --> 00:37:45,180
+you know a lot about managed
+services. It's something that
+
+613
+00:37:45,180 --> 00:37:49,470
+you're involved with every day.
+And then the concept of managed
+
+614
+00:37:49,470 --> 00:37:52,200
+security services, right. I
+mean, it's it with us just
+
+615
+00:37:52,200 --> 00:37:56,880
+unpacking the differences, Dave,
+about what, what customers
+
+616
+00:37:56,910 --> 00:38:00,000
+should expect when they sign up
+for one or both of those things.
+
+617
+00:38:00,000 --> 00:38:03,030
+Because Because many security
+services is very different,
+
+618
+00:38:03,030 --> 00:38:05,940
+right? And that's a part of your
+background too. So, I mean, you
+
+619
+00:38:05,940 --> 00:38:08,190
+know, should we should we go
+into that just a little bit? I
+
+620
+00:38:08,190 --> 00:38:09,510
+think that'll be fascinating
+topic.
+
+621
+00:38:11,610 --> 00:38:14,640
+Francisco Donoso: Sure. I just
+want to start by saying that
+
+622
+00:38:15,000 --> 00:38:19,020
+it's really interesting to me
+because some of the nation state
+
+623
+00:38:19,020 --> 00:38:23,400
+attackers that Nick mentioned
+earlier, have found that the
+
+624
+00:38:23,400 --> 00:38:27,900
+soft underbelly of these large
+mega corpse are actually their
+
+625
+00:38:27,900 --> 00:38:33,210
+managed service providers. There
+was a report put out, if you
+
+626
+00:38:33,210 --> 00:38:38,760
+google the words cloud Hopper,
+it was literally about how China
+
+627
+00:38:39,000 --> 00:38:42,660
+or Chinese nation state actors,
+were breaking into companies
+
+628
+00:38:42,660 --> 00:38:46,830
+like IBM or other large managed
+service providers, not managed
+
+629
+00:38:46,830 --> 00:38:50,970
+security service providers,
+because this one single company
+
+630
+00:38:51,000 --> 00:38:55,050
+has access to a multitude of
+different environments for some
+
+631
+00:38:55,050 --> 00:38:58,500
+very large organizations. So
+they were actually compromising
+
+632
+00:38:58,500 --> 00:39:01,110
+their managed service providers.
+So that is Pivot into other
+
+633
+00:39:01,110 --> 00:39:04,950
+larger organizations, because
+that may have been easier. So I
+
+634
+00:39:04,950 --> 00:39:07,350
+think that what you're going to
+see, and what we're going to
+
+635
+00:39:07,350 --> 00:39:12,210
+continue to see is these really
+creative, truly nation state
+
+636
+00:39:12,210 --> 00:39:14,790
+actors who have unlimited
+resources, they're going to
+
+637
+00:39:14,790 --> 00:39:17,910
+target the big guys that have
+access to a lot of environments
+
+638
+00:39:17,910 --> 00:39:22,380
+as epileps. Because that's,
+that's really valuable. And what
+
+639
+00:39:22,380 --> 00:39:24,990
+I've seen from a traditional
+managed service provider,
+
+640
+00:39:25,020 --> 00:39:27,840
+someone who's maybe your
+outsourced helpdesk, and who's
+
+641
+00:39:28,050 --> 00:39:31,140
+helping you manage Active
+Directory and helping you, you
+
+642
+00:39:31,140 --> 00:39:36,540
+know, deploy new new servers or
+what have you. They typically
+
+643
+00:39:36,540 --> 00:39:39,330
+see security as kind of like a
+full time, right, something they
+
+644
+00:39:39,330 --> 00:39:43,770
+have to charge their customers
+extra for. And that's where this
+
+645
+00:39:44,100 --> 00:39:48,780
+managed Security Service
+Provider space came in. And, and
+
+646
+00:39:48,780 --> 00:39:51,390
+what I've seen, unfortunately,
+I'm going to be totally
+
+647
+00:39:51,390 --> 00:39:55,350
+transparent here is that a lot
+of managed service providers
+
+648
+00:39:55,380 --> 00:39:58,530
+that are specialized in
+security, so many security
+
+649
+00:39:58,530 --> 00:40:02,190
+service providers, are actually
+detrimental to their customer
+
+650
+00:40:02,190 --> 00:40:07,920
+security. I've worked for a lot
+of msps. And what happens is
+
+651
+00:40:07,950 --> 00:40:11,700
+clients hire this mssp, they no
+longer feel responsible for
+
+652
+00:40:11,700 --> 00:40:15,450
+their own cyber security. And
+the mssp is not really built to
+
+653
+00:40:15,450 --> 00:40:18,360
+support them in that mission,
+right? They're just like, Oh,
+
+654
+00:40:18,360 --> 00:40:21,150
+no, that's fine that mssp will
+deal with it. I don't have to
+
+655
+00:40:21,150 --> 00:40:27,420
+worry about and these msps a lot
+of them were built in really
+
+656
+00:40:27,420 --> 00:40:30,510
+interesting ways. I'll give you
+an example. I used to work for
+
+657
+00:40:30,510 --> 00:40:34,050
+an mssp organization that was
+built because the company used
+
+658
+00:40:34,050 --> 00:40:38,250
+to sell firewalls. And one day,
+a sales guy sold a lot of
+
+659
+00:40:38,250 --> 00:40:43,620
+firewalls. And the customer was
+like, Yeah, but what if I paid
+
+660
+00:40:43,620 --> 00:40:47,760
+you to manage them too? And the
+sales guys like Yeah, that makes
+
+661
+00:40:47,760 --> 00:40:50,640
+sense. We can make this
+profitable, and they built this
+
+662
+00:40:50,640 --> 00:40:53,910
+entire mssp that just kind of
+got bolted on, right? That's
+
+663
+00:40:53,910 --> 00:40:57,750
+like, hey, okay, well, I'm gonna
+go hire some fresh out of
+
+664
+00:40:57,750 --> 00:41:00,330
+college kids to manage these. I
+don't know if that's In
+
+665
+00:41:00,330 --> 00:41:03,720
+firewalls for this customer, and
+it just kind of snowballed. And
+
+666
+00:41:03,720 --> 00:41:07,260
+what happens is these managed
+security vendors, they never
+
+667
+00:41:07,260 --> 00:41:09,900
+take the time to think about,
+okay, well, how do I actually
+
+668
+00:41:09,900 --> 00:41:14,370
+provide value to my customer and
+defend you perspective, rather
+
+669
+00:41:14,370 --> 00:41:18,570
+than just managing a firewall,
+or managing a web proxy or
+
+670
+00:41:18,570 --> 00:41:22,800
+whatever other security
+technology? So truly, if I'm
+
+671
+00:41:22,800 --> 00:41:27,270
+being transparent, spending my
+career in managed services, a
+
+672
+00:41:27,270 --> 00:41:30,840
+lot of managed service providers
+are a detriment to their
+
+673
+00:41:30,840 --> 00:41:33,630
+customers. And that's, that
+makes me really sad personally,
+
+674
+00:41:33,630 --> 00:41:37,080
+right? Because we should be
+helping our customers, but most
+
+675
+00:41:37,080 --> 00:41:40,170
+of them, unfortunately, don't.
+But I know that that wasn't
+
+676
+00:41:40,170 --> 00:41:43,740
+exactly what's the difference
+between an MSP and an SSP and
+
+677
+00:41:43,740 --> 00:41:46,800
+the real differences, one of
+them should hopefully be focused
+
+678
+00:41:46,800 --> 00:41:51,960
+on security. But, but truly, I
+think a lot of organizations
+
+679
+00:41:52,290 --> 00:41:55,140
+need to kind of take a step back
+and understand what's the
+
+680
+00:41:55,140 --> 00:41:58,260
+additional risk that I'm
+introducing to my business by
+
+681
+00:41:58,260 --> 00:42:01,890
+hiring a company that will
+Absolutely be targeted by threat
+
+682
+00:42:01,890 --> 00:42:02,430
+actors.
+
+683
+00:42:05,009 --> 00:42:09,389
+Warren du Toit: It's not a one
+size fits all thing as well. And
+
+684
+00:42:09,389 --> 00:42:13,529
+I think a lot of msps sort of
+fall short on that too, because
+
+685
+00:42:13,979 --> 00:42:19,979
+I'd say they're vendor specific.
+And so vendor specific, we only
+
+686
+00:42:19,979 --> 00:42:24,419
+use Palo Alto or we only use
+fortigate. Whatever the case
+
+687
+00:42:24,419 --> 00:42:28,079
+would be is, it doesn't
+encompass everything. It's not
+
+688
+00:42:28,079 --> 00:42:30,899
+taking this broader security.
+Look at it. It's more like,
+
+689
+00:42:31,229 --> 00:42:34,889
+Okay, well, the people that I'm
+hiring know this, so they will
+
+690
+00:42:34,889 --> 00:42:37,859
+use that. And then what happens
+is, that's what we are going to
+
+691
+00:42:37,859 --> 00:42:40,409
+sell to the clients. And then at
+least we know that we've got our
+
+692
+00:42:40,409 --> 00:42:44,159
+bases covered. But the way you
+do one thing in one technology
+
+693
+00:42:44,159 --> 00:42:46,949
+and the way you do something in
+another technology are
+
+694
+00:42:46,949 --> 00:42:50,099
+completely different. And it's
+like you said it just a little
+
+695
+00:42:50,099 --> 00:42:55,319
+bit earlier and moving back to
+this whole intrinsic versus it
+
+696
+00:42:55,319 --> 00:42:59,999
+thing. And I find that's the
+biggest issue that I'm exploring
+
+697
+00:42:59,999 --> 00:43:06,419
+Ignore the moment personally is
+yes. infosec say no, because
+
+698
+00:43:06,419 --> 00:43:10,679
+that's their job. Understood.
+But also at the same token,
+
+699
+00:43:11,039 --> 00:43:15,419
+they're not very helpful.
+They're not very, they're more
+
+700
+00:43:15,419 --> 00:43:20,999
+like, how that you redo that and
+come back to me when it's done.
+
+701
+00:43:21,239 --> 00:43:25,919
+And then I will say yes or no,
+it's not like, okay, maybe we
+
+702
+00:43:25,919 --> 00:43:29,459
+can do it this way. Or maybe we
+can do it that way or, because
+
+703
+00:43:29,489 --> 00:43:33,959
+they're just like, nope, come
+back. Try again. As opposed to
+
+704
+00:43:34,109 --> 00:43:37,049
+that, that helping that you were
+talking about, and I think it's
+
+705
+00:43:37,049 --> 00:43:40,469
+very, very important, especially
+in the times where we're like,
+
+706
+00:43:40,829 --> 00:43:45,629
+oh, AWS does this edge. It does
+that. How about we just put an
+
+707
+00:43:45,629 --> 00:43:51,269
+NVA and then it's the same both?
+How about No, you know, what I'm
+
+708
+00:43:51,269 --> 00:43:55,439
+saying? And so what happens is
+you end up with two MBAs vendor
+
+709
+00:43:55,439 --> 00:43:59,819
+specific in two separate clouds,
+because you're trying to make
+
+710
+00:43:59,819 --> 00:44:04,469
+them The same, but in actual
+fact that should be okay. Well,
+
+711
+00:44:04,469 --> 00:44:07,079
+there are different
+technologies, but you will apply
+
+712
+00:44:07,079 --> 00:44:11,909
+similar principles using their
+technologies and you end up
+
+713
+00:44:11,909 --> 00:44:15,599
+gaining and i think that's
+that's, that for me is is a is a
+
+714
+00:44:15,599 --> 00:44:17,459
+big issue at the moment. I don't
+know about you.
+
+715
+00:44:17,970 --> 00:44:22,260
+Chris Goosen: I think my opinion
+on this is that it's very much a
+
+716
+00:44:22,260 --> 00:44:25,440
+cultural evolution of cloud
+computing. Right. So if you
+
+717
+00:44:25,440 --> 00:44:28,530
+think back to when we were
+deploying Exchange servers on
+
+718
+00:44:28,530 --> 00:44:32,730
+premises, and Nick and I worked
+the project probably 15 years
+
+719
+00:44:32,730 --> 00:44:36,060
+ago, where this was very
+evident, right? The messaging
+
+720
+00:44:36,060 --> 00:44:38,580
+guys only looked after the
+exchange environment. Then you
+
+721
+00:44:38,580 --> 00:44:42,300
+had, you know, guys looking
+after SharePoint firewall team,
+
+722
+00:44:42,300 --> 00:44:45,570
+their endpoint team yet like you
+had like 20 different teams
+
+723
+00:44:45,570 --> 00:44:48,750
+looking after all the various
+aspects of the Productivity
+
+724
+00:44:48,750 --> 00:44:54,210
+Suite, with Office 365 coming
+in, and these things becoming
+
+725
+00:44:54,390 --> 00:44:57,360
+more tightly connected. I think
+one of the evolutions I've seen
+
+726
+00:44:57,360 --> 00:44:59,850
+and certainly the organizations
+that I've worked with who have
+
+727
+00:44:59,850 --> 00:45:04,110
+made The best strides or at
+least had the best adoption of
+
+728
+00:45:04,860 --> 00:45:08,400
+office 365 have been companies
+who have looked at this and gone
+
+729
+00:45:08,400 --> 00:45:11,730
+well, that structure doesn't
+work. We need to have a team of
+
+730
+00:45:11,730 --> 00:45:16,080
+productivity people that yes,
+maybe some person's skill set is
+
+731
+00:45:16,080 --> 00:45:19,200
+more SharePoint or teams
+focused. Another person might
+
+732
+00:45:19,200 --> 00:45:22,080
+be, you know, identity person,
+but they need to work together
+
+733
+00:45:22,080 --> 00:45:25,770
+to make the platform successful.
+Right. I think that the next
+
+734
+00:45:25,920 --> 00:45:30,930
+part of this evolution is
+getting the infosec teams and it
+
+735
+00:45:30,930 --> 00:45:34,080
+traditional IT teams working
+together as well. Because at the
+
+736
+00:45:34,080 --> 00:45:36,840
+end of the day, like all of this
+stuff has to sort of Mount
+
+737
+00:45:36,840 --> 00:45:40,710
+together for it to become
+successful and secure
+
+738
+00:45:40,710 --> 00:45:45,090
+deployment, like you can no
+longer look at just security as
+
+739
+00:45:45,090 --> 00:45:47,700
+a theme. It has to it has to be
+built into everything that you
+
+740
+00:45:47,700 --> 00:45:51,360
+do, right as a as a default. You
+know, cloud first, but I almost
+
+741
+00:45:51,360 --> 00:45:55,830
+want to be like new security
+first, plus second, but it's
+
+742
+00:45:55,830 --> 00:45:55,980
+really
+
+743
+00:45:57,480 --> 00:45:58,320
+Warren du Toit: Oh, nice.
+
+744
+00:46:02,530 --> 00:46:06,550
+Francisco Donoso: Fair enough.
+Yeah, I totally agree with you
+
+745
+00:46:06,580 --> 00:46:11,410
+on the infosec teams that IT
+teams need to work together. And
+
+746
+00:46:11,620 --> 00:46:14,740
+I think honestly, the biggest
+thing that any security team
+
+747
+00:46:15,070 --> 00:46:18,880
+internal to an organization can
+do is be more approachable and
+
+748
+00:46:18,880 --> 00:46:23,530
+be willing to help more. You're
+not there to say no. And the
+
+749
+00:46:23,530 --> 00:46:26,470
+more you say, No, the more
+people will bypass you, right?
+
+750
+00:46:26,500 --> 00:46:30,070
+Like this. If you're just the no
+guy that's gonna take a critical
+
+751
+00:46:30,070 --> 00:46:34,270
+project, and just halt it,
+nobody's gonna come to you, and
+
+752
+00:46:34,270 --> 00:46:36,790
+it's gonna make it to
+production, and you won't even
+
+753
+00:46:36,790 --> 00:46:41,890
+know it exists. And a lot of a
+lot of a lot of security guys
+
+754
+00:46:41,890 --> 00:46:44,920
+just make that mistake where
+they're hired top of the tower,
+
+755
+00:46:44,920 --> 00:46:48,550
+and they're just the people who
+get to say, we do it or no, go
+
+756
+00:46:48,550 --> 00:46:52,180
+do it this way. But at the same
+time, a lot of what I've seen
+
+757
+00:46:52,240 --> 00:46:58,630
+personally, is some of the older
+traditional security guys. Maybe
+
+758
+00:46:58,630 --> 00:47:01,930
+they're not familiar with AWS at
+all, or maybe they've never even
+
+759
+00:47:01,930 --> 00:47:05,080
+written an application, right? A
+lot of what we're transitioning
+
+760
+00:47:05,080 --> 00:47:08,920
+to is, hey, there's a lot of
+custom development going around.
+
+761
+00:47:08,950 --> 00:47:12,400
+There's a lot of DevOps going
+around. There's a lot of how do
+
+762
+00:47:12,400 --> 00:47:15,370
+I deploy things to cloud with
+like something like terraform,
+
+763
+00:47:15,460 --> 00:47:19,990
+right. And the security teams
+have never use these tools. So
+
+764
+00:47:19,990 --> 00:47:22,420
+they're in a position where
+maybe they have, I don't know, a
+
+765
+00:47:22,420 --> 00:47:26,020
+vulnerability scanning tool, and
+they get the report and they go
+
+766
+00:47:26,020 --> 00:47:29,380
+tell the developer, hey, go fix
+this, but they don't even know
+
+767
+00:47:29,380 --> 00:47:33,760
+how to fix it themselves. And I
+think that's the most important
+
+768
+00:47:33,760 --> 00:47:37,840
+part of being a security
+practitioner, is sure, you
+
+769
+00:47:37,840 --> 00:47:40,840
+should be aware of how attackers
+are breaking in and maybe you
+
+770
+00:47:40,840 --> 00:47:45,550
+should be aware of security best
+practices. But maybe, just
+
+771
+00:47:45,550 --> 00:47:49,720
+maybe, you should be aware of
+how to use the technology that
+
+772
+00:47:49,720 --> 00:47:53,230
+you're trying to protect.
+Because unfortunately, I've seen
+
+773
+00:47:53,230 --> 00:47:56,740
+a lot of security guys who have
+never deployed anything to AWS
+
+774
+00:47:56,950 --> 00:48:01,030
+or never deployed anything to
+Azure. And I think Some of the
+
+775
+00:48:01,030 --> 00:48:04,600
+biggest value that I've ever
+found, is putting myself in
+
+776
+00:48:04,600 --> 00:48:07,360
+operational positions where I
+have to figure out, I'm an
+
+777
+00:48:07,360 --> 00:48:11,170
+operations guy now or I'm an IT
+guy now, how do I deploy this?
+
+778
+00:48:11,560 --> 00:48:15,370
+And then how would I secure it?
+So I really hope that what we
+
+779
+00:48:15,370 --> 00:48:20,530
+see as a transition, as we're,
+as a security kind of community
+
+780
+00:48:20,590 --> 00:48:24,100
+that we begin transitioning to,
+hey, I'm not just here to tell
+
+781
+00:48:24,100 --> 00:48:28,630
+people don't do this, or go redo
+it. I need to learn about the
+
+782
+00:48:28,630 --> 00:48:32,080
+technologies, I need to test it
+myself. I need to try it myself.
+
+783
+00:48:32,620 --> 00:48:35,440
+And then I need to collaborate
+with the IT team based on what
+
+784
+00:48:35,440 --> 00:48:38,560
+I've learned to make them
+successful and make the business
+
+785
+00:48:38,560 --> 00:48:42,130
+successful. Because no company
+other than cybersecurity
+
+786
+00:48:42,130 --> 00:48:45,970
+companies is in the business of
+security. Security is a business
+
+787
+00:48:45,970 --> 00:48:50,500
+enabler and a risk reducer.
+Nobody does security because
+
+788
+00:48:50,500 --> 00:48:55,330
+they want to be secure. Truly,
+nobody. They're all there to
+
+789
+00:48:55,330 --> 00:48:56,200
+enable the business
+
+790
+00:48:57,149 --> 00:48:58,829
+Warren du Toit: There's the
+title of the episode.
+
+791
+00:48:59,050 --> 00:49:03,640
+Chris Goosen: That was just
+thinking that actually, I. So I
+
+792
+00:49:03,640 --> 00:49:05,920
+think a couple of thoughts I
+have on that which is, which is
+
+793
+00:49:07,000 --> 00:49:09,790
+kind of interesting. And he kind
+of brought up here is one of the
+
+794
+00:49:09,790 --> 00:49:13,300
+things I've, I've learned in my
+time and you know, the three of
+
+795
+00:49:13,300 --> 00:49:17,320
+us spend a lot of our time in
+the community doing community
+
+796
+00:49:17,320 --> 00:49:21,460
+stuff writing vlogs, that vast
+majority of the last 10 years,
+
+797
+00:49:21,460 --> 00:49:24,910
+for me, at least have been spent
+doing that for Nick, it's, you
+
+798
+00:49:24,910 --> 00:49:28,960
+know, even longer than that. And
+there's definitely a difference
+
+799
+00:49:28,960 --> 00:49:32,020
+in the community interactions
+between, you know, infosec,
+
+800
+00:49:32,020 --> 00:49:35,080
+folks, and then just your
+traditional IT pro people,
+
+801
+00:49:35,110 --> 00:49:38,140
+right. And you it's very evident
+if you, if you go on Twitter,
+
+802
+00:49:38,140 --> 00:49:41,800
+and you look at and I think it's
+changing, I think the younger
+
+803
+00:49:41,800 --> 00:49:46,990
+generation of infosec people are
+becoming more community focused
+
+804
+00:49:46,990 --> 00:49:51,700
+at least about kind of sharing
+things and being open to just
+
+805
+00:49:51,940 --> 00:49:54,310
+contributing to the community
+and taking and give it's a give
+
+806
+00:49:54,310 --> 00:49:57,400
+and take relationship, right.
+But I certainly have found that
+
+807
+00:49:57,400 --> 00:50:01,780
+there are there's a very guarded
+approach. In the community in
+
+808
+00:50:01,780 --> 00:50:05,080
+the infosec community, in many
+aspects, I think, you know,
+
+809
+00:50:05,710 --> 00:50:11,800
+we've we've been very welcoming
+of inclusivity in the in the IT
+
+810
+00:50:11,800 --> 00:50:14,920
+pro community, I think it's and
+dev community Sorry, I always
+
+811
+00:50:14,920 --> 00:50:18,010
+say it Pro, but I always include
+the dev guys into that as well,
+
+812
+00:50:18,010 --> 00:50:21,130
+because, you know, it's very
+much part of it. Microsoft did a
+
+813
+00:50:21,160 --> 00:50:24,370
+great job of that inclusivity
+message. But I find that that's
+
+814
+00:50:24,370 --> 00:50:28,150
+still lacking a little bit
+somewhat in, in infosec. And if
+
+815
+00:50:28,150 --> 00:50:33,490
+you look at, you know, I follow
+a few female infosec pros on
+
+816
+00:50:33,490 --> 00:50:38,080
+Twitter, and if you look at the
+abuse that they get from men in
+
+817
+00:50:38,080 --> 00:50:42,550
+particular, it's disgusting,
+actually. And I'm actually proud
+
+818
+00:50:42,550 --> 00:50:46,120
+that that doesn't really happen
+in the Microsoft community. But
+
+819
+00:50:46,330 --> 00:50:49,540
+that, you know, it saddens me
+that that's still happening. And
+
+820
+00:50:49,540 --> 00:50:52,570
+I think as a community, these
+things need to also be addressed
+
+821
+00:50:52,570 --> 00:50:55,720
+Because ultimately, we all have
+the same goal here at the end of
+
+822
+00:50:55,720 --> 00:50:58,300
+the day, right, which would you
+know, as Fran said, it's about
+
+823
+00:50:58,300 --> 00:51:00,820
+enabling productivity and
+reducing risks. Right. And
+
+824
+00:51:00,820 --> 00:51:01,690
+collectively,
+
+825
+00:51:01,990 --> 00:51:03,820
+Warren du Toit: I just want to
+jump in the creek and I want to
+
+826
+00:51:03,820 --> 00:51:12,100
+say like, are you guys not
+stressed? lack? Because if a
+
+827
+00:51:12,100 --> 00:51:19,660
+hack happens, right, whose fault
+is it? So we hired you guys to
+
+828
+00:51:19,660 --> 00:51:28,480
+fix this problem and we got
+hacked. So why infosec so grumpy
+
+829
+00:51:28,570 --> 00:51:33,430
+is because they know that it's
+their ass on the line if
+
+830
+00:51:33,430 --> 00:51:37,540
+something goes wrong, and I
+don't know if I'd be able to
+
+831
+00:51:37,540 --> 00:51:41,440
+sleep at night, if that was, you
+know, my thing.
+
+832
+00:51:41,500 --> 00:51:43,390
+Chris Goosen: I can tell you
+from experience that I know Fran
+
+833
+00:51:43,390 --> 00:51:44,290
+doesn't sleep at night.
+
+834
+00:51:47,420 --> 00:51:53,420
+Francisco Donoso: Well, I think
+that honestly. Yes and no. I
+
+835
+00:51:53,420 --> 00:51:58,040
+think that most of the really
+good security people that I know
+
+836
+00:52:00,320 --> 00:52:03,080
+Have this in the back of their
+minds with everything that they
+
+837
+00:52:03,080 --> 00:52:07,010
+do. Right, which, which drives
+them to be successful, which
+
+838
+00:52:07,010 --> 00:52:09,620
+means they need to understand
+the technologies that they're
+
+839
+00:52:09,620 --> 00:52:13,400
+scared. They need to have very
+strong relationships with the
+
+840
+00:52:13,400 --> 00:52:17,090
+development teams and IT teams
+and the infrastructure teams. So
+
+841
+00:52:17,090 --> 00:52:20,990
+I think yes or no, I think what
+you'll find is that a lot of
+
+842
+00:52:20,990 --> 00:52:24,530
+traditional security people will
+kind of sit back and say, I told
+
+843
+00:52:24,530 --> 00:52:27,320
+you, so I told you this was
+going to happen. You didn't
+
+844
+00:52:27,320 --> 00:52:31,220
+listen to me. And and never take
+a moment to reflect and say,
+
+845
+00:52:31,400 --> 00:52:34,490
+have I personally built a
+culture where nobody wants to
+
+846
+00:52:34,490 --> 00:52:38,240
+talk to me? So maybe that's why
+they didn't listen to me. Or
+
+847
+00:52:38,240 --> 00:52:41,870
+have I built a culture where if
+a team comes to me, I'm going to
+
+848
+00:52:41,870 --> 00:52:44,330
+tell them no, so they're just
+gonna bypass me and put it on
+
+849
+00:52:44,330 --> 00:52:49,130
+the internet anyway, is that not
+my responsibility? It's not my
+
+850
+00:52:49,250 --> 00:52:53,480
+job, and I fall. So I think that
+a lot of what you see from
+
+851
+00:52:53,480 --> 00:52:57,830
+traditional security folks,
+unfortunately, is I told you
+
+852
+00:52:57,830 --> 00:53:02,510
+this was gonna happen. He just
+didn't listen to me. So I, I
+
+853
+00:53:02,510 --> 00:53:04,910
+hope that there's a mixture of
+that, but some of the best
+
+854
+00:53:04,910 --> 00:53:08,300
+security folks that I know
+absolutely we, we stay up at
+
+855
+00:53:08,300 --> 00:53:11,660
+night thinking about oh my god.
+Okay, so how do I make this
+
+856
+00:53:11,660 --> 00:53:14,720
+better? And a lot of how do I
+make this better is not
+
+857
+00:53:14,720 --> 00:53:18,680
+technology, it's relationships
+and it's building a community
+
+858
+00:53:18,680 --> 00:53:23,030
+and it's working closely with
+teams outside of security. And a
+
+859
+00:53:23,030 --> 00:53:25,880
+lot of people don't do that
+retrospection. Right. They don't
+
+860
+00:53:25,880 --> 00:53:28,820
+think about, well, why didn't
+anybody tell me about this
+
+861
+00:53:28,820 --> 00:53:33,800
+project? Is it because maybe
+I've just I'm not good to talk
+
+862
+00:53:33,800 --> 00:53:35,030
+to when I when I
+
+863
+00:53:35,939 --> 00:53:37,109
+Warren du Toit: say no, that's
+
+864
+00:53:37,000 --> 00:53:41,320
+Francisco Donoso: exactly,
+exactly, exactly. So I think. I
+
+865
+00:53:41,320 --> 00:53:44,140
+hope that some of that is
+changing in the community, but I
+
+866
+00:53:44,140 --> 00:53:48,130
+don't know. And then also
+really, the reality is, a lot of
+
+867
+00:53:48,130 --> 00:53:53,800
+security vendors, unfortunately,
+have started selling these snake
+
+868
+00:53:53,800 --> 00:53:57,820
+oil, easy solutions. Just buy
+this thing. It has machine
+
+869
+00:53:57,820 --> 00:54:01,930
+learning. It has AI it uses The
+cloud, it'll just solve all your
+
+870
+00:54:01,930 --> 00:54:06,760
+problems. Security is super
+hard. And you need to be
+
+871
+00:54:06,760 --> 00:54:10,990
+methodical, and you need to be
+detail oriented. And I've never
+
+872
+00:54:11,050 --> 00:54:14,350
+until now, where we had the
+opportunity to build a managed
+
+873
+00:54:14,350 --> 00:54:18,610
+service practice that I'm proud
+of, truly, I've never worked for
+
+874
+00:54:18,610 --> 00:54:21,670
+a security company that
+literally sat our customers down
+
+875
+00:54:21,670 --> 00:54:24,430
+and said, Okay, this is going to
+be really hard. But we're here
+
+876
+00:54:24,430 --> 00:54:27,970
+to work with you. It's going to
+take six months to really make
+
+877
+00:54:27,970 --> 00:54:31,180
+sure we understand your business
+and make sure we methodically
+
+878
+00:54:31,180 --> 00:54:35,800
+approach how we're going to
+secure your environment. Every
+
+879
+00:54:35,800 --> 00:54:38,380
+other security vendor, every
+other security guys like rapid
+
+880
+00:54:38,380 --> 00:54:42,760
+time to value, buy this product,
+it solves every problem. That's
+
+881
+00:54:42,760 --> 00:54:47,560
+never the answer. That never
+works. And some of the most
+
+882
+00:54:47,590 --> 00:54:51,250
+disillusionment that I've had
+personally as a cyber security
+
+883
+00:54:51,250 --> 00:54:56,920
+person who truly loves like the
+security, world and technology
+
+884
+00:54:56,920 --> 00:55:02,290
+and I love learning about things
+is that There's so many security
+
+885
+00:55:02,290 --> 00:55:05,350
+vendors that are just selling
+snake oil, and they're just
+
+886
+00:55:05,350 --> 00:55:08,680
+peddling stuff that they know it
+doesn't work, but they're giving
+
+887
+00:55:08,680 --> 00:55:12,250
+their customers a false sense of
+security. And it's just so
+
+888
+00:55:12,250 --> 00:55:17,290
+disillusioning, like honestly, I
+don't know if this is the same
+
+889
+00:55:17,620 --> 00:55:21,340
+for other parts of the IT world
+because I've been in security so
+
+890
+00:55:21,340 --> 00:55:25,150
+long. But I just constantly feel
+that if I go to like some of the
+
+891
+00:55:25,150 --> 00:55:29,470
+business conventions within
+cybersecurity like RSA, I just
+
+892
+00:55:29,470 --> 00:55:32,920
+walk around this space, where
+vendors are just selling stuff
+
+893
+00:55:32,920 --> 00:55:37,660
+that they know doesn't work. And
+I don't know how those people
+
+894
+00:55:37,660 --> 00:55:40,780
+sleep at night, right? Like, I
+don't know that and I don't know
+
+895
+00:55:40,960 --> 00:55:44,740
+if this is a systemic problem in
+technology, or if cyber security
+
+896
+00:55:44,740 --> 00:55:48,010
+companies are just like pretty
+scummy, in general, most of them
+
+897
+00:55:50,950 --> 00:55:53,350
+Chris Goosen: i think i've seen
+we've definitely seen our fair
+
+898
+00:55:53,350 --> 00:55:56,020
+share of that type of stuff in
+the migration space right
+
+899
+00:55:56,020 --> 00:56:00,850
+wherewhat you know, the
+expectations beingset by By
+
+900
+00:56:00,850 --> 00:56:05,620
+migration vendors and or and or
+consultant consultancy companies
+
+901
+00:56:05,620 --> 00:56:09,850
+who who do migrations don't
+always meet their own match the
+
+902
+00:56:09,850 --> 00:56:13,150
+reality of the of it right? All
+of this is seamless, your users
+
+903
+00:56:13,150 --> 00:56:16,930
+won't even know. Like, yeah, I
+mean, is that really true? Like
+
+904
+00:56:16,930 --> 00:56:19,660
+it, you know, there's always
+going to be some, when you
+
+905
+00:56:19,690 --> 00:56:22,120
+undertake a migration project of
+any sort, there's always going
+
+906
+00:56:22,120 --> 00:56:24,880
+to be some pain and hassle with
+users. Right. And I think that's
+
+907
+00:56:24,880 --> 00:56:28,000
+also why the whole
+organizational change management
+
+908
+00:56:28,000 --> 00:56:32,230
+movement is has accelerated as
+much as it has. And you know,
+
+909
+00:56:32,230 --> 00:56:36,700
+we've had some great ocm guests
+on the show previously, but so I
+
+910
+00:56:36,700 --> 00:56:40,540
+think that exists everywhere.
+But you know, it's a good point.
+
+911
+00:56:40,570 --> 00:56:44,470
+And I think just, again, just
+honest, honesty and transparency
+
+912
+00:56:44,470 --> 00:56:47,710
+is just, it's important in every
+part of, you know, the way we do
+
+913
+00:56:47,710 --> 00:56:51,070
+business, how we interact with
+our customers. And it's an
+
+914
+00:56:51,070 --> 00:56:52,990
+important thing, we can't lose
+sight of that, right.
+
+915
+00:56:54,090 --> 00:56:56,640
+Nicolas Blank: I hate to be that
+guy, but I've got to be that
+
+916
+00:56:56,640 --> 00:56:57,120
+guy.
+
+917
+00:56:57,450 --> 00:57:00,990
+Warren du Toit: So I think we
+could have gone on for hours dud
+
+918
+00:57:02,040 --> 00:57:04,350
+, but thought it has to happe
+
+919
+00:57:05,100 --> 00:57:09,420
+Nicolas Blank: But before we go,
+I'd like for him to leave our
+
+920
+00:57:09,420 --> 00:57:14,250
+listeners with. Okay, I've heard
+the stuff and I'm really worried
+
+921
+00:57:14,250 --> 00:57:17,460
+I'm not gonna sleep tonight.
+Yeah.
+
+922
+00:57:18,650 --> 00:57:19,880
+Warren du Toit: Always please.
+
+923
+00:57:20,780 --> 00:57:26,480
+Nicolas Blank: What if if I am
+a, this is valid right back
+
+924
+00:57:26,480 --> 00:57:30,620
+down. I'm a I'm an overall
+system. I could be a developer
+
+925
+00:57:30,620 --> 00:57:33,230
+could be an IT pro could be a
+business person, I could be a C.
+
+926
+00:57:33,230 --> 00:57:36,500
+So I've heard all the stuff.
+I've heard the show. I'm
+
+927
+00:57:36,500 --> 00:57:42,410
+thinking I'll quit my job.
+Instead of quitting my job. What
+
+928
+00:57:42,410 --> 00:57:46,010
+are the one two or three or
+something tangible? What can I
+
+929
+00:57:46,010 --> 00:57:50,900
+do? Now? What could I do
+tomorrow? What can I do to be
+
+930
+00:57:50,900 --> 00:57:51,380
+safer?
+
+931
+00:57:53,730 --> 00:57:55,860
+Francisco Donoso: Yeah, I'll
+start with the one thing that
+
+932
+00:57:55,860 --> 00:58:00,180
+nobody does correctly.
+inventory, the most unsexy We
+
+933
+00:58:00,180 --> 00:58:04,980
+think in security, but the most
+valuable. So please, whatever
+
+934
+00:58:04,980 --> 00:58:08,670
+you're doing, try to figure out
+a way to automate inventory, you
+
+935
+00:58:08,670 --> 00:58:12,150
+need to know what you have to
+know what you need to protect.
+
+936
+00:58:12,690 --> 00:58:17,310
+The other things that I'll say,
+are all of these vendors,
+
+937
+00:58:17,790 --> 00:58:23,130
+Microsoft, AWS, Google, they've
+spent a significant amount of
+
+938
+00:58:23,370 --> 00:58:28,080
+effort and time and money,
+building security best
+
+939
+00:58:28,080 --> 00:58:31,710
+practices, and enabling your
+business and your developers and
+
+940
+00:58:31,710 --> 00:58:35,550
+your teams to do things in their
+environments and their cloud
+
+941
+00:58:35,550 --> 00:58:39,990
+securely. So just take a moment
+and just go through and read
+
+942
+00:58:39,990 --> 00:58:43,260
+some of the fantastic
+documentation that all of these
+
+943
+00:58:43,260 --> 00:58:47,700
+vendors have around security
+best practices. Maybe before you
+
+944
+00:58:47,700 --> 00:58:52,230
+go and roll out office 365 or
+you go to Azure. Just take a
+
+945
+00:58:52,230 --> 00:58:55,740
+moment and read what those best
+practices are, and familiarize
+
+946
+00:58:55,740 --> 00:59:01,620
+yourself with how attackers are
+attacking. And then finally, I
+
+947
+00:59:01,620 --> 00:59:06,870
+would say, help build security
+teams or hire consultants who
+
+948
+00:59:06,870 --> 00:59:09,870
+are familiar with the technology
+that you're trying to protect.
+
+949
+00:59:10,620 --> 00:59:14,550
+That's, that's really important.
+As you look to transition to the
+
+950
+00:59:14,550 --> 00:59:18,360
+cloud or to these environments,
+you need to have security
+
+951
+00:59:18,360 --> 00:59:21,900
+professionals who have actually
+used the technologies that
+
+952
+00:59:21,900 --> 00:59:26,070
+you're trying to protect. Either
+in their personal time in the
+
+953
+00:59:26,070 --> 00:59:29,520
+lab, it doesn't matter. But
+whoever you're hiring, either
+
+954
+00:59:29,520 --> 00:59:33,120
+internally or externally, make
+sure they've used it, make sure
+
+955
+00:59:33,120 --> 00:59:37,920
+they've deployed a, you know, an
+easy to instance or Azure VM or
+
+956
+00:59:37,920 --> 00:59:42,630
+whatever. So that they can help
+you understand how your team can
+
+957
+00:59:42,630 --> 00:59:44,550
+secure some of those
+environments. Hopefully, that
+
+958
+00:59:44,550 --> 00:59:46,890
+helps. But really, those are the
+three things that I would
+
+959
+00:59:47,850 --> 00:59:51,960
+inventory. Nobody doesn't,
+right. Please try to do that. If
+
+960
+00:59:51,960 --> 00:59:55,500
+you're going to the cloud fresh,
+figure out how to do automated
+
+961
+00:59:55,500 --> 01:00:00,060
+inventory, all of these, all of
+these cloud platforms have a way
+
+962
+01:00:00,240 --> 01:00:03,810
+Do inventory in one way or
+another across subscriptions or
+
+963
+01:00:03,810 --> 01:00:06,360
+accounts, try to use that as
+much as possible
+
+964
+01:00:06,360 --> 01:00:09,990
+Warren du Toit: Taggling, man
+just tag everything stay for a
+
+965
+01:00:09,990 --> 01:00:10,650
+reason.
+
+966
+01:00:12,570 --> 01:00:14,430
+Chris Goosen: That's very,
+that's very insightful. I think,
+
+967
+01:00:14,430 --> 01:00:17,970
+you know, in many instances,
+the, the attacker knows the
+
+968
+01:00:17,970 --> 01:00:21,210
+platform better than you do.
+Right? So you really need to
+
+969
+01:00:21,210 --> 01:00:23,280
+spend the time making sure that
+you actually understand what
+
+970
+01:00:23,310 --> 01:00:26,460
+what you what we're working with
+here. So that's, that's awesome.
+
+971
+01:00:27,120 --> 01:00:31,740
+Fran, it's been awesome talking
+to you as always. And before we
+
+972
+01:00:31,740 --> 01:00:34,230
+go, is there anything that we
+can would that you would want to
+
+973
+01:00:34,230 --> 01:00:38,610
+plug? I'm not sure how active
+you are on social media, things
+
+974
+01:00:38,610 --> 01:00:41,040
+like that. But if there's any
+way you know if you want to put
+
+975
+01:00:41,040 --> 01:00:45,270
+that out there now feel free to
+do that now. Guys, any closing
+
+976
+01:00:45,270 --> 01:00:45,960
+thoughts from you?
+
+977
+01:00:48,180 --> 01:00:52,710
+Francisco Donoso: Yeah, I'll
+just say, hey, nothing really to
+
+978
+01:00:52,710 --> 01:00:58,080
+plug my Twitter handle is
+@Francisckrs. ridiculous to
+
+979
+01:00:58,080 --> 01:01:01,950
+find. Don't worry about it. Make
+sure that Chris has a link to
+
+980
+01:01:01,950 --> 01:01:05,940
+it. But it's been a pleasure,
+guys. It's been a blast. I
+
+981
+01:01:06,180 --> 01:01:09,870
+really enjoyed talking to you
+and I hope to be able to do it
+
+982
+01:01:09,870 --> 01:01:10,140
+again.
+
+983
+01:01:10,900 --> 01:01:11,890
+Warren du Toit: Oh, yes, yeah.
+
+984
+01:01:13,640 --> 01:01:17,060
+Everyone, before you go, we just
+wanted to say thank you for
+
+985
+01:01:17,060 --> 01:01:19,670
+listening. We really enjoy
+putting this podcast together
+
+986
+01:01:19,670 --> 01:01:23,480
+for you every two weeks, please
+visit us at thearchitects.cloud.
+
+987
+01:01:23,870 --> 01:01:26,390
+Alternatively, drop us a tweet.
+We'd love to hear what you have
+
+988
+01:01:26,390 --> 01:01:28,100
+to say at @thecloudarch.
+
