@@ -1,0 +1,3249 @@
+1
+00:00:19,080 --> 00:00:21,720
+Chris Goosen: Welcome to the
+cloud architects podcast, a
+
+2
+00:00:21,720 --> 00:00:25,560
+podcast about cloud technology
+and the people using it.
+
+3
+00:00:26,860 --> 00:00:28,990
+Nicolas Blank: The cloud
+architects podcast is sponsored
+
+4
+00:00:28,990 --> 00:00:32,920
+by Kemp technologies. Choose
+Kemp to optimize your multi
+
+5
+00:00:32,920 --> 00:00:35,980
+cloud application deployments
+and simplify multi cloud
+
+6
+00:00:35,980 --> 00:00:39,760
+application management. A single
+pane of glass for application
+
+7
+00:00:39,760 --> 00:00:44,320
+delivery, Kemp provides a 360
+degree view of your entire
+
+8
+00:00:44,320 --> 00:00:48,730
+application environment, and
+even third party ADCs. Download
+
+9
+00:00:48,730 --> 00:00:52,660
+Kemp 360 for free today at
+Kemptechnologies.com
+
+10
+00:00:54,910 --> 00:00:58,390
+Hi, and welcome to another
+episode of the cloud architects
+
+11
+00:00:58,390 --> 00:01:02,740
+podcast my name is Nicolas Blank
+and I'm here with my co host.
+
+12
+00:01:02,770 --> 00:01:03,610
+Christopher Goosen.
+
+13
+00:01:04,000 --> 00:01:04,480
+Chris Goosen: Hello.
+
+14
+00:01:06,580 --> 00:01:10,390
+Nicolas Blank: Today we have a
+guest which we featured on the
+
+15
+00:01:10,390 --> 00:01:12,460
+show before Michael Van
+Horenbeeck
+
+16
+00:01:12,880 --> 00:01:13,540
+Michael Van Horenbeeck: Hi,
+everyone.
+
+17
+00:01:14,710 --> 00:01:18,220
+Nicolas Blank: Welcome to the
+show. And thank you so much for
+
+18
+00:01:18,250 --> 00:01:24,460
+appearing again. We are excited
+that there's something that you
+
+19
+00:01:24,460 --> 00:01:30,490
+are launching fairly soon, and
+it's a book. So without wanting
+
+20
+00:01:30,490 --> 00:01:35,380
+to spoil too much, why don't you
+tell us what your book is about
+
+21
+00:01:35,410 --> 00:01:37,420
+and why you've decided to write
+it?
+
+22
+00:01:37,960 --> 00:01:41,770
+Michael Van Horenbeeck: Sure. So
+the book is called Microsoft 365
+
+23
+00:01:41,770 --> 00:01:46,390
+security for IT professionals.
+And some of you might recognize
+
+24
+00:01:46,390 --> 00:01:50,320
+that the title kind of resembles
+the office 365 for IT
+
+25
+00:01:50,320 --> 00:01:55,600
+professionals book, um, which is
+done on purpose. A couple of
+
+26
+00:01:55,600 --> 00:01:59,440
+years back Tony Paul Cunningham
+and I we started a venture
+
+27
+00:01:59,920 --> 00:02:02,980
+Adventure I should say of
+writing a book which is kept up
+
+28
+00:02:02,980 --> 00:02:06,370
+to date on a monthly basis, the
+office 365 for IT professionals
+
+29
+00:02:06,370 --> 00:02:11,080
+book. The reason why we started
+that journey a couple years back
+
+30
+00:02:11,080 --> 00:02:14,680
+is because the cloud is moving
+at lightning speed updating you
+
+31
+00:02:14,740 --> 00:02:18,460
+almost on a daily basis. So
+trying to create a book which
+
+32
+00:02:18,460 --> 00:02:22,390
+isn't outdated from the day that
+you publish. It was an
+
+33
+00:02:22,390 --> 00:02:25,780
+interesting challenge. And I
+believe I wrote for the Book
+
+34
+00:02:25,930 --> 00:02:30,310
+Three, four years after original
+work life got in the way so I
+
+35
+00:02:30,310 --> 00:02:34,570
+kind of dropped off as a as an
+author and an entire team took
+
+36
+00:02:34,570 --> 00:02:38,920
+over from Paul me. And, you
+know, there's a whole author
+
+37
+00:02:38,920 --> 00:02:43,630
+team out, but still you I like
+to write. In the meantime, I
+
+38
+00:02:43,630 --> 00:02:46,690
+also switched over to the
+security side of things where
+
+39
+00:02:46,750 --> 00:02:49,000
+over the past couple of years,
+all I've done is security,
+
+40
+00:02:49,000 --> 00:02:52,540
+security, security. And I
+noticed there wasn't really a
+
+41
+00:02:52,540 --> 00:02:56,290
+security book in the same space
+or following the same model kind
+
+42
+00:02:56,290 --> 00:03:00,010
+of keeping up to date on a
+monthly basis. And you know,
+
+43
+00:03:00,010 --> 00:03:02,680
+With the focus from Microsoft on
+everything, you know, security
+
+44
+00:03:02,680 --> 00:03:06,730
+and compliance, there's a ton of
+stuff that's changing really
+
+45
+00:03:06,730 --> 00:03:10,000
+like a lot of that. So I
+figured, you know, let's bring
+
+46
+00:03:10,000 --> 00:03:12,820
+on that challenge. Let's try and
+write a book and keep it up to
+
+47
+00:03:12,820 --> 00:03:15,820
+date at the same pace. But
+rather than focusing on the
+
+48
+00:03:15,820 --> 00:03:19,450
+productivity side of things,
+just focus on the entry 65. and,
+
+49
+00:03:19,480 --> 00:03:22,990
+by extension, a little bit of
+Azure Security as well. And
+
+50
+00:03:22,990 --> 00:03:26,320
+that's how we got to the book,
+which, by the way, we should be
+
+51
+00:03:26,320 --> 00:03:28,390
+releasing very shortly.
+
+52
+00:03:29,430 --> 00:03:32,190
+Chris Goosen: That's, that's
+super exciting, I think, for a
+
+53
+00:03:32,190 --> 00:03:36,690
+number of reasons. Right? I
+think, one, I think that most
+
+54
+00:03:36,690 --> 00:03:39,780
+people or at least a large part
+of the audience will understand
+
+55
+00:03:39,780 --> 00:03:44,910
+or know of the office 365 for IT
+pros venture and the work that
+
+56
+00:03:44,910 --> 00:03:47,340
+you and Tony and everyone have
+done on that because it really
+
+57
+00:03:47,340 --> 00:03:51,420
+is the standard as far as you
+know, a book of knowledge around
+
+58
+00:03:51,420 --> 00:03:55,080
+office 365 goes right and I it's
+something that I've given to
+
+59
+00:03:55,080 --> 00:03:57,780
+customers in the past when when
+I've worked with customers, and
+
+60
+00:03:57,780 --> 00:04:00,870
+they've said hey, where do I go
+for free? Knowledge, where do I
+
+61
+00:04:00,870 --> 00:04:03,630
+go to learn more about office
+365? What training courses can I
+
+62
+00:04:03,630 --> 00:04:06,630
+go on? I've given them a copy of
+the book. And on here you go,
+
+63
+00:04:07,110 --> 00:04:10,410
+actually hijacked Tony once at
+Ignite and made him sign a whole
+
+64
+00:04:10,410 --> 00:04:15,030
+bunch of USB keys for me. He
+wasn't he wasn't pleased. So I
+
+65
+00:04:15,030 --> 00:04:19,710
+think that that same kind of
+methodology is is fantastic.
+
+66
+00:04:19,710 --> 00:04:23,160
+Because I think one of the
+things I've found over the last
+
+67
+00:04:23,160 --> 00:04:25,590
+little while since I've started
+doing a lot more security
+
+68
+00:04:25,590 --> 00:04:28,860
+focused work as well is
+sometimes the documentation is
+
+69
+00:04:28,860 --> 00:04:32,940
+not quite where the where the
+product is. And so all I can say
+
+70
+00:04:32,940 --> 00:04:35,430
+is, you know, hats off, and
+congratulations, but it seems
+
+71
+00:04:35,430 --> 00:04:39,960
+like a mammoth challenge to me
+to be kind of taking that on
+
+72
+00:04:40,080 --> 00:04:44,280
+keeping that publishing kind of
+cycle going on something that is
+
+73
+00:04:44,280 --> 00:04:45,120
+that bleeding edge.
+
+74
+00:04:45,689 --> 00:04:48,659
+Michael Van Horenbeeck: Yeah.
+So, I mean, you have no idea how
+
+75
+00:04:48,659 --> 00:04:52,139
+much effort it goes into the
+book. We started writing last
+
+76
+00:04:52,139 --> 00:04:55,769
+year. And you know, the initial
+effort of writing a chapter is
+
+77
+00:04:55,769 --> 00:04:58,649
+massive, right? But as you're
+writing the chapter, they keep
+
+78
+00:04:58,649 --> 00:05:01,589
+changing stuff, and you're like
+finding yourself writing a bit
+
+79
+00:05:01,589 --> 00:05:04,319
+of bits and pieces and then
+rewriting it and then writing
+
+80
+00:05:04,319 --> 00:05:06,479
+new bits and pieces and
+rewriting older stuff that
+
+81
+00:05:06,479 --> 00:05:09,959
+you've written a couple of weeks
+back. So to get to the point
+
+82
+00:05:09,959 --> 00:05:12,989
+where we're, you know, ready to
+release has been a massive
+
+83
+00:05:12,989 --> 00:05:16,739
+undertaking, but the real
+challenge starts now, updating
+
+84
+00:05:16,739 --> 00:05:20,009
+the book on a monthly basis. If
+there's one thing that I've
+
+85
+00:05:20,009 --> 00:05:24,569
+learned is, don't underestimate
+it. I did in the past a little
+
+86
+00:05:24,569 --> 00:05:30,299
+bit where, you know, sometimes I
+didn't account for the time to
+
+87
+00:05:30,299 --> 00:05:33,479
+write the chapters, right, which
+meant that I had to know doing
+
+88
+00:05:33,479 --> 00:05:36,479
+last minute, which added a lot
+of burden. So I learned a lot
+
+89
+00:05:36,479 --> 00:05:40,169
+from the earlier process. My
+respect for Tony for, you know,
+
+90
+00:05:40,259 --> 00:05:42,899
+keeping the book up to date for
+keeping everyone in line and for
+
+91
+00:05:42,899 --> 00:05:46,709
+doing the copy editing is just
+grown tremendously. Because now
+
+92
+00:05:46,709 --> 00:05:49,559
+I'm taking on that role and I'm
+like, Oh, god, what do you do,
+
+93
+00:05:49,559 --> 00:05:53,609
+you can start with, right? But
+at the same time role, so you
+
+94
+00:05:53,609 --> 00:05:56,819
+know, trying to get to the point
+where we want to be that book of
+
+95
+00:05:56,819 --> 00:05:59,129
+knowledge, right, where we want
+to centralize everything, get
+
+96
+00:05:59,129 --> 00:06:02,729
+that practical guidance. But
+it's a journey, right? Even
+
+97
+00:06:02,729 --> 00:06:05,909
+version one that we're
+releasing, we know their stuff
+
+98
+00:06:06,089 --> 00:06:10,829
+that we should get in there over
+time. Like, I'll give you a
+
+99
+00:06:10,829 --> 00:06:14,249
+practical example Office ATP,
+right due to some author
+
+100
+00:06:14,249 --> 00:06:16,919
+challenges, you know, people
+dropping off halfway, because
+
+101
+00:06:16,919 --> 00:06:20,549
+they, they figured out, hey,
+this is too much of a word for
+
+102
+00:06:20,549 --> 00:06:24,599
+us. We had to cut that chapter
+on version one. So we're going
+
+103
+00:06:24,599 --> 00:06:28,469
+to add that word as part of the
+release, you know, in a couple
+
+104
+00:06:28,469 --> 00:06:32,999
+of months time. But that's a
+massive chapter, right? Like our
+
+105
+00:06:33,029 --> 00:06:36,869
+Defender ATP chapter, even
+without practical deployment
+
+106
+00:06:36,869 --> 00:06:42,119
+guide information is 120 pages
+on that one, I'm not gonna call
+
+107
+00:06:42,119 --> 00:06:45,389
+it a little thing. It's just
+it's quickly becoming this huge
+
+108
+00:06:45,389 --> 00:06:50,129
+mess of stuff. And I think we'll
+learn as we go, but it is it is
+
+109
+00:06:50,129 --> 00:06:52,649
+it is interesting to see at the
+very least.
+
+110
+00:06:53,099 --> 00:06:55,379
+Chris Goosen: Yeah, and I think
+the thing is, and we've said it
+
+111
+00:06:55,379 --> 00:06:57,389
+on the show before it may even
+have been on the last episode
+
+112
+00:06:57,389 --> 00:06:59,399
+where we you know, we call
+Microsoft, the security vendor,
+
+113
+00:06:59,399 --> 00:07:02,069
+right? Because At the end of the
+day, that's kind of where they
+
+114
+00:07:02,069 --> 00:07:05,009
+are right now. And, and a lot of
+folks, and I'm seeing this
+
+115
+00:07:05,009 --> 00:07:07,499
+firsthand with my recent role
+change, people don't take
+
+116
+00:07:07,499 --> 00:07:11,039
+Microsoft seriously in the
+security space yet, or at least
+
+117
+00:07:11,039 --> 00:07:14,699
+a lot of folks don't. But when
+you're able to look at something
+
+118
+00:07:14,699 --> 00:07:18,599
+like this and go, Well, this is
+how it all ties together. And
+
+119
+00:07:18,749 --> 00:07:21,779
+the small thing that's just a,
+just a tiny little endpoint
+
+120
+00:07:21,779 --> 00:07:25,589
+thing is 100 and something pages
+worth of documentation. It's
+
+121
+00:07:25,589 --> 00:07:28,109
+really stunning to say something
+and I think it's gonna be a very
+
+122
+00:07:28,889 --> 00:07:33,509
+easy way to quantify the value
+that the platform brings. Right
+
+123
+00:07:33,509 --> 00:07:35,519
+when you when you when you tie
+all these services together.
+
+124
+00:07:36,000 --> 00:07:38,250
+Michael Van Horenbeeck: Yeah, I
+mean, and there is another
+
+125
+00:07:38,250 --> 00:07:41,160
+interesting tidbit, which you're
+just kind of you mentioned
+
+126
+00:07:41,190 --> 00:07:44,490
+Microsoft cybersecurity vendor,
+I'm entirely with you. There's
+
+127
+00:07:44,520 --> 00:07:47,250
+things they don't do, right.
+They don't build firewall. They
+
+128
+00:07:47,250 --> 00:07:50,190
+do build Azure firewalls, but
+don't build physical firewalls
+
+129
+00:07:50,190 --> 00:07:55,050
+and stuff. But they have a whole
+plethora of options and
+
+130
+00:07:55,050 --> 00:07:58,020
+solutions that somehow tie in
+together. They have a vast
+
+131
+00:07:58,020 --> 00:08:01,260
+ecosystem and it's uncovering
+value. system, which is the
+
+132
+00:08:01,260 --> 00:08:05,310
+interesting part and also the
+hard part. But at the same time,
+
+133
+00:08:05,310 --> 00:08:08,820
+you know, putting everything
+together as an author team, we
+
+134
+00:08:08,820 --> 00:08:11,700
+were already facing the, you
+know, where do we put this in
+
+135
+00:08:11,700 --> 00:08:17,070
+which chapter with this belong?
+Or like this feature, it belongs
+
+136
+00:08:17,070 --> 00:08:20,520
+to product x, but he really
+belongs more to this new
+
+137
+00:08:20,520 --> 00:08:25,140
+paradigm. So where do we put it
+into the book? So why expect
+
+138
+00:08:25,140 --> 00:08:27,030
+that will happen is over the
+course of the next couple of
+
+139
+00:08:27,030 --> 00:08:29,520
+months when, you know, feedback
+trickles in when Microsoft, you
+
+140
+00:08:29,520 --> 00:08:31,950
+know, releases new stuff, and
+God knows what they've got
+
+141
+00:08:31,950 --> 00:08:36,420
+planned for this year. You know,
+we'll be modifying and updating
+
+142
+00:08:36,420 --> 00:08:39,690
+the book and that's the beauty
+of dating monthly, right? If
+
+143
+00:08:39,690 --> 00:08:42,240
+something doesn't belong in one
+chapter, or we can take it off
+
+144
+00:08:42,270 --> 00:08:44,820
+next month and put it somewhere
+else where it belongs better or
+
+145
+00:08:44,820 --> 00:08:48,960
+where it feels more natural. But
+we see that today, like,
+
+146
+00:08:49,020 --> 00:08:51,030
+honestly, we've had discussions
+about you know, Windows
+
+147
+00:08:51,030 --> 00:08:54,360
+Information Protection. Well,
+you know, do we create a chapter
+
+148
+00:08:54,360 --> 00:08:57,660
+on Windows 10 security and if
+so, well, what about Defender
+
+149
+00:08:57,660 --> 00:09:00,960
+ATP or attack surface reduction
+resource protection? Do we keep
+
+150
+00:09:00,960 --> 00:09:03,360
+it in Defender ATP? Or do we put
+it into Windows? 10 per day?
+
+151
+00:09:03,390 --> 00:09:05,430
+Yeah, it's kind of like, you
+know, ongoing discussions the
+
+152
+00:09:05,430 --> 00:09:06,090
+entire time.
+
+153
+00:09:06,389 --> 00:09:08,369
+Chris Goosen: Yeah. And I think
+this is probably this probably
+
+154
+00:09:08,369 --> 00:09:10,919
+is a really good insight into
+how meetings within the
+
+155
+00:09:10,919 --> 00:09:13,679
+Microsoft marketing department
+go, right? Because they're
+
+156
+00:09:13,679 --> 00:09:16,019
+constantly, they're constantly
+like they changing the product
+
+157
+00:09:16,019 --> 00:09:20,039
+names, but also the product name
+doesn't always align 100% with
+
+158
+00:09:20,129 --> 00:09:24,689
+the rest of that, the platform,
+so I could definitely see how
+
+159
+00:09:24,689 --> 00:09:26,609
+that would be a slight, you
+know, slight challenge.
+
+160
+00:09:27,029 --> 00:09:29,429
+Michael Van Horenbeeck: Well,
+and you know, it's not just that
+
+161
+00:09:30,569 --> 00:09:33,509
+Microsoft 365 security for IT
+professionals. So you know,
+
+162
+00:09:33,539 --> 00:09:37,739
+obviously even looks at the 65
+side of things. But what we've
+
+163
+00:09:37,739 --> 00:09:40,139
+already committed to and we
+started writing is an Azure
+
+164
+00:09:40,139 --> 00:09:44,369
+Sentinel chapter now. Better
+Sentinel? No, it is and it isn't
+
+165
+00:09:44,369 --> 00:09:48,359
+entry 65 because it's Azure
+workload, but yet we put it
+
+166
+00:09:48,359 --> 00:09:51,779
+there in the book. So you know,
+you can see the cross the bleed
+
+167
+00:09:51,779 --> 00:09:54,719
+between the two worlds, your
+productivity and Azure, which is
+
+168
+00:09:54,719 --> 00:09:58,649
+typically infrastructure, kind
+of converging in becoming one so
+
+169
+00:09:58,649 --> 00:10:01,139
+you know, maybe we should rename
+The book from the get go to
+
+170
+00:10:01,139 --> 00:10:03,539
+Microsoft Security for IT
+professionals editor.
+
+171
+00:10:04,200 --> 00:10:05,550
+Chris Goosen: Now that makes
+sense. I mean, I think where
+
+172
+00:10:05,550 --> 00:10:09,180
+you're at now, I think it, it's
+definitely gonna resonate with
+
+173
+00:10:09,180 --> 00:10:13,680
+the way that it's named. And I
+think immediately, when I saw
+
+174
+00:10:14,070 --> 00:10:16,140
+news about the book it
+immediately I was able to put it
+
+175
+00:10:16,140 --> 00:10:18,840
+together and tie it to, you
+know, the other author team and
+
+176
+00:10:18,840 --> 00:10:22,290
+the work that Tony is doing. And
+I think that's really valuable,
+
+177
+00:10:22,290 --> 00:10:26,610
+because I think not only are is
+it going to be a natural
+
+178
+00:10:26,610 --> 00:10:30,540
+progression for folks who are in
+the IT pro space, who are now
+
+179
+00:10:31,050 --> 00:10:33,990
+possibly becoming more
+comfortable with Office 365, and
+
+180
+00:10:33,990 --> 00:10:36,810
+with the 365 workloads, and now
+starting to think a little bit
+
+181
+00:10:36,810 --> 00:10:39,180
+more security focused. So this
+is a natural progression for
+
+182
+00:10:39,180 --> 00:10:43,410
+them. But this is also a really
+good entry point for just pure
+
+183
+00:10:43,410 --> 00:10:46,320
+infosec folks who have not
+played in the micro space
+
+184
+00:10:46,320 --> 00:10:48,810
+before, right. And there are a
+lot of people like that there
+
+185
+00:10:48,810 --> 00:10:51,660
+are a lot of people who come out
+out of the Palo Alto, Cisco,
+
+186
+00:10:51,900 --> 00:10:55,470
+etc. World CrowdStrike world who
+have never really dipped their
+
+187
+00:10:55,470 --> 00:10:58,230
+toe into the Microsoft
+ecosystem. I think this is going
+
+188
+00:10:58,230 --> 00:11:00,210
+to be a really, really good
+entry point for them too. Gotta
+
+189
+00:11:00,210 --> 00:11:02,280
+get involved and see what's
+what's actually going on.
+
+190
+00:11:02,940 --> 00:11:04,830
+Michael Van Horenbeeck: Yeah, so
+and that's, that's really
+
+191
+00:11:04,830 --> 00:11:07,860
+important what you mentioned,
+because, as you said, there's a
+
+192
+00:11:07,860 --> 00:11:11,310
+whole audience that's familiar
+with Tony's book, The Office 365
+
+193
+00:11:11,310 --> 00:11:13,740
+book. And obviously, they, you
+know, after having read the
+
+194
+00:11:13,740 --> 00:11:16,530
+book, you understand the product
+really well, the product
+
+195
+00:11:16,560 --> 00:11:19,170
+platform, I should say, really
+well, I have certain insights.
+
+196
+00:11:19,380 --> 00:11:23,940
+So the jump into the entry 65
+security is more natural, but
+
+197
+00:11:23,970 --> 00:11:27,540
+there is a whole, you know, a
+whole army of people out there
+
+198
+00:11:27,570 --> 00:11:30,180
+that you know, are less familiar
+with Microsoft products as a
+
+199
+00:11:30,180 --> 00:11:33,570
+whole, but they're now you know,
+faced with new implementations,
+
+200
+00:11:33,570 --> 00:11:36,510
+new features, you know,
+Microsoft everywhere these days.
+
+201
+00:11:36,750 --> 00:11:40,080
+So what we try and do is, you
+know, to keep it accessible,
+
+202
+00:11:40,080 --> 00:11:43,680
+right, not start up there, but
+you start slowly and then build
+
+203
+00:11:43,680 --> 00:11:47,340
+up gradually to the book, which
+is also one of the reasons why
+
+204
+00:11:47,340 --> 00:11:50,460
+the first chapter is not a
+really a technical chapter. It's
+
+205
+00:11:50,460 --> 00:11:54,120
+more you know, okay. So how to
+approach it security, because
+
+206
+00:11:54,120 --> 00:11:56,160
+people come from a security
+background, they have this
+
+207
+00:11:56,160 --> 00:12:00,510
+person in mind if this you know,
+thinking like their security It
+
+208
+00:12:00,870 --> 00:12:03,000
+and someone who's coming from
+the productivity side doesn't
+
+209
+00:12:03,000 --> 00:12:06,240
+necessarily have, you kind of
+have to blend them together to
+
+210
+00:12:06,240 --> 00:12:09,570
+kind of mix and match the both
+worlds which, in itself, we
+
+211
+00:12:09,570 --> 00:12:12,450
+didn't want to create a 300 page
+book about process because
+
+212
+00:12:12,450 --> 00:12:14,940
+that's though, everyone, you
+know, understands why it's
+
+213
+00:12:14,940 --> 00:12:17,880
+necessary, but it's still dull.
+So we kind of slimmed it down to
+
+214
+00:12:17,880 --> 00:12:21,300
+about 1520 pages to kind of get
+everyone in that same mindset,
+
+215
+00:12:21,300 --> 00:12:24,960
+and then take them on a journey
+with identity, Device Management
+
+216
+00:12:24,960 --> 00:12:27,120
+and support and so on. Okay,
+yeah,
+
+217
+00:12:27,119 --> 00:12:29,339
+Chris Goosen: that makes sense.
+I think that's a pretty, pretty
+
+218
+00:12:29,339 --> 00:12:31,229
+important way to kind of
+approach it right. And you kind
+
+219
+00:12:31,229 --> 00:12:33,869
+of have to have a mix of those
+various components. You can't
+
+220
+00:12:33,869 --> 00:12:37,769
+just be all technical or process
+because you end up losing out on
+
+221
+00:12:38,009 --> 00:12:40,529
+a bunch of, you know, folks lose
+out on a bunch of things that
+
+222
+00:12:40,529 --> 00:12:43,529
+they're looking to learn. But
+also, you're not hold at that
+
+223
+00:12:43,529 --> 00:12:46,049
+point. You're not you know, you
+can't be completing a job if you
+
+224
+00:12:46,049 --> 00:12:48,509
+don't understand, you know, a
+little bit of all of those
+
+225
+00:12:48,509 --> 00:12:48,989
+pieces.
+
+226
+00:12:49,439 --> 00:12:51,119
+Michael Van Horenbeeck: Mm hmm.
+I agree. Yep.
+
+227
+00:12:51,750 --> 00:12:53,970
+Chris Goosen: Okay, well, look,
+Nick, I think Nick might have a
+
+228
+00:12:53,970 --> 00:12:54,540
+question here.
+
+229
+00:12:54,960 --> 00:12:58,890
+Nicolas Blank: Yeah. I wanted to
+ask Michael, who is the primary
+
+230
+00:12:58,890 --> 00:13:01,710
+audience for this book is Is
+this an operations person who
+
+231
+00:13:01,710 --> 00:13:05,370
+needs to add security to the
+landscape? Or is this for a
+
+232
+00:13:05,370 --> 00:13:09,810
+hardcore security person who
+needs to add Microsoft to their
+
+233
+00:13:09,810 --> 00:13:10,440
+landscape?
+
+234
+00:13:11,759 --> 00:13:13,319
+Michael Van Horenbeeck: That's a
+good question, Nick. I think
+
+235
+00:13:13,319 --> 00:13:20,519
+there's value for both right?
+This is for the none. Well, tech
+
+236
+00:13:20,519 --> 00:13:25,019
+savvy but non security savvy, IT
+professional that needs to do
+
+237
+00:13:25,019 --> 00:13:29,549
+something with with something
+and security in Microsoft 365. I
+
+238
+00:13:29,549 --> 00:13:33,389
+mean, we all know how to sale
+cycle work, right? Then the
+
+239
+00:13:33,419 --> 00:13:36,269
+Microsoft sales sales guys there
+and tell them hey, it was a
+
+240
+00:13:36,269 --> 00:13:38,729
+great discount on, you know, the
+interesting divide the five
+
+241
+00:13:38,729 --> 00:13:40,889
+security bundle, and the company
+says, Yeah, great, let's do
+
+242
+00:13:40,889 --> 00:13:43,589
+this. And then, you know, it
+rolls downhill to the security
+
+243
+00:13:43,589 --> 00:13:46,109
+teams or the operational teams
+or like lowers first time that
+
+244
+00:13:46,109 --> 00:13:49,559
+we touch X, Y, or Z. You know,
+what can we do with it? How do
+
+245
+00:13:49,559 --> 00:13:52,169
+we do it? What's the best
+practice? What are the caveats,
+
+246
+00:13:52,169 --> 00:13:56,189
+right? So some of them may have
+the actual office 365 experience
+
+247
+00:13:56,189 --> 00:13:58,259
+and some of them may be coming
+from a purely security
+
+248
+00:13:58,259 --> 00:14:02,879
+perspective, like looking In our
+company, and the projects that
+
+249
+00:14:02,879 --> 00:14:07,019
+we do is we've got exactly that
+happening. Like I've got one
+
+250
+00:14:07,019 --> 00:14:11,609
+project for customers migrating
+from McAfee to Defender ATP. And
+
+251
+00:14:11,609 --> 00:14:13,979
+we're dealing with people that
+have dealt with McAfee for
+
+252
+00:14:13,979 --> 00:14:17,129
+years, they know the product
+inside out, they have no
+
+253
+00:14:17,129 --> 00:14:20,429
+knowledge whatsoever of Defender
+ATP. But you know, just looking
+
+254
+00:14:20,429 --> 00:14:23,489
+at defender by itself, you can't
+because it's part of the holder,
+
+255
+00:14:23,519 --> 00:14:26,429
+your bigger ecosystem. So it
+kind of ties in together with
+
+256
+00:14:26,429 --> 00:14:29,279
+that whole entry. 65 steps are
+prevented, super valuable to
+
+257
+00:14:29,279 --> 00:14:32,159
+have secure resource. But the
+same is true. If you're coming
+
+258
+00:14:32,159 --> 00:14:34,769
+from the other side where, you
+know, we've come from exchange
+
+259
+00:14:34,769 --> 00:14:38,279
+like all of us, all three of us
+were hardcore old coal exchange,
+
+260
+00:14:38,279 --> 00:14:41,279
+guys, we turn a link to
+security, you know, a couple of
+
+261
+00:14:41,279 --> 00:14:43,889
+years back if a book like that
+would have existed, I would have
+
+262
+00:14:43,889 --> 00:14:47,189
+surely appreciate it that rather
+than going out and having to
+
+263
+00:14:47,189 --> 00:14:48,419
+figure out everything on my own,
+
+264
+00:14:49,110 --> 00:14:55,020
+Nicolas Blank: completely right,
+but just like so many other
+
+265
+00:14:55,020 --> 00:14:58,770
+things in the IT landscape, is
+there a process that I can
+
+266
+00:14:58,770 --> 00:15:03,570
+follow in so Yeah, I'm kind of
+picking on from an IT
+
+267
+00:15:03,570 --> 00:15:05,850
+professional point of view. I
+could be ITIL aligned from a
+
+268
+00:15:05,850 --> 00:15:10,350
+security professional, I could
+be mature aligned. How do I
+
+269
+00:15:10,380 --> 00:15:12,810
+align myself against the
+knowledge in the book?
+
+270
+00:15:13,200 --> 00:15:15,300
+Michael Van Horenbeeck: Yeah,
+yeah, I agree. So I understand
+
+271
+00:15:15,300 --> 00:15:18,030
+what you mean, I'm so this is
+where the first chapter clinic
+
+272
+00:15:18,030 --> 00:15:22,350
+comes in. I mean, there's so
+many frameworks out there that
+
+273
+00:15:22,350 --> 00:15:26,250
+you could use to actually, you
+know, build a build a strategy
+
+274
+00:15:26,250 --> 00:15:29,370
+on what you're going to do.
+Personally, I am a NIST
+
+275
+00:15:29,370 --> 00:15:32,130
+cybersecurity framework fan,
+right? With the different
+
+276
+00:15:32,130 --> 00:15:35,190
+phases, but there's
+organizations that adhere to
+
+277
+00:15:35,190 --> 00:15:38,640
+whole other standards that have
+built their own standards, in my
+
+278
+00:15:38,640 --> 00:15:41,250
+opinion, and you know, maybe
+some people will be printed in
+
+279
+00:15:41,250 --> 00:15:43,830
+what I'm going to say, but, you
+know, I don't care which
+
+280
+00:15:43,830 --> 00:15:46,650
+framework you use, as long as
+you use a framework, you have a
+
+281
+00:15:46,650 --> 00:15:51,060
+plan that works for you. I'm
+happy, right? So that's also
+
+282
+00:15:51,060 --> 00:15:54,450
+what we try to explain that
+first chapter. I do mention
+
+283
+00:15:54,450 --> 00:15:58,140
+meter. And you mentioned ISO, or
+you mentioned a PCI DSS or you
+
+284
+00:15:58,140 --> 00:16:02,190
+mentioned Mississauga security
+framework. I explained to the
+
+285
+00:16:02,190 --> 00:16:04,350
+people in here, these are the
+frameworks look at these are the
+
+286
+00:16:04,350 --> 00:16:06,750
+highlights of these frameworks
+now go out and figure out what,
+
+287
+00:16:06,960 --> 00:16:09,750
+what's important to you.
+Obviously, if you're a financial
+
+288
+00:16:09,750 --> 00:16:14,850
+institution, PCI DSS will come
+up really quickly. And even
+
+289
+00:16:14,850 --> 00:16:18,300
+there, we try and give some
+practical examples. Like there's
+
+290
+00:16:18,300 --> 00:16:21,000
+this huge mapping sheet between
+all the different frameworks
+
+291
+00:16:21,000 --> 00:16:23,070
+that tells you you have the
+controls in this framework equal
+
+292
+00:16:23,070 --> 00:16:26,820
+the controls in that framework.
+So we refer to that to that
+
+293
+00:16:26,940 --> 00:16:29,490
+sheet to tell them you know, if
+you're already compliant with
+
+294
+00:16:29,490 --> 00:16:32,040
+this, but you want to look at
+the other one, just use that
+
+295
+00:16:32,040 --> 00:16:36,000
+cheat, do the mapping so that
+you don't do the work twice. But
+
+296
+00:16:36,000 --> 00:16:38,730
+at the same time, we don't want
+this to become a book on how to
+
+297
+00:16:38,730 --> 00:16:41,070
+use the frameworks. There's
+plenty of books out there that
+
+298
+00:16:41,070 --> 00:16:44,460
+explain these frameworks into
+details. You could go on
+
+299
+00:16:45,330 --> 00:16:49,830
+certification on once one
+framework itself. So we wanted
+
+300
+00:16:49,830 --> 00:16:52,290
+to explain why they're there and
+where it's important, but we
+
+301
+00:16:52,320 --> 00:16:55,500
+didn't want to go into the
+detail of, you know, this is how
+
+302
+00:16:55,500 --> 00:16:56,490
+each of them work.
+
+303
+00:16:57,390 --> 00:16:59,310
+Chris Goosen: I think that seems
+that sounds like a really,
+
+304
+00:16:59,310 --> 00:17:03,090
+really good approach. Honestly,
+and I, I, for one can't actually
+
+305
+00:17:03,090 --> 00:17:05,880
+wait to get my hands on this so
+that I could actually have a
+
+306
+00:17:05,910 --> 00:17:07,950
+have a look at that, because I
+think that's definitely
+
+307
+00:17:07,950 --> 00:17:11,550
+something that I've found
+particularly challenging kind of
+
+308
+00:17:11,550 --> 00:17:14,970
+entering into this this world is
+is the fact that everyone has a
+
+309
+00:17:14,970 --> 00:17:17,220
+framework that they look up to,
+and that is super important to
+
+310
+00:17:17,220 --> 00:17:21,240
+them. But the relationship
+between them, and then I think
+
+311
+00:17:21,240 --> 00:17:24,390
+it's that's a super important
+kind of introductory step for
+
+312
+00:17:24,390 --> 00:17:24,780
+sure.
+
+313
+00:17:25,860 --> 00:17:27,750
+Michael Van Horenbeeck: I agree.
+Yeah. facing the same
+
+314
+00:17:27,750 --> 00:17:32,340
+challenges, right for moving
+into ISO certification 28 27,001
+
+315
+00:17:32,340 --> 00:17:35,730
+for our own company. Oh, my
+gosh, it's like there's a whole
+
+316
+00:17:35,730 --> 00:17:38,880
+avalanche of stuff coming to
+you. And you're like, Really? So
+
+317
+00:17:38,880 --> 00:17:42,570
+yeah, no, it's getting trying to
+be practical. I think there's,
+
+318
+00:17:42,720 --> 00:17:45,330
+we could write 100 pages about
+one of the things but we
+
+319
+00:17:45,420 --> 00:17:48,870
+deliberately kept it, you know,
+short and sweet, I'd say.
+
+320
+00:17:49,320 --> 00:17:51,480
+Chris Goosen: Yeah, I think that
+it sounds like it. Right. And so
+
+321
+00:17:51,480 --> 00:17:56,340
+the question I had for you was,
+I mean, this so much as far as
+
+322
+00:17:56,340 --> 00:17:59,490
+security functionality goes
+within within the service,
+
+323
+00:17:59,490 --> 00:18:03,150
+right? But I think there's a lot
+of organizations that still have
+
+324
+00:18:03,150 --> 00:18:07,380
+this mentality that we've given
+out, we give Microsoft up
+
+325
+00:18:07,560 --> 00:18:10,740
+monthly subscription money, and
+we've put our data in their
+
+326
+00:18:10,740 --> 00:18:14,520
+service. Why do we have to worry
+about the security functionality
+
+327
+00:18:14,520 --> 00:18:16,890
+of this? Right? Shouldn't
+Microsoft be taking care of all
+
+328
+00:18:16,890 --> 00:18:19,020
+of the security functionality
+for us? Why are we having to
+
+329
+00:18:19,020 --> 00:18:22,320
+care about this? I mean, are you
+coming across that in Europe as
+
+330
+00:18:22,320 --> 00:18:24,690
+well? Is that something that
+you've seen?
+
+331
+00:18:25,740 --> 00:18:28,320
+Michael Van Horenbeeck: Yeah, I
+mean, less than less, to be
+
+332
+00:18:28,320 --> 00:18:30,720
+honest, because people are
+getting more and more used to
+
+333
+00:18:30,720 --> 00:18:32,970
+the cloud model where, you know,
+there was a segregation of
+
+334
+00:18:32,970 --> 00:18:35,670
+duties, where, you know,
+infrastructure, sure, that's
+
+335
+00:18:35,670 --> 00:18:38,940
+Microsoft Word, like physical
+security. Sure, let them take
+
+336
+00:18:38,940 --> 00:18:42,390
+care of that. But you know, the
+layer that you build on top of
+
+337
+00:18:42,390 --> 00:18:44,880
+that solutions that you build on
+top of that, you know, people
+
+338
+00:18:44,880 --> 00:18:48,060
+are starting to understand that
+that's your responsibility. Now,
+
+339
+00:18:48,060 --> 00:18:51,450
+there's still a whole long way
+to go. There are still a lot of
+
+340
+00:18:51,450 --> 00:18:54,810
+companies that try and get
+around why do we need x y, z.
+
+341
+00:18:55,170 --> 00:18:59,940
+But you know, the reality is is
+that whenever you see today,
+
+342
+00:19:00,000 --> 00:19:03,900
+These days in the news, there is
+breaches you're far and few in
+
+343
+00:19:03,900 --> 00:19:06,630
+between. Every day there is a
+breach. There's a leak or
+
+344
+00:19:06,630 --> 00:19:09,840
+something. I think, you know,
+gradually people will
+
+345
+00:19:09,840 --> 00:19:12,510
+understand. Alright, we need to
+do this. Like, you need to lock
+
+346
+00:19:12,510 --> 00:19:16,320
+your door a couple of hundred
+years back, no one locked your
+
+347
+00:19:16,320 --> 00:19:19,500
+doors. There were no locks.
+Right? The doors are open. Well,
+
+348
+00:19:19,530 --> 00:19:23,190
+today go out and find a house
+where there's no lock. Hmm.
+
+349
+00:19:23,640 --> 00:19:25,770
+Yeah, I think it's pretty much
+the same.
+
+350
+00:19:26,219 --> 00:19:29,309
+Chris Goosen: Yeah, I think that
+that makes sense. I think enable
+
+351
+00:19:29,309 --> 00:19:32,849
+multi factor everyone if you
+haven't done it MFA. It's just
+
+352
+00:19:32,849 --> 00:19:36,479
+my, my, my PSA for the day. I
+you know, we got to make sure to
+
+353
+00:19:36,479 --> 00:19:38,999
+pull that out in every episode,
+just because it's such an
+
+354
+00:19:38,999 --> 00:19:42,569
+important thing. You know, we
+see, I although I think the last
+
+355
+00:19:42,569 --> 00:19:46,469
+couple of weeks have been very
+much taken up by f5. And their
+
+356
+00:19:46,799 --> 00:19:49,349
+vulnerability that everyone
+seems to be bypassing or
+
+357
+00:19:49,349 --> 00:19:53,099
+whatever, but definitely a lot
+of the things that we're seeing
+
+358
+00:19:54,059 --> 00:19:57,239
+could easily be have been
+mitigated by just MFA, right?
+
+359
+00:19:57,269 --> 00:20:01,379
+But companies I think are just
+folks are not being educated and
+
+360
+00:20:01,379 --> 00:20:04,439
+and they're not kind of taking
+that active decision to, to go,
+
+361
+00:20:04,439 --> 00:20:06,659
+hey, let's see how we can
+continually improve this. This
+
+362
+00:20:06,659 --> 00:20:10,349
+is not the cloud is not set and
+forget, right? It doesn't matter
+
+363
+00:20:10,349 --> 00:20:13,259
+what any vendor tells you, you
+can't just go and throw your
+
+364
+00:20:13,259 --> 00:20:17,099
+data at a service, pay them and
+forget about it. Like there has
+
+365
+00:20:17,099 --> 00:20:19,349
+to be a continuous improvement
+model that, you know, you're
+
+366
+00:20:19,349 --> 00:20:21,929
+going to be looking at where the
+threats can come from, because
+
+367
+00:20:22,229 --> 00:20:24,599
+at the end of the day, the bad
+actors continue to evolve as
+
+368
+00:20:24,599 --> 00:20:28,169
+well. Right? And you can't, you
+can't just go Okay, well, this
+
+369
+00:20:28,169 --> 00:20:30,299
+is the assumed knowledge
+everyone has, and we're gonna
+
+370
+00:20:30,299 --> 00:20:32,519
+we're safe. Yeah, you might be
+safe today. That doesn't mean
+
+371
+00:20:32,519 --> 00:20:35,219
+you're safe tomorrow. Right? So
+I think that this whole thing
+
+372
+00:20:35,219 --> 00:20:40,949
+with f5 is really kind of shown.
+A lot of folks that are, you
+
+373
+00:20:40,949 --> 00:20:43,439
+know, a lot of organizations
+that are slower to move to the
+
+374
+00:20:43,439 --> 00:20:47,789
+cloud and stay or staying on
+prem, because security right are
+
+375
+00:20:47,789 --> 00:20:52,799
+now the ones that are targeted
+by this, you know, this thing in
+
+376
+00:20:52,799 --> 00:20:55,229
+their security, like their,
+their legacy infrastructure, if
+
+377
+00:20:55,229 --> 00:20:57,779
+you will, right. So this is a
+very, very interesting thing to
+
+378
+00:20:57,779 --> 00:20:58,919
+be kind of paying attention to
+
+379
+00:21:00,000 --> 00:21:01,470
+Michael Van Horenbeeck: We
+mentioned it in the book, a
+
+380
+00:21:01,470 --> 00:21:04,740
+little spoiler there, but it's
+about 68% of all breaches in the
+
+381
+00:21:04,740 --> 00:21:10,320
+cloud originate on premises like
+68%. Yes, that's, that's a large
+
+382
+00:21:10,320 --> 00:21:13,950
+number. And again, you know,
+attackers are people with
+
+383
+00:21:14,100 --> 00:21:17,100
+intent. They'll always take the
+path of least resistance. If
+
+384
+00:21:17,100 --> 00:21:19,320
+it's easier to get into your
+cloud through your on prem
+
+385
+00:21:19,320 --> 00:21:22,950
+environment, they'll do that,
+right? And this is just true. I
+
+386
+00:21:22,950 --> 00:21:26,700
+mean, when a pen test happens,
+you should know, right? kudelski
+
+387
+00:21:26,700 --> 00:21:31,230
+does these tests, right?
+Whenever a pen test happens, I
+
+388
+00:21:31,290 --> 00:21:34,920
+rarely seen them go after Azure.
+At first, they're like, Okay,
+
+389
+00:21:34,920 --> 00:21:37,980
+let's try and get into the
+device. And we're into Active
+
+390
+00:21:37,980 --> 00:21:40,380
+Directory, then some letter
+Academy movement, and bam, we've
+
+391
+00:21:40,380 --> 00:21:43,260
+got your domain. And then from
+there, it's easy to get back
+
+392
+00:21:43,290 --> 00:21:46,170
+back up into the cloud. You
+know, that's where the
+
+393
+00:21:46,170 --> 00:21:49,230
+challenges lie. So the people
+that are full traditionally on
+
+394
+00:21:49,230 --> 00:21:52,680
+premises, they have a lot of
+work to be done there a lot more
+
+395
+00:21:52,710 --> 00:21:55,920
+than, you know, lowering your
+attack surface in the cloud, but
+
+396
+00:21:55,920 --> 00:21:58,620
+at the same time, it's very
+different, right, the things
+
+397
+00:21:58,620 --> 00:22:01,230
+that you have to deal with on
+premises No, they're not the
+
+398
+00:22:01,230 --> 00:22:05,970
+same as in the cloud, which is
+also one of the messages that
+
+399
+00:22:05,970 --> 00:22:09,660
+we're trying to get across is
+like, it is changing sure
+
+400
+00:22:09,660 --> 00:22:13,440
+devices device, that doesn't
+change. But you know, Cloud
+
+401
+00:22:13,440 --> 00:22:17,070
+Platform cloud applications,
+they operate in a very different
+
+402
+00:22:17,070 --> 00:22:20,280
+way. The your security is a very
+different way and therefore have
+
+403
+00:22:20,280 --> 00:22:22,800
+different security measures or
+how to approach that.
+
+404
+00:22:24,030 --> 00:22:27,180
+Chris Goosen: Yeah, and I mean,
+even getting down to managing
+
+405
+00:22:27,180 --> 00:22:28,920
+those that infrastructure,
+right, the way that you
+
+406
+00:22:28,920 --> 00:22:31,500
+typically would do that on
+premises versus the way that
+
+407
+00:22:31,500 --> 00:22:34,860
+you're possibly doing it today,
+it's very different in the way
+
+408
+00:22:34,860 --> 00:22:37,890
+you approach it. So it's kind of
+like I think the message really
+
+409
+00:22:37,890 --> 00:22:41,400
+is that you have to be able to
+adapt to the way that you know,
+
+410
+00:22:41,460 --> 00:22:44,010
+the new modern way of doing
+things and you can't be stuck in
+
+411
+00:22:44,010 --> 00:22:46,260
+the old world for too long,
+right. Otherwise, you're gonna
+
+412
+00:22:47,040 --> 00:22:51,330
+you're gonna lag behind. So
+yeah, that's so. So we've
+
+413
+00:22:51,330 --> 00:22:54,690
+talked, we've talked a lot about
+the book and honestly, I
+
+414
+00:22:54,810 --> 00:22:57,330
+personally can't wait to get my
+hands on a copy here. Can you
+
+415
+00:22:57,330 --> 00:23:02,070
+give us some information about
+where when how all of that?
+
+416
+00:23:02,550 --> 00:23:06,000
+Michael Van Horenbeeck: Sure. So
+not sure when the podcast is
+
+417
+00:23:06,000 --> 00:23:09,900
+going to be released. But our
+target is to release July 13.
+
+418
+00:23:10,380 --> 00:23:13,680
+I've got a full weekend of copy
+editing, building the book and
+
+419
+00:23:13,680 --> 00:23:17,490
+you're getting the PDF ready.
+We've got the website up. So the
+
+420
+00:23:17,520 --> 00:23:21,630
+entry 65 security book comm
+where you can get to the book
+
+421
+00:23:21,630 --> 00:23:23,940
+files are actually to the
+government platform through
+
+422
+00:23:23,940 --> 00:23:26,940
+which we're selling the book,
+which is the same platform as
+
+423
+00:23:26,940 --> 00:23:32,790
+the office 365 for IT pros book.
+So money 13th the book will be
+
+424
+00:23:32,790 --> 00:23:35,760
+available, obviously, it will
+make a big splash on LinkedIn,
+
+425
+00:23:35,760 --> 00:23:39,030
+Twitter, the website itself,
+we'll make it known and then
+
+426
+00:23:39,030 --> 00:23:42,150
+hopefully people will find their
+way to the book itself as well.
+
+427
+00:23:42,540 --> 00:23:44,130
+Chris Goosen: Okay, and would
+you are you gonna be releasing
+
+428
+00:23:44,130 --> 00:23:45,150
+on Amazon as well? Oh,
+
+429
+00:23:45,930 --> 00:23:48,480
+Michael Van Horenbeeck: no,
+that's a deliberate choice we
+
+430
+00:23:48,510 --> 00:23:52,440
+we've made and actually I'm
+leaning on Tony's experience of
+
+431
+00:23:52,440 --> 00:23:55,380
+building the book for Amazon.
+There's a couple of things like
+
+432
+00:23:55,410 --> 00:23:58,920
+the the amount of effort going
+into building that book or the E
+
+433
+00:23:58,920 --> 00:24:01,560
+pub and making sure that In
+Amazon, that's one thing.
+
+434
+00:24:01,890 --> 00:24:05,760
+Secondly, Amazon doesn't support
+monthly updates. gumroad is
+
+435
+00:24:05,760 --> 00:24:08,970
+easy, because it's just changing
+the PDF like first one to
+
+436
+00:24:08,970 --> 00:24:12,000
+version two and off you go.
+Right, nothing else changes. And
+
+437
+00:24:12,000 --> 00:24:16,830
+because of that, I didn't want
+to take on more work. Plus, you
+
+438
+00:24:16,830 --> 00:24:19,530
+know, supporting the authors
+supporting the marketing, the
+
+439
+00:24:19,530 --> 00:24:23,490
+hosting everything for the book
+cost money. Amazon, you know,
+
+440
+00:24:23,520 --> 00:24:27,600
+takes a 70% cut on the book.
+Wow. Which, you know, it's great
+
+441
+00:24:27,600 --> 00:24:30,720
+because you reach a bigger
+audience. But at the end of the
+
+442
+00:24:30,720 --> 00:24:33,780
+day, I just think that the
+effort you put into it, and the
+
+443
+00:24:33,780 --> 00:24:35,910
+gains that you get from it, and
+the gains that people get from
+
+444
+00:24:35,910 --> 00:24:40,020
+it, are too liberal to justify
+using Amazon as a platform.
+
+445
+00:24:40,470 --> 00:24:42,690
+Chris Goosen: I think that makes
+sense. I mean, personally, I've,
+
+446
+00:24:42,870 --> 00:24:44,970
+I've always used the, the
+gumroad platform because I
+
+447
+00:24:44,970 --> 00:24:48,060
+prefer just having the PDF copy
+of the book, right. It's more
+
+448
+00:24:48,060 --> 00:24:50,640
+portable for me. I know others
+disagree with that, because I
+
+449
+00:24:50,640 --> 00:24:53,940
+want to use Kindle and whatnot.
+I you know, it's not my
+
+450
+00:24:53,970 --> 00:24:57,690
+preferred method of reading. So,
+you know, it is what it is. But
+
+451
+00:24:58,080 --> 00:25:00,090
+yeah, mix. I think that makes
+sense. And I think it's good
+
+452
+00:25:00,120 --> 00:25:02,430
+Good to get the message out
+there to folks like this one
+
+453
+00:25:02,430 --> 00:25:05,340
+platform. That's where you can
+go and get it. And that's also
+
+454
+00:25:05,340 --> 00:25:07,650
+where you get your your updates,
+right? Because that reminds me
+
+455
+00:25:07,650 --> 00:25:10,740
+how the subscription model works
+again. So you, you buy an
+
+456
+00:25:10,740 --> 00:25:13,800
+edition of the book and you get
+all updates that are part of
+
+457
+00:25:13,800 --> 00:25:14,730
+that edition, correct?
+
+458
+00:25:14,790 --> 00:25:16,620
+Michael Van Horenbeeck: Yes,
+Yes, correct. So there is a
+
+459
+00:25:16,620 --> 00:25:20,040
+yearly cycle. We're starting
+July of this year, which is
+
+460
+00:25:20,040 --> 00:25:24,810
+coincidentally called the 2026
+or 20 2006 edition. But anyway,
+
+461
+00:25:25,080 --> 00:25:29,100
+so the 2020 edition runs up
+until June of next year, you buy
+
+462
+00:25:29,100 --> 00:25:31,920
+the book, you get all the
+updates that year and you know,
+
+463
+00:25:32,160 --> 00:25:35,430
+we are committing not just to
+updates of the chapters, but
+
+464
+00:25:35,460 --> 00:25:39,510
+this year we'll also committed
+to a practical guidance chapter
+
+465
+00:25:39,510 --> 00:25:42,690
+on the ATP on an Azure Sentinel
+chapter and Office ATP chapter.
+
+466
+00:25:43,020 --> 00:25:47,160
+So with the book, you know,
+you'll be getting that. And then
+
+467
+00:25:47,190 --> 00:25:50,520
+up until June, you'll get
+updates sometime next year,
+
+468
+00:25:50,880 --> 00:25:55,080
+March ish timeframe, will start
+thinking or building the new
+
+469
+00:25:55,080 --> 00:25:59,280
+book, which means new edition
+2021 edition. We may you know,
+
+470
+00:25:59,340 --> 00:26:02,790
+do completely overhaul we may
+add more chapters into that
+
+471
+00:26:03,030 --> 00:26:05,160
+really depends on Oh, ever
+everything, you know, moves
+
+472
+00:26:05,160 --> 00:26:09,210
+along. I mean, we all know that
+Microsoft is doing shifting in
+
+473
+00:26:09,210 --> 00:26:14,190
+that space as well with the
+acquisition of cyber x in the OT
+
+474
+00:26:14,190 --> 00:26:17,640
+space. So we're closely
+monitoring that. And then based
+
+475
+00:26:17,640 --> 00:26:21,180
+on that, we'll build a new book,
+new edition, and from there on,
+
+476
+00:26:21,330 --> 00:26:23,880
+people who have bought the first
+book and can get the new one at
+
+477
+00:26:23,880 --> 00:26:28,680
+a discount, you know, kind of
+your appreciate their, your,
+
+478
+00:26:28,710 --> 00:26:31,620
+their loyalty to the book, and
+then they get updates for a year
+
+479
+00:26:31,620 --> 00:26:33,990
+as well. So there is no monthly
+fee, it's just a one off and
+
+480
+00:26:33,990 --> 00:26:35,580
+then you'll get the updates per
+year.
+
+481
+00:26:36,360 --> 00:26:38,220
+Chris Goosen: Yeah, fantastic.
+And I think what's what's great
+
+482
+00:26:38,220 --> 00:26:40,710
+about that, and certainly, you
+know, the way that I've
+
+483
+00:26:40,770 --> 00:26:45,570
+approached this with with the
+the other book is that the book
+
+484
+00:26:45,570 --> 00:26:50,040
+is so large now, it's gotten so
+big that it's it's a fantastic
+
+485
+00:26:50,040 --> 00:26:54,450
+reference. And realistically, I
+you know, I don't read through
+
+486
+00:26:54,450 --> 00:26:57,210
+the whole thing every time I get
+it. Now, I just like I read the
+
+487
+00:26:57,210 --> 00:26:59,910
+new chapters when I get the new
+chapters, but I know I have this
+
+488
+00:27:00,000 --> 00:27:03,540
+In a referenceable thing in my
+in my tool bag, if you will,
+
+489
+00:27:03,540 --> 00:27:06,270
+right where I can rip it out.
+And, you know, remember back in
+
+490
+00:27:06,270 --> 00:27:10,500
+the day when we had the exchange
+administrators pocket to get to
+
+491
+00:27:10,500 --> 00:27:12,180
+guide it's something like that.
+
+492
+00:27:12,810 --> 00:27:14,880
+Michael Van Horenbeeck: Yeah,
+well at the same time though I'm
+
+493
+00:27:15,300 --> 00:27:18,900
+really keen on making sure we
+don't bloat the book because
+
+494
+00:27:18,900 --> 00:27:21,720
+it's so easy to go over, you
+know a certain amount of pages.
+
+495
+00:27:22,080 --> 00:27:27,330
+Right now we're not it's five
+600 pages, which is sizable by
+
+496
+00:27:27,330 --> 00:27:31,440
+itself. But once you go over
+that, like it becomes that huge
+
+497
+00:27:31,440 --> 00:27:36,000
+chunk and people start not
+reading certain chapters or they
+
+498
+00:27:36,000 --> 00:27:39,030
+start being selective which is
+which is fine, right, but I
+
+499
+00:27:39,030 --> 00:27:42,750
+really want to keep it you know,
+concise so that it is
+
+500
+00:27:42,750 --> 00:27:47,340
+digestible. You know, obviously
+some things just take like the
+
+501
+00:27:47,340 --> 00:27:49,950
+unwritten so many pages, we have
+them Defender ATP, it's just
+
+502
+00:27:49,950 --> 00:27:53,520
+because we need that much,
+right. We honestly we couldn't
+
+503
+00:27:53,520 --> 00:27:56,580
+have done it with less maybe we
+could have done 90 pages and you
+
+504
+00:27:56,580 --> 00:27:58,590
+know, cut some redundancy here
+and there but at the end of the
+
+505
+00:27:58,590 --> 00:28:04,230
+day, you need what you need. My
+goal is to keep it sizable, but
+
+506
+00:28:04,230 --> 00:28:07,140
+you will see, you know, talk to
+me in a year and maybe I'll be
+
+507
+00:28:07,200 --> 00:28:08,280
+six 700 pages.
+
+508
+00:28:09,200 --> 00:28:10,940
+Chris Goosen: Yeah, no. I mean,
+look, I fair enough. And I think
+
+509
+00:28:10,940 --> 00:28:15,380
+the thing is, given your
+experience in the industry, and
+
+510
+00:28:15,380 --> 00:28:19,310
+given your experience learning
+things, I think you have a
+
+511
+00:28:19,310 --> 00:28:22,670
+fairly good idea of what it
+takes to be able to get that
+
+512
+00:28:22,670 --> 00:28:25,310
+message out there in a way that
+is going to be useful to someone
+
+513
+00:28:25,520 --> 00:28:30,350
+without it being too bloated or
+to kind of, you know, too wordy,
+
+514
+00:28:30,830 --> 00:28:33,650
+but also, you know, where it's
+sometimes where it's just not
+
+515
+00:28:33,650 --> 00:28:37,100
+enough, right? Unfortunately,
+the internet is full of blog
+
+516
+00:28:37,100 --> 00:28:41,420
+posts that tackle a particular
+topic, but really just scratch
+
+517
+00:28:41,450 --> 00:28:43,700
+not even scratch the surface.
+Basically, they just kind of
+
+518
+00:28:43,700 --> 00:28:46,250
+give you a little bit of
+interest. You know, and you need
+
+519
+00:28:46,250 --> 00:28:50,030
+to like to everyone who has
+blogs credit, that's great. But
+
+520
+00:28:50,060 --> 00:28:52,880
+but sometimes sometimes you need
+to dig one level deeper. Right?
+
+521
+00:28:52,880 --> 00:28:57,080
+And I think the what's great
+about that your history with
+
+522
+00:28:57,530 --> 00:29:01,220
+with the other book, also you
+Your history as a, you know,
+
+523
+00:29:01,220 --> 00:29:03,620
+blog author and speaker and
+stuff is I think that you have
+
+524
+00:29:03,620 --> 00:29:06,470
+that balance, you know how to
+find that balance. And so yeah,
+
+525
+00:29:06,470 --> 00:29:08,150
+really looking forward to what
+you and the team have kind of
+
+526
+00:29:08,150 --> 00:29:11,690
+come up with here. I can't wait
+to get get my hands on a copy,
+
+527
+00:29:12,110 --> 00:29:14,960
+Michael Van Horenbeeck: you'll
+get a copy from me, but only as
+
+528
+00:29:14,960 --> 00:29:17,270
+you get feedback, because this
+is, you know, one of the
+
+529
+00:29:17,270 --> 00:29:20,840
+messages that we're going to
+push really hard. Um, that to
+
+530
+00:29:20,840 --> 00:29:23,750
+me, that book is a collaborative
+effort, right? Yes, the author
+
+531
+00:29:23,750 --> 00:29:27,050
+team has written something, but
+we can only improve, make it
+
+532
+00:29:27,050 --> 00:29:30,950
+better and make it you know,
+more suitable if people use the
+
+533
+00:29:30,950 --> 00:29:34,340
+feedback, right? If they email
+us and tell us we like it, or
+
+534
+00:29:34,370 --> 00:29:37,400
+Hey, you know, we're missing
+this piece, so that we know
+
+535
+00:29:37,400 --> 00:29:39,380
+maybe we haven't thought about
+it. Or maybe we didn't
+
+536
+00:29:39,380 --> 00:29:43,040
+prioritize it in the same way
+that people are asking for. Call
+
+537
+00:29:43,040 --> 00:29:46,430
+it a user voice. If 100 people
+email us and tell us we really
+
+538
+00:29:46,430 --> 00:29:51,140
+need this piece of information.
+And we as authors, we didn't
+
+539
+00:29:51,140 --> 00:29:54,050
+prioritize it as high, we might
+just shift it up in priority and
+
+540
+00:29:54,050 --> 00:29:55,970
+just add it into the book
+because there was too long for
+
+541
+00:29:55,970 --> 00:29:59,390
+it, right? So I'm really keen to
+see how that's gonna work. I
+
+542
+00:29:59,390 --> 00:30:02,750
+know that too. He's getting tons
+of feedback through his feedback
+
+543
+00:30:02,750 --> 00:30:05,720
+channels on the book, you know,
+even to correct things as wrong
+
+544
+00:30:05,720 --> 00:30:09,320
+because you never want to make
+mistakes. Because I'm like our
+
+545
+00:30:09,350 --> 00:30:14,000
+tech tech reviewer, he's done an
+amazing job. But you know, he's
+
+546
+00:30:14,030 --> 00:30:16,640
+going haywire through all the
+chapters, all the events that
+
+547
+00:30:16,640 --> 00:30:19,040
+we're firing at him all the
+things that he needs to test. I
+
+548
+00:30:19,040 --> 00:30:23,000
+mean, we're doing our best to
+make sure that it's you know,
+
+549
+00:30:23,030 --> 00:30:27,800
+without any spelling errors,
+grammar spelling, even me as a
+
+550
+00:30:27,800 --> 00:30:31,190
+copy editor. I'm not even native
+English speaker. So, you know,
+
+551
+00:30:31,280 --> 00:30:33,680
+things will slip but we'll,
+we're counting on that.
+
+552
+00:30:33,900 --> 00:30:35,460
+Chris Goosen: And I was actually
+just going to touch on that
+
+553
+00:30:35,460 --> 00:30:40,950
+point, right is I'm always
+amazed by the fact that and I've
+
+554
+00:30:40,950 --> 00:30:43,380
+read some of your works before
+where I've, you know, we've done
+
+555
+00:30:43,380 --> 00:30:46,620
+I've done you know, we've done
+work for the same vendor writing
+
+556
+00:30:46,620 --> 00:30:48,330
+vendor or whatever, and we've
+kind of reviewed each other's
+
+557
+00:30:48,330 --> 00:30:52,200
+stuff and I I'm always amazed
+that as someone who's not even
+
+558
+00:30:52,290 --> 00:30:56,430
+an English first language
+speaker, the level at which you
+
+559
+00:30:56,430 --> 00:31:00,000
+managed to crank out this this
+awesome work, right so you know,
+
+560
+00:31:00,000 --> 00:31:02,610
+Kudos to that. And I think this
+is something that everyone needs
+
+561
+00:31:02,610 --> 00:31:05,880
+to also understand is that the
+team and correct me if I'm
+
+562
+00:31:05,880 --> 00:31:08,730
+wrong, and I actually like you
+to introduce the team that you
+
+563
+00:31:08,730 --> 00:31:10,350
+know, that you're working with,
+because I actually don't know
+
+564
+00:31:10,350 --> 00:31:13,650
+everyone personally, like, I
+know you. But you guys are all
+
+565
+00:31:13,650 --> 00:31:14,550
+based in Europe, right?
+
+566
+00:31:15,150 --> 00:31:17,520
+Michael Van Horenbeeck: No, no,
+not really. So we've got a mic
+
+567
+00:31:17,790 --> 00:31:21,720
+on it, or both also, in VPS, do
+a lot of work in the security
+
+568
+00:31:21,720 --> 00:31:27,300
+space. They're based out of the
+United United Arab Emirates.
+
+569
+00:31:28,350 --> 00:31:33,570
+There are actually I think I'm
+our move to Dubai right now. So
+
+570
+00:31:33,570 --> 00:31:36,180
+they're based out of there. I've
+got a couple of folks in the
+
+571
+00:31:36,180 --> 00:31:40,440
+Netherlands. I've got as you can
+see, lovely works for me, as
+
+572
+00:31:40,440 --> 00:31:44,070
+well. And, you know, it just so
+happened that when I started
+
+573
+00:31:44,070 --> 00:31:46,530
+reaching out to folks that they
+were the first to respond and
+
+574
+00:31:46,530 --> 00:31:51,870
+said, Yeah, sure. We want to do
+that. But yeah, it's been it's
+
+575
+00:31:51,870 --> 00:31:55,050
+been helpful because, you know,
+less timezone issues. It's only
+
+576
+00:31:55,050 --> 00:31:58,470
+a couple of hours apart. But
+we'll we'll see. I mean,
+
+577
+00:31:59,070 --> 00:32:03,060
+reaching out to the For the
+Office ATP chapter, I think we
+
+578
+00:32:03,060 --> 00:32:07,230
+might actually cross jump over
+to to the US to onboard someone
+
+579
+00:32:07,230 --> 00:32:11,670
+else. But as far as the team
+goes, so we've got alarm on a
+
+580
+00:32:11,670 --> 00:32:15,780
+tour doing the NBA TV chapter,
+we've got Peter who's doing
+
+581
+00:32:15,810 --> 00:32:19,440
+Intune and identity. We've got
+Thomas was focusing on
+
+582
+00:32:20,160 --> 00:32:23,430
+information protection, which,
+you know, coincidentally you
+
+583
+00:32:23,430 --> 00:32:26,580
+could say it is more compliance
+feature rather than security
+
+584
+00:32:26,580 --> 00:32:30,870
+feature, but as you said, to
+kind of blogs to it. Next to
+
+585
+00:32:30,870 --> 00:32:33,690
+building the book in the the
+copy editing, I'm doing em Kaz
+
+586
+00:32:33,900 --> 00:32:36,090
+during the introduction, and
+also doing some work here and
+
+587
+00:32:36,090 --> 00:32:39,570
+there and the other chapters,
+and then task is doing the all
+
+588
+00:32:39,600 --> 00:32:40,470
+all up review.
+
+589
+00:32:40,920 --> 00:32:43,740
+Chris Goosen: Okay. And I think
+what's great about having, like
+
+590
+00:32:43,740 --> 00:32:46,020
+an international team like that
+is everyone has their
+
+591
+00:32:46,290 --> 00:32:48,360
+potentially slightly different
+market. So there's going to be
+
+592
+00:32:48,360 --> 00:32:50,880
+slightly different point of view
+and slightly different
+
+593
+00:32:50,880 --> 00:32:53,430
+experience coming into it and
+blending it all together. I
+
+594
+00:32:53,430 --> 00:32:54,840
+think that's really powerful
+too.
+
+595
+00:32:55,440 --> 00:32:58,560
+Michael Van Horenbeeck: It's
+incredibly useful, like in the
+
+596
+00:32:58,560 --> 00:33:01,080
+talks that we've had, that is
+questions that we've had. I've
+
+597
+00:33:01,080 --> 00:33:04,530
+learned so much like, insights
+from from Amar in certain things
+
+598
+00:33:04,530 --> 00:33:07,500
+and how to approach it even you
+marketing the book, but also
+
+599
+00:33:07,650 --> 00:33:11,070
+structuring the book. We've had
+another meeting last week, where
+
+600
+00:33:11,070 --> 00:33:14,460
+we were just talking, like
+brainstorming, all of a sudden
+
+601
+00:33:14,460 --> 00:33:17,310
+everyone was like, Yeah, wow,
+that's a great idea, just by
+
+602
+00:33:17,340 --> 00:33:19,560
+having that interaction. And
+that's, you know, it's a
+
+603
+00:33:19,560 --> 00:33:22,590
+learning process for each and
+every one of us. And, you know,
+
+604
+00:33:22,590 --> 00:33:24,450
+it's fun. So, yeah,
+
+605
+00:33:25,080 --> 00:33:28,440
+Chris Goosen: well, that's super
+exciting. Honestly, I think I
+
+606
+00:33:28,440 --> 00:33:32,220
+can't I can't wait. Like I said,
+and it's really the timing on
+
+607
+00:33:32,220 --> 00:33:33,900
+this is absolutely perfect. Like
+you couldn't have picked a
+
+608
+00:33:33,900 --> 00:33:37,770
+better you know, a better time
+for it. So I think with that, I
+
+609
+00:33:37,770 --> 00:33:41,340
+mean, just kind of keeping
+keeping an eye on the on the
+
+610
+00:33:41,340 --> 00:33:43,620
+clock here. I know. We've all
+got other things to get to.
+
+611
+00:33:44,160 --> 00:33:46,500
+Nick. I just wanted to just to
+check in that. You're still
+
+612
+00:33:46,500 --> 00:33:51,240
+breathing, buddy. I I'm sorry.
+I've taken over.
+
+613
+00:33:53,550 --> 00:33:55,860
+Nicolas Blank: If the questions
+weren't so good. I throw in some
+
+614
+00:33:55,860 --> 00:33:56,790
+more but you're doing great.
+
+615
+00:33:58,410 --> 00:34:01,530
+Chris Goosen: Michael before we
+let you go As we always kind of
+
+616
+00:34:01,530 --> 00:34:04,200
+do when we when we kind of, you
+know, tie off the end of the
+
+617
+00:34:04,200 --> 00:34:08,550
+show. How do you want to be
+found can obviously be great if
+
+618
+00:34:08,550 --> 00:34:11,700
+you want to develop the URL for
+the book again, how do people
+
+619
+00:34:11,700 --> 00:34:14,430
+find you on social media if you
+want to be found, but I know you
+
+620
+00:34:14,430 --> 00:34:18,990
+have a fairly fairly active
+social profile so go ahead,
+
+621
+00:34:19,530 --> 00:34:20,970
+Michael Van Horenbeeck: not as
+active as I used to be just
+
+622
+00:34:20,970 --> 00:34:25,260
+because I'm writing the book. So
+but you know, on Twitter I am
+
+623
+00:34:25,260 --> 00:34:28,050
+and then hybrid, I think that's
+the easiest way to get a hold of
+
+624
+00:34:28,050 --> 00:34:31,290
+me because my last name, you
+don't even try to pronounce it
+
+625
+00:34:31,290 --> 00:34:35,310
+in English. So advanta hybrid.
+From there, you've got the URL,
+
+626
+00:34:35,310 --> 00:34:37,560
+you'll have the book title,
+you'll see my blog post.
+
+627
+00:34:37,830 --> 00:34:41,100
+Obviously, I'm on LinkedIn as
+well but has my full back name
+
+628
+00:34:41,130 --> 00:34:45,300
+and Vanderbeek. But through
+Twitter, you'll easily find me
+
+629
+00:34:45,300 --> 00:34:49,290
+I've got my own blog at the vet
+hybrid calm so you can get to
+
+630
+00:34:49,290 --> 00:34:54,630
+there or the book of website
+m365securitybook.com as well,
+
+631
+00:34:54,630 --> 00:34:57,600
+but I'll share it with you so
+that you can post it with the
+
+632
+00:34:57,630 --> 00:34:58,590
+recording as well.
+
+633
+00:34:58,800 --> 00:35:00,420
+Chris Goosen: Yeah, thank you. I
+think we'll We'll definitely
+
+634
+00:35:00,420 --> 00:35:03,180
+make sure to put all of these in
+the in the show notes for the
+
+635
+00:35:03,510 --> 00:35:05,700
+for the episode as well so that
+we can kind of get that out
+
+636
+00:35:05,700 --> 00:35:09,030
+there. But thanks again for for
+taking the time to speak to us.
+
+637
+00:35:09,030 --> 00:35:12,000
+This is super exciting sort of
+announcement, I guess. And we're
+
+638
+00:35:12,000 --> 00:35:15,120
+really pleased that you came on
+to talk to us about that. And I
+
+639
+00:35:15,120 --> 00:35:17,100
+know it's afternoon time for you
+in Europe, but I'm sure you
+
+640
+00:35:17,100 --> 00:35:19,080
+still got a few things to get on
+with for the day. So
+
+641
+00:35:20,070 --> 00:35:22,200
+Michael Van Horenbeeck: unfortunately,
+yes. Like, you know, you've got
+
+642
+00:35:22,200 --> 00:35:25,170
+a whole day and so I'm halfway
+my well actually done with my
+
+643
+00:35:25,170 --> 00:35:29,160
+day, two more hours a year I can
+sign off. But yeah, anyway,
+
+644
+00:35:29,160 --> 00:35:32,340
+guys, I really appreciate you
+having me on the call inviting
+
+645
+00:35:32,340 --> 00:35:34,380
+me and talk about the book.
+Really appreciate that as well.
+
+646
+00:35:34,710 --> 00:35:36,240
+Chris Goosen: Hey, no problem.
+Thank you. We're always happy to
+
+647
+00:35:36,240 --> 00:35:37,530
+have you. So thanks for coming
+back.
+
+648
+00:35:38,640 --> 00:35:39,720
+Michael Van Horenbeeck: My
+pleasure. Cheers.
+
+649
+00:35:40,050 --> 00:35:42,000
+Chris Goosen: Go. Okay, guys.
+Bye!,
+
+650
+00:35:44,970 --> 00:35:48,000
+Warren du Toit: everyone. Before
+you go, we just wanted to say
+
+651
+00:35:48,000 --> 00:35:50,250
+thank you for listening. We
+really enjoyed putting this
+
+652
+00:35:50,250 --> 00:35:53,670
+podcast together for you every
+two weeks, please visit us at
+
+653
+00:35:53,700 --> 00:35:56,670
+thearchitects.cloud.
+Alternatively, drop us a tweet.
+
+654
+00:35:56,730 --> 00:35:59,430
+We'd love to hear what you have
+to say @thecloudarch.
+
