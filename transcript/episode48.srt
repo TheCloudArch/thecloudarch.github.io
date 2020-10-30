@@ -1,0 +1,3340 @@
+1
+00:00:19,080 --> 00:00:21,720
+Chris Goosen: Welcome to the
+cloud architects podcast, a
+
+2
+00:00:21,720 --> 00:00:25,560
+podcast about cloud technology,
+and the people using it.
+
+3
+00:00:26,860 --> 00:00:28,990
+Nicolas Blank: The cloud
+architects podcast is sponsored
+
+4
+00:00:28,990 --> 00:00:32,920
+by Kemp technologies. Choose
+Kemp to optimize your multi
+
+5
+00:00:32,920 --> 00:00:35,950
+cloud application deployments
+and simplify multi cloud
+
+6
+00:00:35,950 --> 00:00:39,790
+application management. A single
+pane of glass for application
+
+7
+00:00:39,790 --> 00:00:44,320
+delivery, Kemp provides a 360
+degree view of your entire
+
+8
+00:00:44,320 --> 00:00:48,700
+application environment, and
+even third party ADCs. Download
+
+9
+00:00:48,700 --> 00:00:52,630
+Kemp 360 for free today at
+Kemptechnologies.com
+
+10
+00:00:55,390 --> 00:00:57,820
+Warren du Toit: Hello,
+everybody, and welcome to the
+
+11
+00:00:57,820 --> 00:01:02,260
+post apocalyptic version of the
+cloud architects podcast. And we
+
+12
+00:01:02,260 --> 00:01:06,250
+have a new co host today. Anna
+Chu! Welcome back.
+
+13
+00:01:06,240 --> 00:01:06,870
+Anna Chu: Hey.
+
+14
+00:01:08,890 --> 00:01:11,770
+Warren du Toit: And again, we
+have the amazing little
+
+15
+00:01:11,770 --> 00:01:14,200
+wonderful the stupendous, Mr.
+
+16
+00:01:17,100 --> 00:01:17,970
+Nicolas Blank: Nicholas blank.
+
+17
+00:01:19,730 --> 00:01:23,420
+I was I was waiting. I waited
+too long. I think I ruined the
+
+18
+00:01:23,420 --> 00:01:26,570
+theatrical effect, but I gotta
+say that new Chris is a lot
+
+19
+00:01:26,750 --> 00:01:29,300
+better looking than the old
+Chris. Ah,
+
+20
+00:01:29,390 --> 00:01:33,530
+Warren du Toit: that's for sure.
+That's what you're gonna
+
+21
+00:01:35,240 --> 00:01:39,650
+say, Maxie. Same accent story.
+
+22
+00:01:40,400 --> 00:01:43,700
+Anna Chu: Is it? I don't know.
+I've been told it sounds a bit
+
+23
+00:01:43,700 --> 00:01:50,030
+strange that people ask me if
+I'm British people.And people
+
+24
+00:01:50,030 --> 00:01:55,460
+ask me.Yeah, but
+
+25
+00:01:56,180 --> 00:01:58,190
+Nicolas Blank: it's a South
+African if I was from Spain.
+
+26
+00:02:01,550 --> 00:02:02,240
+True Story.
+
+27
+00:02:02,759 --> 00:02:04,409
+Anna Chu: Oh la la
+
+28
+00:02:04,529 --> 00:02:08,579
+Nicolas Blank: la compadre.
+settled there differences in the
+
+29
+00:02:08,579 --> 00:02:11,129
+accent between that one and this
+one. But now we got to roll with
+
+30
+00:02:11,129 --> 00:02:11,309
+it.
+
+31
+00:02:12,900 --> 00:02:17,580
+Anna Chu: Well, I am very proud
+to be your fit like her horse
+
+32
+00:02:17,580 --> 00:02:21,420
+today. I'm not sure how this is
+gonna go or it might turn to
+
+33
+00:02:21,420 --> 00:02:24,720
+crap. But Oh, well. Let's roll
+with it.
+
+34
+00:02:25,980 --> 00:02:26,760
+Warren du Toit: Let's go with
+it.
+
+35
+00:02:29,930 --> 00:02:32,570
+Cool. So what are we going to
+talk about today, I think I
+
+36
+00:02:32,570 --> 00:02:36,830
+think something really important
+is we can talk about I'm not
+
+37
+00:02:36,830 --> 00:02:38,990
+going to say post apocalyptic
+again, because and it's just
+
+38
+00:02:38,990 --> 00:02:43,040
+going to mess things up. But
+let's let's go post Ignite. And
+
+39
+00:02:43,070 --> 00:02:46,940
+we look at the technology that
+Microsoft has brought to the
+
+40
+00:02:46,940 --> 00:02:53,570
+fold for CES. And so using
+innovations that Microsoft I
+
+41
+00:02:53,570 --> 00:02:58,520
+consider what react is and has
+done with inspire ignite ready,
+
+42
+00:02:58,550 --> 00:03:02,480
+bold. And I'm going to be using
+proceeds. That's a big deal.
+
+43
+00:03:02,990 --> 00:03:06,170
+Anna Chu: That's a huge deal.
+Yeah, yeah, the event team has
+
+44
+00:03:06,170 --> 00:03:09,260
+done a lot of work and they're
+really, you know, bullish and
+
+45
+00:03:09,260 --> 00:03:14,120
+proving themselves. So I'm,
+yeah, I'm really interested in
+
+46
+00:03:14,810 --> 00:03:18,080
+those down. Of course, us as
+Microsoft were a little bit more
+
+47
+00:03:18,080 --> 00:03:21,980
+forgiving of our own technology.
+We drink our own Kool Aid.
+
+48
+00:03:22,700 --> 00:03:26,870
+trigger on champagne. Is that
+was that the time? Um, so yeah,
+
+49
+00:03:26,870 --> 00:03:31,580
+I wonder if, how if What if
+we're really ready for primetime
+
+50
+00:03:31,580 --> 00:03:35,930
+with CES, I have high hopes, I
+definitely think that the team
+
+51
+00:03:35,930 --> 00:03:38,960
+will do pull out all the stops
+to make see is an awesome event
+
+52
+00:03:38,960 --> 00:03:42,530
+and what a great way to like
+actually be a partner for
+
+53
+00:03:42,530 --> 00:03:47,690
+events, right? Like CES is a is
+a was already. I think there was
+
+54
+00:03:47,690 --> 00:03:51,230
+a year that Microsoft decided
+not to be part of CES for
+
+55
+00:03:51,230 --> 00:03:55,550
+whatever reason. But I think
+it's a lot better to actually be
+
+56
+00:03:55,550 --> 00:03:58,550
+the one pairing the event
+instead of just being Hey, we're
+
+57
+00:03:58,550 --> 00:04:01,790
+gonna be like a major partner
+and showcasing our product. But
+
+58
+00:04:01,790 --> 00:04:04,820
+we're actually living it through
+through the event itself, which
+
+59
+00:04:04,820 --> 00:04:05,540
+is really cool.
+
+60
+00:04:07,790 --> 00:04:10,970
+Warren du Toit: That's super
+cool. And when it comes to I
+
+61
+00:04:10,970 --> 00:04:13,760
+mean, just just your personal
+question is, are you looking
+
+62
+00:04:13,760 --> 00:04:15,140
+forward to anything at CES?
+
+63
+00:04:16,280 --> 00:04:19,610
+Anna Chu: I havenever really
+been involved because CES is
+
+64
+00:04:19,610 --> 00:04:21,860
+typically consumer thing. I've
+always worked in the
+
+65
+00:04:21,860 --> 00:04:22,910
+commercials. Yes.
+
+66
+00:04:23,540 --> 00:04:28,670
+So I if I ever, like the only
+time I ever look at CES is just
+
+67
+00:04:28,670 --> 00:04:31,820
+as an observer, just as someone
+who's interested in, you know,
+
+68
+00:04:31,820 --> 00:04:35,060
+what's happening in the Xbox
+world or Surface devices or any
+
+69
+00:04:35,060 --> 00:04:39,920
+other, you know, mobile mobile
+devices, right. Um, for me, like
+
+70
+00:04:39,920 --> 00:04:43,550
+I've been spending a lot of time
+with online events. And I went
+
+71
+00:04:43,550 --> 00:04:49,250
+to Adobe max last week. I've
+been going to see to Montreal
+
+72
+00:04:49,250 --> 00:04:51,290
+for the last two years and this
+is the first time that they've
+
+73
+00:04:51,290 --> 00:04:54,410
+done a completely online event.
+For those of you who don't know
+
+74
+00:04:54,410 --> 00:05:00,110
+what C to Montreal is, it's a
+collaboration between the month
+
+75
+00:05:00,110 --> 00:05:05,720
+Getting agency for Cirque du
+Soleil called Sibley and another
+
+76
+00:05:05,720 --> 00:05:10,550
+company I can't remember. But
+it's all about the collaboration
+
+77
+00:05:10,550 --> 00:05:14,840
+between creativity and commerce.
+And so they always do a great
+
+78
+00:05:14,840 --> 00:05:21,020
+job of getting amazing speakers.
+And really great immersive
+
+79
+00:05:21,020 --> 00:05:24,320
+experiences. So I was really
+curious how they would do that
+
+80
+00:05:24,350 --> 00:05:28,130
+with everything being online. I
+mean, how immersive Can you be
+
+81
+00:05:28,130 --> 00:05:32,570
+when you're at the same desk
+that you read email and do teams
+
+82
+00:05:32,570 --> 00:05:36,800
+calls, you know, but they got
+had some workshops, and one even
+
+83
+00:05:36,800 --> 00:05:41,810
+involve me walking out of my
+house, and observing like, like
+
+84
+00:05:41,810 --> 00:05:46,670
+noticing what really stood out
+for me. And I think in this age
+
+85
+00:05:46,670 --> 00:05:51,770
+of, you know, we're still in
+pandemic work mode. More, and I
+
+86
+00:05:51,770 --> 00:05:54,560
+know that, when we were talking
+earlier, you were saying that
+
+87
+00:05:54,560 --> 00:05:58,040
+you will starting to feel a bit
+fatigued from working from home
+
+88
+00:05:58,040 --> 00:06:03,140
+for a while. So like, you do
+need to get outside and sick get
+
+89
+00:06:03,140 --> 00:06:05,450
+exposed to a completely
+different environment in order
+
+90
+00:06:05,450 --> 00:06:09,020
+for you to, you know, not only
+like stay sane and preserve your
+
+91
+00:06:09,020 --> 00:06:12,470
+mental health, but just, you
+know, just for a little bit of
+
+92
+00:06:12,470 --> 00:06:13,430
+relief, right?
+
+93
+00:06:15,500 --> 00:06:18,020
+Warren du Toit: Yeah, hundred
+percent Look, I mean, I guess,
+
+94
+00:06:18,230 --> 00:06:22,520
+we've tried to replicate the
+stuff that it is that we do on a
+
+95
+00:06:22,520 --> 00:06:28,670
+daily basis, but from home, so,
+you know, got a gym, or you have
+
+96
+00:06:28,670 --> 00:06:33,320
+a spinning machine or I don't
+know, you know, just those
+
+97
+00:06:33,320 --> 00:06:36,200
+little things that you try to
+replicate. I mean, the kids, you
+
+98
+00:06:36,200 --> 00:06:42,470
+know, joining meetings and sort
+of virtual, virtual and Roblox
+
+99
+00:06:42,470 --> 00:06:45,080
+games and things like that. But
+you're right. I mean, there's,
+
+100
+00:06:45,140 --> 00:06:48,710
+there's only so much that you
+can mean, there's some sort of
+
+101
+00:06:48,740 --> 00:06:52,010
+interaction that sort of has to
+happen, but it's not, you can't
+
+102
+00:06:52,010 --> 00:06:53,060
+necessarily get
+
+103
+00:06:53,510 --> 00:06:56,330
+Nicolas Blank: away actually,
+you get such digital fatigue,
+
+104
+00:06:56,330 --> 00:06:58,730
+that you don't care, you don't
+care about how amazing the
+
+105
+00:06:58,730 --> 00:07:02,870
+content is, you get to the point
+where I just want to be in the
+
+106
+00:07:02,870 --> 00:07:06,590
+same room as another human
+being, and talk to them and see
+
+107
+00:07:06,590 --> 00:07:11,690
+them and see the the pale blue
+blue light of another screen.
+
+108
+00:07:12,230 --> 00:07:15,560
+Anna Chu: Yeah, yeah, yeah.
+Yeah, it's really it's, it's
+
+109
+00:07:15,560 --> 00:07:20,480
+really, really tough. And I
+think we've said it many times
+
+110
+00:07:20,480 --> 00:07:23,600
+that COVID-19 is kind of like
+everyone's digital
+
+111
+00:07:23,600 --> 00:07:26,960
+transformation officer, I
+everyone's had to like, be
+
+112
+00:07:26,990 --> 00:07:31,850
+pushed into digital, kicking and
+screaming and set. The same
+
+113
+00:07:31,850 --> 00:07:34,940
+applies for online events. And
+one thing I've been thinking
+
+114
+00:07:34,940 --> 00:07:40,070
+about is, have the objectives of
+events changed. Because now that
+
+115
+00:07:40,070 --> 00:07:44,930
+we move to online, let's think
+about this, right? As I look at
+
+116
+00:07:45,110 --> 00:07:51,470
+the metrics for ignite 2020. And
+compare that to our metrics for
+
+117
+00:07:51,470 --> 00:07:56,120
+2019. We, in person event, we
+looked at things like how many
+
+118
+00:07:56,120 --> 00:07:59,840
+people turn up? How many
+registrations do we get? We
+
+119
+00:07:59,840 --> 00:08:01,310
+looked at things like that, now,
+
+120
+00:08:01,340 --> 00:08:02,600
+Warren du Toit: we're completely
+blown up.
+
+121
+00:08:03,110 --> 00:08:08,480
+Anna Chu: Yeah, totally blown
+out. Like, like, like, a lot.
+
+122
+00:08:08,810 --> 00:08:15,320
+I'm, like, 10 times just a
+little under 10. x, you know,
+
+123
+00:08:15,350 --> 00:08:18,410
+just crazy. But there's a couple
+of things behind that we might
+
+124
+00:08:18,410 --> 00:08:23,120
+be event free. And typically
+ignite, you have to pay like two
+
+125
+00:08:23,120 --> 00:08:28,580
+grand also, to for the price of
+admission. We've also looked at,
+
+126
+00:08:28,790 --> 00:08:31,820
+you know, session scans to get a
+sense of like, how many people
+
+127
+00:08:31,820 --> 00:08:37,490
+actually attended sessions?
+Well, when you are logging in
+
+128
+00:08:37,520 --> 00:08:43,550
+to, to a session, right? Is that
+person really there is not a
+
+129
+00:08:43,550 --> 00:08:48,650
+captive audience a distracted
+by, like, they could have three
+
+130
+00:08:48,650 --> 00:08:52,520
+other tabs open on their
+browser, that, yeah, it'd be a
+
+131
+00:08:52,640 --> 00:08:55,610
+source of distraction, let alone
+what's happening in their home.
+
+132
+00:08:56,180 --> 00:08:59,120
+Now, you could also argue that,
+you know, we weren't able to
+
+133
+00:08:59,120 --> 00:09:02,000
+capture people walking out of
+those rooms. But as someone who
+
+134
+00:09:02,000 --> 00:09:05,390
+used to stand by that door,
+didn't really I mean, you just
+
+135
+00:09:05,570 --> 00:09:08,360
+have like, maybe 10 1215
+depending on the room, like
+
+136
+00:09:08,360 --> 00:09:13,430
+really point 01 percent of the
+people in the room. But
+
+137
+00:09:14,000 --> 00:09:16,850
+attention spans really
+difficult. And the other thing
+
+138
+00:09:16,850 --> 00:09:21,830
+too, is something that is been
+really on my mind is these
+
+139
+00:09:21,830 --> 00:09:25,370
+events have always been
+technical training events,
+
+140
+00:09:25,490 --> 00:09:29,810
+right? So how do we do this
+online when people's attention
+
+141
+00:09:29,810 --> 00:09:34,700
+spans are so limited? And I
+mean, you you've seen this at
+
+142
+00:09:34,700 --> 00:09:39,020
+Ignite, like, we've always done
+like 45 minutes, 75 minutes
+
+143
+00:09:39,020 --> 00:09:43,610
+session breakouts. We didn't do
+that for our online event. Like
+
+144
+00:09:43,610 --> 00:09:49,250
+we did 20 minutes, 30 minute
+things. So is that going to help
+
+145
+00:09:49,250 --> 00:09:52,130
+people get the technical depth
+that they need to be successful
+
+146
+00:09:52,130 --> 00:09:57,350
+in their jobs? I'm really
+interested in how technical
+
+147
+00:09:57,380 --> 00:10:02,210
+training organizations pivoting
+like have you guys seen
+
+148
+00:10:02,210 --> 00:10:04,370
+anything? Have you guys seen
+major changes? They're
+
+149
+00:10:07,250 --> 00:10:10,850
+Warren du Toit: not really not
+not remind me look Hi. For me
+
+150
+00:10:10,850 --> 00:10:14,420
+it's also an there's an
+excitement factor. I'm going to
+
+151
+00:10:14,420 --> 00:10:18,380
+the the person who led the
+session afterwards, and having a
+
+152
+00:10:18,380 --> 00:10:22,010
+chat to them saying that was
+amazing or seeing what sort of
+
+153
+00:10:22,010 --> 00:10:25,940
+shirt they were wearing, because
+I suppose he gave you some sort
+
+154
+00:10:25,940 --> 00:10:28,460
+of indication of what the kind
+of person what that person was
+
+155
+00:10:28,460 --> 00:10:31,820
+like. Whereas now, let's say
+it's pre recorded. They're
+
+156
+00:10:31,820 --> 00:10:35,960
+wearing a shirt that Microsoft
+told them to it, or how
+
+157
+00:10:35,960 --> 00:10:40,490
+rehearsed wasn't actually. Um,
+so it was, I think leading to my
+
+158
+00:10:40,490 --> 00:10:43,310
+next question is when it comes
+to the virtual table sessions
+
+159
+00:10:43,310 --> 00:10:47,480
+and the social virtual sessions
+that you tried to have it
+
+160
+00:10:47,480 --> 00:10:48,530
+ignited at work?
+
+161
+00:10:48,980 --> 00:10:52,910
+Anna Chu: Yeah, I'll tell you
+what Hawks. Um, yeah. Last time,
+
+162
+00:10:52,910 --> 00:10:55,550
+when we spoke, I was talking
+about how it was a bit of an
+
+163
+00:10:55,550 --> 00:11:00,290
+experiment. I thought it went
+really well. The feedback that
+
+164
+00:11:00,290 --> 00:11:03,320
+we got from the table talks was
+like, Oh, my gosh, I could have
+
+165
+00:11:03,320 --> 00:11:06,170
+sat in these table talks all
+day, we had repeat customers, we
+
+166
+00:11:06,170 --> 00:11:09,560
+had people coming back, like
+Table to Table Talk, I had my
+
+167
+00:11:09,560 --> 00:11:15,050
+coffee, I woke up early stayed
+up late in order to be part of
+
+168
+00:11:15,050 --> 00:11:20,600
+as many of them as I could. And
+people really love the free
+
+169
+00:11:20,600 --> 00:11:24,560
+flowing conversation. They've
+really loved that, you know,
+
+170
+00:11:24,560 --> 00:11:28,190
+they had a place where they
+could have that hallway
+
+171
+00:11:28,190 --> 00:11:34,520
+conversation, that you typically
+have big conferences. And while
+
+172
+00:11:34,520 --> 00:11:37,760
+they was an agenda, it was super
+loose. It was more like, hey,
+
+173
+00:11:37,760 --> 00:11:41,510
+like, this is going to be a
+table talk about application
+
+174
+00:11:41,510 --> 00:11:45,230
+development. Got a couple of
+people here, like, let's find
+
+175
+00:11:45,230 --> 00:11:47,120
+out in the room, like what
+people are interested in
+
+176
+00:11:47,120 --> 00:11:49,940
+building what you're building
+right now. You know, just have a
+
+177
+00:11:49,940 --> 00:11:53,240
+chat, though. The main complaint
+I had was that 30 minutes is too
+
+178
+00:11:53,240 --> 00:11:58,310
+short. And I agree with that.
+I'm sorry, I'm hoping we can
+
+179
+00:11:58,310 --> 00:12:04,490
+expand that. I'm very interested
+in like, any advice or any tips
+
+180
+00:12:04,490 --> 00:12:08,390
+that people might have. So any
+listeners to this podcast, just,
+
+181
+00:12:08,420 --> 00:12:13,370
+you know, message me on on
+Twitter, at underscore HQ, if
+
+182
+00:12:13,370 --> 00:12:16,190
+you've got any ideas of how
+you've seen networking done
+
+183
+00:12:16,190 --> 00:12:22,940
+well, especially a really big
+events, right, like, like, the
+
+184
+00:12:22,970 --> 00:12:27,560
+Ignite reached like hundreds of
+thousands of people. So trying
+
+185
+00:12:27,560 --> 00:12:31,700
+to do intimate networking can be
+very difficult. But I'm very
+
+186
+00:12:31,700 --> 00:12:34,820
+excited about Microsoft Teams
+and the breakout room
+
+187
+00:12:34,820 --> 00:12:39,440
+functionalities. And maybe we
+can do it that way. Yeah, yeah,
+
+188
+00:12:39,470 --> 00:12:44,870
+that would be really fun. I see
+online events to and they have
+
+189
+00:12:44,870 --> 00:12:48,320
+used the breakout room
+functionality. I think the
+
+190
+00:12:48,320 --> 00:12:52,790
+difference the challenge with
+that from from that event is
+
+191
+00:12:52,790 --> 00:12:56,360
+that not everyone went into the
+breakout rooms like me included
+
+192
+00:12:56,390 --> 00:12:59,720
+guilty, because I was planning
+on just passively listening. And
+
+193
+00:12:59,720 --> 00:13:03,560
+so if you were pushing l had
+allocated, he would go into
+
+194
+00:13:03,560 --> 00:13:07,070
+breakout rooms, some would be
+more full than others. So I
+
+195
+00:13:07,070 --> 00:13:08,750
+don't know, it's just one of
+those things that we need to
+
+196
+00:13:08,930 --> 00:13:10,280
+take into consideration.
+
+197
+00:13:11,900 --> 00:13:14,630
+Nicolas Blank: You realize you
+celebrating something that was
+
+198
+00:13:14,630 --> 00:13:18,920
+successful there? And it was
+because it had interaction? And
+
+199
+00:13:18,950 --> 00:13:23,720
+we weren't just being statically
+presented at? And yeah, that's
+
+200
+00:13:24,380 --> 00:13:28,100
+sweet. We love interacting. And
+we had a conference and we
+
+201
+00:13:28,100 --> 00:13:31,910
+weren't just watching slide off
+the slide off the slide deck by
+
+202
+00:13:32,360 --> 00:13:37,370
+Anna Chu: Yeah, yeah. Yeah, it
+was a, I think it was the best
+
+203
+00:13:37,370 --> 00:13:42,020
+solution for Yes, what you said
+there, like driving interaction
+
+204
+00:13:42,020 --> 00:13:46,460
+and connections. I have no idea
+whether people like started
+
+205
+00:13:46,490 --> 00:13:50,360
+connecting with other people in
+that check table talk one on one
+
+206
+00:13:50,360 --> 00:13:54,500
+afterwards. I don't have a way
+of measuring that. Nor do I want
+
+207
+00:13:54,500 --> 00:13:59,180
+to, like be so you know, big
+brother about it. Right? Like,
+
+208
+00:13:59,210 --> 00:14:06,470
+we kind of have to leave things
+to be organic. So yeah, um, but
+
+209
+00:14:06,470 --> 00:14:10,190
+we shall say, Oh, I also did one
+in Japanese Actually, I didn't
+
+210
+00:14:10,190 --> 00:14:14,150
+personally but I was like, you
+know, what, like, the people
+
+211
+00:14:14,180 --> 00:14:18,710
+community is also very local.
+Right? And with the Japanese,
+
+212
+00:14:19,730 --> 00:14:23,780
+they need to connect with people
+who speak their language.
+
+213
+00:14:23,960 --> 00:14:27,770
+English is not their mother
+tongue, right? Or something that
+
+214
+00:14:27,770 --> 00:14:30,830
+they feel super comfortable
+speaking in, and so interact
+
+215
+00:14:30,830 --> 00:14:34,940
+like, so they won't feel 100%
+comfortable interacting in, in a
+
+216
+00:14:35,000 --> 00:14:38,690
+in a format like that, where the
+predominant language is English.
+
+217
+00:14:39,320 --> 00:14:44,030
+And so I sat in on the the
+Japanese one. I don't understand
+
+218
+00:14:44,030 --> 00:14:48,380
+a lick of Japanese, but I just
+observed and people will, like,
+
+219
+00:14:48,710 --> 00:14:52,280
+turn the cameras on. They turn
+the cameras on. They unmuted
+
+220
+00:14:52,280 --> 00:14:57,110
+themselves. It was awesome. You
+know, like, I think, like, if
+
+221
+00:14:57,110 --> 00:15:00,980
+you look at all the sessions, we
+did, we did breakouts, We did
+
+222
+00:15:00,980 --> 00:15:04,310
+them in in teams live events,
+you had the interaction in the
+
+223
+00:15:04,310 --> 00:15:09,200
+chat, you didn't see anyone's
+faces. Like, one thing I did,
+
+224
+00:15:09,260 --> 00:15:14,510
+and I kept doing it was I turned
+on together mode for myself,
+
+225
+00:15:14,660 --> 00:15:18,950
+took a screenshot of that, paste
+it in the chat window. And but
+
+226
+00:15:18,950 --> 00:15:22,670
+and of course, if people don't
+know, or you don't turn on
+
+227
+00:15:22,670 --> 00:15:25,460
+together mode for everybody, you
+do it for yourself. So you can
+
+228
+00:15:25,460 --> 00:15:29,720
+see everyone in that beautiful
+format. And so it was a little
+
+229
+00:15:29,720 --> 00:15:33,860
+bit, it was two things. One, I
+was showcasing a feature of
+
+230
+00:15:33,860 --> 00:15:38,930
+teams through Table Table, as a
+good corporate citizen and a fan
+
+231
+00:15:38,930 --> 00:15:41,660
+of Microsoft Teams. And
+secondly, I was really
+
+232
+00:15:41,660 --> 00:15:46,220
+motivating people to actually
+turn on the cameras unmute their
+
+233
+00:15:46,220 --> 00:15:49,670
+microphone, so they can see
+themselves in together mode, and
+
+234
+00:15:49,670 --> 00:15:53,000
+start and stop just giving them
+a little signal, say, Hey, this
+
+235
+00:15:53,000 --> 00:15:57,020
+is the permissible thing to do,
+you don't have to, but if you
+
+236
+00:15:57,020 --> 00:16:01,670
+want to be involved in this way,
+you know, join in. So I think
+
+237
+00:16:01,700 --> 00:16:05,480
+you have to like Softly, softly
+let people feel comfortable.
+
+238
+00:16:06,380 --> 00:16:10,250
+With an interactive mode, like I
+learned a lot from doing
+
+239
+00:16:10,250 --> 00:16:15,410
+unconferences in the in person
+event 2019. Certainly some
+
+240
+00:16:15,410 --> 00:16:18,320
+people gave us feedback that
+there were some dominant voices
+
+241
+00:16:18,320 --> 00:16:22,610
+and dominant personalities,
+which is fine. But you have to
+
+242
+00:16:22,610 --> 00:16:28,040
+make sure that as a facilitator,
+you acknowledge that and play a
+
+243
+00:16:28,040 --> 00:16:31,460
+role in pivoting and making sure
+that everybody has a chance to
+
+244
+00:16:31,460 --> 00:16:35,900
+speak if they want the
+opportunity, you know, so I
+
+245
+00:16:35,900 --> 00:16:39,380
+think we did a really good job
+of using technology to to
+
+246
+00:16:39,380 --> 00:16:45,500
+advantage to facilitate who
+
+247
+00:16:46,880 --> 00:16:48,890
+Warren du Toit: at least it
+other than us, you know, how you
+
+248
+00:16:48,890 --> 00:16:52,940
+get these common meeting
+mistakes, or the common things
+
+249
+00:16:52,940 --> 00:16:57,320
+that happened inside of meetings
+or like you're on mute. Or you
+
+250
+00:16:57,320 --> 00:16:59,780
+know, your cameras or whatever
+the case may be is which leads
+
+251
+00:16:59,780 --> 00:17:03,200
+me to the next thing is who runs
+Microsoft Instagram, because
+
+252
+00:17:03,200 --> 00:17:11,270
+that's, that is hilarious.
+Instagram, it's really funny.
+
+253
+00:17:11,630 --> 00:17:15,770
+It's like, something you haven't
+heard in three hours, or
+
+254
+00:17:15,830 --> 00:17:18,680
+whatever the case is, and it's
+always like this, this random
+
+255
+00:17:18,680 --> 00:17:23,570
+meme about something bad you do.
+What's the funniest thing you've
+
+256
+00:17:23,570 --> 00:17:26,030
+done on a meeting? Like in the
+last month?
+
+257
+00:17:26,690 --> 00:17:32,240
+Anna Chu: Ah, I've been using
+the snap snap camera filters are
+
+258
+00:17:32,240 --> 00:17:39,260
+using playing with that. I
+actually have and I could put a
+
+259
+00:17:39,260 --> 00:17:47,060
+cat on my head on it. Let me see
+if I could do I could miss a cat
+
+260
+00:17:47,060 --> 00:17:55,250
+one as a whole bunch of them. I
+could I haven't done anything. I
+
+261
+00:17:55,250 --> 00:17:58,580
+have Oh, this one's gonna be
+interesting. Oh my gosh, I can
+
+262
+00:17:58,580 --> 00:18:03,410
+be a on this is going away. Oh,
+look, I'm a Halloween bride.
+
+263
+00:18:09,200 --> 00:18:11,210
+This better make the blooper
+reel.
+
+264
+00:18:13,970 --> 00:18:15,860
+Nicolas Blank: I'm not so sure
+about the blooper reel. I think
+
+265
+00:18:15,860 --> 00:18:17,180
+this is gonna make mainstream.
+
+266
+00:18:19,130 --> 00:18:19,880
+Warren du Toit: mainstream.
+
+267
+00:18:21,620 --> 00:18:24,680
+Anna Chu: Yes. I mean, look at
+this. Look at these cheekbones.
+
+268
+00:18:24,680 --> 00:18:31,880
+It looks amazing. I haven't know
+I feel like I'm pretty good at
+
+269
+00:18:32,420 --> 00:18:37,130
+teams etiquette. And I think I
+don't know why it's just been
+
+270
+00:18:37,130 --> 00:18:41,510
+drilled into me to, you know,
+oh, one thing I will say I don't
+
+271
+00:18:41,510 --> 00:18:45,530
+think it's so much mistakes. I
+think using teams to have
+
+272
+00:18:45,530 --> 00:18:50,660
+meetings is just has really
+helped introverts because if
+
+273
+00:18:50,660 --> 00:18:53,510
+that like this couple of things.
+One, the raise hand feature is
+
+274
+00:18:53,510 --> 00:18:59,210
+excellent. Because, yes. You
+know, Nicole with 2050 people,
+
+275
+00:18:59,390 --> 00:19:02,060
+and you just can't get a word in
+edgewise. So the right hand
+
+276
+00:19:02,060 --> 00:19:08,450
+features is great for that.
+Also, you can see through too
+
+277
+00:19:08,450 --> 00:19:10,670
+intense as someone is trying to
+say something because you can
+
+278
+00:19:10,670 --> 00:19:16,490
+see that little avatar profile
+picture like flash purple. So
+
+279
+00:19:16,490 --> 00:19:20,270
+hey, like there's audio being
+detected on their microphone. So
+
+280
+00:19:20,270 --> 00:19:22,670
+maybe they're trying to say
+something. And so if you
+
+281
+00:19:22,670 --> 00:19:28,190
+visually you see that you like,
+hey, Nate, do you want to do it
+
+282
+00:19:28,190 --> 00:19:28,940
+looks like you have something?
+
+283
+00:19:30,530 --> 00:19:35,120
+Nicolas Blank: I'm sorry. Thank
+you. Yes.
+
+284
+00:19:36,140 --> 00:19:39,110
+Anna Chu: quesion All right.
+There we go.
+
+285
+00:19:40,940 --> 00:19:46,070
+Um, so yeah, I think it's been
+really good in driving people
+
+286
+00:19:46,070 --> 00:19:50,840
+to, you know, be more inclusive
+of all the different voices in
+
+287
+00:19:50,840 --> 00:19:59,420
+the room. Yeah, yeah. Um,
+
+288
+00:20:01,610 --> 00:20:02,630
+Warren du Toit: You want to say
+something?
+
+289
+00:20:05,450 --> 00:20:07,790
+Nicolas Blank: Well, you know,
+for the fact that you're looking
+
+290
+00:20:07,790 --> 00:20:10,610
+so blue today, wine, I don't
+know what you've done with your
+
+291
+00:20:10,610 --> 00:20:14,810
+camera. But don't do it again.
+It's fine. You know what we can
+
+292
+00:20:14,810 --> 00:20:17,810
+talk and calibrated afterwards?
+Magic?
+
+293
+00:20:18,350 --> 00:20:24,200
+So yeah, we keep on talking
+about COVID and the success of
+
+294
+00:20:24,200 --> 00:20:29,420
+Ignite. And what is the next one
+gonna look like was ignite never
+
+295
+00:20:29,420 --> 00:20:32,750
+going to end because we used to
+have a show called ignited
+
+296
+00:20:32,750 --> 00:20:36,200
+chirp. So what do we have not we
+have an everlasting ignite
+
+297
+00:20:37,400 --> 00:20:40,400
+Anna Chu: FCM never ending story
+No, um,
+
+298
+00:20:40,850 --> 00:20:44,270
+Nicolas Blank: do we even one?
+Is ignite still special if it
+
+299
+00:20:44,270 --> 00:20:45,050
+never ends?
+
+300
+00:20:45,950 --> 00:20:51,830
+Anna Chu: Yeah, I well okay
+this.is it's coming, there is
+
+301
+00:20:51,830 --> 00:20:56,750
+gonna be another ignite
+happening in March. That's all I
+
+302
+00:20:56,750 --> 00:20:59,390
+can communicate in terms of time
+frame right now. So
+
+303
+00:20:59,420 --> 00:21:02,540
+Warren du Toit: you heard it
+here, folks all much.
+
+304
+00:21:04,130 --> 00:21:09,350
+Anna Chu: I think where what the
+future of digital events will be
+
+305
+00:21:09,350 --> 00:21:17,390
+interesting. I don't really nor
+we one thing that is very clear
+
+306
+00:21:17,390 --> 00:21:19,730
+from the conversations we've
+been having the planning team is
+
+307
+00:21:19,730 --> 00:21:24,350
+we want to do more to drive
+local engagement. I mentioned
+
+308
+00:21:24,350 --> 00:21:28,640
+the experiment we did with a
+Japanese Table Talk. And we
+
+309
+00:21:28,640 --> 00:21:32,180
+certainly want to do more to
+reach out to our Asia Pacific
+
+310
+00:21:32,180 --> 00:21:35,990
+audiences, because I think they
+felt a little left out with the
+
+311
+00:21:35,990 --> 00:21:42,080
+English centric content just
+fine. We just need to do a
+
+312
+00:21:42,080 --> 00:21:45,710
+better job of reaching people in
+different languages, right. And
+
+313
+00:21:45,830 --> 00:21:49,160
+that's inclusive of Spanish,
+French, German, Brazilian
+
+314
+00:21:49,160 --> 00:21:54,380
+Portuguese, whatever it may be,
+right. So we want to do more of
+
+315
+00:21:54,380 --> 00:21:58,340
+that. And perhaps we need and
+but it's just not, it's not just
+
+316
+00:21:58,340 --> 00:22:03,050
+the language thing, like
+localization is about translated
+
+317
+00:22:03,050 --> 00:22:09,530
+the tire experience. And like, I
+website, the Register button,
+
+318
+00:22:10,820 --> 00:22:14,720
+like the clothes cache,
+everything, it's a lot more than
+
+319
+00:22:14,720 --> 00:22:20,870
+just the content. So and also
+culturally, for some coaches,
+
+320
+00:22:21,170 --> 00:22:26,870
+like they need that. I haven't
+delved deep into this. But we
+
+321
+00:22:26,870 --> 00:22:32,030
+need to consider cultural
+differences as well. It's not
+
+322
+00:22:32,030 --> 00:22:36,170
+just a straight up AI language
+translation. chozo isn't
+
+323
+00:22:36,170 --> 00:22:41,900
+perfect, either. So we're
+thinking about that. Um, but I
+
+324
+00:22:41,900 --> 00:22:45,290
+think something I was alluding
+to earlier, in terms of, you
+
+325
+00:22:45,290 --> 00:22:49,790
+know, the content now being
+shorter. And technical
+
+326
+00:22:49,790 --> 00:22:53,150
+readiness, we also have to think
+about on demand event strategy,
+
+327
+00:22:53,150 --> 00:22:56,960
+too, because going back to what
+you were saying, around fatigue.
+
+328
+00:22:57,290 --> 00:23:02,150
+And this, there's a lot of
+content and to expect people to
+
+329
+00:23:02,180 --> 00:23:05,120
+tune in for like eight hours
+straight, 12 hours straight,
+
+330
+00:23:05,510 --> 00:23:12,260
+2448 hours straight is not
+really healthy. So we want to
+
+331
+00:23:12,290 --> 00:23:16,190
+motivate people to go at their
+own pace, especially when the
+
+332
+00:23:16,190 --> 00:23:21,380
+content gets very technically
+deep, like level 300 400 level,
+
+333
+00:23:21,410 --> 00:23:26,090
+right? I've been thinking about
+that. So there's an on demand
+
+334
+00:23:26,090 --> 00:23:29,360
+piece of that. But how many
+times like would you also be
+
+335
+00:23:29,360 --> 00:23:33,350
+motivated to go if that was pre
+recorded, and there was no one
+
+336
+00:23:33,350 --> 00:23:36,830
+there to like guide you. So I'm
+thinking about interaction
+
+337
+00:23:36,830 --> 00:23:42,110
+styles to there's a lot to think
+about. Um, I know that in the
+
+338
+00:23:42,110 --> 00:23:45,110
+last podcast we did together
+talking about ignite, we were I
+
+339
+00:23:45,110 --> 00:23:47,840
+was using the analogy of
+television for our content,
+
+340
+00:23:47,840 --> 00:23:51,200
+which is very true, like we had
+to operate like this clockwork.
+
+341
+00:23:51,920 --> 00:23:59,780
+But is that at compromising? The
+longer form content that people
+
+342
+00:23:59,780 --> 00:24:03,380
+need to help them be better
+developers? Better IT
+
+343
+00:24:03,380 --> 00:24:08,180
+professionals? Right. So yeah,
+curious on your on your thoughts
+
+344
+00:24:08,180 --> 00:24:12,770
+about, you know, how we could,
+you know, still help people get
+
+345
+00:24:12,770 --> 00:24:17,090
+hands on with technology in this
+work from home setting, you
+
+346
+00:24:17,090 --> 00:24:23,570
+know? Yeah. But on that, on
+that, I will say we launched a
+
+347
+00:24:23,570 --> 00:24:26,240
+new feature, and I was I
+couldn't talk about it. Now,
+
+348
+00:24:26,240 --> 00:24:29,690
+last episode. In the tech
+community, it's the video hub.
+
+349
+00:24:29,930 --> 00:24:35,660
+So we've got hundreds of videos
+and interactive demos. So click
+
+350
+00:24:35,660 --> 00:24:37,970
+through demos. So that kind of
+talks to a little bit of
+
+351
+00:24:37,970 --> 00:24:42,530
+technical readiness. If you go
+to the tech community tech
+
+352
+00:24:42,920 --> 00:24:47,480
+community.microsoft.com, and
+garter the top navigation cord
+
+353
+00:24:47,480 --> 00:24:52,130
+community hubs, we have a new
+video and you'll see lots of
+
+354
+00:24:52,130 --> 00:24:57,380
+video content. And also if you
+you know love SharePoint love
+
+355
+00:24:57,380 --> 00:25:00,560
+Azure and you go to the actual
+as you can community hub
+
+356
+00:25:00,560 --> 00:25:03,830
+SharePoint community hub, you'll
+see the latest videos that have
+
+357
+00:25:03,830 --> 00:25:06,680
+come in from the video have
+served up to you on that landing
+
+358
+00:25:06,680 --> 00:25:09,950
+page. So you don't have to like
+go specifically to the video hub
+
+359
+00:25:10,190 --> 00:25:13,400
+to find it, we will recommend
+content view based on the
+
+360
+00:25:13,400 --> 00:25:16,580
+community hub you're in. So
+that's a new feature that we
+
+361
+00:25:16,580 --> 00:25:21,320
+pushed out to hopefully help
+people with getting familiar
+
+362
+00:25:21,350 --> 00:25:26,030
+with with, you know, the new
+announcements and the new
+
+363
+00:25:26,030 --> 00:25:31,100
+products and new features
+coming. So yeah, yeah. So we're
+
+364
+00:25:31,130 --> 00:25:34,070
+always ever expanding the
+features that we have on the
+
+365
+00:25:34,070 --> 00:25:35,030
+tech community.
+
+366
+00:25:35,270 --> 00:25:39,230
+Nicolas Blank: And it's a double
+edged sword, though, because the
+
+367
+00:25:39,230 --> 00:25:43,160
+content is fantastic, not taking
+away from that, I think we've
+
+368
+00:25:43,160 --> 00:25:48,050
+gone from, because in physical
+events, we had the constraints
+
+369
+00:25:48,050 --> 00:25:50,510
+of what we could do physically
+in terms of walking from one
+
+370
+00:25:50,510 --> 00:25:53,930
+session to another. And I could
+only physically talk to so many
+
+371
+00:25:53,930 --> 00:25:58,790
+presenters and look at the T
+shirts per day. And I feel like
+
+372
+00:25:58,790 --> 00:26:02,900
+from a content point of view,
+we've gone from ignite, which
+
+373
+00:26:02,900 --> 00:26:07,430
+was the fire hose to a digital
+only format, which is now
+
+374
+00:26:07,610 --> 00:26:11,930
+several sets of tidal waves. And
+I don't think we need to
+
+375
+00:26:12,740 --> 00:26:16,280
+navigate there, we don't have
+the guidance that says, in your
+
+376
+00:26:16,280 --> 00:26:20,930
+role in your job in your
+persona. This is how much or how
+
+377
+00:26:20,930 --> 00:26:24,170
+little you need to do what you
+need to do.
+
+378
+00:26:25,920 --> 00:26:29,940
+Anna Chu: Yeah, like, Are you
+saying you don't know what the
+
+379
+00:26:29,940 --> 00:26:35,160
+minimum you know, table stakes
+are to be a certain level of
+
+380
+00:26:35,160 --> 00:26:36,390
+certain expertise.
+
+381
+00:26:37,170 --> 00:26:42,180
+Nicolas Blank: I'm saying this
+so much content that I could if
+
+382
+00:26:42,180 --> 00:26:45,870
+I just look at the the folks
+that are followed from the the
+
+383
+00:26:46,020 --> 00:26:51,690
+Azure group, the Azure AD group
+and office 365 group. And I
+
+384
+00:26:51,690 --> 00:26:56,730
+could do nothing but consume
+content, eight hours a day,
+
+385
+00:26:56,850 --> 00:27:01,020
+excluding the stuff that has
+been added to community. And
+
+386
+00:27:01,230 --> 00:27:04,920
+then there's the video content,
+which I play at normal speed,
+
+387
+00:27:04,920 --> 00:27:08,160
+and I don't fast forward, plus
+some of the most amazing
+
+388
+00:27:08,160 --> 00:27:12,660
+podcasts that are out at the
+moment. Like, I don't have
+
+389
+00:27:12,660 --> 00:27:15,690
+enough hours in my day to
+consume content and work.
+
+390
+00:27:16,049 --> 00:27:19,439
+Anna Chu: Hmm, yes. Yes, that's
+very true.
+
+391
+00:27:19,860 --> 00:27:22,260
+Warren du Toit: hasn't been
+hasn't always been like that,
+
+392
+00:27:22,260 --> 00:27:26,280
+though. Like, because now you
+just
+
+393
+00:27:26,759 --> 00:27:27,929
+Nicolas Blank: multiply Oh,
+
+394
+00:27:29,280 --> 00:27:32,040
+Warren du Toit: yeah, but you're
+forced to consume it that way.
+
+395
+00:27:32,040 --> 00:27:36,420
+Now, because if we had to have
+sort of a said, we have to think
+
+396
+00:27:36,420 --> 00:27:40,350
+back a little bit you'd ignore
+could be your week of lateness
+
+397
+00:27:40,350 --> 00:27:43,050
+from work. But now what happens
+is you've got that sort of
+
+398
+00:27:43,050 --> 00:27:46,260
+context switching that has to
+happen sort of, in between, so I
+
+399
+00:27:46,260 --> 00:27:48,540
+completely understand what
+you're saying. But also at the
+
+400
+00:27:48,540 --> 00:27:54,510
+same token, we, like we were
+forced to take those days and
+
+401
+00:27:54,510 --> 00:27:58,800
+dedicate them to something,
+whereas now you don't. And
+
+402
+00:27:58,800 --> 00:28:02,760
+maybe, maybe that's our issue is
+I mean, like, I know, you know,
+
+403
+00:28:02,760 --> 00:28:08,790
+as if he, they, they say quite a
+bit is make time for your, your
+
+404
+00:28:08,790 --> 00:28:12,510
+personal learning and your
+growth and, you know, you know,
+
+405
+00:28:12,660 --> 00:28:16,170
+like, sort of take time out of
+the day, because they understand
+
+406
+00:28:16,170 --> 00:28:19,020
+exactly how many meetings
+somebody will put in your
+
+407
+00:28:19,020 --> 00:28:24,210
+calendar if they could. So maybe
+that's something that we, we
+
+408
+00:28:24,240 --> 00:28:30,090
+suppose need to say, Okay, well,
+can we just break out like a two
+
+409
+00:28:30,090 --> 00:28:33,360
+hour? I mean, is it possible,
+you break out two hours in your
+
+410
+00:28:33,360 --> 00:28:36,090
+day and say, Okay, well, this is
+exactly what I'm gonna look at.
+
+411
+00:28:36,870 --> 00:28:41,760
+Um, so the fire hose becomes
+just a little bit smaller. We
+
+412
+00:28:41,760 --> 00:28:45,510
+have to adapt to, I suppose. But
+it's like you say, you, you are
+
+413
+00:28:45,510 --> 00:28:48,240
+limited to physically, you
+walked into the room, and that
+
+414
+00:28:48,240 --> 00:28:52,590
+was where you were for that
+hour. So maybe that's what you
+
+415
+00:28:52,620 --> 00:28:53,910
+sort of need to do, I guess?
+
+416
+00:28:54,330 --> 00:28:56,880
+Nicolas Blank: Yeah, I'd like
+some, some guidance on this so
+
+417
+00:28:56,880 --> 00:29:02,070
+that we could share with like,
+we've had to teach digital
+
+418
+00:29:02,070 --> 00:29:06,000
+netiquette. Right. So don't
+Yeah, don't schedule an
+
+419
+00:29:06,000 --> 00:29:09,270
+appointment for an hour and a
+half or an hour. Because you
+
+420
+00:29:09,270 --> 00:29:12,330
+know, people need space to be
+human. So make it 45 minutes.
+
+421
+00:29:12,360 --> 00:29:16,620
+Yeah, those are skills that we
+we don't naturally have, because
+
+422
+00:29:16,620 --> 00:29:20,640
+the calendars and an hour block.
+It'd be good if we could give
+
+423
+00:29:20,640 --> 00:29:24,030
+some guidance in terms of how
+did you laugh in digital age
+
+424
+00:29:24,030 --> 00:29:28,470
+where there's so much content,
+but at the same time, I still
+
+425
+00:29:28,470 --> 00:29:31,860
+need to do my day job. But the
+content is really very relevant
+
+426
+00:29:31,860 --> 00:29:36,570
+to my job. But I can't spend 12
+hours a day consuming content
+
+427
+00:29:36,570 --> 00:29:39,270
+and I can't spend 12 hours a day
+doing my job because neither one
+
+428
+00:29:39,270 --> 00:29:43,770
+is actually healthy. And then I
+work from home. My life is a
+
+429
+00:29:43,770 --> 00:29:46,200
+mess. COVID Yeah. 2020 about
+
+430
+00:29:46,300 --> 00:29:50,860
+Anna Chu: Yeah, yeah. So taking
+the an out the fire hose
+
+431
+00:29:50,860 --> 00:29:55,990
+analogy. You got to lay it
+pipes. Right and evaluate it.
+
+432
+00:29:56,680 --> 00:30:00,430
+You got to figure out like hey,
+like how, where am I going to
+
+433
+00:30:02,050 --> 00:30:05,920
+divide my time, your time is
+like a pie chart. And you figure
+
+434
+00:30:05,920 --> 00:30:09,130
+out how much time you want to
+spend with your family, how much
+
+435
+00:30:09,130 --> 00:30:13,150
+time you want to spend with
+work, and then you and how much
+
+436
+00:30:13,150 --> 00:30:15,760
+time you want to spend on
+learning. And figure out, you
+
+437
+00:30:15,760 --> 00:30:20,350
+know, what that looks like in
+your day. Like exercise as well.
+
+438
+00:30:20,350 --> 00:30:24,580
+And that's us. Like I, I feel
+one thing I've I'm trying to do,
+
+439
+00:30:24,580 --> 00:30:30,340
+and I fall off the wagon, every
+so often is prioritize workouts
+
+440
+00:30:30,340 --> 00:30:35,440
+in the morning. So this morning,
+I did my workout I, I'm using an
+
+441
+00:30:35,440 --> 00:30:44,200
+app, and it makes me do a bunch
+of, you know, things today on
+
+442
+00:30:45,040 --> 00:30:48,880
+Monday was like, but you know, I
+did it, and I feel so much
+
+443
+00:30:48,880 --> 00:30:56,140
+better for it. I worked out, I
+took my shower, I got ready, I
+
+444
+00:30:56,140 --> 00:31:01,690
+turned on my camera did this
+podcast. And you have to when
+
+445
+00:31:01,690 --> 00:31:06,640
+you when I say lay your pots, it
+also is another way of saying
+
+446
+00:31:07,090 --> 00:31:10,840
+define your boundaries. So if
+you are wanting to work nine to
+
+447
+00:31:10,840 --> 00:31:13,990
+five, it is strictly nine to
+five, you do not take a meeting
+
+448
+00:31:13,990 --> 00:31:17,500
+at eight, you do not take a
+meeting at six. That is like
+
+449
+00:31:17,620 --> 00:31:21,910
+that is when you work. And I
+think Don does this really well
+
+450
+00:31:21,910 --> 00:31:27,790
+don't asaka a lot of people, I
+encourage everyone to like be
+
+451
+00:31:27,790 --> 00:31:30,430
+very clear on your boundaries
+and do not do not make
+
+452
+00:31:30,430 --> 00:31:34,300
+exceptions unless it really is
+an exception. Exceptional
+
+453
+00:31:34,330 --> 00:31:39,340
+situation. But then like, then
+you've got things in lieu. So if
+
+454
+00:31:39,340 --> 00:31:42,340
+you are going to take that 8am
+meeting then you finished up at
+
+455
+00:31:42,340 --> 00:31:46,630
+four. Right? You've got you are
+in control of your and your
+
+456
+00:31:46,630 --> 00:31:48,670
+calendar. So stick to it.
+
+457
+00:31:50,790 --> 00:31:54,600
+Nicolas Blank: That's good.
+Scrap brass. Yeah.
+
+458
+00:31:55,020 --> 00:31:58,050
+Anna Chu: Yeah. And also, like
+go back to like, your, your New
+
+459
+00:31:58,050 --> 00:32:00,660
+Year's resolutions. I know, it
+was very weird back, like, you
+
+460
+00:32:00,660 --> 00:32:05,970
+know, pre COVID. But, um, like I
+had a mission to read more books
+
+461
+00:32:05,970 --> 00:32:08,520
+to see. And I know, it's very
+vague. And I'm definitely
+
+462
+00:32:08,520 --> 00:32:14,190
+reading more books than I did
+the previous year. But I have
+
+463
+00:32:14,250 --> 00:32:17,700
+like, I'm actually refinishing
+them. Can you believe I never
+
+464
+00:32:17,700 --> 00:32:22,350
+used to finish books. But if you
+have goals for yourself, set
+
+465
+00:32:22,350 --> 00:32:25,950
+aside time to achieve them.
+Whether it is like to be
+
+466
+00:32:25,950 --> 00:32:32,760
+healthier or to like ferociously
+read more. allocate time to do
+
+467
+00:32:32,760 --> 00:32:36,090
+it. Because if you don't
+prioritize time and actually
+
+468
+00:32:36,090 --> 00:32:39,180
+plan to do it, you will never
+get it done. Something else will
+
+469
+00:32:39,180 --> 00:32:42,390
+always steal your time. It's
+usually work.
+
+470
+00:32:43,080 --> 00:32:43,620
+Nicolas Blank: Yeah.
+
+471
+00:32:45,730 --> 00:32:50,560
+Anna Chu: Still still more of a
+time than any email? Yeah,
+
+472
+00:32:50,590 --> 00:32:51,070
+email,
+
+473
+00:32:51,640 --> 00:32:57,880
+Warren du Toit: emails, terrible
+emails thing for me. Yeah, email
+
+474
+00:32:57,880 --> 00:33:00,220
+is one thing I'm always behind.
+I know what
+
+475
+00:33:02,020 --> 00:33:05,110
+Anna Chu: I turned off my email
+notifications. And I've done
+
+476
+00:33:05,110 --> 00:33:09,400
+that for the last five years,
+and I've never looked back.
+
+477
+00:33:10,300 --> 00:33:13,870
+Like, it doesn't make a
+difference. You don't? Like,
+
+478
+00:33:14,350 --> 00:33:17,770
+what's the point? What's the,
+like, you're also setting bad
+
+479
+00:33:18,040 --> 00:33:21,850
+examples if you are responding
+immediately. Right.
+
+480
+00:33:21,910 --> 00:33:24,340
+Warren du Toit: Like for sure.
+It's a very good point.
+
+481
+00:33:24,700 --> 00:33:30,520
+Anna Chu: Yeah, yeah, like 4am
+in the morning. 1am in the
+
+482
+00:33:30,520 --> 00:33:33,430
+morning, what are some
+ridiculous out like you also
+
+483
+00:33:33,460 --> 00:33:36,490
+causing anxiety, other personnel
+around who thinks Oh, shit,
+
+484
+00:33:36,490 --> 00:33:38,530
+like, I shouldn't be doing this?
+I should be responding. I should
+
+485
+00:33:38,530 --> 00:33:43,660
+be working. No, no. I think we
+all have a responsibility to
+
+486
+00:33:43,690 --> 00:33:48,160
+drive better work life balance
+to everybody. And sadly, you
+
+487
+00:33:48,160 --> 00:33:51,820
+know, if you're causing work for
+someone, you are causing someone
+
+488
+00:33:51,820 --> 00:33:53,140
+else's anxiety, too. So
+
+489
+00:33:55,540 --> 00:33:58,900
+Nicolas Blank: Wow. I think this
+has been the deepest show that
+
+490
+00:33:58,900 --> 00:33:59,830
+we've done for a while.
+
+491
+00:34:01,630 --> 00:34:03,130
+Anna Chu: Hey, why don't we
+
+492
+00:34:05,470 --> 00:34:07,270
+Warren du Toit: take away a
+whole bunch of things? Yes.
+
+493
+00:34:07,270 --> 00:34:09,670
+Like, do not email me tweet it.
+
+494
+00:34:11,500 --> 00:34:14,890
+Anna Chu: And I will respond to
+when I want to when I wake up
+
+495
+00:34:16,930 --> 00:34:20,050
+set notifications on my Twitter
+either because it was a point
+
+496
+00:34:20,050 --> 00:34:24,370
+where I'm like, I'm getting
+inundated. I do not want to like
+
+497
+00:34:24,400 --> 00:34:28,840
+be like a squirrel and just
+like, just Sure. Attention to
+
+498
+00:34:28,840 --> 00:34:31,120
+like the latest thing someone
+tweeted at me. I don't need
+
+499
+00:34:31,120 --> 00:34:33,340
+that. I'm, like away.
+
+500
+00:34:34,630 --> 00:34:36,550
+Warren du Toit: Which I guess is
+another question that we could
+
+501
+00:34:36,580 --> 00:34:39,460
+we could probably pose since
+we're on this subject is the
+
+502
+00:34:39,460 --> 00:34:44,830
+subject of social media. Oh,
+yeah. And has has the social
+
+503
+00:34:44,830 --> 00:34:50,020
+media effect changed? Because,
+and obviously, in some ways,
+
+504
+00:34:50,020 --> 00:34:52,600
+it's the only way that you can
+communicate with those peers or
+
+505
+00:34:52,600 --> 00:34:57,850
+those people that you would see,
+but have people become more
+
+506
+00:34:57,850 --> 00:35:03,310
+liberal now. And Is it like,
+every single morning somebody
+
+507
+00:35:03,310 --> 00:35:07,090
+wakes up and they post a photo
+of something that they would
+
+508
+00:35:07,090 --> 00:35:12,130
+have never had done post? I
+mean, previous before code. So
+
+509
+00:35:12,130 --> 00:35:15,370
+like, you know, they would get
+to the office and then they tell
+
+510
+00:35:15,370 --> 00:35:18,550
+somebody about it. But now that
+they're not going to the office,
+
+511
+00:35:18,550 --> 00:35:22,240
+they're telling the whole world
+about it. And then it says, Have
+
+512
+00:35:22,240 --> 00:35:26,110
+you noticed there's been like a
+slight shift in who's posting
+
+513
+00:35:26,110 --> 00:35:31,060
+what and why they're posting it.
+And I posted this, I think, to
+
+514
+00:35:31,060 --> 00:35:34,450
+be perfectly honest with you and
+become a bit of a sort of like a
+
+515
+00:35:34,450 --> 00:35:40,810
+social media hermit moment. And
+I don't like a completely. I'm
+
+516
+00:35:40,810 --> 00:35:46,600
+not sure why. Yeah, social media
+butterfly in the family, not me.
+
+517
+00:35:46,600 --> 00:35:50,530
+But um, have you noticed a
+change in what you want? I
+
+518
+00:35:50,530 --> 00:35:50,980
+guess,
+
+519
+00:35:51,610 --> 00:35:55,030
+Anna Chu: I, I've noticed the
+chain, I there's, I've noticed a
+
+520
+00:35:55,030 --> 00:35:57,970
+lot of different things a lot.
+I've noticed people take and
+
+521
+00:35:58,090 --> 00:36:01,480
+delete Facebook. One, I've
+noticed people just completely
+
+522
+00:36:01,480 --> 00:36:04,480
+like, go on that end of the
+spectrum. And that may be
+
+523
+00:36:04,480 --> 00:36:07,780
+because of, you know, that
+recent documentary on Netflix.
+
+524
+00:36:08,770 --> 00:36:13,330
+This dilemma, I'll highly
+recommend people watch. It. I've
+
+525
+00:36:13,330 --> 00:36:19,630
+also seen Yes, on the other end
+people post more. I go in waves
+
+526
+00:36:19,630 --> 00:36:26,800
+between posting a lot or posting
+less. I, I've noticed that, you
+
+527
+00:36:26,800 --> 00:36:30,700
+know, people just miss people
+and interactions. And yes,
+
+528
+00:36:30,700 --> 00:36:34,450
+you're right. It's a little,
+like hanging out in the in the
+
+529
+00:36:34,990 --> 00:36:39,640
+office, like cafeteria or in the
+kitchen. You know, like, there's
+
+530
+00:36:39,670 --> 00:36:42,970
+like, that's just completely
+pure randomness as someone else
+
+531
+00:36:42,970 --> 00:36:46,510
+walks in while you're making a
+cup of tea. And then you have a
+
+532
+00:36:46,510 --> 00:36:52,360
+chance to do them, right. Um,
+but I've also been like, you
+
+533
+00:36:52,360 --> 00:36:55,780
+know what, I'm just going to,
+like, post a selfie of myself
+
+534
+00:36:55,810 --> 00:36:59,440
+with my morning cup of coffee.
+And hopefully that, you know,
+
+535
+00:36:59,650 --> 00:37:02,110
+and I'm trying to send some
+positive vibes out there. So
+
+536
+00:37:02,140 --> 00:37:06,760
+people have a great morning, you
+know, like, and I have no idea.
+
+537
+00:37:08,140 --> 00:37:12,340
+But I'm glad you do. Someone
+might roll their eyes and Gosh,
+
+538
+00:37:12,340 --> 00:37:18,370
+like, geez, but that's fine.
+That's fine. I couldn't meet me.
+
+539
+00:37:18,430 --> 00:37:22,690
+I want like, I'm not doing it
+incessantly. I'm just like, Hey,
+
+540
+00:37:22,690 --> 00:37:27,040
+I just want to stay alert to
+people and see how everyone's
+
+541
+00:37:27,040 --> 00:37:32,830
+doing because I miss everyone
+you know? So yeah, I like it's
+
+542
+00:37:32,830 --> 00:37:37,000
+really hard. I definitely feel
+like there's a bit of there's
+
+543
+00:37:37,030 --> 00:37:39,040
+there are people who are opting
+out and there are people who are
+
+544
+00:37:39,040 --> 00:37:42,610
+like all in I'm going to be all
+social and I'm going to share
+
+545
+00:37:42,610 --> 00:37:46,480
+all my like, you know, thoughts
+onto the internet which can be
+
+546
+00:37:46,480 --> 00:37:46,990
+dangerous.
+
+547
+00:37:48,460 --> 00:37:52,480
+Warren du Toit: Dangerous, so
+dangerous. Let's delete that.
+
+548
+00:37:52,480 --> 00:37:56,590
+But the damage is done, right?
+Yeah, yeah. damages. I mean,
+
+549
+00:37:56,590 --> 00:37:59,770
+there are some people that
+cannot show their faces. Like
+
+550
+00:37:59,830 --> 00:38:04,360
+around anyway. We've had the
+kind of no it happens
+
+551
+00:38:04,360 --> 00:38:07,450
+everywhere. I guess really. But
+we've had like, a couple of
+
+552
+00:38:07,450 --> 00:38:13,510
+social media influencers stars
+or TV personalities that just
+
+553
+00:38:14,530 --> 00:38:17,620
+some problems they get some
+somebody posts something bad on
+
+554
+00:38:17,620 --> 00:38:21,040
+tik tok. They are gone. Oh,
+yeah.
+
+555
+00:38:23,020 --> 00:38:26,680
+Anna Chu: Oh, gosh. Yeah.
+There's been so many warnings
+
+556
+00:38:26,680 --> 00:38:31,360
+from 2020. Oh, like it has been
+the volumes in turn up to 13. I
+
+557
+00:38:31,360 --> 00:38:34,810
+tell you what, like, there's
+been a lot of things that I've
+
+558
+00:38:34,810 --> 00:38:37,990
+learned Personally, I feel like
+this, which has been a reckoning
+
+559
+00:38:37,990 --> 00:38:44,380
+on many, many things. And yes,
+it was probably the, the
+
+560
+00:38:44,380 --> 00:38:49,690
+medicine we all needed to take.
+But you know, I have like I'm
+
+561
+00:38:49,720 --> 00:38:52,270
+Look, I'm hopeful that we're
+going to come out the other end
+
+562
+00:38:52,270 --> 00:38:57,520
+is all more enlightened
+individuals, enlightened humans
+
+563
+00:38:57,520 --> 00:39:01,810
+who have a better appreciation
+of community, have a have
+
+564
+00:39:01,810 --> 00:39:08,440
+exercise deeper empathy is one
+thing that I have spent the last
+
+565
+00:39:08,440 --> 00:39:13,510
+two weeks doing is a lot of
+introspection. I was watching a
+
+566
+00:39:13,510 --> 00:39:18,190
+session delivered by Malcolm
+Gladwell is a journalist. He's
+
+567
+00:39:18,190 --> 00:39:25,660
+Canadian, American, many things.
+And he had a very, very
+
+568
+00:39:25,660 --> 00:39:30,190
+interesting take on deep
+empathy. In terms of, you know,
+
+569
+00:39:30,220 --> 00:39:33,370
+you don't really like when I was
+taught in school, what empathy
+
+570
+00:39:33,370 --> 00:39:37,300
+was. They translated that as
+being able to walk a mile in
+
+571
+00:39:37,300 --> 00:39:42,490
+someone's shoes. But the problem
+with that is that I'm imagining
+
+572
+00:39:42,520 --> 00:39:46,480
+what it's like to walk in worn
+shoes on Nicholas's shoe. If I
+
+573
+00:39:46,480 --> 00:39:49,900
+haven't actually sat down to
+speak to you individually
+
+574
+00:39:49,900 --> 00:39:52,960
+understand your points of view,
+your perspectives, your
+
+575
+00:39:52,960 --> 00:39:58,300
+experiences, your influences. I
+do not really understand you
+
+576
+00:39:58,300 --> 00:40:01,870
+deeply. Right. And I think
+Especially given the current
+
+577
+00:40:01,870 --> 00:40:05,320
+climate and what's going to
+happen next week with the US
+
+578
+00:40:05,350 --> 00:40:08,350
+election, it is even more
+important to exercise that and
+
+579
+00:40:08,530 --> 00:40:14,140
+put your biases aside, right?
+And so next time you see that
+
+580
+00:40:14,920 --> 00:40:19,150
+what you perceive as a crazy
+Facebook post or social media
+
+581
+00:40:19,420 --> 00:40:23,320
+post, have a think about that
+person and you may not have a
+
+582
+00:40:23,320 --> 00:40:27,220
+full understanding as to why
+they did that, that they may be
+
+583
+00:40:27,220 --> 00:40:31,510
+having a mental breakdown. We're
+all under massive amounts of
+
+584
+00:40:31,510 --> 00:40:34,870
+stress. And we're not very good
+at expressing it or maybe too
+
+585
+00:40:34,870 --> 00:40:41,140
+good at expressing. You know, I
+think if we have all exercise
+
+586
+00:40:41,140 --> 00:40:44,620
+that well and being a bit more
+perceptive, I think we're all
+
+587
+00:40:44,620 --> 00:40:48,160
+going to come out of this the
+other end that a human being so
+
+588
+00:40:49,270 --> 00:40:52,180
+you're right Nicholas's has been
+the most deep episode you'll
+
+589
+00:40:52,180 --> 00:40:54,070
+ever have on the cloud pockets,
+fix it
+
+590
+00:40:54,120 --> 00:40:58,530
+Nicolas Blank: book. Yeah, yeah.
+But I think it's, it's necessary
+
+591
+00:40:58,530 --> 00:41:02,730
+because I shows not just about
+technology, it's about the
+
+592
+00:41:02,730 --> 00:41:08,010
+people in it. And we, we
+desperately need each other. And
+
+593
+00:41:08,040 --> 00:41:11,490
+I've been looking at my Facebook
+feed, and especially my American
+
+594
+00:41:11,490 --> 00:41:18,480
+friends. And I've seen things
+that I've, as a non American
+
+595
+00:41:18,510 --> 00:41:21,960
+I've looked at, and I see such
+depth of emotion on so many
+
+596
+00:41:21,960 --> 00:41:25,170
+topics, and especially the
+politically charged ones and
+
+597
+00:41:25,530 --> 00:41:32,730
+direct challenges to unfriend me
+if you don't like this and and I
+
+598
+00:41:32,730 --> 00:41:38,460
+just think that is, there's so
+much space available that we
+
+599
+00:41:38,460 --> 00:41:44,040
+need to give, in terms of this
+empathy topic, we need to figure
+
+600
+00:41:44,040 --> 00:41:49,620
+out how, how do I how do I
+support a person? Or how do I
+
+601
+00:41:49,620 --> 00:41:54,480
+just let them be when things are
+difficult, and other expressing
+
+602
+00:41:54,480 --> 00:41:57,240
+things on a political topic, and
+they've got left to deal with
+
+603
+00:41:57,240 --> 00:42:03,690
+and family and, and work? And
+it's, it's not an easy world at
+
+604
+00:42:03,690 --> 00:42:05,130
+the moment in COVID?
+
+605
+00:42:06,470 --> 00:42:12,050
+Anna Chu: It's not Yeah. It's
+brought a lot of things to the
+
+606
+00:42:12,050 --> 00:42:16,610
+fore. I mean, like, while
+learning, I feel like I've
+
+607
+00:42:16,610 --> 00:42:22,040
+learned a lot about people's
+challenges, like some people,
+
+608
+00:42:22,130 --> 00:42:25,310
+I've learned about people's
+health issues, physical health
+
+609
+00:42:25,310 --> 00:42:30,020
+issues, people have come out and
+talked about, you know, that
+
+610
+00:42:30,020 --> 00:42:37,940
+they have bipolar, or ADHD. And
+I'm also learning that, you
+
+611
+00:42:37,940 --> 00:42:42,230
+know, for some people, they
+really don't want to be fully
+
+612
+00:42:42,230 --> 00:42:49,640
+transparent about their
+sexuality, or, you know, the
+
+613
+00:42:49,640 --> 00:42:53,090
+gender that they most associate
+themselves with. That is totally
+
+614
+00:42:53,090 --> 00:42:58,670
+their call. It's just, it's,
+it's really opened my eyes this
+
+615
+00:42:58,670 --> 00:43:03,530
+year. And maybe I knew about
+this stuff, I just didn't delve
+
+616
+00:43:03,530 --> 00:43:08,240
+deeper into it. But this year,
+I'm definitely much more in
+
+617
+00:43:08,240 --> 00:43:14,150
+sharing with people and not like
+me, and nor should they be. And
+
+618
+00:43:14,150 --> 00:43:20,870
+I should seek, like, seek to be
+super curious about it. But only
+
+619
+00:43:20,870 --> 00:43:25,520
+with that mission to write.
+Like, I don't want to look at
+
+620
+00:43:25,520 --> 00:43:28,790
+people like as museum artifacts,
+I want to look at people as
+
+621
+00:43:28,790 --> 00:43:34,130
+human beings, and just so I can
+have better relationships with
+
+622
+00:43:34,130 --> 00:43:36,200
+them, you know? So, yeah,
+
+623
+00:43:36,230 --> 00:43:40,340
+Nicolas Blank: so let me try and
+condense that and ask you to
+
+624
+00:43:40,730 --> 00:43:45,080
+summarize that into and it
+doesn't matter how many there
+
+625
+00:43:45,080 --> 00:43:51,860
+are, it's a top 1235 skills.
+What do you think, as people in
+
+626
+00:43:51,860 --> 00:43:57,050
+the professions that we are in
+being technology focused, being
+
+627
+00:43:57,050 --> 00:44:00,350
+people focused? What are the
+skills that we need right now?
+
+628
+00:44:00,770 --> 00:44:03,380
+And if we don't have those
+skills, how do we build those
+
+629
+00:44:03,380 --> 00:44:03,830
+skills?
+
+630
+00:44:05,490 --> 00:44:09,120
+Anna Chu: I think a skill that
+everyone needs to work on is
+
+631
+00:44:09,120 --> 00:44:14,370
+self awareness. I think that
+underpins a lot of things, self
+
+632
+00:44:14,370 --> 00:44:21,000
+awareness, because it is you are
+in control of of yourself.
+
+633
+00:44:21,240 --> 00:44:25,200
+Right? But are you aware of how
+you're, what you're doing
+
+634
+00:44:25,260 --> 00:44:29,280
+affects other people? Like, even
+the whole, you know, responding
+
+635
+00:44:29,280 --> 00:44:34,110
+to email at midnight, is, is
+that you need to be aware of how
+
+636
+00:44:34,110 --> 00:44:36,930
+that action is impacting the
+person on the other end of the
+
+637
+00:44:36,930 --> 00:44:42,750
+email, right? Same goes for your
+posts on social media. It might
+
+638
+00:44:42,750 --> 00:44:48,750
+be just you venting the how's it
+making other people feel? It's
+
+639
+00:44:48,750 --> 00:44:53,040
+also like how do you spend your
+time if your family or your
+
+640
+00:44:53,040 --> 00:44:57,690
+colleagues see burning the
+midnight oil? Is that is that a
+
+641
+00:44:57,690 --> 00:45:00,780
+good example you're setting for
+your kids or for you colleagues
+
+642
+00:45:02,640 --> 00:45:06,510
+and that kind of goes back to
+empathy a little bit too,
+
+643
+00:45:06,510 --> 00:45:12,480
+because people need to like it.
+It's a self awareness in terms
+
+644
+00:45:12,480 --> 00:45:16,860
+of how your, your actions and
+your words impacting others, but
+
+645
+00:45:16,890 --> 00:45:20,010
+but also deeply understanding
+the other end, like who is this
+
+646
+00:45:20,010 --> 00:45:25,080
+person and how my actions
+impacting them. So, yeah,
+
+647
+00:45:26,370 --> 00:45:29,700
+Nicolas Blank: that's stunning.
+The speaking of empathy, we want
+
+648
+00:45:29,700 --> 00:45:32,820
+to respect your time. Getting to
+the Thai LAO,
+
+649
+00:45:32,850 --> 00:45:36,120
+Warren du Toit: look at that.
+Hey, geez. Yeah, really quickly.
+
+650
+00:45:36,390 --> 00:45:41,670
+A really good Yes. Yeah. I
+really missed you guys. For
+
+651
+00:45:41,670 --> 00:45:44,280
+ages. Oh, we missed you, too.
+Oh,
+
+652
+00:45:44,750 --> 00:45:48,050
+Anna Chu: it's just hard right
+now, sir. I hope you're all
+
+653
+00:45:48,050 --> 00:45:52,100
+staying well and staying
+healthy. And, you know, drawing
+
+654
+00:45:52,100 --> 00:45:55,460
+your boundaries, if he goes to
+take one piece of homework away
+
+655
+00:45:55,460 --> 00:45:59,450
+from this is to, you know, line
+your boundary so that you can
+
+656
+00:45:59,720 --> 00:46:03,500
+better respect your time and in
+turn respect thistime
+
+657
+00:46:03,650 --> 00:46:09,200
+Warren du Toit: reject the
+meetings man, Chelsea? No. No,
+
+658
+00:46:09,260 --> 00:46:12,500
+no, no meetings are allowed to
+recruit more than three times.
+
+659
+00:46:13,610 --> 00:46:14,210
+Yeah.
+
+660
+00:46:15,590 --> 00:46:19,100
+Anna Chu: That's tough when way
+in planning parties or events.
+
+661
+00:46:19,130 --> 00:46:23,900
+But I think I should take that
+principle put a little Asterix
+
+662
+00:46:23,900 --> 00:46:29,060
+on it. Like some exceptions
+apply. Yeah, no, you're right.
+
+663
+00:46:29,090 --> 00:46:29,660
+You're right.
+
+664
+00:46:30,890 --> 00:46:33,380
+Nicolas Blank: We have loved
+this format. And we'd love to
+
+665
+00:46:33,380 --> 00:46:40,280
+have you on again, as a co host.
+And you you are part of the
+
+666
+00:46:40,280 --> 00:46:44,180
+furniture now. So we're going to
+have to have you on as host and
+
+667
+00:46:44,540 --> 00:46:48,710
+get you to grill someone with us
+and, and and be proud of the
+
+668
+00:46:48,710 --> 00:46:49,040
+show.
+
+669
+00:46:49,790 --> 00:46:53,720
+Anna Chu: What I always love
+talking to you guys, and I hope
+
+670
+00:46:53,720 --> 00:46:57,530
+everyone who listens to podcasts
+got something out of today. So
+
+671
+00:46:58,820 --> 00:46:59,720
+thank you.
+
+672
+00:47:00,440 --> 00:47:02,060
+Warren du Toit: I think they
+definitely did. Thanks,
+
+673
+00:47:04,220 --> 00:47:07,670
+everyone. Before you go, we just
+wanted to say thank you for
+
+674
+00:47:07,670 --> 00:47:10,280
+listening. We really enjoyed
+putting this podcast together
+
+675
+00:47:10,280 --> 00:47:13,490
+for you every two weeks, please
+visit us at the architects
+
+676
+00:47:13,520 --> 00:47:16,730
+cloud. Alternatively, drop us a
+tweet. We'd love to hear what
+
+677
+00:47:16,730 --> 00:47:18,380
+you have to say @TheCloudArch.
+
