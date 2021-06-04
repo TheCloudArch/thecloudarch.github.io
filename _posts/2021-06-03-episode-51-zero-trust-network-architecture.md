@@ -1,7 +1,7 @@
 ---
 author: chris
 title: 'Episode 51: Zero Trust Network Architecture'
-slug: episode-51-
+slug: episode-51-zero-trust-network-architecture
 date: '2021-06-03 14:05:00'
 layout: post
 comments: false
@@ -16,6 +16,7 @@ In this episode, Nic and Warren connect with KEMP's Jason Dover to talk about th
 Did you know that KEMP provides free virtual LoadMaster VLM-5000 load balancers to Microsoft certified professionals? [Visit kemptechnologies.com](https://kemptechnologies.com/microsoft-pros-loadmaster-license-request/) to find out more.
 
 ![Jason](/images/uploads/2021/06/jason.jpg){:style="float: left;margin-right: 10px;margin-top: 10px;" height="150px" width="150px"} Jason Dover is the Vice President of Product Strategy at KEMP Technologies. Jason is responsible for leading the direction of product portfolio, product marketing, user experience and defining KEMP's overarching market strateg. You can connect with Jason on [Twitter @jaysdover](https://twitter.com/jaysdover)
+
 
 <p><iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1061986084&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe></p>
 
