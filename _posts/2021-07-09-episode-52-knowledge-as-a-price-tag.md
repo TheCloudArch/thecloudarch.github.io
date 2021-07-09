@@ -24,6 +24,6 @@ Did you know that KEMP provides free virtual LoadMaster VLM-5000 load balancers 
 
 This episode is also available as a video recording:
 
-<p><iframe width="560" height="315" src="https://youtu.be/tu4fv4Vz97I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/tu4fv4Vz97I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p>
 
 This Episode is brought to you by KEMP Technologies. Choose KEMP to optimize your multi-cloud application deployments and simplify multi-cloud application management. A single pane-of-glass for application delivery, KEMP provides a 360 degree view of your entire application environment, and even third-party ADCs. Download KEMP360 [for free today at kemptechnologies.com](https://kempte.ch/2MYXjew)
