@@ -13,7 +13,7 @@ We recently has a lot of fun catching up with our old friend and possibly our bi
 
 ![Stephen](/images/uploads/2021/08/stephen.jpg){:style="float: left;margin-right: 10px;margin-top: 10px;" height="150px" width="150px"} Stephen Rose works in IT Pro and Security marketing for Teams at Microsoft where he leads their efforts for IT pros worldwide around Microsoft Teams security, privacy, and management. Stephen is also the host of the popular [Inside Microsoft Teams podcast](aka.ms/InsideMSTeams) You can connect with Stephen on [Twitter @stephenlrose](https://twitter.com/stephenlrose)
 
-<p><iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1101386800&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></p>
+<p><iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1101386800&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe></p>
 
 This episode is also available as a video recording:
 
