@@ -1,6 +1,6 @@
 ---
 author: chris
-title: 'Episode 57'
+title: 'Episode 57 "Technologies don't fix problems"'
 slug: episode-57-technologies-dont-fix-problems
 date: '2021-10-31 19:12:00'
 layout: post
