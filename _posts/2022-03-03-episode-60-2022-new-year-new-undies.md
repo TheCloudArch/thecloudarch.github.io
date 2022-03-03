@@ -9,7 +9,7 @@ categories:
   - Interviews
 ---
 
-We're back for our first episode of 2022! We had so much fun catching up in-person in Cape Town last month to record this one. In this episode we're joined by fellow MVP Alistair Pugin to talk through some of our predictions for 2022. Will 2022 be the year of spend? We talk about hybrid cloud, organizational maturity, in-person conferences and Exchange "bugs".
+We're back for our first episode of 2022! We had so much fun catching up in-person in Cape Town last month to record this one. In this episode we're joined by fellow MVP Alistair Pugin to talk through some of our predictions for 2022. Will 2022 be the year of spend? We talk about hybrid cloud, organizational maturity, in-person conferences and Exchange 'bugs'.
 
 I tried to find a link to the Microsoft product rename site referenced in episode, but I can't figure out where I saved it - if this is your project or you know about it, please let us know on twitter.
 
