@@ -2,7 +2,7 @@
 author: chris
 title: 'Episode 60: 2022 - New Year, New Undies'
 slug: episode-60-2022-new-year-new-undies
-date: '2022-03-03 14:43'
+date: '2022-03-02 14:43'
 layout: post
 comments: false
 categories:
