@@ -2,7 +2,7 @@
 author: chris
 title: 'Episode 61: Inner Warrior'
 slug: episode-61-inner-warrior
-date: '2022-03-016 15:19'
+date: '2022-03-16 15:19'
 layout: post
 comments: false
 categories:
