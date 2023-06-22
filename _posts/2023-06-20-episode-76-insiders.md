@@ -9,7 +9,7 @@ categories:
   - Interviews
 ---
 
-What is insider risk and how does it differ from an insider threat? Did you know that these are not always bad actors or malicious acts? We were curios about insider risk management, insider threat detection and everything that goes along with it, so we asked Zach Luze to unpack this vast topic for us.
+What is insider risk and how does it differ from an insider threat? Did you know that these are not always bad actors or malicious acts? We were curious about insider risk management, insider threat detection and everything that goes along with it, so we asked Zach Luze to unpack this vast topic for us.
 
 ![Zach](/images/uploads/2023/06/zach.jpeg){:style="float: left;margin-right: 10px;margin-top: 10px;" height="150px" width="150px"} Zach Luze is the Microsoft Cloud and Data Security Advisory Lead at Kudelski Security. Zach is an experienced information security professional with a passion for data security and insider risk management. You can connect with Zach [on LinkedIn](https://www.linkedin.com/in/zachluze/)
 
