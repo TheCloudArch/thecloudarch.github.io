@@ -2,7 +2,7 @@
 author: chris
 title: 'Episode 79: It was DNS!'
 slug: episode-79-it-was-dns
-date: '2023-07-11 13:00:00'
+date: '2023-09-13 20:00:00'
 layout: post
 comments: false
 categories:
