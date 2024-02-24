@@ -20,7 +20,7 @@ Here are some links to Merill's work:
 Here are the links the Identity Architecture Series discussed in the episode:
 * [Azure Active Directory Core Store: Data centers](https://www.youtube.com/watch?v=O8ZPjSxNte0)
 * [Azure Active Directory Core Store: Scale units](https://www.youtube.com/watch?v=OcKO44GtHh8)
-* [Azure Active Directory Core Store: Read and write replicas](https://www.youtube.com/watch?v=OcKO44GtHh8)
+* [Azure Active Directory Core Store: Read and write replicas](https://www.youtube.com/watch?v=AeLDtcpKc-U)
 
 Are you interested in learning from others in the community? Give these folks a follow:
 * [Nathan McNulty](https://twitter.com/NathanMcNulty)
