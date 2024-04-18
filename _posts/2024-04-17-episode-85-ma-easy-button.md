@@ -25,9 +25,10 @@ Prefer video? check us out on YouTube:
 
 <p><iframe width="560" height="315" src="https://www.youtube.com/embed/NIxpgDqFXws?si=1rNrn-bALEExZnXR" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
 
-This episode is sponsored by PowerSyncPro. PowerSyncPro ultimately makes mergers, acquisitions, divestitures and tenant consolidation a breeze. The product is constantly evolving to incorporate more scope to create a seamless migration process.
+This episode is sponsored by **PowerSyncPro. PowerSyncPro** ultimately makes mergers, acquisitions, divestitures and tenant consolidation a breeze. The product is constantly evolving to incorporate more scope to create a seamless migration process.
 
 **Back to the future... DirSync Drama**
+
 Twan, Conrad and Neil had, and have been, working on migration projects for over a decade. They kept running into the same problems each time with Active Directory synchronisation. Issues for user identities across multiple AD’s or companies with multiple email systems.
 
 At the end of 2018 the team ran into some hard technical and commercial limitations with a well known competitor’s toolset they were using and needed another way. Enter Twan van Beers...
@@ -35,9 +36,11 @@ At the end of 2018 the team ran into some hard technical and commercial limitati
 During the 2018 Christmas break, with the support of his family, Twan invested his personal time to develop a comprehensive PowerShell module based solution that could be used by internal consultants. This was the genesis of PowerSyncPro. A directory synchronisation tool that would simplify the process of syncing multiple directories or tenants to help streamline migration projects – an issue that had come up time and time again!
 
 **Production Ready**
+
 PowerSyncPro has since been developed into a robust .NET application. A highly configurable, flexible directory synchronisation software solution used by many Global Enterprise clients that can sync millions of objects and attributes at performative scale.
 
 **Windows Workstation Migrations**
+
 The lost productivity and confusion for users had to be resolved.
 
 Again, enter Twan van Beers. Twan created the first PowerSyncPro Migration Agent (PSPMA) as a consultant driven script to ease the end-user pain associated with cross org migrations on day one. The Migration Agent disjoins a user’s device prior to migration and rejoins to the new tenant or AD post migration that allows the user to access their primary work applications: Outlook, Teams, OneDrive etc. to support a problem-free experience for the users on Day 1. With very little downtime and high levels of success rate, there is less reliance on IT support, permitting large cut-over migrations. Reducing costs and alleviating pain for users being a big win.
