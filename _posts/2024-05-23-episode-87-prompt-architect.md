@@ -2,7 +2,7 @@
 author: chris
 title: 'Episode 87: Prompt Architect'
 slug: episode-87-prompt-architect
-date: '2024-05-24 09:55:00'
+date: '2024-05-23 09:55:00'
 layout: post
 comments: false
 categories:
