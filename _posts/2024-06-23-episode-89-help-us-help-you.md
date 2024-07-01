@@ -22,6 +22,6 @@ Here are the links mentioned during the episode:
 
 Prefer video? check us out on YouTube:
 
-<p><iframe width="560" height="315" src="https://www.youtube.com/embed/qzICpoFK1Ns?si=sNW2CP-xIslDiANL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
+<p><iframe width="560" height="315" src="https://www.youtube.com/embed/4pWfj6r4puw?si=lybCK6IbiiAGkWYL" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></p>
 
 This episode is sponsored by **Progress.** As the trusted provider of the best products to develop, deploy and manage high-impact applications, Progress enables customers to build the applications and experiences they need, deploy where and how they want and manage it all safely and securely. Hundreds of thousands of enterprises, including 1,700 software companies and 3.5 million developers, depend on Progress to achieve their goals—with confidence. Learn more at [www.progress.com.](https://www.progress.com)
