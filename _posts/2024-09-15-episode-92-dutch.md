@@ -10,7 +10,9 @@ categories:
 ---
 No language encryption here... In this episode we have the honor of sitting down for a late-night discussion with our Dutch friends Koos, Jeroen and Maarten. We really enjoyed their interesting and unique perspective on the global threat landscape and how the ransomware-as-a-service economy continues to grow. We also talk about cyber warfare, the challenge of attack attribution and share some practical guidance on how keep your organization secure.
 
-![Koos](/images/uploads/2024/09/koos.png){:style="float: left;margin-right: 10px;margin-top: 10px;" height="150px" width="150px"} Koos Goossens is a Microsoft Security MVP with a focus on Microsoft Azure Security and other Microsoft Security products like Microsoft Sentinel. Koos is also an avid photographer, watch nerd, pinball enthusiast and BBQ grill master. You can connect with Koos [on Twitter](https://x.com/KoosGoossens) <p></p>
+![Koos](/images/uploads/2024/09/koos.png){:style="float: left;margin-right: 10px;margin-top: 10px;" height="150px" width="150px"} Koos Goossens is a Microsoft Security MVP with a focus on Microsoft Azure Security and other Microsoft Security products like Microsoft Sentinel. Koos is also an avid photographer, watch nerd, pinball enthusiast and BBQ grill master. You can connect with Koos [on Twitter](https://x.com/KoosGoossens)
+<br>
+<br>
 
 ![Jeroen](/images/uploads/2024/09/jeroen.png){:style="float: left;margin-right: 10px;margin-top: 10px;" height="150px" width="150px"} Jeroen Niesen is a Microsoft MVP and serves as the Lead MxDR at Wortell, where he plays a pivotal role in managing and enhancing the company's managed extended detection and response services. Jeroen is a speaker at various events around the world and also runs the AzureVlog channel [on YouTube](https://youtube.com/@AzureVlog) You can connect with Jeroen [on Twitter](https://x.com/jeroenniesen)
 
