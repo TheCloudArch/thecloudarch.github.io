@@ -1,15 +1,17 @@
 <nav class="pagination" role="pagination">
-    {% if paginator.previous_page %}
-        {% if paginator.previous_page == 1 %}
-            <a class="newer-posts" href="{{ '/' | absolute_url }}" title="Previous Page">&laquo; Newer Episodes</a>
-        {% else %}
-            <a class="newer-posts" href="{{ '/page' | append: paginator.previous_page | append: '/' | absolute_url }}" title="Previous Page">&laquo; Newer Episodes</a>
-        {% endif %}
+  {% if paginator.previous_page %}
+    {% assign prev = paginator.previous_page %}
+    {% if prev == 1 %}
+      <a class="newer-posts" href="{{ '/' | absolute_url }}" title="Previous Page">&laquo; Newer Episodes</a>
+    {% else %}
+      <a class="newer-posts" href="{{ '/page' | append: prev | append: '/' | absolute_url }}" title="Previous Page">&laquo; Newer Episodes</a>
     {% endif %}
+  {% endif %}
 
-    <span class="page-number"> Page {{ paginator.page }} of {{ paginator.total_pages }} </span>
+  <span class="page-number"> Page {{ paginator.page }} of {{ paginator.total_pages }} </span>
 
-    {% if paginator.next_page %}
-        <a class="older-posts" href="{{ '/page' | append: paginator.next_page | append: '/' | absolute_url }}" title="Next Page">Older Episodes &raquo;</a>
-    {% endif %}
+  {% if paginator.next_page %}
+    {% assign next = paginator.next_page %}
+    <a class="older-posts" href="{{ '/page' | append: next | append: '/' | absolute_url }}" title="Next Page">Older Episodes &raquo;</a>
+  {% endif %}
 </nav>
