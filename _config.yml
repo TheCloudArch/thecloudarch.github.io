@@ -14,7 +14,7 @@ short_url: 'df3ndr.io'
 google_analytics: G-QH118866XT
 # disqus: username
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
-baseurl: /
+baseurl: ""
 url: "http://df3ndr.io"
 
 # Permalinks
