@@ -719,7 +719,7 @@ body.nav-opened .nav {
     font-size: 1.2rem;
     vertical-align: bottom;
     color: #B8B8B8;
-    content: counter(item, lower-roman);
+    /* content: counter(item, lower-roman);*/
     counter-increment: item;
 }
 .nav li {
@@ -1483,7 +1483,7 @@ body.page-template .post-title {
 }
 
 .read-next-story .post:before {
-    content: "Read This Next";
+    content: "Listen Next";
     padding: 4px 10px 5px;
     text-transform: uppercase;
     font-size: 1.1rem;
@@ -2246,6 +2246,25 @@ body.page-template .post-title {
                 transform: translateY(-5px) rotate(-90deg);
     }
 }
+
+
+.social-icons {
+  text-align: center;
+  margin: 3rem 0;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin: 0 15px;
+  color: #da2c35;
+  font-size: 8rem;
+  transition: opacity 0.2s ease;
+}
+
+.social-icons a:hover {
+  opacity: 0.75;
+}
+
 
 
 /* ==========================================================================
