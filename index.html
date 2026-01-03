@@ -12,7 +12,7 @@ current: home
 
 <!-- The big featured header  -->
 <header class="main-header {% if page.cover %}"
-        style="background-image: url({{ site.baseurl }}{{ page.cover }}) {% else %}no-cover{% endif %}">
+        style="background-image: url({{ page.cover | absolute_url }}) {% else %}no-cover{% endif %}">
     <nav class="main-nav overlay clearfix">
         {% if page.logo %}<a class="blog-logo" href="{{ site.baseurl }}"><img src="{{ site.baseurl }}{{ page.logo }}" alt="Blog Logo" /></a>{% endif %}
         {% if page.navigation %}
