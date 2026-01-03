@@ -15,7 +15,7 @@ google_analytics: G-QH118866XT
 # disqus: username
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
 baseurl: ""
-url: "http://df3ndr.io"
+url: "https://df3ndr.io"
 
 # Permalinks
 permalink: /:categories/:year/:month/:day/:title.html
