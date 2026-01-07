@@ -30,7 +30,7 @@ cover: 'assets/images/cover/cover-no-info.jpg'
     <i class="fa-brands fa-github"></i>
   </a>
 
-  <a href="/contact/" aria-label="Email">
+  <a href="/contact" aria-label="Email">
     <i class="fa-solid fa-envelope"></i>
   </a>
 </div>
