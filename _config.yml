@@ -3,23 +3,23 @@
 #highlighter: pygments
 markdown: kramdown
 highlighter: rouge
-paginate: 6
+paginate: 10
 language: 'en-us'
 
 # Website info
-name:
-description:
+name: 'The Cloud Architects Podcast'
+description: 'A podcast about cloud, technology and the people using it'
 
-short_url: 'df3ndr.io'
-google_analytics: G-QH118866XT
+short_url: 'thearchitects.cloud'
+google_analytics: 'G-FN0Z1TFVLV'
 # disqus: username
 # edit baseurl to simply '/' if using as your personal page (instead of a project page)
 baseurl: ""
-url: "https://df3ndr.io"
+url: "https://thearchitects.cloud"
 
 # Permalinks
-permalink: /:categories/:year/:month/:day/:title.html
-
+permalink: /:year/:month/:day/:title/
+#permalink: /:categories/:year/:month/:day/:title.html
 # permalink: /:title
 # permalink: /author/:username
 # permalink: /tag/:tag

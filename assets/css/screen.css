@@ -2256,7 +2256,7 @@ body.page-template .post-title {
 .social-icons a {
   display: inline-block;
   margin: 0 15px;
-  color: #da2c35;
+  color: #2175BD;
   font-size: 8rem;
   transition: opacity 0.2s ease;
 }
@@ -2265,7 +2265,38 @@ body.page-template .post-title {
   opacity: 0.75;
 }
 
+/* Override Jasper's centered image rule */
+.post-content img.img-left,
+.post-full-content img.img-left,
+.page-content img.img-left,
+article img.img-left {
+  float: left !important;
 
+  /* undo Jasper centering */
+  position: static !important;
+  left: auto !important;
+  transform: none !important;
+
+  /* keep your sizing/margins */
+  margin: 10px 10px 10px 0 !important;
+  width: 150px !important;
+  height: 150px !important;
+  max-width: none !important;
+
+  /* allow text wrap */
+  display: block !important;
+}
+
+.center-image {
+  display: flex;
+  justify-content: center;
+}
+
+.center-image img {
+  display: block;      /* avoid inline quirks */
+  max-width: 100%;
+  height: auto;
+}
 
 /* ==========================================================================
    End of file. Animations should be the last thing here. Do not add stuff

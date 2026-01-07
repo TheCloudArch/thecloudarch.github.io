@@ -1,32 +1,12 @@
 ---
-title: /contact
+title: Contact us
 layout: page
 permalink: /contact
 navigation: true
 logo: 
 current: contact
+cover: 'assets/images/cover/cover-no-info.jpg'
 ---
 
-# Want to get in touch?
-<div class="social-icons">
-  <a href="https://linkedin.com/company/everyday-df3ndr" aria-label="LinkedIn">
-    <i class="fa-brands fa-linkedin"></i>
-  </a>
-
-  <a href="https://bsky.app/profile/df3ndr.io" aria-label="Bluesky">
-    <i class="fa-brands fa-bluesky"></i> 
-  </a>
-
-  <a href="https://www.youtube.com/@CloudArchitects" aria-label="YouTube">
-    <i class="fa-brands fa-youtube"></i>
-  </a>
-
-  <a href="https://infosec.exchange/@df3ndr" aria-label="Mastodon">
-    <i class="fa-brands fa-mastodon"></i>
-  </a>
-
-  <a href="https://github.com/everday-df3ndr" aria-label="GitHub">
-    <i class="fa-brands fa-github"></i>
-  </a>
-</div>
+<iframe width="640px" height= "1080px" src= "https://forms.office.com/Pages/ResponsePage.aspx?id=rm3N714ORUqxPaa8e7q71Hs2NhR0EIlFh_DZu6aMqkhUQzU5QUpYWjBTUVg0REhNR0Y2R0dMVjNHTi4u&embed=true" frameborder= "0" marginwidth= "0" marginheight= "0" style= "border: none"> </iframe>
 
