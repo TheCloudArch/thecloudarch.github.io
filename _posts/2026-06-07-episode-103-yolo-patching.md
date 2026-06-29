@@ -10,7 +10,7 @@ logo:
 layout: post
 comments: false
 image:
-    path: assets/images/uploads/2026/03/ep102.jpg
+    path: assets/images/uploads/2026/06/ep103.jpg
     width: 1536
     height: 1024
 navigation: True
