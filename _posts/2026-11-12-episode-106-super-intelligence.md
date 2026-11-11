@@ -2,7 +2,7 @@
 author: chris
 title: 'Episode 106: Super Intelligence'
 slug: episode-106-super-intelligence
-date: 2026-11-12 08:30:00 +1000
+date: 2026-11-12 08:30:00 +1100
 cover: 'assets/images/cover/cover-no-info.jpg'
 navigation: True
 subclass: 'post'
